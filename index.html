@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Caraqueña Studio — Arquitectura y diseño interior</title>
-  <meta name="description" content="Caraqueña Studio: arquitectura, diseño interior y visualización 3D. Espacios pensados en tres dimensiones antes de construirse.">
+  <title>Caraqueña Studio — Arquitectura desde Caracas</title>
+  <meta name="description" content="Estudio de arquitectura en Caracas: hotelería, vivienda y proyectos institucionales. Del boceto a la supervisión de obra, y diseño y consultoría para proyectos en todo el mundo.">
   <meta name="theme-color" content="#0a0a0a">
-  <meta property="og:title" content="Caraqueña Studio — Arquitectura y diseño interior">
-  <meta property="og:description" content="Espacios pensados en tres dimensiones antes de construirse.">
-  <meta property="og:image" content="https://caraquena.vercel.app/img/proyecto-planta-naranja.jpg">
+  <meta property="og:title" content="Caraqueña Studio — Arquitectura desde Caracas">
+  <meta property="og:description" content="Estudio de arquitectura en Caracas: hotelería, vivienda y proyectos institucionales. Del boceto a la supervisión de obra, y diseño y consultoría para proyectos en todo el mundo.">
+  <meta property="og:image" content="https://caraquena.vercel.app/img/sketch-tortuga.jpg">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +49,7 @@
   <!-- CURSOR -->
   <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span><span class="cursor__label mono"></span></div>
 
+
   <!-- HEADER -->
   <header class="header is-pre">
     <a href="#inicio" class="header__brand" aria-label="Caraqueña Studio, ir al inicio">
@@ -57,247 +58,192 @@
     </a>
     <nav class="header__nav" aria-label="Principal">
       <a href="#estudio" data-magnetic>Estudio</a>
-      <a href="#servicios" data-magnetic>Servicios</a>
-      <a href="#proyectos" data-magnetic>Proyectos</a>
       <a href="#proceso" data-magnetic>Proceso</a>
+      <a href="#proyectos" data-magnetic>Proyectos</a>
+      <a href="nosotros.html" data-magnetic>Nosotros</a>
     </nav>
-    <a href="#contacto" class="btn btn--small header__cta" data-magnetic><span>Cotizar proyecto</span></a>
+    <a href="#contacto" class="btn btn--small header__cta" data-magnetic><span>Contacto</span></a>
     <button class="header__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
   </header>
 
   <div class="menu" aria-hidden="true">
     <nav class="menu__nav">
       <a href="#estudio"><span class="mono">01</span>Estudio</a>
-      <a href="#servicios"><span class="mono">02</span>Servicios</a>
+      <a href="#proceso"><span class="mono">02</span>Proceso</a>
       <a href="#proyectos"><span class="mono">03</span>Proyectos</a>
-      <a href="#proceso"><span class="mono">04</span>Proceso</a>
+      <a href="nosotros.html"><span class="mono">04</span>Nosotros</a>
       <a href="#contacto"><span class="mono">05</span>Contacto</a>
     </nav>
-    <div class="menu__foot mono"><a class="js-wa" href="#">WhatsApp</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a></div>
+    <div class="menu__foot mono"><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="js-mail" href="#">Correo</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a></div>
   </div>
 
   <main>
-    <!-- HERO: pinneado, el anillo del logo hace zoom y se "atraviesa" hacia el render -->
-    <section class="hero" id="inicio">
+    <!-- PORTADA: el boceto se dibuja solo; al bajar se entra por el anillo central -->
+    <section class="hero" id="inicio" data-theme="light">
       <div class="hero__stage">
-        <div class="hero__grid" aria-hidden="true"></div>
-        <div class="hero__coords mono" aria-hidden="true">
-          <span>10°30′N</span><span class="js-coord-x">X 000</span><span class="js-coord-y">Y 000</span><span>66°55′O</span>
-        </div>
+        <div class="sheet" aria-hidden="true"></div>
 
-        <div class="hero__reveal" aria-hidden="true">
-          <img src="img/proyecto-planta-naranja.jpg" alt="">
-        </div>
-
-        <div class="hero__ring-wrap">
-          <svg class="hero__ring"><use href="#isotipo"/></svg>
-        </div>
+        <figure class="hero__sketch">
+          <div class="draw js-draw" data-src="img/trazos/sketch-tortuga.svg" data-play="intro" role="img" aria-label="Boceto a mano del esquema de implantación en Isla La Tortuga: anillo central con acceso, villas, piscina, bar, playa y servicios"></div>
+          <svg class="hero__accent" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48"/></svg>
+          <figcaption class="mono">Isla La Tortuga — esquema de implantación, boceto a mano</figcaption>
+        </figure>
 
         <div class="hero__copy">
-          <p class="hero__eyebrow mono"><span class="dot"></span> Estudio de arquitectura · Caracas</p>
+          <p class="mono eyebrow"><span class="dot"></span>Estudio de arquitectura · Caracas</p>
           <h1 class="hero__title">
-            <span class="line"><span class="word">Caraqueña</span></span>
-            <span class="line line--right"><span class="word word--outline">Studio</span></span>
+            <span class="line"><span>Del trazo</span></span>
+            <span class="line"><span>a la <b>obra.</b></span></span>
           </h1>
-          <p class="hero__lead">Arquitectura, interiorismo y visualización 3D. Diseñamos cada espacio en tres dimensiones antes de que exista.</p>
+          <p class="hero__lead">Diseñamos a mano, desarrollamos con precisión y construimos en sitio. Hotelería, vivienda y proyectos institucionales desde Caracas para el mundo.</p>
         </div>
 
-        <div class="hero__scroll mono" aria-hidden="true"><span>Scroll</span><i></i></div>
-
-        <div class="hero__after">
-          <p class="mono">— Del plano al espacio</p>
-          <h2>Pensamos la casa entera<br>antes de levantar una pared.</h2>
-        </div>
+        <div class="hero__scroll mono" aria-hidden="true"><i></i>Bajar</div>
+        <div class="hero__portal" aria-hidden="true"></div>
       </div>
     </section>
 
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Arquitectura</span><svg><use href="#isotipo"/></svg><span>Diseño interior</span><svg><use href="#isotipo"/></svg><span>Visualización 3D</span><svg><use href="#isotipo"/></svg><span>Remodelación</span><svg><use href="#isotipo"/></svg>
-        <span>Arquitectura</span><svg><use href="#isotipo"/></svg><span>Diseño interior</span><svg><use href="#isotipo"/></svg><span>Visualización 3D</span><svg><use href="#isotipo"/></svg><span>Remodelación</span><svg><use href="#isotipo"/></svg>
-      </div>
-    </div>
-
-    <!-- ESTUDIO / MANIFIESTO -->
-    <section class="studio" id="estudio">
+    <!-- ESTUDIO -->
+    <section class="statement" id="estudio">
       <div class="container">
-        <div class="section-head">
-          <span class="mono tag">01 — Estudio</span>
-        </div>
-        <!-- CONFIRMAR: texto del manifiesto con el estudio -->
-        <p class="manifesto js-split-words">
-          Somos un estudio caraqueño que diseña espacios para vivirse. Cada proyecto empieza con escucharte y termina con un modelo completo, mueble por mueble y luz por luz, para que veas tu casa antes de construirla.
+        <span class="mono tag">01 — Estudio</span>
+        <!-- CONFIRMAR: redacción del trabajo universitario -->
+        <p class="statement__text js-split-words">
+          Caraqueña es un estudio en crecimiento. Cada vez más clientes en Caracas confían en nosotros, y hoy desarrollamos proyectos hoteleros de gran escala y trabajo para el ámbito universitario.
         </p>
-        <div class="studio__grid">
-          <div class="studio__card reveal-up">
-            <span class="mono">A</span>
-            <h3>Funcional</h3>
-            <p>Distribuciones que resuelven cómo vives, no solo cómo se ve.</p>
-          </div>
-          <div class="studio__card reveal-up">
-            <span class="mono">B</span>
-            <h3>Visible</h3>
-            <p>Modelos 3D isométricos para entender cada ambiente de un vistazo.</p>
-          </div>
-          <div class="studio__card reveal-up">
-            <span class="mono">C</span>
-            <h3>Construible</h3>
-            <p>Planos y detalles listos para obra, sin sorpresas en el camino.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICIOS: lista con preview de imagen que sigue el cursor -->
-    <section class="services" id="servicios">
-      <div class="container">
-        <div class="section-head">
-          <span class="mono tag">02 — Servicios</span>
-          <h2 class="section-title js-split-lines">Lo que<br>hacemos</h2>
-        </div>
-        <!-- CONFIRMAR: lista final de servicios -->
-        <ul class="services__list">
-          <li class="service" data-img="img/proyecto-niveles.jpg">
-            <span class="mono service__n">01</span>
-            <h3 class="service__name">Arquitectura</h3>
-            <p class="service__desc">Proyectos residenciales y comerciales, de la idea al plano constructivo.</p>
-            <span class="service__arrow">↗</span>
-          </li>
-          <li class="service" data-img="img/proyecto-suite.jpg">
-            <span class="mono service__n">02</span>
-            <h3 class="service__name">Diseño interior</h3>
-            <p class="service__desc">Distribución, mobiliario, materiales e iluminación de cada ambiente.</p>
-            <span class="service__arrow">↗</span>
-          </li>
-          <li class="service" data-img="img/proyecto-planta-naranja.jpg">
-            <span class="mono service__n">03</span>
-            <h3 class="service__name">Visualización 3D</h3>
-            <p class="service__desc">Renders y cortes isométricos para ver el espacio antes de construirlo.</p>
-            <span class="service__arrow">↗</span>
-          </li>
-          <li class="service" data-img="img/proyecto-niveles.jpg">
-            <span class="mono service__n">04</span>
-            <h3 class="service__name">Remodelación</h3>
-            <p class="service__desc">Replanteamos espacios existentes para que funcionen como los necesitas.</p>
-            <span class="service__arrow">↗</span>
-          </li>
+        <ul class="facts">
+          <li class="fact reveal-up"><span class="mono">A</span><h3>Hotelería</h3><p>Proyectos de gran escala, del esquema de implantación al detalle.</p></li>
+          <li class="fact reveal-up"><span class="mono">B</span><h3>Residencial</h3><p>Vivienda e interiorismo para clientes en Caracas.</p></li>
+          <li class="fact reveal-up"><span class="mono">C</span><h3>Institucional</h3><p>Experiencia en el ámbito universitario.</p></li>
         </ul>
       </div>
-      <div class="services__preview" aria-hidden="true"><img alt=""></div>
     </section>
 
-    <!-- PROYECTOS: scroll horizontal pinneado -->
-    <section class="work" id="proyectos">
-      <div class="work__pin">
-        <div class="work__head container">
-          <span class="mono tag">03 — Proyectos</span>
-          <h2 class="section-title">Trabajo<br>seleccionado</h2>
-          <div class="work__progress"><i></i></div>
+    <!-- PROCESO: compacto, tres fotos que se enmarcan con líneas de construcción -->
+    <section class="process" id="proceso" data-theme="light">
+      <div class="container">
+        <div class="process__head">
+          <span class="mono tag">02 — Proceso</span>
+          <h2 class="process__title">Boceto, plano, obra.</h2>
         </div>
-        <div class="work__track">
-          <!-- CONFIRMAR: nombres, ubicaciones y años de cada proyecto -->
-          <article class="project" data-cursor="Ver">
-            <div class="project__media project__media--orange"><img src="img/proyecto-planta-naranja.jpg" alt="Corte isométrico de un apartamento completo con sala, habitaciones y cocina" loading="lazy"></div>
-            <div class="project__info">
-              <span class="mono">P—01</span>
-              <h3>Apartamento integral</h3>
-              <p class="mono">Interiorismo · Visualización 3D</p>
-            </div>
-          </article>
-          <article class="project" data-cursor="Ver">
-            <div class="project__media"><img src="img/proyecto-suite.jpg" alt="Dos vistas isométricas de una suite con vestier y baño" loading="lazy"></div>
-            <div class="project__info">
-              <span class="mono">P—02</span>
-              <h3>Suite principal</h3>
-              <p class="mono">Diseño interior</p>
-            </div>
-          </article>
-          <article class="project" data-cursor="Ver">
-            <div class="project__media"><img src="img/proyecto-niveles.jpg" alt="Vivienda en tres niveles con cocina abierta, comedor y terraza" loading="lazy"></div>
-            <div class="project__info">
-              <span class="mono">P—03</span>
-              <h3>Casa en tres niveles</h3>
-              <p class="mono">Arquitectura · Interiorismo</p>
-            </div>
-          </article>
-          <a class="project project--cta" href="#contacto">
-            <span class="mono">P—04</span>
-            <h3>¿El tuyo?</h3>
-            <span class="btn"><span>Hablemos</span></span>
+        <div class="process__shots">
+          <figure class="shot">
+            <div class="shot__frame"><svg class="shot__lines" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><line x1="-6" y1="0" x2="106" y2="0"/><line x1="0" y1="-6" x2="0" y2="106"/><line x1="-6" y1="100" x2="106" y2="100"/><line x1="100" y1="-6" x2="100" y2="106"/></svg><img src="img/proceso-pizarra.jpg" alt="Los arquitectos discuten un corte dibujado en la pizarra" loading="lazy"></div>
+            <figcaption><span class="mono">01 — Boceto</span><p>Cortes, alturas y recorridos, discutidos en equipo.</p></figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot__frame"><svg class="shot__lines" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><line x1="-6" y1="0" x2="106" y2="0"/><line x1="0" y1="-6" x2="0" y2="106"/><line x1="-6" y1="100" x2="106" y2="100"/><line x1="100" y1="-6" x2="100" y2="106"/></svg><img src="img/obra-plano.jpg" alt="Plano de un apartamento en una tableta frente al espacio en construcción" loading="lazy"></div>
+            <figcaption><span class="mono">02 — Plano</span><p>Medimos y redibujamos sobre el espacio real.</p></figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot__frame"><svg class="shot__lines" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><line x1="-6" y1="0" x2="106" y2="0"/><line x1="0" y1="-6" x2="0" y2="106"/><line x1="-6" y1="100" x2="106" y2="100"/><line x1="100" y1="-6" x2="100" y2="106"/></svg><img src="img/obra-muro.jpg" alt="Muro en obra marcado con el isotipo de Caraqueña en naranja" loading="lazy"></div>
+            <figcaption><span class="mono">03 — Obra</span><p>Marcamos, supervisamos y ejecutamos en sitio.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS: cada proyecto se dibuja en líneas y luego aparece el render -->
+    <section class="work" id="proyectos" data-theme="light">
+      <div class="container">
+        <div class="work__head">
+          <span class="mono tag">03 — Proyectos</span>
+          <h2 class="title js-split-lines">Se arma<br>en líneas.</h2>
+          <p class="work__intro">Cada espacio existe primero como dibujo. Baja y míralo construirse.</p>
+        </div>
+
+        <!-- CONFIRMAR: nombres y datos de cada proyecto -->
+        <article class="build">
+          <div class="build__canvas build__canvas--orange">
+            <div class="draw js-draw" data-src="img/trazos/proyecto-planta-naranja.svg" data-play="scroll" aria-hidden="true"></div>
+            <img class="build__render" src="img/proyecto-planta-naranja.jpg" alt="Corte isométrico de un apartamento completo con sala, habitaciones y cocina" loading="lazy">
+          </div>
+          <div class="build__info">
+            <span class="mono">P—01</span>
+            <h3>Apartamento integral</h3>
+            <p>Interiorismo y visualización 3D de la vivienda completa.</p>
+          </div>
+        </article>
+
+        <article class="build build--flip">
+          <div class="build__canvas">
+            <div class="draw js-draw" data-src="img/trazos/proyecto-suite.svg" data-play="scroll" aria-hidden="true"></div>
+            <img class="build__render" src="img/proyecto-suite.jpg" alt="Dos vistas isométricas de una suite con vestier y baño" loading="lazy">
+          </div>
+          <div class="build__info">
+            <span class="mono">P—02</span>
+            <h3>Suite principal</h3>
+            <p>Dormitorio, vestier y baño resueltos en una sola pieza.</p>
+          </div>
+        </article>
+
+        <article class="build">
+          <div class="build__canvas">
+            <div class="draw js-draw" data-src="img/trazos/proyecto-niveles.svg" data-play="scroll" aria-hidden="true"></div>
+            <img class="build__render" src="img/proyecto-niveles.jpg" alt="Vivienda en tres niveles con cocina abierta, comedor y terraza" loading="lazy">
+          </div>
+          <div class="build__info">
+            <span class="mono">P—03</span>
+            <h3>Casa en tres niveles</h3>
+            <p>Arquitectura e interiorismo, nivel por nivel.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COBERTURA (resumen; el detalle está en nosotros.html) -->
+    <section class="reach">
+      <div class="container reach__inner">
+        <span class="mono tag">04 — Cobertura</span>
+        <div class="reach__cols">
+          <a class="reach__col" href="nosotros.html#cobertura">
+            <span class="mono">Caracas</span>
+            <h3>En sitio.</h3>
+            <p>Presencia y ejecución: desarrollo y supervisión de obras.</p>
+          </a>
+          <a class="reach__col" href="nosotros.html#cobertura">
+            <span class="mono">Global</span>
+            <h3>En remoto.</h3>
+            <p>Diseño e innovación: consultorías y proyectos remotos.</p>
           </a>
         </div>
+        <a class="link-arrow" href="nosotros.html">Conoce al equipo <span>→</span></a>
       </div>
     </section>
 
-    <!-- PROCESO -->
-    <section class="process" id="proceso">
-      <div class="container">
-        <div class="section-head">
-          <span class="mono tag">04 — Proceso</span>
-          <h2 class="section-title js-split-lines">Cómo<br>trabajamos</h2>
-        </div>
-        <!-- CONFIRMAR: pasos reales del proceso del estudio -->
-        <ol class="process__list">
-          <li class="step">
-            <span class="step__n">01</span>
-            <div><h3>Escuchar</h3><p>Conocemos el espacio, tus rutinas y lo que quieres lograr.</p></div>
-          </li>
-          <li class="step">
-            <span class="step__n">02</span>
-            <div><h3>Proponer</h3><p>Distribución y concepto: materiales, colores y referencias.</p></div>
-          </li>
-          <li class="step">
-            <span class="step__n">03</span>
-            <div><h3>Modelar</h3><p>Levantamos todo en 3D para que recorras tu espacio antes de la obra.</p></div>
-          </li>
-          <li class="step">
-            <span class="step__n">04</span>
-            <div><h3>Construir</h3><p>Entregamos planos y acompañamos la ejecución.</p></div>
-          </li>
-        </ol>
-        <div class="process__line" aria-hidden="true"><i></i></div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
+    <!-- CONTACTO: compacto, del tamaño del footer -->
     <section class="contact" id="contacto">
-      <div class="contact__bg" aria-hidden="true"><svg><use href="#isotipo"/></svg></div>
       <div class="container contact__inner">
-        <span class="mono tag tag--dark">05 — Contacto</span>
-        <h2 class="contact__title js-split-lines">Diseñemos<br>tu espacio.</h2>
-        <form class="contact__form js-wa-form">
-          <label><span class="mono">Nombre</span><input name="nombre" type="text" autocomplete="name" required></label>
-          <label><span class="mono">Tipo de proyecto</span>
-            <select name="tipo">
-              <option>Arquitectura</option>
-              <option>Diseño interior</option>
-              <option>Visualización 3D</option>
-              <option>Remodelación</option>
-              <option>Otro</option>
-            </select>
-          </label>
-          <label class="full"><span class="mono">Cuéntanos</span><textarea name="mensaje" rows="3" placeholder="Ubicación, metros aproximados, lo que tienes en mente…"></textarea></label>
-          <button class="btn btn--dark" type="submit" data-magnetic><span>Enviar por WhatsApp</span></button>
-        </form>
+        <div class="contact__lead">
+          <span class="mono tag tag--dark">05 — Contacto</span>
+          <h2 class="contact__title">Hablemos de tu proyecto.</h2>
+          <a class="btn btn--dark js-wa" href="#" target="_blank" rel="noopener" data-magnetic><span>Escríbenos por WhatsApp</span></a>
+        </div>
+        <ul class="contact__direct">
+          <li><span class="mono">Correo</span><a class="js-mail" href="#">contacto@caraquena.com</a></li>
+          <li><span class="mono">WhatsApp</span><a class="js-wa" href="#" target="_blank" rel="noopener">+58 414 258 2223</a></li>
+          <li><span class="mono">Instagram</span><a class="js-ig" href="#" target="_blank" rel="noopener">@caraquena.studio</a></li>
+          <li><span class="mono">Estudio</span><span>Caracas, Venezuela</span></li>
+        </ul>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer__top">
-      <div>
+      <div class="footer__contact">
         <p class="mono">Caracas, Venezuela</p>
-        <a class="footer__ig js-ig" href="#" target="_blank" rel="noopener">@caraquena.studio</a>
+        <a class="footer__big js-mail" href="#">contacto@caraquena.com</a>
+        <a class="footer__big js-wa" href="#" target="_blank" rel="noopener">+58 414 258 2223</a>
       </div>
       <nav class="footer__nav mono">
-        <a href="#estudio">Estudio</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#contacto">Contacto</a>
+        <a href="#estudio">Estudio</a><a href="#proceso">Proceso</a><a href="#proyectos">Proyectos</a><a href="nosotros.html">Nosotros</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
       </nav>
     </div>
     <div class="footer__word" aria-hidden="true">CARAQUEÑA<svg><use href="#isotipo"/></svg></div>
     <div class="container footer__bottom mono">
       <span>© <span class="js-year"></span> Caraqueña Studio</span>
-      <a href="#inicio">Volver arriba ↑</a>
+      <a href="#top" class="js-top">Volver arriba ↑</a>
     </div>
   </footer>
 
