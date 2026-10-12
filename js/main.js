@@ -640,6 +640,14 @@ function init() {
     });
   }
 
+  // ---- Contacto: las herramientas se dibujan al entrar ----
+  gsap.utils.toArray(".contact__deco .js-draw").forEach((el, i) => loadDraw(el).then((paths) => {
+    gsap.set(paths, { fillOpacity: 0 });
+    gsap.timeline({ scrollTrigger: { trigger: ".contact", start: "top 75%" }, delay: i * .25 })
+      .to(paths, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut", stagger: { amount: .6 } })
+      .to(paths, { fillOpacity: 1, duration: .6 }, "-=.5");
+  }));
+
   // ---- Contacto y footer ----
   if (document.querySelector(".contact")) {
     gsap.from(".contact__lead > *, .contact__direct li", { y: 30, opacity: 0, duration: .9, stagger: .06, ease: "expo.out", scrollTrigger: { trigger: ".contact", start: "top 80%" } });

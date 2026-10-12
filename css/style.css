@@ -753,3 +753,27 @@ picture { display: contents; }
   .ufilm__actual { height: 62vh; }
   .ufilm__video { height: 60vh; top: 40%; }
 }
+
+/* Contacto: herramientas de dibujo en línea, sutiles, en los espacios vacíos */
+.contact { position: relative; overflow: hidden; }
+.contact__inner { position: relative; z-index: 1; }
+.contact__deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; max-width: 1440px; margin: 0 auto; }
+.deco { position: absolute; opacity: .16; }
+.deco svg { width: 100%; height: auto; display: block; overflow: visible; }
+.deco path { fill: var(--black); stroke: var(--black); stroke-width: .8; }
+.deco--compas { left: 37%; top: 12%; width: 9.5%; transform: rotate(-8deg); }
+.deco--transportador { left: 21%; top: 6%; width: 7%; transform: rotate(6deg); }
+.deco--regla { left: 21%; bottom: 4%; width: 15%; transform: rotate(-12deg); }
+.deco--escuadra { left: 47%; bottom: 10%; width: 6%; transform: rotate(14deg); }
+@media (max-width: 900px) {
+  .deco { opacity: .14; }
+  .deco--compas { left: auto; right: 5%; top: 4%; width: 23%; }
+  .deco--transportador { left: auto; right: 30%; top: 3%; width: 14%; }
+  .deco--regla { left: auto; right: 2%; bottom: auto; top: 29%; width: 34%; transform: rotate(-18deg); }
+  .deco--escuadra { display: none; }
+}
+
+@media (min-width: 901px) and (max-width: 1240px) {
+  .contact__row { grid-template-columns: 40px 86px 1fr 18px; gap: 10px; }
+  .contact__val { font-size: 17px; overflow-wrap: normal; white-space: nowrap; }
+}
