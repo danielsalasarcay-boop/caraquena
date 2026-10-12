@@ -263,34 +263,6 @@ function init() {
     });
   });
 
-  // ---- Conoce más: Otter La Tortuga — el boceto se dibuja y desde su anillo central se abre el render ----
-  const otter = document.querySelector(".otter");
-  if (otter) {
-    const sketchBox = otter.querySelector(".otter__sketch");
-    const render = otter.querySelector(".otter__render");
-    const step = otter.querySelector(".js-otter-step");
-    const en = document.documentElement.lang === "en";
-    const labels = en ? ["01 — Site sketch", "02 — Ink", "03 — Render"] : ["01 — Boceto de implantación", "02 — Tinta", "03 — Render"];
-    const ringAt = () => {
-      const s = sketchBox.getBoundingClientRect(), st = otter.getBoundingClientRect();
-      return `${((s.left - st.left + s.width * .496) / st.width) * 100}% ${((s.top - st.top + s.height * .518) / st.height) * 100}%`;
-    };
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: otter, start: "top top", end: "+=220%", pin: otter.querySelector(".otter__stage"), scrub: .8, invalidateOnRefresh: true,
-        onUpdate: (s) => (step.textContent = labels[s.progress < .45 ? 0 : s.progress < .6 ? 1 : 2]),
-      },
-    });
-    loadDraw(otter.querySelector(".js-draw")).then((paths) => {
-      tl.to(paths, { strokeDashoffset: 0, ease: "none", stagger: { amount: .9 }, duration: .45 }, 0)
-        .to(paths, { fillOpacity: 1, duration: .12, stagger: { amount: .05 } }, .47)
-        .to(sketchBox, { scale: 2.4, transformOrigin: "49.6% 51.8%", ease: "power2.in", duration: .4 }, .6)
-        .fromTo(render, { clipPath: () => `circle(0% at ${ringAt()})`, scale: 1.25 }, { clipPath: () => `circle(80% at ${ringAt()})`, scale: 1, ease: "power2.inOut", duration: .4 }, .62)
-        .to({}, { duration: .1 });
-      ScrollTrigger.refresh();
-    });
-  }
-
   // ---- Nosotros ----
   if (document.querySelector(".page-hero__photo")) {
     gsap.fromTo(".page-hero__photo img", { yPercent: -10 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".page-hero__photo", start: "top bottom", end: "bottom top", scrub: true } });
