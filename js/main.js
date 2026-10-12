@@ -438,10 +438,11 @@ function init() {
       tl.to(q(".gfilm__map"), { xPercent: -28, duration: .5, ease: "power1.inOut" }, 3.65)
         .to(q(".gfilm__map"), { xPercent: -50, duration: .5, ease: "power1.inOut" }, 5.1);
     }
+    // trazos con su relleno propio (CSS): se dibuja el contorno y luego entra el relleno por grupo
     const drawIn = (el, at, len) => loadDraw(el).then((paths) => {
       gsap.set(paths, { fillOpacity: 0 });
-      tl.to(paths, { strokeDashoffset: 0, duration: len * .55, stagger: { amount: len * .45 } }, at)
-        .to(paths, { fillOpacity: 1, duration: .15, stagger: { amount: .1 } }, at + len - .12);
+      tl.to(paths, { strokeDashoffset: 0, duration: len * .6, stagger: { amount: len * .4 } }, at)
+        .to(paths, { fillOpacity: 1, duration: .2, stagger: { amount: .12 } }, at + len - .15);
     });
     Promise.all([drawIn(baseEl, 1.3, .85), drawIn(f1El, 2.25, .65), drawIn(f2El, 3.75, .65), drawIn(f3El, 5.25, .7)])
       .then(() => ScrollTrigger.refresh());
@@ -450,8 +451,7 @@ function init() {
 
   // ---- Nosotros ----
   if (document.querySelector(".page-hero__photo")) {
-    gsap.fromTo(".page-hero__photo img", { yPercent: -10 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".page-hero__photo", start: "top bottom", end: "bottom top", scrub: true } });
-    gsap.from(".page-hero__photo", { clipPath: "inset(12% 8% 0 8%)", ease: "none", scrollTrigger: { trigger: ".page-hero__photo", start: "top bottom", end: "top 30%", scrub: true } });
+    gsap.from(".page-hero__photo img", { clipPath: "inset(10% 6% 10% 6%)", scale: 1.06, ease: "none", scrollTrigger: { trigger: ".page-hero__photo", start: "top bottom", end: "top 35%", scrub: true } });
   }
   const orbit = document.querySelector(".js-orbit");
   if (orbit) {

@@ -352,11 +352,11 @@ figure { margin: 0; }
 .kicker__svg text { font: 800 200px/1 var(--display); font-variation-settings: "wdth" 112; letter-spacing: -.02em; fill: var(--orange); fill-opacity: 0; stroke: var(--orange); stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .page-hero__title { font-size: clamp(48px, 7.6vw, 124px); font-weight: 400; letter-spacing: -.045em; }
 .page-hero__lead { color: var(--muted-ink); font-size: 18px; padding-bottom: 10px; }
-.page-hero__photo { margin-top: clamp(60px, 8vw, 110px); height: 92vh; overflow: hidden; }
-.page-hero__photo img { width: 100%; height: 120%; object-fit: cover; object-position: 50% 30%; filter: grayscale(1); }
+.page-hero__photo { margin-top: clamp(48px, 6vw, 90px); }
+.page-hero__photo img { width: 100%; aspect-ratio: 3 / 2; max-height: 72vh; object-fit: cover; object-position: 50% 50%; filter: grayscale(1); }
 @media (max-width: 900px) {
   .page-hero__inner { grid-template-columns: 1fr; }
-  .page-hero__photo { height: 60vh; }
+  .page-hero__photo img { aspect-ratio: 4 / 3; }
 }
 
 .team { padding: clamp(100px, 12vw, 180px) 0; }
@@ -692,11 +692,18 @@ html[lang="en"] .pcard__media { --see: "View sheet"; }
 .gfilm__title text { stroke: var(--white); }
 .gfilm__blue { position: absolute; inset: 0; z-index: 3; background: var(--blue); clip-path: circle(0% at 50% 55%); }
 .gfilm__blue::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(169,205,245,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(169,205,245,.09) 1px, transparent 1px); background-size: 48px 48px; }
-.gfilm__map { position: absolute; left: 50%; top: 50%; width: max(100vw, 161vh); aspect-ratio: 2200 / 1366; transform: translate(-50%, -50%); z-index: 4; }
+.gfilm__map { position: absolute; left: 50%; top: 50%; width: max(100vw, 141.2vh); aspect-ratio: 2880 / 2040; transform: translate(-50%, -50%); z-index: 4; }
 .gfilm__layer { position: absolute; inset: 0; }
 .gfilm__layer svg { width: 100%; height: 100%; }
-.gfilm__base path { fill: var(--blue-ink); stroke: var(--blue-ink); stroke-width: .6; }
-.gfilm__phase path { fill: var(--orange); stroke: var(--orange); stroke-width: .9; filter: drop-shadow(0 0 3px rgba(240, 90, 37, .55)); }
+.gfilm__base .w path { fill: none; stroke: #cfe3ff; stroke-width: 1.4; }
+.gfilm__base .p path { fill: rgba(169,205,245,.06); stroke: var(--blue-ink); stroke-width: 1; }
+.gfilm__base .b path { fill: rgba(169,205,245,.28); stroke: var(--blue-ink); stroke-width: .8; }
+.gfilm__phase path { stroke: var(--orange); stroke-width: 1.1; }
+.gfilm__phase .a path { fill: rgba(240,90,37,.16); }
+.gfilm__phase .p path { fill: rgba(240,90,37,.1); stroke-width: 1.4; }
+.gfilm__phase .b path { fill: rgba(240,90,37,.42); stroke-width: .8; }
+.gfilm__phase .z path, .gfilm__phase .c path { fill: var(--orange); stroke-width: .3; }
+.gfilm__phase svg { filter: drop-shadow(0 0 4px rgba(240, 90, 37, .45)); }
 .gfilm__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
 .gfilm .film__rail li { mix-blend-mode: normal; color: rgba(169, 205, 245, .55); }
 .gfilm .film__cap { background: rgba(11, 29, 51, .82); border-left: 2px solid var(--orange); }
