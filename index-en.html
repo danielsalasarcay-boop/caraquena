@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caraqueña Studio — Architecture from Caracas</title>
+  <meta name="description" content="Architecture studio in Caracas: large-scale hospitality and developments, housing and interiors. From the first sketch to site supervision, plus design and consulting for projects worldwide.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="Caraqueña Studio — Architecture from Caracas">
+  <meta property="og:description" content="Architecture studio in Caracas: large-scale hospitality and developments, housing and interiors. From the first sketch to site supervision, plus design and consulting for projects worldwide.">
+  <meta property="og:image" content="https://caraquena.vercel.app/img/sketch-tortuga.jpg">
+  <link rel="alternate" hreflang="es" href="https://caraquena.vercel.app/">
+  <link rel="alternate" hreflang="en" href="https://caraquena.vercel.app/index-en.html">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- Isotipo reutilizable (recreado en SVG a partir del logo; se reemplaza cuando llegue el archivo oficial) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <mask id="ring-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="900">
+        <rect x="0" y="0" width="900" height="900" fill="#fff"/>
+        <circle cx="410" cy="375" r="125" fill="#000"/>
+        <polygon points="322,287 500,287 720,67 102,67" fill="#000"/>
+      </mask>
+      <symbol id="isotipo" viewBox="170 140 490 470">
+        <circle class="iso-ring" cx="410" cy="375" r="225" fill="currentColor" mask="url(#ring-mask)"/>
+        <path class="iso-bar" d="M506 596 L542 560 H639 a6 6 0 0 1 6 6 V590 a6 6 0 0 1 -6 6 Z" fill="#F05A25"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- LOADER -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__panel loader__panel--top"></div>
+    <div class="loader__panel loader__panel--bottom"></div>
+    <div class="loader__inner">
+      <svg class="loader__logo" viewBox="170 140 490 470">
+        <circle class="iso-ring" cx="410" cy="375" r="225" fill="currentColor" mask="url(#ring-mask)"/>
+        <path class="iso-bar" d="M506 596 L542 560 H639 a6 6 0 0 1 6 6 V590 a6 6 0 0 1 -6 6 Z" fill="#F05A25"/>
+      </svg>
+      <div class="loader__count mono"><span class="js-count">000</span></div>
+      <div class="loader__label mono">CARAQUEÑA / STUDIO</div>
+    </div>
+  </div>
+
+
+
+  <!-- HEADER -->
+  <header class="header is-pre">
+    <a href="#inicio" class="header__brand" aria-label="Caraqueña Studio, go to home">
+      <svg class="header__logo"><use href="#isotipo"/></svg>
+      <span class="header__word">Caraqueña<em>studio</em></span>
+    </a>
+    <nav class="header__nav" aria-label="Main">
+      <a href="#estudio" data-magnetic>Studio</a>
+      <a href="#proceso" data-magnetic>Process</a>
+      <a href="#proyectos" data-magnetic>Projects</a>
+      <a href="nosotros-en.html" data-magnetic>About</a>
+    </nav>
+    <div class="lang mono" aria-label="Language"><a href="index.html" hreflang="es" lang="es">ES</a><span>/</span><a href="index-en.html" hreflang="en" lang="en" aria-current="true">EN</a></div>
+    <a href="#contacto" class="btn btn--small header__cta" data-magnetic><span>Contact</span></a>
+    <button class="header__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <div class="menu" aria-hidden="true">
+    <nav class="menu__nav">
+      <a href="#estudio"><span class="mono">01</span>Studio</a>
+      <a href="#proceso"><span class="mono">02</span>Process</a>
+      <a href="#proyectos"><span class="mono">03</span>Projects</a>
+      <a href="nosotros-en.html"><span class="mono">04</span>About</a>
+      <a href="#contacto"><span class="mono">05</span>Contact</a>
+    </nav>
+    <div class="menu__foot mono"><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="js-mail" href="#">Email</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+
+  <main>
+    <!-- PORTADA: el boceto se dibuja solo; al bajar se entra por el anillo central -->
+    <section class="hero" id="inicio" data-theme="light">
+      <div class="hero__stage">
+        <div class="sheet" aria-hidden="true"></div>
+
+        <figure class="hero__sketch">
+          <div class="draw js-draw" data-src="img/trazos/sketch-tortuga.svg" data-play="intro" role="img" aria-label="Hand sketch of the site plan on Isla La Tortuga: central ring with access, villas, pool, bar, beach and services"></div>
+          <svg class="hero__accent" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48"/></svg>
+          <figcaption class="mono">Isla La Tortuga — site plan, hand sketch</figcaption>
+        </figure>
+
+        <div class="hero__copy">
+          <p class="mono eyebrow"><span class="dot"></span>Architecture studio · Caracas</p>
+          <h1 class="hero__title">
+            <span class="line"><span>From sketch</span></span>
+            <span class="line"><span>to <b>site.</b></span></span>
+          </h1>
+          <p class="hero__lead">We design by hand, develop with precision and build on site. Hospitality, developments and housing, from Caracas to the world.</p>
+        </div>
+
+        <div class="hero__scroll mono" aria-hidden="true"><i></i>Scroll</div>
+        <div class="hero__portal" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ESTUDIO -->
+    <section class="statement" id="estudio">
+      <div class="container">
+        <span class="mono tag">01 — Studio</span>
+        <p class="statement__text js-split-words">
+          We design at large scale without losing the detail. Hotels, developments and spaces you can walk through before they exist: every project starts by hand and is resolved with technical precision all the way to the site.
+        </p>
+        <ul class="facts">
+          <li class="fact reveal-up"><span class="mono">A</span><h3>Large scale</h3><p>Complete hotels and developments, from master plan to the last piece.</p></li>
+          <li class="fact reveal-up"><span class="mono">B</span><h3>Precision</h3><p>Technical drawings and 3D models that anticipate every construction decision.</p></li>
+          <li class="fact reveal-up"><span class="mono">C</span><h3>Execution</h3><p>On-site development and supervision, through to handover.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROCESO: compacto, tres fotos que se enmarcan con líneas de construcción -->
+    <section class="process" id="proceso" data-theme="light">
+      <div class="container">
+        <div class="process__head">
+          <span class="mono tag">02 — Process</span>
+          <h2 class="process__title">Sketch, plan, site.</h2>
+        </div>
+        <div class="process__shots">
+          <figure class="shot">
+            <div class="shot__frame"><svg class="shot__lines" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><line x1="-6" y1="0" x2="106" y2="0"/><line x1="0" y1="-6" x2="0" y2="106"/><line x1="-6" y1="100" x2="106" y2="100"/><line x1="100" y1="-6" x2="100" y2="106"/></svg><img src="img/proceso-pizarra.jpg" alt="The architects discuss a section drawn on the whiteboard" loading="lazy"></div>
+            <figcaption><span class="mono">01 — Sketch</span><p>Sections, heights and circulation, worked out as a team.</p></figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot__frame"><svg class="shot__lines" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><line x1="-6" y1="0" x2="106" y2="0"/><line x1="0" y1="-6" x2="0" y2="106"/><line x1="-6" y1="100" x2="106" y2="100"/><line x1="100" y1="-6" x2="100" y2="106"/></svg><img src="img/obra-plano.jpg" alt="Apartment floor plan on a tablet in front of the space under construction" loading="lazy"></div>
+            <figcaption><span class="mono">02 — Plan</span><p>We measure and redraw on the real space.</p></figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot__frame"><svg class="shot__lines" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><line x1="-6" y1="0" x2="106" y2="0"/><line x1="0" y1="-6" x2="0" y2="106"/><line x1="-6" y1="100" x2="106" y2="100"/><line x1="100" y1="-6" x2="100" y2="106"/></svg><img src="img/obra-muro.jpg" alt="Construction-site wall marked with the Caraqueña symbol in orange" loading="lazy"></div>
+            <figcaption><span class="mono">03 — Site</span><p>We mark out, supervise and build on site.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS: cada proyecto se dibuja en líneas y luego aparece el render -->
+    <section class="work" id="proyectos" data-theme="light">
+      <div class="container">
+        <div class="work__head">
+          <span class="mono tag">03 — Projects</span>
+          <h2 class="title js-split-lines">Built<br>in lines.</h2>
+          <p class="work__intro">Every space exists first as a drawing. Scroll and watch it come together.</p>
+        </div>
+
+        <!-- CONFIRMAR: nombres y datos de cada proyecto -->
+        <article class="build">
+          <div class="build__canvas build__canvas--orange">
+            <div class="draw js-draw" data-src="img/trazos/proyecto-planta-naranja.svg" data-play="scroll" aria-hidden="true"></div>
+            <img class="build__render" src="img/proyecto-planta-naranja.jpg" alt="Isometric cutaway of a full apartment with living room, bedrooms and kitchen" loading="lazy">
+          </div>
+          <div class="build__info">
+            <span class="mono">P—01</span>
+            <h3>Full apartment</h3>
+            <p>Interior design and 3D visualization of the whole home.</p>
+          </div>
+        </article>
+
+        <article class="build build--flip">
+          <div class="build__canvas">
+            <div class="draw js-draw" data-src="img/trazos/proyecto-suite.svg" data-play="scroll" aria-hidden="true"></div>
+            <img class="build__render" src="img/proyecto-suite.jpg" alt="Two isometric views of a suite with walk-in closet and bathroom" loading="lazy">
+          </div>
+          <div class="build__info">
+            <span class="mono">P—02</span>
+            <h3>Master suite</h3>
+            <p>Bedroom, walk-in closet and bathroom resolved as one piece.</p>
+          </div>
+        </article>
+
+        <article class="build">
+          <div class="build__canvas">
+            <div class="draw js-draw" data-src="img/trazos/proyecto-niveles.svg" data-play="scroll" aria-hidden="true"></div>
+            <img class="build__render" src="img/proyecto-niveles.jpg" alt="Three-level home with open kitchen, dining room and terrace" loading="lazy">
+          </div>
+          <div class="build__info">
+            <span class="mono">P—03</span>
+            <h3>Three-level house</h3>
+            <p>Architecture and interiors, level by level.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COBERTURA (compacta; el detalle está en nosotros.html) -->
+    <section class="reach">
+      <div class="container reach__inner">
+        <div class="reach__diagram" aria-hidden="true">
+          <div class="orbit-wrap">
+          <svg viewBox="0 0 400 400" class="js-orbit">
+            <circle pathLength="1" class="orbit orbit--outer" cx="200" cy="200" r="186"/>
+            <circle class="orbit orbit--mid" cx="200" cy="200" r="152"/>
+            <line pathLength="1" class="orbit" x1="200" y1="4" x2="200" y2="58"/>
+            <line pathLength="1" class="orbit" x1="200" y1="342" x2="200" y2="396"/>
+            <line pathLength="1" class="orbit" x1="4" y1="200" x2="58" y2="200"/>
+            <line pathLength="1" class="orbit" x1="342" y1="200" x2="396" y2="200"/>
+            <circle pathLength="1" class="orbit orbit-core" cx="200" cy="200" r="126"/>
+            <text x="200" y="30" text-anchor="middle" class="orbit-label">GLOBAL</text>
+            <text x="200" y="378" text-anchor="middle" class="orbit-label orbit-label--core">CARACAS</text>
+          </svg>
+          <div class="orbit-draw draw js-draw" data-src="img/trazos/caracas.svg" data-play="orbit" role="img" aria-label="Ink sketch of Caracas with El Ávila mountain and the Parque Central towers"></div>
+          <span class="orbit-pin" aria-hidden="true"></span>
+        </div>
+        </div>
+        <div class="reach__body">
+          <span class="mono tag">04 — Reach</span>
+          <div class="reach__cols">
+            <a class="reach__col" href="nosotros-en.html#cobertura">
+              <span class="mono">Caracas</span>
+              <h3>On site.</h3>
+              <p>Presence and execution: construction development and supervision.</p>
+            </a>
+            <a class="reach__col" href="nosotros-en.html#cobertura">
+              <span class="mono">Global</span>
+              <h3>Remote.</h3>
+              <p>Design and innovation: consulting and remote projects.</p>
+            </a>
+          </div>
+          <a class="link-arrow" href="nosotros-en.html">Meet the team <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTODO: mini sección negra con la línea naranja que avanza -->
+    <section class="method">
+      <div class="container">
+        <div class="method__head">
+          <span class="mono tag">05 — Method</span>
+          <h2 class="method__title">How we work</h2>
+        </div>
+        <div class="method__track">
+          <div class="method__line" aria-hidden="true"><i></i><b></b></div>
+          <ol class="method__list">
+          <li class="step"><span class="step__n">01</span><h3>Listen</h3><p>The space, your routines and what you want to achieve.</p></li>
+          <li class="step"><span class="step__n">02</span><h3>Propose</h3><p>Layout, concept and materials.</p></li>
+          <li class="step"><span class="step__n">03</span><h3>Model</h3><p>Everything in 3D before construction.</p></li>
+          <li class="step"><span class="step__n">04</span><h3>Build</h3><p>Drawings and support throughout construction.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO: compacto, del tamaño del footer -->
+    <section class="contact" id="contacto">
+      <div class="container contact__inner">
+        <div class="contact__lead">
+          <span class="mono tag tag--dark">06 — Contact</span>
+          <h2 class="contact__title">Let's talk about your project.</h2>
+          <a class="btn btn--dark js-wa" href="#" target="_blank" rel="noopener" data-magnetic><span>Message us on WhatsApp</span></a>
+        </div>
+        <ul class="contact__direct">
+          <li><a class="contact__row js-mail" href="#"><span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></span><span class="mono">Email</span><span class="contact__val">contacto@caraquena.com</span><span class="contact__go" aria-hidden="true">↗</span></a></li>
+          <li><a class="contact__row js-wa" href="#" target="_blank" rel="noopener"><span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.2 19.8l1.1-3.9A8.3 8.3 0 1 1 8.4 19l-4.2.8z"/><path d="M9.2 8.3c.2-.4.5-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.5.3-1.3.5-2 .3-2.6-.8-4.6-2.8-5.4-5.4-.2-.7 0-1.5.3-2z"/></svg></span><span class="mono">WhatsApp</span><span class="contact__val">+58 414 258 2223</span><span class="contact__go" aria-hidden="true">↗</span></a></li>
+          <li><a class="contact__row js-ig" href="#" target="_blank" rel="noopener"><span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg></span><span class="mono">Instagram</span><span class="contact__val">@caraquena.studio</span><span class="contact__go" aria-hidden="true">↗</span></a></li>
+          <li><div class="contact__row"><span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span><span class="mono">Studio</span><span class="contact__val">Caracas, Venezuela</span><span class="contact__go" aria-hidden="true"></span></div></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__contact">
+        <p class="mono">Caracas, Venezuela</p>
+        <a class="footer__big js-mail" href="#">contacto@caraquena.com</a>
+        <a class="footer__big js-wa" href="#" target="_blank" rel="noopener">+58 414 258 2223</a>
+      </div>
+      <nav class="footer__nav mono">
+        <a href="#estudio">Studio</a><a href="#proceso">Process</a><a href="#proyectos">Projects</a><a href="nosotros-en.html">About</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+    <div class="footer__word" aria-hidden="true">CARAQUEÑA<svg><use href="#isotipo"/></svg></div>
+    <div class="container footer__bottom mono">
+      <span>© <span class="js-year"></span> Caraqueña Studio. All rights reserved.</span>
+      <a href="#top" class="js-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Botones flotantes -->
+  <div class="float">
+    <a class="float__btn float__btn--ig js-ig" href="#" target="_blank" rel="noopener" aria-label="Caraqueña Studio on Instagram (opens in a new tab)">
+      <span class="float__wave"></span>
+      <span class="float__label">Follow us</span>
+      <span class="float__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+    <a class="float__btn float__btn--wa js-wa" href="#" target="_blank" rel="noopener" aria-label="Message us on WhatsApp (opens in a new tab)">
+      <span class="float__wave"></span><span class="float__wave float__wave--2"></span>
+      <span class="float__label">Message us</span>
+      <span class="float__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.3-18.1C18.1 1.5 15.1.2 12 .2 5.5.2.2 5.5.2 12c0 2.1.5 4.1 1.6 5.9L.1 23.9l6.2-1.6c1.7.9 3.7 1.4 5.7 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.1-1.2-6.1-3.5-8.3z"/></svg></span>
+    </a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

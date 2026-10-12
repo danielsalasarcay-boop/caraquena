@@ -29,6 +29,7 @@ def header(b, current=""):
       <a href="{b}#proyectos" data-magnetic>Proyectos</a>
       <a href="nosotros.html" data-magnetic{cur('nosotros')}>Nosotros</a>
     </nav>
+    <div class="lang mono" aria-label="Idioma">__LANG__</div>
     <a href="{b}#contacto" class="btn btn--small header__cta" data-magnetic><span>Contacto</span></a>
     <button class="header__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
   </header>
@@ -59,22 +60,44 @@ def footer(b):
     </div>
     <div class="footer__word" aria-hidden="true">CARAQUEÑA<svg><use href="#isotipo"/></svg></div>
     <div class="container footer__bottom mono">
-      <span>© <span class="js-year"></span> Caraqueña Studio</span>
+      <span>© <span class="js-year"></span> Caraqueña Studio. Todos los derechos reservados.</span>
       <a href="#top" class="js-top">Volver arriba ↑</a>
     </div>
   </footer>
 
 """
 
-def page(out, title, desc, b, current, main, with_loader):
+PAIRS_FILE = "tools/en.json"
+
+def lang_switch(es_file, en_file, lang):
+    es = f'<a href="{es_file}" hreflang="es" lang="es"{" aria-current=\"true\"" if lang == "es" else ""}>ES</a>'
+    en = f'<a href="{en_file}" hreflang="en" lang="en"{" aria-current=\"true\"" if lang == "en" else ""}>EN</a>'
+    return es + "<span>/</span>" + en
+
+def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc_en):
     loader = P["loader"] if with_loader else ""
     html = head(title, desc, with_loader) + loader + "\n" + header(b, current) + "\n  <main>\n" + open(main).read() + "  </main>\n\n" + footer(b) + P["float"]
-    open(out, "w").write(html)
+    alt = f'  <link rel="alternate" hreflang="es" href="https://caraquena.vercel.app/{out.replace("index.html", "")}">\n  <link rel="alternate" hreflang="en" href="https://caraquena.vercel.app/{out_en}">\n'
+    html = html.replace("  <link rel=\"icon\"", alt + "  <link rel=\"icon\"", 1)
+    open(out, "w").write(html.replace("__LANG__", lang_switch(out, out_en, "es")))
     print(out, len(html))
+    # Versión en inglés: mismas piezas, textos traducidos
+    en = html.replace('<html lang="es">', '<html lang="en">').replace(f"<title>{title}</title>", f"<title>{title_en}</title>")
+    en = en.replace(f'content="{title}"', f'content="{title_en}"').replace(f'content="{desc}"', f'content="{desc_en}"')
+    import json
+    for es_txt, en_txt in json.load(open(PAIRS_FILE)):
+        en = en.replace(es_txt, en_txt)
+    # enlaces internos hacia las páginas en inglés
+    en = en.replace('href="index.html', 'href="index-en.html').replace('href="nosotros.html', 'href="nosotros-en.html')
+    en = en.replace('<a href="#inicio" class="header__brand"', '<a href="#inicio" class="header__brand"')
+    open(out_en, "w").write(en.replace("__LANG__", lang_switch(out, out_en, "en")))
+    print(out_en, len(en))
 
 page("index.html", "Caraqueña Studio — Arquitectura desde Caracas",
-     "Estudio de arquitectura en Caracas: hotelería, vivienda y proyectos institucionales. Del boceto a la supervisión de obra, y diseño y consultoría para proyectos en todo el mundo.",
-     "", "", "tools/main-index.html", True)
+     "Estudio de arquitectura en Caracas: hotelería y desarrollos de gran escala, vivienda e interiorismo. Del boceto a la supervisión de obra, y diseño y consultoría para proyectos en todo el mundo.",
+     "", "", "tools/main-index.html", True, "index-en.html", "Caraqueña Studio — Architecture from Caracas",
+     "Architecture studio in Caracas: large-scale hospitality and developments, housing and interiors. From the first sketch to site supervision, plus design and consulting for projects worldwide.")
 page("nosotros.html", "Nosotros — Caraqueña Studio",
      "Fabrizio Palmieri, Carlos Enrique Salas y David Ojalvo. Presencia y ejecución en Caracas; diseño, innovación y consultoría a nivel global.",
-     "index.html", "nosotros", "tools/main-nosotros.html", False)
+     "index.html", "nosotros", "tools/main-nosotros.html", False, "nosotros-en.html", "About — Caraqueña Studio",
+     "Fabrizio Palmieri, Carlos Enrique Salas and David Ojalvo. On-site presence and execution in Caracas; design, innovation and consulting worldwide.")

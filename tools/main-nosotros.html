@@ -1,9 +1,9 @@
     <!-- NOSOTROS -->
     <section class="page-hero" id="top" data-theme="light">
       <div class="container page-hero__inner">
-        <span class="mono tag">Nosotros</span>
+        <p class="kicker" aria-hidden="true"><svg class="kicker__svg js-kicker" viewBox="0 0 1100 200"><text x="0" y="170">NOSOTROS</text></svg></p>
         <h1 class="page-hero__title js-split-lines">Tres arquitectos.<br>Un mismo trazo.</h1>
-        <p class="page-hero__lead">Caraqueña nace en Caracas y crece con cada proyecto: vivienda, hotelería de gran escala y trabajo en el ámbito universitario. Diseñamos juntos, en la pizarra y en la obra.</p>
+        <p class="page-hero__lead">Caraqueña nace en Caracas y crece con cada proyecto: hotelería y desarrollos de gran escala, vivienda e interiorismo. Diseñamos juntos, en la pizarra y en la obra.</p>
       </div>
       <figure class="page-hero__photo">
         <img src="img/equipo-mesa.jpg" alt="El equipo de Caraqueña revisando un plano sobre una mesa">
@@ -13,7 +13,7 @@
     <!-- EQUIPO -->
     <section class="team" data-theme="light">
       <div class="container">
-        <span class="mono tag">01 — Equipo</span>
+        <span class="mono tag">Equipo</span>
         <!-- PENDIENTE: retratos individuales (llegan con las fotos en alta) y cargo de cada uno -->
         <ul class="team__grid">
           <li class="person reveal-up">
@@ -39,18 +39,24 @@
     <section class="coverage" id="cobertura">
       <div class="container coverage__grid">
         <div class="coverage__diagram" aria-hidden="true">
+          <div class="orbit-wrap">
           <svg viewBox="0 0 400 400" class="js-orbit">
             <circle pathLength="1" class="orbit orbit--outer" cx="200" cy="200" r="186"/>
-            <circle class="orbit orbit--mid" cx="200" cy="200" r="128"/>
-            <line pathLength="1" class="orbit" x1="200" y1="4" x2="200" y2="396"/>
-            <line pathLength="1" class="orbit" x1="4" y1="200" x2="396" y2="200"/>
-            <circle class="orbit-core" cx="200" cy="200" r="54"/>
-            <text x="200" y="205" text-anchor="middle" class="orbit-label orbit-label--core">CARACAS</text>
+            <circle class="orbit orbit--mid" cx="200" cy="200" r="152"/>
+            <line pathLength="1" class="orbit" x1="200" y1="4" x2="200" y2="58"/>
+            <line pathLength="1" class="orbit" x1="200" y1="342" x2="200" y2="396"/>
+            <line pathLength="1" class="orbit" x1="4" y1="200" x2="58" y2="200"/>
+            <line pathLength="1" class="orbit" x1="342" y1="200" x2="396" y2="200"/>
+            <circle pathLength="1" class="orbit orbit-core" cx="200" cy="200" r="126"/>
             <text x="200" y="30" text-anchor="middle" class="orbit-label">GLOBAL</text>
+            <text x="200" y="378" text-anchor="middle" class="orbit-label orbit-label--core">CARACAS</text>
           </svg>
+          <div class="orbit-draw draw js-draw" data-src="img/trazos/caracas.svg" data-play="orbit" role="img" aria-label="Boceto a tinta de Caracas con El Ávila y las torres de Parque Central"></div>
+          <span class="orbit-pin" aria-hidden="true"></span>
+        </div>
         </div>
         <div class="coverage__text">
-          <span class="mono tag">02 — Cobertura</span>
+          <span class="mono tag">Cobertura</span>
           <div class="coverage__item">
             <span class="mono">Caracas</span>
             <h3>Presencia y ejecución</h3>

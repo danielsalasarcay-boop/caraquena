@@ -5,7 +5,9 @@ const SITE = {
   whatsapp: "584142582223",
   email: "contacto@caraquena.com",
   instagram: "https://www.instagram.com/caraquena.studio",
-  waMessage: "Hola Caraqueña, quiero información sobre un proyecto.",
+  waMessage: document.documentElement.lang === "en"
+    ? "Hi Caraqueña, I'd like information about a project."
+    : "Hola Caraqueña, quiero información sobre un proyecto.",
 };
 
 const waLink = (text = SITE.waMessage) => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -30,6 +32,12 @@ const toggleMenu = (open) => {
 };
 burger.addEventListener("click", () => toggleMenu(!document.body.classList.contains("menu-open")));
 menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => toggleMenu(false)));
+
+// ---- Botones: texto que rueda + flecha ----
+document.querySelectorAll(".btn > span:only-child").forEach((label) => {
+  const t = label.textContent;
+  label.outerHTML = `<span class="btn__roll"><span>${t}</span><span aria-hidden="true">${t}</span></span><span class="btn__arrow" aria-hidden="true">→</span>`;
+});
 
 // ---- Split de textos ----
 document.querySelectorAll(".js-split-words").forEach((el) => {
@@ -64,6 +72,7 @@ if (!window.gsap || reduced) {
   document.querySelector(".loader")?.remove();
   header.classList.remove("is-pre");
   document.querySelectorAll(".split-word").forEach((w) => (w.style.opacity = 1));
+  document.querySelectorAll(".js-kicker text").forEach((t) => (t.style.fillOpacity = 1));
   drawEls.forEach((el) => {
     el.classList.add("is-static");
     loadDraw(el).then((paths) => paths.forEach((p) => (p.style.strokeDashoffset = 0)));
@@ -108,7 +117,7 @@ function init() {
     ScrollTrigger.create({
       trigger: sec, start: "top 40px",
       // en la portada, el portal negro la cubre hacia el final del recorrido
-      end: isHero ? () => "+=" + (sec.offsetHeight - innerHeight) * 0.62 : "bottom 40px",
+      end: isHero ? () => "+=" + ((sec.offsetHeight - innerHeight) * 0.85 + 40) : "bottom 40px",
       onToggle: (s) => header.classList.toggle("is-light", s.isActive),
     });
   });
@@ -147,7 +156,17 @@ function init() {
   } else {
     header.classList.remove("is-pre");
     gsap.from(".page-hero__title .split-line > span", { yPercent: 110, duration: 1.2, stagger: .1, ease: "expo.out", delay: .1 });
-    gsap.from(".page-hero__lead, .page-hero .tag", { opacity: 0, y: 20, duration: .9, delay: .4 });
+    gsap.from(".page-hero__lead", { opacity: 0, y: 20, duration: .9, delay: .6 });
+    // Título "Nosotros" que se dibuja en trazos naranja y luego se rellena
+    const kicker = document.querySelector(".js-kicker");
+    if (kicker) document.fonts.ready.then(() => {
+      const text = kicker.querySelector("text");
+      const bb = text.getBBox();
+      kicker.setAttribute("viewBox", `${bb.x - 4} ${bb.y - 4} ${bb.width + 8} ${bb.height + 8}`);
+      gsap.timeline({ delay: .2 })
+        .fromTo(text, { strokeDasharray: 2400, strokeDashoffset: 2400 }, { strokeDashoffset: 0, duration: 2.4, ease: "power2.inOut" })
+        .to(text, { fillOpacity: 1, duration: .9, ease: "power1.out" }, "-=.7");
+    });
   }
 
   // ---- Portada: zoom al anillo del boceto y se entra por él (portal negro) ----
@@ -210,10 +229,11 @@ function init() {
       scrollTrigger: { trigger: build, start: "top 70%" },
     });
     loadDraw(el).then((paths) => {
-      gsap.timeline({ scrollTrigger: { trigger: build.querySelector(".build__canvas"), start: "top 85%", end: "bottom 35%", scrub: 1 } })
-        .to(paths, { strokeDashoffset: 0, duration: .5, ease: "none", stagger: { amount: 1.6 } })
-        .to(render, { clipPath: "inset(0% 0 0 0)", duration: .9, ease: "power2.inOut" }, "-=.25")
-        .to(el, { opacity: .25, duration: .5 }, "<");
+      // Rápido: las líneas se trazan en la primera mitad y el color entra antes de que el proyecto llegue al centro
+      gsap.timeline({ scrollTrigger: { trigger: build.querySelector(".build__canvas"), start: "top 90%", end: "top 35%", scrub: .4 } })
+        .to(paths, { strokeDashoffset: 0, duration: .3, ease: "none", stagger: { amount: .7 } })
+        .to(render, { clipPath: "inset(0% 0 0 0)", duration: .6, ease: "power2.inOut" }, "-=.35")
+        .to(el, { opacity: .2, duration: .4 }, "<");
       ScrollTrigger.refresh();
     });
   });
@@ -225,17 +245,52 @@ function init() {
   }
   const orbit = document.querySelector(".js-orbit");
   if (orbit) {
+    const wrap = orbit.closest(".orbit-wrap");
     const strokes = orbit.querySelectorAll(".orbit:not(.orbit--mid)");
+    const cityEl = wrap.querySelector(".js-draw");
+    const pin = wrap.querySelector(".orbit-pin");
     gsap.set(strokes, { strokeDasharray: 1, strokeDashoffset: 1 });
-    gsap.timeline({ scrollTrigger: { trigger: orbit, start: "top 75%" } })
-      .to(strokes, { strokeDashoffset: 0, duration: 1.6, stagger: .2, ease: "expo.inOut" })
-      .from(".orbit--mid", { opacity: 0, rotate: -60, transformOrigin: "50% 50%", duration: 1.4, ease: "expo.out" }, "-=1.2")
-      .from(".orbit-core", { scale: 0, transformOrigin: "50% 50%", duration: 1, ease: "back.out(1.6)" }, "-=1")
-      .from(".orbit-label", { opacity: 0, duration: .6, stagger: .15 }, "-=.6");
+    gsap.set(orbit.querySelector(".orbit-core"), { fillOpacity: 0 });
+    const tl = gsap.timeline({ paused: true })
+      .to(strokes, { strokeDashoffset: 0, duration: 1.4, stagger: .12, ease: "expo.inOut" })
+      .to(orbit.querySelector(".orbit-core"), { fillOpacity: 1, duration: .9, ease: "power2.out" }, "-=.6")
+      .from(wrap.querySelector(".orbit--mid"), { opacity: 0, rotate: -60, transformOrigin: "50% 50%", duration: 1.4, ease: "expo.out" }, "-=1.2")
+      .from(orbit.querySelectorAll(".orbit-label"), { opacity: 0, duration: .6, stagger: .15 }, "-=.8");
+    loadDraw(cityEl).then((paths) => {
+      gsap.set(paths, { fillOpacity: 0 });
+      tl.to(paths, { strokeDashoffset: 0, duration: 1, ease: "power2.inOut", stagger: { amount: 2.2 } }, .6)
+        .to(paths, { fillOpacity: 1, duration: .8, stagger: { amount: .5 } }, "-=1")
+        .call(() => pin.classList.add("is-on"), null, "-=.4");
+      // la ciudad respira despacio dentro del círculo
+      gsap.to(cityEl.querySelector("svg"), { scale: 1.12, duration: 9, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    });
+    ScrollTrigger.create({ trigger: wrap, start: "top 80%", once: true, onEnter: () => tl.play() });
     gsap.from(".coverage__item", { y: 40, opacity: 0, duration: 1, stagger: .15, ease: "expo.out", scrollTrigger: { trigger: ".coverage__text", start: "top 75%" } });
   }
   if (document.querySelector(".closing__photo")) {
     gsap.fromTo(".closing__photo img", { clipPath: "inset(0 0 100% 0)", scale: 1.15 }, { clipPath: "inset(0 0 0% 0)", scale: 1, duration: 1.4, ease: "expo.inOut", scrollTrigger: { trigger: ".closing__photo", start: "top 80%" } });
+  }
+
+  // ---- Método: al aparecer, la línea naranja avanza sola de punta a punta y enciende cada paso al tocarlo ----
+  if (document.querySelector(".method")) {
+    const method = document.querySelector(".method");
+    const list = method.querySelector(".method__list");
+    const mSteps = gsap.utils.toArray(".method .step");
+    const prog = { p: 0 };
+    const paint = () => {
+      const x = prog.p * list.offsetWidth;
+      gsap.set(".method__line i", { scaleX: prog.p });
+      gsap.set(".method__line b", { left: prog.p * 100 + "%" });
+      mSteps.forEach((st) => st.classList.toggle("is-active", prog.p > 0 && x >= st.offsetLeft - 2));
+    };
+    gsap.from(".method__head > *", { y: 20, opacity: 0, duration: .8, stagger: .1, ease: "expo.out", scrollTrigger: { trigger: method, start: "top 85%" } });
+    ScrollTrigger.create({
+      trigger: list, start: "top 85%", once: true,
+      onEnter: () => {
+        method.classList.add("is-drawing");
+        gsap.to(prog, { p: 1, duration: 5, ease: "power1.inOut", onUpdate: paint, onComplete: () => method.classList.remove("is-drawing") });
+      },
+    });
   }
 
   // ---- Contacto y footer ----
