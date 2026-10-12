@@ -2,8 +2,7 @@
 
 // ---- Datos de contacto (único lugar donde se cambian) ----
 const SITE = {
-  // PENDIENTE: número de WhatsApp del estudio, formato internacional sin "+" ni espacios (ej. 584121234567)
-  whatsapp: "",
+  whatsapp: "584142582223",
   instagram: "https://www.instagram.com/caraquena.studio",
   waMessage: "Hola Caraqueña Studio, quiero información sobre un proyecto.",
 };
