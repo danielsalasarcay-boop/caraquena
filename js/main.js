@@ -507,16 +507,24 @@ function init() {
       rail.forEach((li, k) => li.classList.toggle("is-on", k === i));
     };
     setChapter(0);
-    const video = q("video"), title = q(".ufilm__title text"), scan = q(".ufilm__scan");
-    // iOS solo permite mover un video después de haberlo "tocado" una vez: play + pause silencioso al acercarse
-    let videoReady = false;
-    const prime = () => { if (videoReady) return; videoReady = true; const pr = video.play(); pr && pr.then(() => video.pause()).catch(() => {}); };
-    ScrollTrigger.create({ trigger: uf, start: "top 300%", once: true, onEnter: prime });
-    const vt = { t: 0 }; let lastSeek = -1;
-    const seek = () => {
-      const d = video.duration || 14.8, t = Math.min(d - .05, vt.t * d);
-      if (Math.abs(t - lastSeek) > 1 / 30) { lastSeek = t; if (video.fastSeek && /iP(hone|ad)/.test(navigator.userAgent)) video.fastSeek(t); else video.currentTime = t; }
+    const title = q(".ufilm__title text"), scan = q(".ufilm__scan");
+    // Boceto como secuencia de imágenes dibujada en canvas (fiable en todos los teléfonos)
+    const box = q(".ufilm__video"), cv = box.querySelector("canvas"), ctx2 = cv.getContext("2d");
+    const N = +box.dataset.frames, frames = new Array(N);
+    let loaded = false, lastF = -1;
+    const draw = (i) => {
+      i = Math.max(0, Math.min(N - 1, i));
+      let k = i; while (k >= 0 && !(frames[k] && frames[k].complete && frames[k].naturalWidth)) k--;
+      if (k < 0 || k === lastF) return;
+      lastF = k; ctx2.drawImage(frames[k], 0, 0, cv.width, cv.height);
     };
+    const loadFrames = () => {
+      if (loaded) return; loaded = true;
+      for (let i = 0; i < N; i++) { const im = new Image(); im.decoding = "async"; im.src = `img/usm/seq/${String(i + 1).padStart(3, "0")}.jpg`; frames[i] = im; if (i === 0) im.onload = () => draw(0); }
+    };
+    ScrollTrigger.create({ trigger: uf, start: "top 300%", once: true, onEnter: loadFrames });
+    const vt = { t: 0 };
+    const seek = () => draw(Math.round(vt.t * (N - 1)));
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
