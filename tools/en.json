@@ -620,20 +620,12 @@
 "alt=\"Side render of the concrete base with the statue of the Virgin\""
 ],
 [
-"<span class=\"mono\">01 — Universidad Santa María</span><p>Base para la escultura de la Virgen. Urb. Miranda, Caracas · 2025.</p>",
-"<span class=\"mono\">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · 2025.</p>"
-],
-[
 "<span class=\"mono\">03 — Boceto</span><p>La base dibujada a mano: espacio para flores, escultura, base de concreto y placa metálica.</p>",
 "<span class=\"mono\">03 — Sketch</span><p>The base drawn by hand: space for flowers, the statue, a concrete base and a metal plaque.</p>"
 ],
 [
 "<span class=\"mono\">04 — Planos</span><p>Planta y elevación a escala 1:20, perspectiva 1:15. Una pieza de 0,90 × 0,90 × 1,20 m.</p>",
 "<span class=\"mono\">04 — Drawings</span><p>Plan and elevation at 1:20, perspective at 1:15. A 0.90 × 0.90 × 1.20 m piece.</p>"
-],
-[
-"<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes.</p>",
-"<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names.</p>"
 ],
 [
 "alt=\"Antes: el altar anterior de la Virgen en la Universidad Santa María\"",
@@ -646,5 +638,13 @@
 [
 "<span class=\"mono\">02 — Antes</span><p>El altar anterior, que el proyecto reemplazó por una pieza de concreto.</p>",
 "<span class=\"mono\">02 — Before</span><p>The previous altar, which the project replaced with a single concrete piece.</p>"
+],
+[
+"<span class=\"mono\">01 — Universidad Santa María</span><p>Base para la escultura de la Virgen. Urb. Miranda, Caracas · Proyecto construido, 2025.</p>",
+"<span class=\"mono\">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · Built, 2025.</p>"
+],
+[
+"<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes. Hoy, construido.</p>",
+"<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names. Now built.</p>"
 ]
 ]
