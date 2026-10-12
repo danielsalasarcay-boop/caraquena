@@ -187,14 +187,21 @@ function init() {
 
   if (loader) {
     lenis.stop();
+    // iOS ignora overflow:hidden: bloquear el dedo y la rueda mientras está la pantalla de carga
+    const block = (e) => e.preventDefault();
+    addEventListener("touchmove", block, { passive: false });
+    addEventListener("wheel", block, { passive: false });
+    window.__unblock = () => { removeEventListener("touchmove", block); removeEventListener("wheel", block); };
     const count = { v: 0 };
     const countEl = document.querySelector(".js-count");
     gsap.timeline({
       onComplete: () => {
         document.body.classList.remove("is-loading");
         loader.remove();
-        if (location.hash.length < 2) lenis.scrollTo(0, { immediate: true, force: true });
+        if (location.hash.length < 2) { window.scrollTo(0, 0); lenis.scrollTo(0, { immediate: true, force: true }); }
+        window.__unblock?.();
         lenis.start();
+        ScrollTrigger.refresh();
       },
     })
       .from(".loader__logo .iso-ring", { rotate: -220, scale: .4, opacity: 0, transformOrigin: "410px 375px", duration: 1.3, ease: "expo.out" })

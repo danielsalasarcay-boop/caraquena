@@ -74,7 +74,9 @@ figure { margin: 0; }
 .link-arrow:hover span { transform: translateX(8px); }
 
 /* ---------- LOADER ---------- */
-.loader { position: fixed; inset: 0; z-index: 200; pointer-events: none; }
+.loader { position: fixed; inset: 0; z-index: 200; touch-action: none; }
+html:has(body.is-loading) { overflow: hidden; }
+body.is-loading { touch-action: none; overscroll-behavior: none; }
 .loader__panel { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--black); }
 .loader__panel--top { top: 0; }
 .loader__panel--bottom { bottom: 0; }
@@ -174,7 +176,7 @@ figure { margin: 0; }
 .hero__portal { position: absolute; inset: 0; background: var(--black); z-index: 4; clip-path: circle(0% at 70% 50%); pointer-events: none; }
 
 @media (max-width: 900px) {
-  .hero { height: 180vh; }
+  .hero { height: 280vh; }
   /* El boceto manda: ocupa más que el ancho de la pantalla, el texto va abajo sobre un degradado papel */
   /* medidas en vw/vh para iOS sin soporte de svh; luego la versión svh para navegadores nuevos */
   .hero__sketch {
