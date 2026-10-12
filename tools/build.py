@@ -79,10 +79,20 @@ def lang_switch(es_file, en_file, lang):
 import hashlib
 ASSET_V = hashlib.md5(open("css/style.css", "rb").read() + open("js/main.js", "rb").read()).hexdigest()[:8]
 
+import os, re as _re
+def mobile_pictures(html):
+    def rep(m):
+        pre, src, post = m.group(1), m.group(2), m.group(3)
+        if not os.path.exists(src[:-4] + "-m.jpg"): return m.group(0)
+        if 'decoding=' not in pre + post: post = post.rstrip("/").rstrip() + ' decoding="async"'
+        return f'<picture><source media="(max-width: 900px)" srcset="{src[:-4]}-m.jpg"><img {pre}src="{src}"{post}></picture>'
+    return _re.sub(r'<img ([^>]*?)src="(img/(?:guanta|otter|portafolio/[a-z-]+|bocetos)/[^"]+?\.jpg)"([^>]*)>', rep, html)
+
 def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc_en):
     loader = P["loader"] if with_loader else ""
     html = head(title, desc, with_loader) + loader + "\n" + header(b, current) + "\n  <main>\n" + open(main).read() + "  </main>\n\n" + footer(b) + P["float"]
     html = html.replace('href="css/style.css"', f'href="css/style.css?v={ASSET_V}"').replace('src="js/main.js"', f'src="js/main.js?v={ASSET_V}"')
+    html = mobile_pictures(html)
     alt = f'  <link rel="alternate" hreflang="es" href="https://caraquena.vercel.app/{out.replace("index.html", "")}">\n  <link rel="alternate" hreflang="en" href="https://caraquena.vercel.app/{out_en}">\n'
     html = html.replace("  <link rel=\"icon\"", alt + "  <link rel=\"icon\"", 1)
     if out.startswith("conoce-mas"):

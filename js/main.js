@@ -33,6 +33,7 @@ const toggleMenu = (open) => {
   burger.setAttribute("aria-expanded", open);
   menu.setAttribute("aria-hidden", !open);
   if (window.lenisInstance) open ? window.lenisInstance.stop() : window.lenisInstance.start();
+  window.__touchNormalize?.(!open);
 };
 burger.addEventListener("click", () => toggleMenu(!document.body.classList.contains("menu-open")));
 menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => toggleMenu(false)));
@@ -65,19 +66,20 @@ if (lbEl) {
   };
   const open = (card) => {
     const g = card.dataset.gallery, n = +card.dataset.count;
-    list = Array.from({ length: n }, (_, k) => `img/portafolio/${g}/${String(k + 1).padStart(2, "0")}.jpg`);
+    const sfx = innerWidth <= 900 ? "-m" : "";
+    list = Array.from({ length: n }, (_, k) => `img/portafolio/${g}/${String(k + 1).padStart(2, "0")}${sfx}.jpg`);
     titleEl.textContent = card.querySelector(".pcard__title").textContent;
     img.alt = titleEl.textContent;
-    thumbs.innerHTML = list.map((src, k) => `<button type="button" aria-label="${k + 1}"><img src="${src}" alt="" loading="lazy"></button>`).join("");
+    thumbs.innerHTML = list.map((src, k) => `<button type="button" aria-label="${k + 1}"><img src="${src.replace(/(-m)?\.jpg$/, "-m.jpg")}" alt="" loading="lazy" decoding="async"></button>`).join("");
     thumbs.querySelectorAll("button").forEach((b, k) => b.addEventListener("click", () => show(k)));
     lastFocus = document.activeElement;
     lbEl.hidden = false; document.documentElement.style.overflow = "hidden";
-    window.lenisInstance?.stop();
+    window.lenisInstance?.stop(); window.__touchNormalize?.(false);
     show(0); lbEl.querySelector(".lb__close").focus();
   };
   const close = () => {
     lbEl.hidden = true; document.documentElement.style.overflow = "";
-    window.lenisInstance?.start(); lastFocus?.focus();
+    window.lenisInstance?.start(); window.__touchNormalize?.(true); lastFocus?.focus();
   };
   document.querySelectorAll(".pcard").forEach((c) => c.querySelector(".pcard__open").addEventListener("click", () => open(c)));
   lbEl.querySelector(".lb__close").addEventListener("click", close);
@@ -97,6 +99,32 @@ if (lbEl) {
     const dx = e.changedTouches[0].clientX - x0;
     if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
     x0 = null;
+  });
+}
+
+// ---- Imágenes: se descargan y decodifican con anticipación (antes de que entren a pantalla),
+// así no hay tirón al revelarlas durante una animación ----
+if ("IntersectionObserver" in window) {
+  // cola: una imagen a la vez, en ratos libres del navegador
+  const queue = []; let busy = false;
+  const idle = window.requestIdleCallback || ((f) => setTimeout(f, 60));
+  const pump = () => {
+    if (busy || !queue.length) return;
+    busy = true;
+    idle(() => {
+      const im = queue.shift(); im.loading = "eager";
+      const done = () => { busy = false; pump(); };
+      (im.decode ? im.decode() : Promise.resolve()).then(done, done);
+    }, { timeout: 400 });
+  };
+  const enqueue = (im) => { if (!im.__q) { im.__q = 1; queue.push(im); pump(); } };
+  const pre = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (en.isIntersecting) { pre.unobserve(en.target); enqueue(en.target); }
+  }), { rootMargin: "200% 0px 200% 0px" });
+  document.querySelectorAll('img[loading="lazy"]').forEach((im) => pre.observe(im));
+  document.querySelectorAll(".reel, .film, .gfilm, .work").forEach((sec) => {
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { io.disconnect(); sec.querySelectorAll("img").forEach(enqueue); } }, { rootMargin: "120% 0px" });
+    io.observe(sec);
   });
 }
 
@@ -137,6 +165,10 @@ if (!window.gsap || reduced) {
 function init() {
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
+  // En pantallas táctiles el dedo mueve la página fuera del hilo de JS y los pines "saltan":
+  // normalizeScroll sincroniza el scroll táctil con las animaciones.
+  const isTouch = ScrollTrigger.isTouch === 1;
+  window.__touchNormalize = (on) => { if (isTouch) ScrollTrigger.normalizeScroll(on ? { allowNestedScroll: true, lockAxis: false, momentum: (self) => Math.min(3, self.velocityY / 1000) } : false); };
 
   // ---- Lenis smooth scroll ----
   const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
@@ -202,6 +234,7 @@ function init() {
         window.__unblock?.();
         lenis.start();
         ScrollTrigger.refresh();
+        window.__touchNormalize?.(true);
       },
     })
       .from(".loader__logo .iso-ring", { rotate: -220, scale: .4, opacity: 0, transformOrigin: "410px 375px", duration: 1.3, ease: "expo.out" })
@@ -215,6 +248,7 @@ function init() {
       .from(".hero__copy .eyebrow, .hero__lead, .hero__scroll, .hero__sketch figcaption", { opacity: 0, y: 20, duration: .8, stagger: .08 }, "-=.9")
       .call(() => header.classList.remove("is-pre"), null, "-=.9");
   } else {
+    window.__touchNormalize(true);
     header.classList.remove("is-pre");
     gsap.from(".page-hero__title .split-line > span", { yPercent: 110, duration: 1.2, stagger: .1, ease: "expo.out", delay: .1 });
     gsap.from(".page-hero__lead", { opacity: 0, y: 20, duration: .9, delay: .6 });
@@ -240,7 +274,7 @@ function init() {
     gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom bottom", scrub: 1, invalidateOnRefresh: true } })
       .to(".hero__copy, .hero__scroll, .hero__sketch figcaption", { opacity: 0, y: -40, duration: .25 }, 0)
       .to(sketch, { scale: 2.6, transformOrigin: "48.9% 51.5%", ease: "power2.in", duration: 1 }, 0)
-      .to(".sheet", { scale: 1.6, opacity: 0, duration: .8 }, 0)
+      .to(".sheet", { opacity: 0, duration: .6 }, 0)
       .fromTo(".hero__portal", { clipPath: () => `circle(0% at ${portalAt()})` }, { clipPath: () => `circle(150% at ${portalAt()})`, ease: "power2.in", duration: .55 }, .45);
   }
 
@@ -320,7 +354,6 @@ function init() {
     loadDraw(el).then((paths) => {
       gsap.timeline({ scrollTrigger: { trigger: canvas, start: "top 92%", end: "center 52%", scrub: .8 } })
         .to(paths, { strokeDashoffset: 0, ease: "none", stagger: { amount: 1 }, duration: .6 });
-      ScrollTrigger.refresh();
     });
   });
 
@@ -354,6 +387,7 @@ function init() {
       .to(titleText, { fillOpacity: 1, duration: .2 }, .45)
       .to(q(".film__title"), { opacity: 0, scale: 1.15, duration: .25 }, .95)
       .fromTo(q(".film__paper"), { clipPath: "circle(0% at 50% 45%)" }, { clipPath: "circle(150% at 50% 45%)", duration: .55, ease: "power2.in" }, 1.05)
+      .set(q(".film__aerial"), { autoAlpha: 0 }, 1.62)
       .to(sketch, { scale: 1.3, opacity: 0, duration: .3 }, 2.4)
       .from(plan, { rotation: -10, scale: .9, duration: .9 }, 2.6)
       .to(plan, { rotationX: 58, rotation: -22, scale: .78, yPercent: -12, opacity: 0, duration: .45, ease: "power2.in" }, 3.55)
@@ -372,8 +406,7 @@ function init() {
       tl.to(paths, { strokeDashoffset: 0, duration: len * .5, stagger: { amount: len * .5 } }, at);
       if (fill) tl.to(paths, { fillOpacity: 1, duration: .15, stagger: { amount: .1 } }, at + len - .1);
     });
-    Promise.all([drawIn(sketch, 1.3, .95), drawIn(plan, 2.65, .9), drawIn(section, 3.85, .55), drawIn(facadeDraw, 4.55, .45, false)])
-      .then(() => ScrollTrigger.refresh());
+    Promise.all([drawIn(sketch, 1.3, .95), drawIn(plan, 2.65, .9), drawIn(section, 3.85, .55), drawIn(facadeDraw, 4.55, .45, false)]);
   }
 
   // ---- Conoce más: renders de Otter en una tira horizontal ----
@@ -420,27 +453,28 @@ function init() {
       .to(q(".gfilm__title"), { opacity: 0, scale: 1.15, duration: .25 }, .9)
       // 02 se abre el plano azul
       .fromTo(q(".gfilm__blue"), { clipPath: "circle(0% at 50% 55%)" }, { clipPath: "circle(150% at 50% 55%)", duration: .5, ease: "power2.in" }, 1.0)
+      .set(q(".gfilm__actual"), { autoAlpha: 0 }, 1.52)
       .fromTo(q(".gfilm__map"), { scale: 1.06 }, { scale: 1, duration: 6.8 }, 1.2)
       // 03 fase 1 → render por iris desde la zona de expansión
-      .set(q(".gfilm__r1"), { opacity: 1, clipPath: "circle(0% at 30% 72%)" }, 2.95)
+      .set(q(".gfilm__r1"), { autoAlpha: 1, clipPath: "circle(0% at 30% 72%)" }, 2.95)
       .to(q(".gfilm__r1"), { clipPath: "circle(140% at 30% 72%)", duration: .45, ease: "power2.inOut" }, 2.95)
-      .to(q(".gfilm__r1"), { opacity: 0, duration: .25 }, 3.55)
+      .to(q(".gfilm__r1"), { autoAlpha: 0, duration: .25 }, 3.55)
       // 04 fase 2 → render con barrido vertical
-      .set(q(".gfilm__r2"), { opacity: 1, clipPath: "inset(0 100% 0 0)" }, 4.45)
+      .set(q(".gfilm__r2"), { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" }, 4.45)
       .set(sv, { opacity: 1, left: "0%" }, 4.45)
       .to(q(".gfilm__r2"), { clipPath: "inset(0 0% 0 0)", duration: .4, ease: "power1.inOut" }, 4.45)
       .to(sv, { left: "100%", duration: .4, ease: "power1.inOut" }, 4.45)
       .set(sv, { opacity: 0 }, 4.86)
-      .to(q(".gfilm__r2"), { opacity: 0, duration: .25 }, 5.05)
+      .to(q(".gfilm__r2"), { autoAlpha: 0, duration: .25 }, 5.05)
       // 05 fase 3 → cianotipo → render
-      .to(q(".gfilm__cyan"), { opacity: 1, duration: .35 }, 6.0)
-      .set(q(".gfilm__r3"), { opacity: 1, clipPath: "inset(100% 0 0 0)" }, 6.45)
+      .fromTo(q(".gfilm__cyan"), { autoAlpha: 0 }, { autoAlpha: 1, duration: .35 }, 6.0)
+      .set(q(".gfilm__r3"), { autoAlpha: 1, clipPath: "inset(100% 0 0 0)" }, 6.45)
       .set(sh, { opacity: 1, top: "100%" }, 6.45)
       .to(q(".gfilm__r3"), { clipPath: "inset(0% 0 0 0)", duration: .4, ease: "power1.inOut" }, 6.45)
       .to(sh, { top: "0%", duration: .4, ease: "power1.inOut" }, 6.45)
       .set(sh, { opacity: 0 }, 6.86)
       // 06 de día a noche: barrido de arriba hacia abajo
-      .set(q(".gfilm__night"), { opacity: 1, clipPath: "inset(0 0 100% 0)" }, 7.0)
+      .set(q(".gfilm__night"), { autoAlpha: 1, clipPath: "inset(0 0 100% 0)" }, 7.0)
       .set(sh, { opacity: 1, top: "0%" }, 7.0)
       .to(q(".gfilm__night"), { clipPath: "inset(0 0 0% 0)", duration: .55, ease: "power1.inOut" }, 7.0)
       .to(sh, { top: "100%", duration: .55, ease: "power1.inOut" }, 7.0)
@@ -456,8 +490,7 @@ function init() {
       tl.to(paths, { strokeDashoffset: 0, duration: len * .6, stagger: { amount: len * .4 } }, at)
         .to(paths, { fillOpacity: 1, duration: .2, stagger: { amount: .12 } }, at + len - .15);
     });
-    Promise.all([drawIn(baseEl, 1.3, .85), drawIn(f1El, 2.25, .65), drawIn(f2El, 3.75, .65), drawIn(f3El, 5.25, .7)])
-      .then(() => ScrollTrigger.refresh());
+    Promise.all([drawIn(baseEl, 1.3, .85), drawIn(f1El, 2.25, .65), drawIn(f2El, 3.75, .65), drawIn(f3El, 5.25, .7)]);
   }
 
 
@@ -479,30 +512,31 @@ function init() {
     gsap.set(core, { fillOpacity: 0 });
     // Anillos → aparece el isotipo de Caraqueña → su hueco se cierra y se vuelve el disco naranja → se dibuja Caracas
     const tl = gsap.timeline({ paused: true })
-      .to(strokes, { strokeDashoffset: 0, duration: 1.4, stagger: .12, ease: "expo.inOut" })
-      .from(wrap.querySelector(".orbit--mid"), { opacity: 0, rotate: -60, transformOrigin: "50% 50%", duration: 1.4, ease: "expo.out" }, "-=1.2")
-      .from(orbit.querySelectorAll(".orbit-label"), { opacity: 0, duration: .6, stagger: .15 }, "-=.8")
-      .set(logo, { opacity: 1 }, .7)
-      .from(ring, { rotate: -100, scale: .82, opacity: 0, svgOrigin: "410 375", duration: 1.3, ease: "expo.out" }, .7)
-      .from(bar, { x: -90, opacity: 0, duration: .8, ease: "expo.out" }, 1.4)
-      .addLabel("morph", "+=.7")
-      .to(bar, { x: 80, opacity: 0, duration: .7, ease: "power2.in" }, "morph")
-      .to(orbit.querySelector(".om-wedge"), { attr: { points: "411,287 411,287 411,67 411,67" }, duration: 1.1, ease: "power3.inOut" }, "morph")
-      .to(orbit.querySelector(".om-hole"), { attr: { r: 0 }, duration: 1.2, ease: "power3.inOut" }, "morph+=.1")
-      .set(orbit.querySelectorAll(".om-wedge, .om-hole"), { attr: { fill: "#fff" } }, "morph+=1.3")
-      .to(ring, { attr: { fill: "#f05a25" }, duration: 1, ease: "sine.inOut" }, "morph+=.35")
-      .set(core, { fillOpacity: 1 }, "morph+=1.35")
-      .to(logo, { opacity: 0, duration: .3 }, "morph+=1.35")
-      .addLabel("city", "morph+=1.3");
-    loadDraw(cityEl).then((paths) => {
+      .to(strokes, { strokeDashoffset: 0, duration: 1.1, stagger: .08, ease: "expo.inOut" })
+      .from(wrap.querySelector(".orbit--mid"), { opacity: 0, rotate: -60, transformOrigin: "50% 50%", duration: 1.2, ease: "expo.out" }, "-=1")
+      .from(orbit.querySelectorAll(".orbit-label"), { opacity: 0, duration: .5, stagger: .12 }, "-=.7")
+      .set(logo, { opacity: 1 }, .45)
+      .from(ring, { rotate: -100, scale: .82, opacity: 0, svgOrigin: "410 375", duration: 1, ease: "expo.out" }, .45)
+      .from(bar, { x: -90, opacity: 0, duration: .6, ease: "expo.out" }, .95)
+      .addLabel("morph", 1.75)
+      .to(bar, { x: 80, opacity: 0, duration: .5, ease: "power2.in" }, "morph")
+      .to(orbit.querySelector(".om-wedge"), { attr: { points: "410,375 410,375 410,375 410,375" }, duration: .75, ease: "power3.inOut" }, "morph")
+      .to(orbit.querySelector(".om-hole"), { attr: { r: 0 }, duration: .8, ease: "power3.inOut" }, "morph+=.05")
+      .set(orbit.querySelectorAll(".om-wedge, .om-hole"), { attr: { fill: "#fff" } }, "morph+=.85")
+      .to(ring, { attr: { fill: "#f05a25" }, duration: .7, ease: "sine.inOut" }, "morph+=.2")
+      .set(core, { fillOpacity: 1 }, "morph+=.9")
+      .to(logo, { opacity: 0, duration: .25 }, "morph+=.9")
+      .addLabel("city", "morph+=.65");
+    const cityReady = loadDraw(cityEl).then((paths) => {
       gsap.set(paths, { fillOpacity: 0 });
-      tl.to(paths, { strokeDashoffset: 0, duration: 1, ease: "power2.inOut", stagger: { amount: 2.2 } }, "city")
-        .to(paths, { fillOpacity: 1, duration: .8, stagger: { amount: .5 } }, "-=1")
+      tl.to(paths, { strokeDashoffset: 0, duration: .8, ease: "power2.inOut", stagger: { amount: 1.5 } }, "city")
+        .to(paths, { fillOpacity: 1, duration: .6, stagger: { amount: .4 } }, "-=.8")
         .call(() => pin.classList.add("is-on"), null, "-=.4");
       // la ciudad respira despacio dentro del círculo
       gsap.to(cityEl.querySelector("svg"), { scale: 1.12, duration: 9, ease: "sine.inOut", yoyo: true, repeat: -1 });
     });
-    ScrollTrigger.create({ trigger: wrap, start: "top 80%", once: true, onEnter: () => tl.play() });
+    // el dibujo de Caracas se precarga; la secuencia arranca cuando está listo (en móvil puede tardar)
+    ScrollTrigger.create({ trigger: wrap, start: "top 85%", once: true, onEnter: () => cityReady.then(() => tl.play()) });
     gsap.from(".coverage__item", { y: 40, opacity: 0, duration: 1, stagger: .15, ease: "expo.out", scrollTrigger: { trigger: ".coverage__text", start: "top 75%" } });
   }
   if (document.querySelector(".closing__photo")) {
@@ -544,10 +578,17 @@ function init() {
   if (finePointer) desktopFx();
   addEventListener("load", () => ScrollTrigger.refresh());
   // imágenes perezosas cambian la altura de la página: recalcular (agrupado) cuando cargan
-  let refreshT;
-  document.querySelectorAll("img").forEach((im) => {
-    if (!im.complete) im.addEventListener("load", () => { clearTimeout(refreshT); refreshT = setTimeout(() => ScrollTrigger.refresh(), 250); }, { once: true });
-  });
+  // solo si la altura del documento cambió de verdad (recalcular todos los pines es caro y da tirón)
+  let refreshT, lastH = document.documentElement.scrollHeight;
+  const maybeRefresh = () => {
+    clearTimeout(refreshT);
+    refreshT = setTimeout(() => {
+      const h = document.documentElement.scrollHeight;
+      if (Math.abs(h - lastH) > 2) { lastH = h; ScrollTrigger.refresh(); }
+    }, 300);
+  };
+  document.querySelectorAll("img").forEach((im) => { if (!im.complete) im.addEventListener("load", maybeRefresh, { once: true }); });
+  ScrollTrigger.addEventListener("refresh", () => (lastH = document.documentElement.scrollHeight));
 }
 
 function desktopFx() {

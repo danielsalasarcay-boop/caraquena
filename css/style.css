@@ -153,6 +153,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
   -webkit-mask-image: radial-gradient(ellipse at 62% 50%, #000 10%, transparent 70%);
 }
 .hero__sketch {
+  will-change: transform;
   position: absolute; right: clamp(0px, 3vw, 60px); top: 50%; transform: translateY(-50%);
   width: min(58vw, 118vh); aspect-ratio: 1770 / 1405;
 }
@@ -705,10 +706,26 @@ html[lang="en"] .pcard__media { --see: "View sheet"; }
 .gfilm__phase .p path { fill: rgba(240,90,37,.1); stroke-width: 1.4; }
 .gfilm__phase .b path { fill: rgba(240,90,37,.42); stroke-width: .8; }
 .gfilm__phase .z path, .gfilm__phase .c path { fill: var(--orange); stroke-width: .3; }
-.gfilm__phase svg { filter: drop-shadow(0 0 4px rgba(240, 90, 37, .45)); }
+
 .gfilm__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
 .gfilm .film__rail li { mix-blend-mode: normal; color: rgba(169, 205, 245, .55); }
 .gfilm .film__cap { background: rgba(11, 29, 51, .82); border-left: 2px solid var(--orange); }
 @media (max-width: 760px) {
   .gfilm__map { width: 230vw; }
+}
+
+/* ---------- RENDIMIENTO ---------- */
+.gfilm__img { visibility: hidden; }
+.film__stage, .gfilm__stage { contain: layout paint; }
+.film__stage img, .gfilm__stage img, .build__canvas img, .reel__item img { backface-visibility: hidden; }
+picture { display: contents; }
+@media (max-width: 900px), (hover: none) {
+  .header.is-scrolled { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(10, 10, 10, .92); }
+  .header.is-light.is-scrolled { background: rgba(241, 239, 234, .95); }
+  .film__cap { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(10, 10, 10, .9); }
+  .gfilm .film__cap { background: rgba(11, 29, 51, .92); }
+  .film__scan { box-shadow: none; }
+  .method__line i { box-shadow: none; }
+  .float__wave { display: none; }
+  .dot { animation: none; }
 }
