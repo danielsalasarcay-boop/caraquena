@@ -107,6 +107,13 @@
         <div class="coverage__diagram" aria-hidden="true">
           <div class="orbit-wrap">
           <svg viewBox="0 0 400 400" class="js-orbit">
+            <defs>
+              <mask id="orbit-ring-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="900">
+                <rect width="900" height="900" fill="#fff"/>
+                <circle class="om-hole" cx="410" cy="375" r="125" fill="#000"/>
+                <polygon class="om-wedge" points="322,287 500,287 720,67 102,67" fill="#000"/>
+              </mask>
+            </defs>
             <circle pathLength="1" class="orbit orbit--outer" cx="200" cy="200" r="186"/>
             <circle class="orbit orbit--mid" cx="200" cy="200" r="152"/>
             <line pathLength="1" class="orbit" x1="200" y1="4" x2="200" y2="58"/>
@@ -114,6 +121,10 @@
             <line pathLength="1" class="orbit" x1="4" y1="200" x2="58" y2="200"/>
             <line pathLength="1" class="orbit" x1="342" y1="200" x2="396" y2="200"/>
             <circle pathLength="1" class="orbit orbit-core" cx="200" cy="200" r="126"/>
+            <g class="orbit-logo" transform="translate(200 200) scale(.56) translate(-410 -375)">
+              <circle class="ol-ring" cx="410" cy="375" r="225" fill="#f4f1ec" mask="url(#orbit-ring-mask)"/>
+              <path class="ol-bar" d="M506 596 L542 560 H639 a6 6 0 0 1 6 6 V590 a6 6 0 0 1 -6 6 Z" fill="#F05A25"/>
+            </g>
             <text x="200" y="30" text-anchor="middle" class="orbit-label">GLOBAL</text>
             <text x="200" y="378" text-anchor="middle" class="orbit-label orbit-label--core">CARACAS</text>
           </svg>

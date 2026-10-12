@@ -557,3 +557,4 @@ figure { margin: 0; }
 /* Conoce más (laboratorio, fuera del menú) */
 .lab { min-height: 70vh; padding: clamp(140px, 18vw, 220px) 0 clamp(80px, 10vw, 140px); }
 .lab__inner { display: flex; flex-direction: column; gap: 28px; }
+.orbit-logo { opacity: 0; }

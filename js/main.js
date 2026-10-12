@@ -274,16 +274,32 @@ function init() {
     const strokes = orbit.querySelectorAll(".orbit:not(.orbit--mid)");
     const cityEl = wrap.querySelector(".js-draw");
     const pin = wrap.querySelector(".orbit-pin");
+    const core = orbit.querySelector(".orbit-core");
+    const logo = orbit.querySelector(".orbit-logo");
+    const ring = orbit.querySelector(".ol-ring");
+    const bar = orbit.querySelector(".ol-bar");
     gsap.set(strokes, { strokeDasharray: 1, strokeDashoffset: 1 });
-    gsap.set(orbit.querySelector(".orbit-core"), { fillOpacity: 0 });
+    gsap.set(core, { fillOpacity: 0 });
+    // Anillos → aparece el isotipo de Caraqueña → su hueco se cierra y se vuelve el disco naranja → se dibuja Caracas
     const tl = gsap.timeline({ paused: true })
       .to(strokes, { strokeDashoffset: 0, duration: 1.4, stagger: .12, ease: "expo.inOut" })
-      .to(orbit.querySelector(".orbit-core"), { fillOpacity: 1, duration: .9, ease: "power2.out" }, "-=.6")
       .from(wrap.querySelector(".orbit--mid"), { opacity: 0, rotate: -60, transformOrigin: "50% 50%", duration: 1.4, ease: "expo.out" }, "-=1.2")
-      .from(orbit.querySelectorAll(".orbit-label"), { opacity: 0, duration: .6, stagger: .15 }, "-=.8");
+      .from(orbit.querySelectorAll(".orbit-label"), { opacity: 0, duration: .6, stagger: .15 }, "-=.8")
+      .set(logo, { opacity: 1 }, .7)
+      .from(ring, { rotate: -100, scale: .82, opacity: 0, svgOrigin: "410 375", duration: 1.3, ease: "expo.out" }, .7)
+      .from(bar, { x: -90, opacity: 0, duration: .8, ease: "expo.out" }, 1.4)
+      .addLabel("morph", "+=.7")
+      .to(bar, { x: 80, opacity: 0, duration: .7, ease: "power2.in" }, "morph")
+      .to(orbit.querySelector(".om-wedge"), { attr: { points: "411,287 411,287 411,67 411,67" }, duration: 1.1, ease: "power3.inOut" }, "morph")
+      .to(orbit.querySelector(".om-hole"), { attr: { r: 0 }, duration: 1.2, ease: "power3.inOut" }, "morph+=.1")
+      .set(orbit.querySelectorAll(".om-wedge, .om-hole"), { attr: { fill: "#fff" } }, "morph+=1.3")
+      .to(ring, { attr: { fill: "#f05a25" }, duration: 1, ease: "sine.inOut" }, "morph+=.35")
+      .set(core, { fillOpacity: 1 }, "morph+=1.35")
+      .to(logo, { opacity: 0, duration: .3 }, "morph+=1.35")
+      .addLabel("city", "morph+=1.3");
     loadDraw(cityEl).then((paths) => {
       gsap.set(paths, { fillOpacity: 0 });
-      tl.to(paths, { strokeDashoffset: 0, duration: 1, ease: "power2.inOut", stagger: { amount: 2.2 } }, .6)
+      tl.to(paths, { strokeDashoffset: 0, duration: 1, ease: "power2.inOut", stagger: { amount: 2.2 } }, "city")
         .to(paths, { fillOpacity: 1, duration: .8, stagger: { amount: .5 } }, "-=1")
         .call(() => pin.classList.add("is-on"), null, "-=.4");
       // la ciudad respira despacio dentro del círculo
