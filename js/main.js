@@ -644,8 +644,9 @@ function init() {
   gsap.utils.toArray(".contact__deco .js-draw").forEach((el, i) => loadDraw(el).then((paths) => {
     gsap.set(paths, { fillOpacity: 0 });
     gsap.timeline({ scrollTrigger: { trigger: ".contact", start: "top 75%" }, delay: i * .25 })
-      .to(paths, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut", stagger: { amount: .6 } })
-      .to(paths, { fillOpacity: 1, duration: .6 }, "-=.5");
+      .to(paths, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut", stagger: { amount: .6 }, onComplete: () => paths.forEach((p) => p.classList.contains("dash") && (p.style.strokeDasharray = "")) })
+      .to(paths, { fillOpacity: 1, duration: .6 }, "-=.5")
+      .to(el.querySelectorAll("text"), { opacity: 1, duration: .6, stagger: .15 }, "-=.4");
   }));
 
   // ---- Contacto y footer ----
