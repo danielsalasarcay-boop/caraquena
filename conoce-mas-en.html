@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn more — Caraqueña Studio</title>
+  <meta name="description" content="Caraqueña Studio lab.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="Learn more — Caraqueña Studio">
+  <meta property="og:description" content="Caraqueña Studio lab.">
+  <meta property="og:image" content="https://caraquena.vercel.app/img/sketch-tortuga.jpg">
+  <link rel="alternate" hreflang="es" href="https://caraquena.vercel.app/conoce-mas.html">
+  <link rel="alternate" hreflang="en" href="https://caraquena.vercel.app/conoce-mas-en.html">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-sub">
+
+  <!-- Isotipo reutilizable (recreado en SVG a partir del logo; se reemplaza cuando llegue el archivo oficial) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <mask id="ring-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="900">
+        <rect x="0" y="0" width="900" height="900" fill="#fff"/>
+        <circle cx="410" cy="375" r="125" fill="#000"/>
+        <polygon points="322,287 500,287 720,67 102,67" fill="#000"/>
+      </mask>
+      <symbol id="isotipo" viewBox="170 140 490 470">
+        <circle class="iso-ring" cx="410" cy="375" r="225" fill="currentColor" mask="url(#ring-mask)"/>
+        <path class="iso-bar" d="M506 596 L542 560 H639 a6 6 0 0 1 6 6 V590 a6 6 0 0 1 -6 6 Z" fill="#F05A25"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  
+  <!-- HEADER -->
+  <header class="header is-pre">
+    <a href="index-en.html" class="header__brand" aria-label="Caraqueña Studio, go to home">
+      <svg class="header__logo"><use href="#isotipo"/></svg>
+      <span class="header__word">Caraqueña<em>studio</em></span>
+    </a>
+    <nav class="header__nav" aria-label="Main">
+      <a href="index-en.html#estudio" data-magnetic>Studio</a>
+      <a href="index-en.html#proceso" data-magnetic>Process</a>
+      <a href="index-en.html#proyectos" data-magnetic>Projects</a>
+      <a href="nosotros-en.html" data-magnetic>About</a>
+    </nav>
+    <div class="lang mono" aria-label="Language"><a href="conoce-mas.html" hreflang="es" lang="es">ES</a><span>/</span><a href="conoce-mas-en.html" hreflang="en" lang="en" aria-current="true">EN</a></div>
+    <a href="index-en.html#contacto" class="btn btn--small header__cta" data-magnetic><span>Contact</span></a>
+    <button class="header__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <div class="menu" aria-hidden="true">
+    <nav class="menu__nav">
+      <a href="index-en.html#estudio"><span class="mono">01</span>Studio</a>
+      <a href="index-en.html#proceso"><span class="mono">02</span>Process</a>
+      <a href="index-en.html#proyectos"><span class="mono">03</span>Projects</a>
+      <a href="nosotros-en.html"><span class="mono">04</span>About</a>
+      <a href="index-en.html#contacto"><span class="mono">05</span>Contact</a>
+    </nav>
+    <div class="menu__foot mono"><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="js-mail" href="#">Email</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+
+  <main>
+    <!-- CONOCE MÁS: laboratorio para experimentar animaciones con planos (no aparece en el menú) -->
+    <section class="lab" id="top" data-theme="light">
+      <div class="container lab__inner">
+        <span class="mono tag">Lab</span>
+        <h1 class="page-hero__title">Learn more</h1>
+        <p class="page-hero__lead">A space under construction for experimenting with plan animations.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__contact">
+        <p class="mono">Caracas, Venezuela</p>
+        <a class="footer__big js-mail" href="#">contacto@caraquena.com</a>
+        <a class="footer__big js-wa" href="#" target="_blank" rel="noopener">+58 414 258 2223</a>
+      </div>
+      <nav class="footer__nav mono">
+        <a href="index-en.html#estudio">Studio</a><a href="index-en.html#proceso">Process</a><a href="index-en.html#proyectos">Projects</a><a href="nosotros-en.html">About</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+    <div class="footer__word" aria-hidden="true">CARAQUEÑA<svg><use href="#isotipo"/></svg></div>
+    <div class="container footer__bottom mono">
+      <span>© <span class="js-year"></span> Caraqueña Studio. All rights reserved.</span>
+      <a href="#top" class="js-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Botones flotantes -->
+  <div class="float">
+    <a class="float__btn float__btn--ig js-ig" href="#" target="_blank" rel="noopener" aria-label="Caraqueña Studio on Instagram (opens in a new tab)">
+      <span class="float__wave"></span>
+      <span class="float__label">Follow us</span>
+      <span class="float__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+    <a class="float__btn float__btn--wa js-wa" href="#" target="_blank" rel="noopener" aria-label="Message us on WhatsApp (opens in a new tab)">
+      <span class="float__wave"></span><span class="float__wave float__wave--2"></span>
+      <span class="float__label">Message us</span>
+      <span class="float__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.3-18.1C18.1 1.5 15.1.2 12 .2 5.5.2.2 5.5.2 12c0 2.1.5 4.1 1.6 5.9L.1 23.9l6.2-1.6c1.7.9 3.7 1.4 5.7 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.1-1.2-6.1-3.5-8.3z"/></svg></span>
+    </a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -230,9 +230,9 @@ figure { margin: 0; }
 .build { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(28px, 5vw, 90px); align-items: end; margin-bottom: clamp(90px, 12vw, 180px); }
 .build--flip { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
 .build--flip .build__canvas { order: 2; }
-.build__canvas { position: relative; aspect-ratio: 4 / 5; max-height: 92vh; background: var(--render-bg); overflow: hidden; }
+.build__canvas { position: relative; aspect-ratio: 4 / 5; max-height: 78vh; background: #f3f0ea; overflow: hidden; }
 .build__canvas .draw { position: absolute; inset: 6%; }
-.build__render { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6%; clip-path: inset(100% 0 0 0); }
+.build__render { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6%; clip-path: inset(100% 0 0 0); background: var(--render-bg); }
 .build__canvas--orange .build__render { background: var(--orange-hot); }
 .build__info { display: flex; flex-direction: column; gap: 14px; padding-bottom: 8px; }
 .build__info .mono { color: var(--orange); }
@@ -527,3 +527,25 @@ figure { margin: 0; }
   .header__logo { width: 32px; height: 30px; }
   .contact__val { font-size: 15px; }
 }
+
+/* Proyectos premium: trazo → boceto a marcador (nano-banana) → render, con líneas de escaneo naranja */
+.build__marker { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: inset(0 100% 0 0); }
+.build__scan { position: absolute; z-index: 2; background: var(--orange); box-shadow: 0 0 14px 2px rgba(240, 90, 37, .55); opacity: 0; pointer-events: none; }
+.build__scan--v { top: 0; bottom: 0; left: 0; width: 2px; }
+.build__scan--h { left: 0; right: 0; top: 100%; height: 2px; }
+.build__render { z-index: 1; }
+.build__stages { display: flex; gap: 6px; margin-top: 18px; }
+.build__stages li { position: relative; padding: 7px 12px; border: 1px solid var(--line-ink); border-radius: 999px; color: var(--muted-ink); font-size: 10px; transition: color .4s, background .4s, border-color .4s; }
+.build__stages li.is-on { color: var(--white); background: var(--ink); border-color: var(--ink); }
+.build__stages li.is-done { color: var(--ink); border-color: var(--ink); }
+@media (max-width: 900px) {
+  .build { margin-bottom: 70px; }
+  .build__canvas { max-height: 62svh; aspect-ratio: 4 / 4.6; }
+  .build__info { gap: 8px; }
+  .build__info h3 { font-size: 28px; }
+  .build__info p { font-size: 15px; }
+}
+
+/* Conoce más (laboratorio, fuera del menú) */
+.lab { min-height: 70vh; padding: clamp(140px, 18vw, 220px) 0 clamp(80px, 10vw, 140px); }
+.lab__inner { display: flex; flex-direction: column; gap: 28px; }

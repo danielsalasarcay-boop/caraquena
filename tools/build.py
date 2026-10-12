@@ -79,6 +79,8 @@ def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc
     html = head(title, desc, with_loader) + loader + "\n" + header(b, current) + "\n  <main>\n" + open(main).read() + "  </main>\n\n" + footer(b) + P["float"]
     alt = f'  <link rel="alternate" hreflang="es" href="https://caraquena.vercel.app/{out.replace("index.html", "")}">\n  <link rel="alternate" hreflang="en" href="https://caraquena.vercel.app/{out_en}">\n'
     html = html.replace("  <link rel=\"icon\"", alt + "  <link rel=\"icon\"", 1)
+    if out.startswith("conoce-mas"):
+        html = html.replace('<meta name="theme-color"', '<meta name="robots" content="noindex, nofollow">\n  <meta name="theme-color"', 1)
     open(out, "w").write(html.replace("__LANG__", lang_switch(out, out_en, "es")))
     print(out, len(html))
     # Versión en inglés: mismas piezas, textos traducidos
@@ -101,3 +103,7 @@ page("nosotros.html", "Nosotros — Caraqueña Studio",
      "Fabrizio Palmieri, Carlos Enrique Salas y David Ojalvo. Presencia y ejecución en Caracas; diseño, innovación y consultoría a nivel global.",
      "index.html", "nosotros", "tools/main-nosotros.html", False, "nosotros-en.html", "About — Caraqueña Studio",
      "Fabrizio Palmieri, Carlos Enrique Salas and David Ojalvo. On-site presence and execution in Caracas; design, innovation and consulting worldwide.")
+page("conoce-mas.html", "Conoce más — Caraqueña Studio",
+     "Laboratorio de Caraqueña Studio.",
+     "index.html", "", "tools/main-conoce-mas.html", False, "conoce-mas-en.html", "Learn more — Caraqueña Studio",
+     "Caraqueña Studio lab.")

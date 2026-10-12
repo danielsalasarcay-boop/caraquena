@@ -220,20 +220,45 @@ function init() {
     });
   }
 
-  // ---- Proyectos: se dibuja en líneas (de abajo hacia arriba) y luego entra el render ----
+  // ---- Proyectos (premium): al acercarse se dibujan las líneas; al centrarse, el proyecto se fija
+  //      y pasa de trazo a boceto a marcador (nano-banana) y luego al render, con barridos naranja ----
   gsap.utils.toArray(".build").forEach((build) => {
+    const canvas = build.querySelector(".build__canvas");
     const el = build.querySelector(".js-draw");
+    const marker = build.querySelector(".build__marker");
     const render = build.querySelector(".build__render");
+    const scanV = build.querySelector(".build__scan--v");
+    const scanH = build.querySelector(".build__scan--h");
+    const stages = build.querySelectorAll(".build__stages li");
+    const setStage = (i) => stages.forEach((li, k) => { li.classList.toggle("is-on", k === i); li.classList.toggle("is-done", k < i); });
     gsap.from(build.querySelectorAll(".build__info > *"), {
       y: 30, opacity: 0, duration: .9, stagger: .08, ease: "expo.out",
       scrollTrigger: { trigger: build, start: "top 70%" },
     });
+    // 2) fijo en pantalla (se crea ya, en orden, para que los pines no se encimen):
+    //    el boceto a marcador barre de izquierda a derecha, luego el render sube
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: canvas, start: "center 52%", end: "+=110%", scrub: .8, pin: build, pinSpacing: true, anticipatePin: 1,
+        onUpdate: (s) => setStage(s.progress < .42 ? (s.progress < .05 ? 0 : 1) : 2),
+        onLeaveBack: () => setStage(0),
+      },
+    })
+      .set(scanV, { opacity: 1 }, 0)
+      .fromTo(marker, { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", ease: "power1.inOut", duration: .4 }, 0)
+      .fromTo(scanV, { left: "0%" }, { left: "100%", ease: "power1.inOut", duration: .4 }, 0)
+      .set(scanV, { opacity: 0 }, .4)
+      .to(el, { opacity: 0, duration: .15 }, .3)
+      .set(scanH, { opacity: 1 }, .5)
+      .fromTo(render, { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", ease: "power1.inOut", duration: .42 }, .5)
+      .fromTo(scanH, { top: "100%" }, { top: "0%", ease: "power1.inOut", duration: .42 }, .5)
+      .set(scanH, { opacity: 0 }, .92)
+      .fromTo(canvas, { scale: .97 }, { scale: 1, ease: "none", duration: 1 }, 0)
+      .to({}, { duration: .08 });
+    // 1) trazo: se dibuja mientras el proyecto sube hacia el centro (cuando el SVG termina de cargar)
     loadDraw(el).then((paths) => {
-      // Rápido: las líneas se trazan en la primera mitad y el color entra antes de que el proyecto llegue al centro
-      gsap.timeline({ scrollTrigger: { trigger: build.querySelector(".build__canvas"), start: "top 90%", end: "top 35%", scrub: .4 } })
-        .to(paths, { strokeDashoffset: 0, duration: .3, ease: "none", stagger: { amount: .7 } })
-        .to(render, { clipPath: "inset(0% 0 0 0)", duration: .6, ease: "power2.inOut" }, "-=.35")
-        .to(el, { opacity: .2, duration: .4 }, "<");
+      gsap.timeline({ scrollTrigger: { trigger: canvas, start: "top 92%", end: "center 52%", scrub: .8 } })
+        .to(paths, { strokeDashoffset: 0, ease: "none", stagger: { amount: 1 }, duration: .6 });
       ScrollTrigger.refresh();
     });
   });

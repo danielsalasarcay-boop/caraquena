@@ -160,10 +160,6 @@
 "Built<br>in lines."
 ],
 [
-"Cada espacio existe primero como dibujo. Baja y míralo construirse.",
-"Every space exists first as a drawing. Scroll and watch it come together."
-],
-[
 "alt=\"Corte isométrico de un apartamento completo con sala, habitaciones y cocina\"",
 "alt=\"Isometric cutaway of a full apartment with living room, bedrooms and kitchen\""
 ],
@@ -330,5 +326,25 @@
 [
 "aria-label=\"Boceto a tinta de Caracas con El Ávila y las torres de Parque Central\"",
 "aria-label=\"Ink sketch of Caracas with El Ávila mountain and the Parque Central towers\""
+],
+[
+"Cada espacio existe primero como dibujo: del trazo al boceto, del boceto al render. Baja y míralo construirse.",
+"Every space exists first as a drawing: from line to sketch, from sketch to render. Scroll and watch it come together."
+],
+[
+"<li class=\"is-on\">Trazo</li><li>Boceto</li><li>Render</li>",
+"<li class=\"is-on\">Line</li><li>Sketch</li><li>Render</li>"
+],
+[
+"<span class=\"mono tag\">Laboratorio</span>",
+"<span class=\"mono tag\">Lab</span>"
+],
+[
+"<h1 class=\"page-hero__title\">Conoce más</h1>",
+"<h1 class=\"page-hero__title\">Learn more</h1>"
+],
+[
+"Espacio en construcción para experimentar animaciones con planos.",
+"A space under construction for experimenting with plan animations."
 ]
 ]
