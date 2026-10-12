@@ -99,7 +99,8 @@ figure { margin: 0; }
 .header__word { font: 800 18px/1 var(--display); font-variation-settings: "wdth" 110; text-transform: uppercase; letter-spacing: -.01em; }
 .header__word em { font: 400 11px/1 var(--mono); font-style: normal; letter-spacing: .14em; color: var(--orange); margin-left: 6px; vertical-align: top; }
 .header__nav { display: flex; gap: 6px; }
-.header__nav a { position: relative; padding: 10px 14px; font-size: 14px; font-weight: 500; }
+.header__nav a { position: relative; padding: 10px 14px; font-size: 14px; font-weight: 500; white-space: nowrap; }
+@media (max-width: 1240px) { .header { gap: 18px; } .header__nav { gap: 0; } .header__nav a { padding: 10px 9px; font-size: 13px; } .header__word em { display: none; } }
 .header__nav a::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 6px; height: 1px; background: var(--orange); transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease); }
 .header__nav a:hover::after, .header__nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
 /* Selector de idioma: pequeño y discreto */
@@ -225,9 +226,14 @@ figure { margin: 0; }
 .shot figcaption .mono { color: var(--orange); }
 .shot figcaption p { color: var(--muted-ink); font-size: 15px; }
 @media (max-width: 760px) {
-  .process__shots { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(var(--pad) * -1); padding: 12px var(--pad); scrollbar-width: none; }
-  .process__shots::-webkit-scrollbar { display: none; }
-  .shot { scroll-snap-align: start; }
+  .process { padding: 56px 0; }
+  .process__head { margin-bottom: 24px; }
+  .process__shots { gap: 10px; }
+  .shot__frame { aspect-ratio: 3 / 4; max-height: none; }
+  .shot__lines { inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); }
+  .shot figcaption { margin-top: 10px; }
+  .shot figcaption .mono { font-size: 10px; letter-spacing: .04em; }
+  .shot figcaption p { display: none; }
 }
 
 /* ---------- PROYECTOS ---------- */
@@ -314,15 +320,11 @@ figure { margin: 0; }
   padding: 13px 14px 13px 4px; border-top: 1px solid rgba(0,0,0,.2); isolation: isolate; transition: color .45s var(--ease), padding .55s var(--ease);
 }
 .contact__row::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--black); transform: scaleX(0); transform-origin: right; transition: transform .55s var(--ease); }
-.contact__row:hover { color: var(--white); padding-left: 14px; }
-.contact__row:hover::before { transform: scaleX(1); transform-origin: left; }
 .contact__icon { width: 38px; height: 38px; display: grid; place-items: center; border: 1.2px solid currentColor; border-radius: 50%; transition: border-color .45s, background .45s, color .45s; }
 .contact__icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.contact__row:hover .contact__icon { background: var(--white); color: var(--black); border-color: var(--white); }
 .contact__row .mono { opacity: .7; }
 .contact__val { font: 500 clamp(17px, 1.5vw, 21px)/1.3 var(--display); overflow-wrap: anywhere; }
 .contact__go { font-size: 18px; transition: transform .5s var(--ease), opacity .4s; opacity: .5; }
-.contact__row:hover .contact__go { transform: translate(3px, -3px); opacity: 1; color: var(--orange); }
 @media (max-width: 900px) { .contact__inner { grid-template-columns: 1fr; } }
 @media (max-width: 520px) {
   .contact__row { grid-template-columns: 40px 1fr 18px; grid-template-areas: "i l g" "i v g"; row-gap: 0; column-gap: 12px; }
@@ -510,11 +512,6 @@ figure { margin: 0; }
 /* Botones flotantes: pequeño rebote al tocar */
 .float__btn { transition: transform .25s ease; }
 .float__btn:active { transform: scale(.92); }
-@media (hover: none) {
-  .contact__row:active { color: var(--white); }
-  .contact__row:active::before { transform: scaleX(1); transform-origin: left; }
-  .contact__row:active .contact__icon { background: var(--white); color: var(--black); border-color: var(--white); }
-}
 
 /* Cobertura: Caracas dibujada a tinta dentro del círculo (boceto generado con nano-banana y vectorizado) */
 .orbit-wrap { position: relative; width: 100%; max-width: 520px; aspect-ratio: 1; }
@@ -558,3 +555,32 @@ figure { margin: 0; }
 .lab { min-height: 70vh; padding: clamp(140px, 18vw, 220px) 0 clamp(80px, 10vw, 140px); }
 .lab__inner { display: flex; flex-direction: column; gap: 28px; }
 .orbit-logo { opacity: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  .contact__row:hover { color: var(--white); padding-left: 14px; }
+  .contact__row:hover::before { transform: scaleX(1); transform-origin: left; }
+  .contact__row:hover .contact__icon { background: var(--white); color: var(--black); border-color: var(--white); }
+  .contact__row:hover .contact__go { transform: translate(3px, -3px); opacity: 1; color: var(--orange); }
+}
+@media (hover: none) {
+  .contact__row { -webkit-tap-highlight-color: transparent; transition: color .2s; }
+  .contact__row::before { transition: transform .25s ease; }
+  .contact__row:active { color: var(--white); }
+  .contact__row:active::before { transform: scaleX(1); transform-origin: left; }
+  .contact__row:active .contact__icon { background: var(--white); color: var(--black); border-color: var(--white); }
+  .contact__row .contact__go { opacity: .8; }
+}
+
+/* Conoce más: Otter La Tortuga (boceto → render) */
+.lab-hero { padding-bottom: clamp(60px, 8vw, 110px); }
+.otter { position: relative; }
+.otter__stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: var(--paper); }
+.otter__sketch { position: absolute; left: 50%; top: 50%; width: min(86vw, 112vh); aspect-ratio: 1130 / 900; transform: translate(-50%, -50%); }
+.otter__sketch .draw { position: absolute; inset: 0; }
+.otter__render { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: circle(0% at 50% 50%); }
+.otter__caption { position: absolute; left: var(--pad); bottom: clamp(24px, 5vh, 48px); z-index: 2; }
+.otter__step { display: inline-block; padding: 9px 14px; border-radius: 999px; background: var(--ink); color: var(--white); }
+@media (max-width: 760px) { .otter__sketch { width: 128vw; } }
+@media (max-width: 760px) {
+  .otter__render { object-fit: contain; background: linear-gradient(to bottom, #a7c1da 0 50%, #d6d4ce 50%); }
+}

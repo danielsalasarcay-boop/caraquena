@@ -214,7 +214,7 @@ function init() {
       const at = i * .25;
       tl.to(hLines, { scaleX: 1, duration: .9, stagger: .12, ease: "expo.inOut" }, at)
         .to(vLines, { scaleY: 1, duration: .9, stagger: .12, ease: "expo.inOut" }, at + .1)
-        .fromTo(shot.querySelector("img"), { clipPath: "inset(0 0 100% 0)", scale: 1.15 }, { clipPath: "inset(0 0 0% 0)", scale: 1, duration: 1.2, ease: "expo.inOut" }, at + .6)
+        .fromTo(shot.querySelector("img"), { clipPath: "inset(0 0 100% 0)", yPercent: 4 }, { clipPath: "inset(0 0 0% 0)", yPercent: 0, duration: 1.2, ease: "expo.inOut" }, at + .6)
         .to(shot.querySelectorAll(".shot__lines line"), { opacity: .25, duration: .6 }, at + 1.4)
         .from(shot.querySelectorAll("figcaption > *"), { y: 20, opacity: 0, duration: .8, stagger: .08, ease: "expo.out" }, at + 1.1);
     });
@@ -262,6 +262,34 @@ function init() {
       ScrollTrigger.refresh();
     });
   });
+
+  // ---- Conoce más: Otter La Tortuga — el boceto se dibuja y desde su anillo central se abre el render ----
+  const otter = document.querySelector(".otter");
+  if (otter) {
+    const sketchBox = otter.querySelector(".otter__sketch");
+    const render = otter.querySelector(".otter__render");
+    const step = otter.querySelector(".js-otter-step");
+    const en = document.documentElement.lang === "en";
+    const labels = en ? ["01 — Site sketch", "02 — Ink", "03 — Render"] : ["01 — Boceto de implantación", "02 — Tinta", "03 — Render"];
+    const ringAt = () => {
+      const s = sketchBox.getBoundingClientRect(), st = otter.getBoundingClientRect();
+      return `${((s.left - st.left + s.width * .496) / st.width) * 100}% ${((s.top - st.top + s.height * .518) / st.height) * 100}%`;
+    };
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: otter, start: "top top", end: "+=220%", pin: otter.querySelector(".otter__stage"), scrub: .8, invalidateOnRefresh: true,
+        onUpdate: (s) => (step.textContent = labels[s.progress < .45 ? 0 : s.progress < .6 ? 1 : 2]),
+      },
+    });
+    loadDraw(otter.querySelector(".js-draw")).then((paths) => {
+      tl.to(paths, { strokeDashoffset: 0, ease: "none", stagger: { amount: .9 }, duration: .45 }, 0)
+        .to(paths, { fillOpacity: 1, duration: .12, stagger: { amount: .05 } }, .47)
+        .to(sketchBox, { scale: 2.4, transformOrigin: "49.6% 51.8%", ease: "power2.in", duration: .4 }, .6)
+        .fromTo(render, { clipPath: () => `circle(0% at ${ringAt()})`, scale: 1.25 }, { clipPath: () => `circle(80% at ${ringAt()})`, scale: 1, ease: "power2.inOut", duration: .4 }, .62)
+        .to({}, { duration: .1 });
+      ScrollTrigger.refresh();
+    });
+  }
 
   // ---- Nosotros ----
   if (document.querySelector(".page-hero__photo")) {

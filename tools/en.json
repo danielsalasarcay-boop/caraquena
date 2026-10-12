@@ -346,5 +346,29 @@
 [
 "Espacio en construcción para experimentar animaciones con planos.",
 "A space under construction for experimenting with plan animations."
+],
+[
+">Conoce más</a>",
+">Learn more</a>"
+],
+[
+"<text x=\"0\" y=\"170\">CONOCE MÁS</text>",
+"<text x=\"0\" y=\"170\">LEARN MORE</text>"
+],
+[
+"Proyecto hotelero en Isla La Tortuga. Todo empezó con un boceto a mano: un anillo central, el acceso, las villas, la piscina y la playa. Baja y mira cómo ese trazo se convierte en edificio.",
+"A hospitality project on Isla La Tortuga. It all started with a hand sketch: a central ring, the entrance, the villas, the pool and the beach. Scroll and watch that line become a building."
+],
+[
+"aria-label=\"Boceto a mano del esquema de implantación en Isla La Tortuga\"",
+"aria-label=\"Hand sketch of the site plan on Isla La Tortuga\""
+],
+[
+"alt=\"Render de Otter La Tortuga: edificio circular de dos niveles con terrazas ajardinadas\"",
+"alt=\"Render of Otter La Tortuga: a two-level circular building with planted terraces\""
+],
+[
+"01 — Boceto de implantación",
+"01 — Site sketch"
 ]
 ]

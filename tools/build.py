@@ -28,6 +28,7 @@ def header(b, current=""):
       <a href="{b}#proceso" data-magnetic>Proceso</a>
       <a href="{b}#proyectos" data-magnetic>Proyectos</a>
       <a href="nosotros.html" data-magnetic{cur('nosotros')}>Nosotros</a>
+      <a href="conoce-mas.html" data-magnetic{cur('conoce')}>Conoce más</a>
     </nav>
     <div class="lang mono" aria-label="Idioma">__LANG__</div>
     <a href="{b}#contacto" class="btn btn--small header__cta" data-magnetic><span>Contacto</span></a>
@@ -40,7 +41,8 @@ def header(b, current=""):
       <a href="{b}#proceso"><span class="mono">02</span>Proceso</a>
       <a href="{b}#proyectos"><span class="mono">03</span>Proyectos</a>
       <a href="nosotros.html"><span class="mono">04</span>Nosotros</a>
-      <a href="{b}#contacto"><span class="mono">05</span>Contacto</a>
+      <a href="conoce-mas.html"><span class="mono">05</span>Conoce más</a>
+      <a href="{b}#contacto"><span class="mono">06</span>Contacto</a>
     </nav>
     <div class="menu__foot mono"><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="js-mail" href="#">Correo</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a></div>
   </div>
@@ -55,7 +57,7 @@ def footer(b):
         <a class="footer__big js-wa" href="#" target="_blank" rel="noopener">+58 414 258 2223</a>
       </div>
       <nav class="footer__nav mono">
-        <a href="{b}#estudio">Estudio</a><a href="{b}#proceso">Proceso</a><a href="{b}#proyectos">Proyectos</a><a href="nosotros.html">Nosotros</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="{b}#estudio">Estudio</a><a href="{b}#proceso">Proceso</a><a href="{b}#proyectos">Proyectos</a><a href="nosotros.html">Nosotros</a><a href="conoce-mas.html">Conoce más</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
       </nav>
     </div>
     <div class="footer__word" aria-hidden="true">CARAQUEÑA<svg><use href="#isotipo"/></svg></div>
@@ -90,7 +92,7 @@ def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc
     for es_txt, en_txt in json.load(open(PAIRS_FILE)):
         en = en.replace(es_txt, en_txt)
     # enlaces internos hacia las páginas en inglés
-    en = en.replace('href="index.html', 'href="index-en.html').replace('href="nosotros.html', 'href="nosotros-en.html')
+    en = en.replace('href="index.html', 'href="index-en.html').replace('href="nosotros.html', 'href="nosotros-en.html').replace('href="conoce-mas.html', 'href="conoce-mas-en.html')
     en = en.replace('<a href="#inicio" class="header__brand"', '<a href="#inicio" class="header__brand"')
     open(out_en, "w").write(en.replace("__LANG__", lang_switch(out, out_en, "en")))
     print(out_en, len(en))
@@ -105,5 +107,5 @@ page("nosotros.html", "Nosotros — Caraqueña Studio",
      "Fabrizio Palmieri, Carlos Enrique Salas and David Ojalvo. On-site presence and execution in Caracas; design, innovation and consulting worldwide.")
 page("conoce-mas.html", "Conoce más — Caraqueña Studio",
      "Laboratorio de Caraqueña Studio.",
-     "index.html", "", "tools/main-conoce-mas.html", False, "conoce-mas-en.html", "Learn more — Caraqueña Studio",
+     "index.html", "conoce", "tools/main-conoce-mas.html", False, "conoce-mas-en.html", "Learn more — Caraqueña Studio",
      "Caraqueña Studio lab.")
