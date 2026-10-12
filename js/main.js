@@ -31,6 +31,7 @@ const burger = document.querySelector(".header__burger");
 const menu = document.querySelector(".menu");
 const toggleMenu = (open) => {
   document.body.classList.toggle("menu-open", open);
+  if (window.lenisInstance) open ? window.lenisInstance.stop() : window.lenisInstance.start();
   burger.setAttribute("aria-expanded", open);
   menu.setAttribute("aria-hidden", !open);
 };
@@ -59,7 +60,9 @@ function init() {
   gsap.registerPlugin(ScrollTrigger);
 
   // ---- Lenis smooth scroll ----
+  ScrollTrigger.config({ ignoreMobileResize: true });
   const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  window.lenisInstance = lenis;
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
@@ -174,11 +177,13 @@ function init() {
   const line = document.querySelector(".process__line");
   const list = document.querySelector(".process__list");
   const placeLine = () => {
-    if (mobile) { line.style.top = list.offsetTop + "px"; line.style.height = list.offsetHeight + "px"; }
-    else line.style.top = list.offsetTop + "px";
+    line.style.top = list.offsetTop + "px";
+    line.style.height = mobile ? list.offsetHeight + "px" : "";
   };
   placeLine();
   addEventListener("resize", placeLine);
+  // Al cruzar el breakpoint cambia el eje de la línea: se recarga para rearmar las animaciones.
+  matchMedia("(max-width: 900px)").addEventListener("change", () => location.reload());
   gsap.to(".process__line i", {
     [mobile ? "scaleY" : "scaleX"]: 1, ease: "none",
     scrollTrigger: { trigger: ".process__list", start: "top 75%", end: "bottom 55%", scrub: true },
@@ -212,6 +217,7 @@ function desktopFx() {
   const lx = gsap.quickTo(label, "x", { duration: .45, ease: "power3" });
   const ly = gsap.quickTo(label, "y", { duration: .45, ease: "power3" });
   addEventListener("mousemove", (e) => {
+    cursor.classList.add("is-on");
     gsap.set(dot, { x: e.clientX, y: e.clientY });
     rx(e.clientX); ry(e.clientY); lx(e.clientX); ly(e.clientY);
   });
