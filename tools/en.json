@@ -608,10 +608,6 @@
 "aria-label=\"Universidad Santa María: base for the statue of the Virgin\""
 ],
 [
-"alt=\"Situación actual: el altar existente de la Virgen en la Universidad Santa María\"",
-"alt=\"Existing condition: the current altar of the Virgin at Universidad Santa María\""
-],
-[
 "aria-label=\"Boceto a mano de la base, dibujándose\"",
 "aria-label=\"Hand sketch of the base, being drawn\""
 ],
@@ -624,16 +620,8 @@
 "alt=\"Side render of the concrete base with the statue of the Virgin\""
 ],
 [
-"<li>USM</li><li>Actual</li><li>Boceto</li><li>Planos</li><li>Render</li>",
-"<li>USM</li><li>Today</li><li>Sketch</li><li>Drawings</li><li>Render</li>"
-],
-[
 "<span class=\"mono\">01 — Universidad Santa María</span><p>Base para la escultura de la Virgen. Urb. Miranda, Caracas · 2025.</p>",
 "<span class=\"mono\">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · 2025.</p>"
-],
-[
-"<span class=\"mono\">02 — Situación actual</span><p>El altar existente, que el proyecto reemplaza por una pieza de concreto.</p>",
-"<span class=\"mono\">02 — Today</span><p>The existing altar, which the project replaces with a single concrete piece.</p>"
 ],
 [
 "<span class=\"mono\">03 — Boceto</span><p>La base dibujada a mano: espacio para flores, escultura, base de concreto y placa metálica.</p>",
@@ -646,5 +634,17 @@
 [
 "<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes.</p>",
 "<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names.</p>"
+],
+[
+"alt=\"Antes: el altar anterior de la Virgen en la Universidad Santa María\"",
+"alt=\"Before: the previous altar of the Virgin at Universidad Santa María\""
+],
+[
+"<li>USM</li><li>Antes</li><li>Boceto</li><li>Planos</li><li>Render</li>",
+"<li>USM</li><li>Before</li><li>Sketch</li><li>Drawings</li><li>Render</li>"
+],
+[
+"<span class=\"mono\">02 — Antes</span><p>El altar anterior, que el proyecto reemplazó por una pieza de concreto.</p>",
+"<span class=\"mono\">02 — Before</span><p>The previous altar, which the project replaced with a single concrete piece.</p>"
 ]
 ]
