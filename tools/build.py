@@ -24,14 +24,14 @@ def header(b, current=""):
       <span class="header__word">Caraqueña<em>studio</em></span>
     </a>
     <nav class="header__nav" aria-label="Principal">
-      <a href="{b}#estudio" data-magnetic>Estudio</a>
-      <a href="{b}#proceso" data-magnetic>Proceso</a>
-      <a href="{b}#proyectos" data-magnetic>Proyectos</a>
-      <a href="nosotros.html" data-magnetic{cur('nosotros')}>Nosotros</a>
-      <a href="conoce-mas.html" data-magnetic{cur('conoce')}>Conoce más</a>
+      <a href="{b}#estudio">Estudio</a>
+      <a href="{b}#proceso">Proceso</a>
+      <a href="{b}#proyectos">Proyectos</a>
+      <a href="nosotros.html"{cur('nosotros')}>Nosotros</a>
+      <a href="conoce-mas.html"{cur('conoce')}>Conoce más</a>
     </nav>
     <div class="lang mono" aria-label="Idioma">__LANG__</div>
-    <a href="{b}#contacto" class="btn btn--small header__cta" data-magnetic><span>Contacto</span></a>
+    <a href="{b}#contacto" class="btn btn--small header__cta"><span>Contacto</span></a>
     <button class="header__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
   </header>
 
@@ -106,10 +106,10 @@ page("index.html", "Caraqueña Studio — Arquitectura desde Caracas",
      "", "", "tools/main-index.html", True, "index-en.html", "Caraqueña Studio — Architecture from Caracas",
      "Architecture studio in Caracas: large-scale hospitality and developments, housing and interiors. From the first sketch to site supervision, plus design and consulting for projects worldwide.")
 page("nosotros.html", "Nosotros — Caraqueña Studio",
-     "Fabrizio Palmieri, Carlos Enrique Salas y David Ojalvo. Presencia y ejecución en Caracas; diseño, innovación y consultoría a nivel global.",
+     "Fabrizio Palmieri, Carlos Enrique Salas y Elías Ojalvo. Presencia y ejecución en Caracas; diseño, innovación y consultoría a nivel global.",
      "index.html", "nosotros", "tools/main-nosotros.html", False, "nosotros-en.html", "About — Caraqueña Studio",
-     "Fabrizio Palmieri, Carlos Enrique Salas and David Ojalvo. On-site presence and execution in Caracas; design, innovation and consulting worldwide.")
+     "Fabrizio Palmieri, Carlos Enrique Salas and Elías Ojalvo. On-site presence and execution in Caracas; design, innovation and consulting worldwide.")
 page("conoce-mas.html", "Conoce más — Caraqueña Studio",
-     "Laboratorio de Caraqueña Studio.",
+     "Portafolio de Caraqueña Studio: Otter La Tortuga, Puerto de Guanta e interiorismo, del boceto al render.",
      "index.html", "conoce", "tools/main-conoce-mas.html", False, "conoce-mas-en.html", "Learn more — Caraqueña Studio",
-     "Caraqueña Studio lab.")
+     "Caraqueña Studio portfolio: Otter La Tortuga, Puerto de Guanta and interiors, from sketch to render.")

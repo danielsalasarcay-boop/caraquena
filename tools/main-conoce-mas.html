@@ -1,7 +1,187 @@
-    <!-- CONOCE MÁS: laboratorio para experimentar animaciones con planos -->
-    <section class="lab" id="top" data-theme="light">
-      <div class="container lab__inner">
+    <!-- CONOCE MÁS: portafolio. Arriba, Otter La Tortuga contado como película: de la isla al render -->
+    <section class="page-hero lab-hero" id="top" data-theme="light">
+      <div class="container page-hero__inner">
         <p class="kicker" aria-hidden="true"><svg class="kicker__svg js-kicker" viewBox="0 0 1100 200"><text x="0" y="170">CONOCE MÁS</text></svg></p>
-        <p class="page-hero__lead">Espacio en construcción para experimentar animaciones con planos.</p>
+        <h1 class="page-hero__title js-split-lines">Proyectos,<br>del trazo al render.</h1>
+        <p class="page-hero__lead">Hotelería, infraestructura e interiorismo, contados con sus propios dibujos: bocetos, plantas, cortes y renders de Caraqueña.</p>
       </div>
     </section>
+
+    <!-- OTTER: secuencia fija; cada capítulo es una capa que se dibuja o se revela -->
+    <section class="film" id="otter" aria-label="Otter La Tortuga: de la isla al render">
+      <div class="film__stage">
+        <img class="film__aerial" src="img/otter/aerial.jpg" alt="Vista aérea de la Isla La Tortuga, en el Caribe venezolano">
+        <svg class="film__title" viewBox="0 0 1000 220" aria-hidden="true"><text x="500" y="180" text-anchor="middle">OTTER</text></svg>
+        <div class="film__paper" aria-hidden="true"></div>
+        <div class="film__draw film__sketch draw js-draw" data-src="img/trazos/sketch-tortuga.svg" data-play="film" aria-hidden="true"></div>
+        <div class="film__draw film__plan draw js-draw" data-src="img/trazos/otter-plan.svg" data-play="film" aria-hidden="true"></div>
+        <div class="film__draw film__section draw js-draw" data-src="img/trazos/otter-section.svg" data-play="film" aria-hidden="true"></div>
+        <div class="film__facade">
+          <div class="draw js-draw" data-src="img/trazos/otter-facade.svg" data-play="film" aria-hidden="true"></div>
+          <img class="film__marker" src="img/otter/fachada-boceto.jpg" alt="" aria-hidden="true">
+          <img class="film__render" src="img/otter/fachada-render.jpg" alt="Render de la fachada de Otter La Tortuga: edificio circular de dos niveles con terrazas ajardinadas">
+          <span class="film__scan film__scan--v" aria-hidden="true"></span><span class="film__scan film__scan--h" aria-hidden="true"></span>
+        </div>
+
+        <ol class="film__rail mono" aria-hidden="true">
+          <li>Ubicación</li><li>Concepto</li><li>Conjunto</li><li>Corte</li><li>Boceto</li><li>Render</li>
+        </ol>
+
+        <div class="film__caps">
+          <div class="film__cap"><span class="mono">01 — Ubicación</span><p>Zona noreste de la Isla La Tortuga, en el Caribe venezolano: playas de arena blanca y aguas turquesa.</p></div>
+          <div class="film__cap"><span class="mono">02 — Concepto</span><p>Una geometría circular para que todas las habitaciones tengan vista de 360°, organizadas desde un trazado radial.</p></div>
+          <div class="film__cap"><span class="mono">03 — Conjunto</span><p>Un edificio central reúne lobby, junior suites, restaurante, wellness y gimnasio. Alrededor, villas de concepto orgánico.</p></div>
+          <div class="film__cap"><span class="mono">04 — Corte</span><p>Dos niveles abiertos al horizonte, con materiales no corrosivos ni visualmente invasivos.</p></div>
+          <div class="film__cap"><span class="mono">05 — Boceto</span><p>La fachada, primero a mano.</p></div>
+          <div class="film__cap"><span class="mono">06 — Render</span><p>Otter La Tortuga. Anteproyecto, 2024.</p></div>
+        </div>
+        <div class="film__progress" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
+    <!-- OTTER en renders: tira horizontal -->
+    <section class="reel" aria-label="Otter La Tortuga en renders">
+      <div class="reel__pin">
+        <div class="container reel__head">
+          <span class="mono tag">Otter La Tortuga</span>
+          <h2 class="reel__title">El hotel, en renders.</h2>
+        </div>
+        <div class="reel__track">
+          <figure class="reel__item"><img src="img/portafolio/otter/02.jpg" alt="Otter La Tortuga: piscina frente al edificio circular" loading="lazy"></figure>
+          <figure class="reel__item"><img src="img/portafolio/otter/03.jpg" alt="Otter La Tortuga: piscina infinita hacia el mar" loading="lazy"></figure>
+          <figure class="reel__item"><img src="img/portafolio/otter/04.jpg" alt="Otter La Tortuga: restaurante con pérgola frente a la playa" loading="lazy"></figure>
+          <figure class="reel__item"><img src="img/portafolio/otter/05.jpg" alt="Otter La Tortuga: acceso con espejo de agua y palmeras" loading="lazy"></figure>
+          <figure class="reel__item"><img src="img/portafolio/otter/06.jpg" alt="Otter La Tortuga: pabellón con celosía de madera" loading="lazy"></figure>
+          <figure class="reel__item"><img src="img/portafolio/otter/07.jpg" alt="Otter La Tortuga: acceso bajo el edificio con la marca Otter" loading="lazy"></figure>
+          <figure class="reel__item"><img src="img/portafolio/otter/09.jpg" alt="Otter La Tortuga: habitación" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAFOLIO: fichas; cada una abre su galería -->
+    <section class="folio" id="portafolio" data-theme="light">
+      <div class="container">
+        <div class="folio__head">
+          <span class="mono tag">Portafolio</span>
+          <h2 class="title js-split-lines">Fichas de<br>proyecto.</h2>
+        </div>
+        <div class="folio__grid">
+          <article class="pcard" data-gallery="otter" data-count="16">
+            <button class="pcard__open" type="button" aria-label="Ver galería de Otter La Tortuga">
+              <span class="pcard__media"><img src="img/portafolio/otter/01.jpg" alt="Otter La Tortuga" loading="lazy"></span>
+            </button>
+            <div class="pcard__body">
+              <span class="mono pcard__cat">Hotelería · Isla La Tortuga</span>
+              <h3 class="pcard__title">Otter La Tortuga</h3>
+              <p class="pcard__text">Hotel de geometría circular con vista de 360° desde cada habitación, villas, piscinas y pool lounge frente al mar.</p>
+              <span class="mono pcard__meta">Anteproyecto · 2024 · 16 láminas</span>
+            </div>
+          </article>
+          <article class="pcard" data-gallery="guanta" data-count="13">
+            <button class="pcard__open" type="button" aria-label="Ver galería de Puerto de Guanta">
+              <span class="pcard__media"><img src="img/portafolio/guanta/01.jpg" alt="Puerto de Guanta" loading="lazy"></span>
+            </button>
+            <div class="pcard__body">
+              <span class="mono pcard__cat">Infraestructura portuaria · Guanta</span>
+              <h3 class="pcard__title">Puerto de Guanta</h3>
+              <p class="pcard__text">Terminal especializada de carga general: proyección futura en tres fases de expansión.</p>
+              <span class="mono pcard__meta">Proyección futura · 13 láminas</span>
+            </div>
+          </article>
+          <article class="pcard" data-gallery="altamira" data-count="10">
+            <button class="pcard__open" type="button" aria-label="Ver galería de Proyecto Altamira">
+              <span class="pcard__media"><img src="img/portafolio/altamira/01.jpg" alt="Proyecto Altamira" loading="lazy"></span>
+            </button>
+            <div class="pcard__body">
+              <span class="mono pcard__cat">Interiorismo residencial · Altamira</span>
+              <h3 class="pcard__title">Proyecto Altamira</h3>
+              <p class="pcard__text">Sala de estar, biblioteca, family room, oficina privada, cinco habitaciones y terraza: de la situación actual a la propuesta.</p>
+              <span class="mono pcard__meta">Interiorismo · 10 láminas</span>
+            </div>
+          </article>
+          <article class="pcard" data-gallery="ph-miranda" data-count="14">
+            <button class="pcard__open" type="button" aria-label="Ver galería de PH Miranda">
+              <span class="pcard__media"><img src="img/portafolio/ph-miranda/01.jpg" alt="PH Miranda" loading="lazy"></span>
+            </button>
+            <div class="pcard__body">
+              <span class="mono pcard__cat">Interiorismo · Anteproyecto</span>
+              <h3 class="pcard__title">PH Miranda</h3>
+              <p class="pcard__text">Recibo, bar, sala, cocina, sala de TV y escalera en un mismo recorrido de concreto, madera y vegetación.</p>
+              <span class="mono pcard__meta">Anteproyecto · 14 láminas</span>
+            </div>
+          </article>
+          <article class="pcard" data-gallery="residencia-pb" data-count="10">
+            <button class="pcard__open" type="button" aria-label="Ver galería de Residencia en planta baja">
+              <span class="pcard__media"><img src="img/portafolio/residencia-pb/01.jpg" alt="Residencia en planta baja" loading="lazy"></span>
+            </button>
+            <div class="pcard__body">
+              <span class="mono pcard__cat">Interiorismo · Anteproyecto</span>
+              <h3 class="pcard__title">Residencia en planta baja</h3>
+              <p class="pcard__text">Habitación principal, peinadora y escritorio, vestier y baño, resueltos en madera y piedra.</p>
+              <span class="mono pcard__meta">Anteproyecto · 10 láminas</span>
+            </div>
+          </article>
+          <article class="pcard" data-gallery="apartamento-suite" data-count="11">
+            <button class="pcard__open" type="button" aria-label="Ver galería de Suite y oficina">
+              <span class="pcard__media"><img src="img/portafolio/apartamento-suite/01.jpg" alt="Suite y oficina" loading="lazy"></span>
+            </button>
+            <div class="pcard__body">
+              <span class="mono pcard__cat">Interiorismo · Anteproyecto</span>
+              <h3 class="pcard__title">Suite y oficina</h3>
+              <p class="pcard__text">Habitación principal, vestier, oficina, baños y panelería de pasillo, con cortes seccionados de cada espacio.</p>
+              <span class="mono pcard__meta">Anteproyecto · 11 láminas</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUERTO DE GUANTA: película en azul plano y naranja — el puerto crece fase por fase sobre el mismo plano -->
+    <section class="gfilm" id="guanta" aria-label="Puerto de Guanta: proyección futura en tres fases">
+      <div class="film__stage gfilm__stage">
+        <img class="gfilm__actual" src="img/guanta/actual.jpg" alt="Toma aérea actual del Puerto de Guanta">
+        <svg class="film__title gfilm__title" viewBox="0 0 1000 220" aria-hidden="true"><text x="500" y="180" text-anchor="middle">GUANTA</text></svg>
+        <div class="gfilm__blue" aria-hidden="true"></div>
+        <div class="gfilm__map">
+          <div class="gfilm__layer gfilm__base draw js-draw" data-src="img/trazos/guanta-base.svg" aria-hidden="true"></div>
+          <div class="gfilm__layer gfilm__phase draw js-draw" data-src="img/trazos/guanta-f1.svg" aria-hidden="true"></div>
+          <div class="gfilm__layer gfilm__phase draw js-draw" data-src="img/trazos/guanta-f2.svg" aria-hidden="true"></div>
+          <div class="gfilm__layer gfilm__phase draw js-draw" data-src="img/trazos/guanta-f3.svg" aria-hidden="true"></div>
+          <img class="gfilm__img gfilm__r1" src="img/guanta/fase1.jpg" alt="Visualización de la fase 1 del Puerto de Guanta" loading="lazy">
+          <img class="gfilm__img gfilm__r2" src="img/guanta/fase2.jpg" alt="Visualización de la fase 2 del Puerto de Guanta" loading="lazy">
+          <img class="gfilm__img gfilm__cyan" src="img/guanta/cianotipo.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img class="gfilm__img gfilm__r3" src="img/guanta/fase3.jpg" alt="Visualización del conjunto completo del Puerto de Guanta" loading="lazy">
+          <img class="gfilm__img gfilm__night" src="img/guanta/noche.jpg" alt="Visualización nocturna del Puerto de Guanta" loading="lazy">
+          <span class="film__scan film__scan--v gfilm__scanv" aria-hidden="true"></span>
+          <span class="film__scan film__scan--h gfilm__scanh" aria-hidden="true"></span>
+        </div>
+
+        <ol class="film__rail mono" aria-hidden="true">
+          <li>Actual</li><li>Lectura</li><li>Fase 1</li><li>Fase 2</li><li>Fase 3</li><li>Noche</li>
+        </ol>
+        <div class="film__caps">
+          <div class="film__cap"><span class="mono">01 — Situación actual</span><p>El Puerto de Guanta, principal eje estratégico del oriente venezolano, en plena modernización de muelles y logística.</p></div>
+          <div class="film__cap"><span class="mono">02 — Lectura del sitio</span><p>La bahía, los muelles y los patios existentes: la base sobre la que crece el proyecto.</p></div>
+          <div class="film__cap"><span class="mono">03 — Fase 1 · Contingencia</span><p>Consolidación del área de maniobras y almacenamiento: carga extra pesada, fraccionada, tubular, contenedores y puestos de atraque.</p></div>
+          <div class="film__cap"><span class="mono">04 — Fase 2 · Capacidad</span><p>Terminales especializadas de descarga de granel y sistemas de transporte automatizado.</p></div>
+          <div class="film__cap"><span class="mono">05 — Fase 3 · Conjunto</span><p>Vía costera y muelle norte: el conjunto completo, con los flujos logísticos separados de las áreas administrativas.</p></div>
+          <div class="film__cap"><span class="mono">06 — De día a noche</span><p>Una proyección pensada para ser el principal nodo de intercambio comercial de la región.</p></div>
+        </div>
+        <div class="film__progress" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
+    <!-- Galería (se abre desde cada ficha) -->
+    <div class="lb" hidden role="dialog" aria-modal="true" aria-label="Galería del proyecto">
+      <div class="lb__top">
+        <span class="mono lb__title"></span>
+        <span class="mono lb__count"></span>
+        <button class="lb__close" type="button" aria-label="Cerrar galería">✕</button>
+      </div>
+      <div class="lb__stage">
+        <button class="lb__nav lb__nav--prev" type="button" aria-label="Imagen anterior">←</button>
+        <img class="lb__img" alt="">
+        <button class="lb__nav lb__nav--next" type="button" aria-label="Imagen siguiente">→</button>
+      </div>
+      <div class="lb__thumbs"></div>
+    </div>

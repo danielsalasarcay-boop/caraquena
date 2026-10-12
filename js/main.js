@@ -47,6 +47,55 @@ document.querySelectorAll(".js-split-lines").forEach((el) => {
   el.innerHTML = el.innerHTML.split(/<br\s*\/?>/i).map((l) => `<span class="split-line"><span>${l.trim()}</span></span>`).join("");
 });
 
+// ---- Conoce más: visor de fichas del portafolio ----
+const lbEl = document.querySelector(".lb");
+if (lbEl) {
+  const img = lbEl.querySelector(".lb__img"), thumbs = lbEl.querySelector(".lb__thumbs");
+  const titleEl = lbEl.querySelector(".lb__title"), countEl = lbEl.querySelector(".lb__count");
+  let list = [], idx = 0, lastFocus = null;
+  const show = (i) => {
+    idx = (i + list.length) % list.length;
+    img.src = list[idx]; countEl.textContent = `${idx + 1} / ${list.length}`;
+    thumbs.querySelectorAll("button").forEach((b, k) => b.classList.toggle("is-on", k === idx));
+    thumbs.children[idx]?.scrollIntoView({ inline: "center", block: "nearest" });
+  };
+  const open = (card) => {
+    const g = card.dataset.gallery, n = +card.dataset.count;
+    list = Array.from({ length: n }, (_, k) => `img/portafolio/${g}/${String(k + 1).padStart(2, "0")}.jpg`);
+    titleEl.textContent = card.querySelector(".pcard__title").textContent;
+    img.alt = titleEl.textContent;
+    thumbs.innerHTML = list.map((src, k) => `<button type="button" aria-label="${k + 1}"><img src="${src}" alt="" loading="lazy"></button>`).join("");
+    thumbs.querySelectorAll("button").forEach((b, k) => b.addEventListener("click", () => show(k)));
+    lastFocus = document.activeElement;
+    lbEl.hidden = false; document.documentElement.style.overflow = "hidden";
+    window.lenisInstance?.stop();
+    show(0); lbEl.querySelector(".lb__close").focus();
+  };
+  const close = () => {
+    lbEl.hidden = true; document.documentElement.style.overflow = "";
+    window.lenisInstance?.start(); lastFocus?.focus();
+  };
+  document.querySelectorAll(".pcard").forEach((c) => c.querySelector(".pcard__open").addEventListener("click", () => open(c)));
+  lbEl.querySelector(".lb__close").addEventListener("click", close);
+  lbEl.querySelector(".lb__nav--prev").addEventListener("click", () => show(idx - 1));
+  lbEl.querySelector(".lb__nav--next").addEventListener("click", () => show(idx + 1));
+  addEventListener("keydown", (e) => {
+    if (lbEl.hidden) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowRight") show(idx + 1);
+    if (e.key === "ArrowLeft") show(idx - 1);
+  });
+  // deslizar en el teléfono
+  let x0 = null;
+  img.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), { passive: true });
+  img.addEventListener("touchend", (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+}
+
 // ---- Dibujos: cada .js-draw carga su SVG (trazos vectorizados de bocetos y renders) ----
 const draws = new Map();
 const loadDraw = (el) => {
@@ -174,11 +223,11 @@ function init() {
     const sketch = document.querySelector(".hero__sketch");
     const portalAt = () => {
       const r = sketch.getBoundingClientRect();
-      return `${((r.left + r.width * .496) / innerWidth) * 100}% ${((r.top + r.height * .518) / innerHeight) * 100}%`;
+      return `${((r.left + r.width * .489) / innerWidth) * 100}% ${((r.top + r.height * .515) / innerHeight) * 100}%`;
     };
     gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom bottom", scrub: 1, invalidateOnRefresh: true } })
       .to(".hero__copy, .hero__scroll, .hero__sketch figcaption", { opacity: 0, y: -40, duration: .25 }, 0)
-      .to(sketch, { scale: 2.6, transformOrigin: "49.6% 51.8%", ease: "power2.in", duration: 1 }, 0)
+      .to(sketch, { scale: 2.6, transformOrigin: "48.9% 51.5%", ease: "power2.in", duration: 1 }, 0)
       .to(".sheet", { scale: 1.6, opacity: 0, duration: .8 }, 0)
       .fromTo(".hero__portal", { clipPath: () => `circle(0% at ${portalAt()})` }, { clipPath: () => `circle(150% at ${portalAt()})`, ease: "power2.in", duration: .55 }, .45);
   }
@@ -262,6 +311,142 @@ function init() {
       ScrollTrigger.refresh();
     });
   });
+
+  // ---- Conoce más: Otter como película (isla → boceto → planta → corte → fachada a mano → boceto a marcador → render) ----
+  const film = document.querySelector(".film");
+  if (film) {
+    const q = (sel) => film.querySelector(sel);
+    const caps = [...film.querySelectorAll(".film__cap")];
+    const rail = [...film.querySelectorAll(".film__rail li")];
+    const bounds = [1.25, 2.5, 3.7, 4.6, 5.38, 99];
+    const setChapter = (t) => {
+      const i = bounds.findIndex((b) => t < b);
+      caps.forEach((c, k) => c.classList.toggle("is-on", k === i));
+      rail.forEach((li, k) => li.classList.toggle("is-on", k === i));
+    };
+    setChapter(0);
+    const titleText = q(".film__title text");
+    const plan = q(".film__plan"), section = q(".film__section"), sketch = q(".film__sketch");
+    const facadeDraw = q(".film__facade .draw");
+    gsap.set(plan, { transformPerspective: 1400 });
+    const tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        trigger: film, start: "top top", end: "+=650%", scrub: .9, pin: q(".film__stage"), anticipatePin: 1,
+        onUpdate: (st) => { setChapter(st.progress * 6); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
+      },
+    })
+      .to({}, { duration: 6 }, 0) // duración fija: los trazos se insertan después sin alterar el ritmo
+      .to(q(".film__aerial"), { scale: 1.45, duration: 1.4 }, 0)
+      .fromTo(titleText, { strokeDasharray: 2600, strokeDashoffset: 2600 }, { strokeDashoffset: 0, duration: .55 }, 0)
+      .to(titleText, { fillOpacity: 1, duration: .2 }, .45)
+      .to(q(".film__title"), { opacity: 0, scale: 1.15, duration: .25 }, .95)
+      .fromTo(q(".film__paper"), { clipPath: "circle(0% at 50% 45%)" }, { clipPath: "circle(150% at 50% 45%)", duration: .55, ease: "power2.in" }, 1.05)
+      .to(sketch, { scale: 1.3, opacity: 0, duration: .3 }, 2.4)
+      .from(plan, { rotation: -10, scale: .9, duration: .9 }, 2.6)
+      .to(plan, { rotationX: 58, rotation: -22, scale: .78, yPercent: -12, opacity: 0, duration: .45, ease: "power2.in" }, 3.55)
+      .to(section, { yPercent: -20, opacity: 0, duration: .2 }, 4.45)
+      .set(q(".film__scan--v"), { opacity: 1 }, 5)
+      .fromTo(q(".film__marker"), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: .35, ease: "power1.inOut" }, 5)
+      .fromTo(q(".film__scan--v"), { left: "0%" }, { left: "100%", duration: .35, ease: "power1.inOut" }, 5)
+      .set(q(".film__scan--v"), { opacity: 0 }, 5.36)
+      .to(facadeDraw, { opacity: 0, duration: .1 }, 5.25)
+      .set(q(".film__scan--h"), { opacity: 1 }, 5.4)
+      .fromTo(q(".film__render"), { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: .38, ease: "power1.inOut" }, 5.4)
+      .fromTo(q(".film__scan--h"), { top: "100%" }, { top: "0%", duration: .38, ease: "power1.inOut" }, 5.4)
+      .set(q(".film__scan--h"), { opacity: 0 }, 5.79)
+      .fromTo(q(".film__facade"), { scale: 1.06 }, { scale: 1, duration: .8 }, 5.2);
+    const drawIn = (el, at, len, fill = true) => loadDraw(el).then((paths) => {
+      tl.to(paths, { strokeDashoffset: 0, duration: len * .5, stagger: { amount: len * .5 } }, at);
+      if (fill) tl.to(paths, { fillOpacity: 1, duration: .15, stagger: { amount: .1 } }, at + len - .1);
+    });
+    Promise.all([drawIn(sketch, 1.3, .95), drawIn(plan, 2.65, .9), drawIn(section, 3.85, .55), drawIn(facadeDraw, 4.55, .45, false)])
+      .then(() => ScrollTrigger.refresh());
+  }
+
+  // ---- Conoce más: renders de Otter en una tira horizontal ----
+  const reel = document.querySelector(".reel");
+  if (reel) {
+    const track = reel.querySelector(".reel__track");
+    const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+    const tween = gsap.to(track, {
+      x: () => -dist(), ease: "none",
+      scrollTrigger: { trigger: reel, start: "top top", end: () => "+=" + dist(), pin: reel.querySelector(".reel__pin"), scrub: .8, invalidateOnRefresh: true },
+    });
+    reel.querySelectorAll(".reel__item img").forEach((im) => gsap.fromTo(im, { xPercent: -6 }, { xPercent: 6, ease: "none", scrollTrigger: { trigger: im.parentElement, containerAnimation: tween, start: "left right", end: "right left", scrub: true } }));
+  }
+  gsap.utils.toArray(".pcard").forEach((c, i) => gsap.from(c, { y: 50, opacity: 0, duration: 1, delay: (i % 3) * .1, ease: "expo.out", scrollTrigger: { trigger: c, start: "top 90%" } }));
+
+  // ---- Conoce más: Puerto de Guanta — azul plano; el puerto crece fase por fase sobre el mismo plano ----
+  const gf = document.querySelector(".gfilm");
+  if (gf) {
+    const q = (sel) => gf.querySelector(sel);
+    const caps = [...gf.querySelectorAll(".film__cap")];
+    const rail = [...gf.querySelectorAll(".film__rail li")];
+    const bounds = [1.2, 2.2, 3.6, 5.1, 6.85, 99];
+    const setChapter = (t) => {
+      const i = bounds.findIndex((b) => t < b);
+      caps.forEach((c, k) => c.classList.toggle("is-on", k === i));
+      rail.forEach((li, k) => li.classList.toggle("is-on", k === i));
+    };
+    setChapter(0);
+    const [baseEl, f1El, f2El, f3El] = gf.querySelectorAll(".gfilm__layer");
+    const title = q(".gfilm__title text");
+    const sv = q(".gfilm__scanv"), sh = q(".gfilm__scanh");
+    const tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        trigger: gf, start: "top top", end: "+=800%", scrub: .9, pin: q(".gfilm__stage"), anticipatePin: 1,
+        onUpdate: (st) => { setChapter(st.progress * 8); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
+      },
+    })
+      .to({}, { duration: 8 }, 0)
+      // 01 situación actual
+      .to(q(".gfilm__actual"), { scale: 1.3, duration: 1.4 }, 0)
+      .fromTo(title, { strokeDasharray: 2800, strokeDashoffset: 2800 }, { strokeDashoffset: 0, duration: .55 }, 0)
+      .to(title, { fillOpacity: 1, duration: .2 }, .45)
+      .to(q(".gfilm__title"), { opacity: 0, scale: 1.15, duration: .25 }, .9)
+      // 02 se abre el plano azul
+      .fromTo(q(".gfilm__blue"), { clipPath: "circle(0% at 50% 55%)" }, { clipPath: "circle(150% at 50% 55%)", duration: .5, ease: "power2.in" }, 1.0)
+      .fromTo(q(".gfilm__map"), { scale: 1.06 }, { scale: 1, duration: 6.8 }, 1.2)
+      // 03 fase 1 → render por iris desde la zona de expansión
+      .set(q(".gfilm__r1"), { opacity: 1, clipPath: "circle(0% at 30% 72%)" }, 2.95)
+      .to(q(".gfilm__r1"), { clipPath: "circle(140% at 30% 72%)", duration: .45, ease: "power2.inOut" }, 2.95)
+      .to(q(".gfilm__r1"), { opacity: 0, duration: .25 }, 3.55)
+      // 04 fase 2 → render con barrido vertical
+      .set(q(".gfilm__r2"), { opacity: 1, clipPath: "inset(0 100% 0 0)" }, 4.45)
+      .set(sv, { opacity: 1, left: "0%" }, 4.45)
+      .to(q(".gfilm__r2"), { clipPath: "inset(0 0% 0 0)", duration: .4, ease: "power1.inOut" }, 4.45)
+      .to(sv, { left: "100%", duration: .4, ease: "power1.inOut" }, 4.45)
+      .set(sv, { opacity: 0 }, 4.86)
+      .to(q(".gfilm__r2"), { opacity: 0, duration: .25 }, 5.05)
+      // 05 fase 3 → cianotipo → render
+      .to(q(".gfilm__cyan"), { opacity: 1, duration: .35 }, 6.0)
+      .set(q(".gfilm__r3"), { opacity: 1, clipPath: "inset(100% 0 0 0)" }, 6.45)
+      .set(sh, { opacity: 1, top: "100%" }, 6.45)
+      .to(q(".gfilm__r3"), { clipPath: "inset(0% 0 0 0)", duration: .4, ease: "power1.inOut" }, 6.45)
+      .to(sh, { top: "0%", duration: .4, ease: "power1.inOut" }, 6.45)
+      .set(sh, { opacity: 0 }, 6.86)
+      // 06 de día a noche: barrido de arriba hacia abajo
+      .set(q(".gfilm__night"), { opacity: 1, clipPath: "inset(0 0 100% 0)" }, 7.0)
+      .set(sh, { opacity: 1, top: "0%" }, 7.0)
+      .to(q(".gfilm__night"), { clipPath: "inset(0 0 0% 0)", duration: .55, ease: "power1.inOut" }, 7.0)
+      .to(sh, { top: "100%", duration: .55, ease: "power1.inOut" }, 7.0)
+      .set(sh, { opacity: 0 }, 7.56);
+    // En teléfono el plano no cabe completo: paneo hacia el oeste para ver la fase 2 y de vuelta para la 3
+    if (matchMedia("(max-width: 760px)").matches) {
+      tl.to(q(".gfilm__map"), { xPercent: -28, duration: .5, ease: "power1.inOut" }, 3.65)
+        .to(q(".gfilm__map"), { xPercent: -50, duration: .5, ease: "power1.inOut" }, 5.1);
+    }
+    const drawIn = (el, at, len) => loadDraw(el).then((paths) => {
+      gsap.set(paths, { fillOpacity: 0 });
+      tl.to(paths, { strokeDashoffset: 0, duration: len * .55, stagger: { amount: len * .45 } }, at)
+        .to(paths, { fillOpacity: 1, duration: .15, stagger: { amount: .1 } }, at + len - .12);
+    });
+    Promise.all([drawIn(baseEl, 1.3, .85), drawIn(f1El, 2.25, .65), drawIn(f2El, 3.75, .65), drawIn(f3El, 5.25, .7)])
+      .then(() => ScrollTrigger.refresh());
+  }
+
 
   // ---- Nosotros ----
   if (document.querySelector(".page-hero__photo")) {
@@ -349,8 +534,8 @@ function desktopFx() {
   document.querySelectorAll("[data-magnetic]").forEach((el) => {
     el.addEventListener("mousemove", (e) => {
       const r = el.getBoundingClientRect();
-      gsap.to(el, { x: (e.clientX - r.left - r.width / 2) * .3, y: (e.clientY - r.top - r.height / 2) * .4, duration: .5, ease: "power3.out" });
+      gsap.to(el, { x: (e.clientX - r.left - r.width / 2) * .12, y: (e.clientY - r.top - r.height / 2) * .18, duration: .6, ease: "power3.out" });
     });
-    el.addEventListener("mouseleave", () => gsap.to(el, { x: 0, y: 0, duration: .8, ease: "elastic.out(1, .4)" }));
+    el.addEventListener("mouseleave", () => gsap.to(el, { x: 0, y: 0, duration: .7, ease: "power3.out" }));
   });
 }

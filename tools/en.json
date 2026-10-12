@@ -124,10 +124,6 @@
 "02 — Process"
 ],
 [
-"Boceto, plano, obra.",
-"Sketch, plan, site."
-],
-[
 "alt=\"Los arquitectos discuten un corte dibujado en la pizarra\"",
 "alt=\"The architects discuss a section drawn on the whiteboard\""
 ],
@@ -142,14 +138,6 @@
 [
 "<span class=\"mono\">02 — Plano</span><p>Medimos y redibujamos sobre el espacio real.</p>",
 "<span class=\"mono\">02 — Plan</span><p>We measure and redraw on the real space.</p>"
-],
-[
-"alt=\"Muro en obra marcado con el isotipo de Caraqueña en naranja\"",
-"alt=\"Construction-site wall marked with the Caraqueña symbol in orange\""
-],
-[
-"<span class=\"mono\">03 — Obra</span><p>Marcamos, supervisamos y ejecutamos en sitio.</p>",
-"<span class=\"mono\">03 — Site</span><p>We mark out, supervise and build on site.</p>"
 ],
 [
 "03 — Proyectos",
@@ -336,23 +324,283 @@
 "<li class=\"is-on\">Line</li><li>Sketch</li><li>Render</li>"
 ],
 [
-"<span class=\"mono tag\">Laboratorio</span>",
-"<span class=\"mono tag\">Lab</span>"
-],
-[
-"<h1 class=\"page-hero__title\">Conoce más</h1>",
-"<h1 class=\"page-hero__title\">Learn more</h1>"
-],
-[
-"Espacio en construcción para experimentar animaciones con planos.",
-"A space under construction for experimenting with plan animations."
-],
-[
 ">Conoce más</a>",
 ">Learn more</a>"
 ],
 [
 "<text x=\"0\" y=\"170\">CONOCE MÁS</text>",
 "<text x=\"0\" y=\"170\">LEARN MORE</text>"
+],
+[
+"Boceto, plano, render.",
+"Sketch, plan, render."
+],
+[
+"alt=\"Render de una sala con cocina abierta, concreto, madera y vegetación\"",
+"alt=\"Render of a living room with open kitchen, concrete, wood and plants\""
+],
+[
+"<span class=\"mono\">03 — Render</span><p>Cada espacio, visualizado antes de construirse.</p>",
+"<span class=\"mono\">03 — Render</span><p>Every space, visualized before it is built.</p>"
+],
+[
+"Proyectos,<br>del trazo al render.",
+"Projects,<br>from line to render."
+],
+[
+"Hotelería, infraestructura e interiorismo, contados con sus propios dibujos: bocetos, plantas, cortes y renders de Caraqueña.",
+"Hospitality, infrastructure and interiors, told through their own drawings: Caraqueña sketches, plans, sections and renders."
+],
+[
+"aria-label=\"Otter La Tortuga: de la isla al render\"",
+"aria-label=\"Otter La Tortuga: from the island to the render\""
+],
+[
+"alt=\"Vista aérea de la Isla La Tortuga, en el Caribe venezolano\"",
+"alt=\"Aerial view of Isla La Tortuga in the Venezuelan Caribbean\""
+],
+[
+"alt=\"Render de la fachada de Otter La Tortuga: edificio circular de dos niveles con terrazas ajardinadas\"",
+"alt=\"Render of the Otter La Tortuga facade: a two-level circular building with planted terraces\""
+],
+[
+"<li>Ubicación</li><li>Concepto</li><li>Conjunto</li><li>Corte</li><li>Boceto</li><li>Render</li>",
+"<li>Location</li><li>Concept</li><li>Master plan</li><li>Section</li><li>Sketch</li><li>Render</li>"
+],
+[
+"<span class=\"mono\">01 — Ubicación</span><p>Zona noreste de la Isla La Tortuga, en el Caribe venezolano: playas de arena blanca y aguas turquesa.</p>",
+"<span class=\"mono\">01 — Location</span><p>The northeast of Isla La Tortuga, in the Venezuelan Caribbean: white-sand beaches and turquoise water.</p>"
+],
+[
+"<span class=\"mono\">02 — Concepto</span><p>Una geometría circular para que todas las habitaciones tengan vista de 360°, organizadas desde un trazado radial.</p>",
+"<span class=\"mono\">02 — Concept</span><p>A circular geometry so every room enjoys a 360° view, organized around a radial layout.</p>"
+],
+[
+"<span class=\"mono\">03 — Conjunto</span><p>Un edificio central reúne lobby, junior suites, restaurante, wellness y gimnasio. Alrededor, villas de concepto orgánico.</p>",
+"<span class=\"mono\">03 — Master plan</span><p>A central building holds the lobby, junior suites, restaurant, wellness and gym. Around it, villas with an organic concept.</p>"
+],
+[
+"<span class=\"mono\">04 — Corte</span><p>Dos niveles abiertos al horizonte, con materiales no corrosivos ni visualmente invasivos.</p>",
+"<span class=\"mono\">04 — Section</span><p>Two levels open to the horizon, built with non-corrosive, visually unobtrusive materials.</p>"
+],
+[
+"<span class=\"mono\">05 — Boceto</span><p>La fachada, primero a mano.</p>",
+"<span class=\"mono\">05 — Sketch</span><p>The facade, by hand first.</p>"
+],
+[
+"<span class=\"mono\">06 — Render</span><p>Otter La Tortuga. Anteproyecto, 2024.</p>",
+"<span class=\"mono\">06 — Render</span><p>Otter La Tortuga. Schematic design, 2024.</p>"
+],
+[
+"aria-label=\"Otter La Tortuga en renders\"",
+"aria-label=\"Otter La Tortuga in renders\""
+],
+[
+"El hotel, en renders.",
+"The hotel, in renders."
+],
+[
+"alt=\"Otter La Tortuga: piscina frente al edificio circular\"",
+"alt=\"Otter La Tortuga: pool in front of the circular building\""
+],
+[
+"alt=\"Otter La Tortuga: piscina infinita hacia el mar\"",
+"alt=\"Otter La Tortuga: infinity pool facing the sea\""
+],
+[
+"alt=\"Otter La Tortuga: restaurante con pérgola frente a la playa\"",
+"alt=\"Otter La Tortuga: restaurant with pergola facing the beach\""
+],
+[
+"alt=\"Otter La Tortuga: acceso con espejo de agua y palmeras\"",
+"alt=\"Otter La Tortuga: entrance with reflecting pool and palms\""
+],
+[
+"alt=\"Otter La Tortuga: pabellón con celosía de madera\"",
+"alt=\"Otter La Tortuga: pavilion with timber lattice\""
+],
+[
+"alt=\"Otter La Tortuga: acceso bajo el edificio con la marca Otter\"",
+"alt=\"Otter La Tortuga: entrance under the building with the Otter sign\""
+],
+[
+"alt=\"Otter La Tortuga: habitación\"",
+"alt=\"Otter La Tortuga: guest room\""
+],
+[
+"<span class=\"mono tag\">Portafolio</span>",
+"<span class=\"mono tag\">Portfolio</span>"
+],
+[
+"Fichas de<br>proyecto.",
+"Project<br>sheets."
+],
+[
+"aria-label=\"Ver galería de Otter La Tortuga\"",
+"aria-label=\"View Otter La Tortuga gallery\""
+],
+[
+"Hotelería · Isla La Tortuga",
+"Hospitality · Isla La Tortuga"
+],
+[
+"Hotel de geometría circular con vista de 360° desde cada habitación, villas, piscinas y pool lounge frente al mar.",
+"A circular hotel with a 360° view from every room, plus villas, pools and a pool lounge facing the sea."
+],
+[
+"aria-label=\"Ver galería de Puerto de Guanta\"",
+"aria-label=\"View Puerto de Guanta gallery\""
+],
+[
+"Infraestructura portuaria · Guanta",
+"Port infrastructure · Guanta"
+],
+[
+"Terminal especializada de carga general: proyección futura en tres fases de expansión.",
+"Specialized general cargo terminal: a future plan in three expansion phases."
+],
+[
+"aria-label=\"Ver galería de Proyecto Altamira\"",
+"aria-label=\"View Proyecto Altamira gallery\""
+],
+[
+"Interiorismo residencial · Altamira",
+"Residential interiors · Altamira"
+],
+[
+"Sala de estar, biblioteca, family room, oficina privada, cinco habitaciones y terraza: de la situación actual a la propuesta.",
+"Living room, library, family room, private office, five bedrooms and terrace: from existing condition to proposal."
+],
+[
+"aria-label=\"Ver galería de PH Miranda\"",
+"aria-label=\"View PH Miranda gallery\""
+],
+[
+"Interiorismo · Anteproyecto",
+"Interiors · Schematic design"
+],
+[
+"Recibo, bar, sala, cocina, sala de TV y escalera en un mismo recorrido de concreto, madera y vegetación.",
+"Entry, bar, living room, kitchen, TV room and stair in one sequence of concrete, wood and plants."
+],
+[
+"aria-label=\"Ver galería de Residencia en planta baja\"",
+"aria-label=\"View Ground-floor residence gallery\""
+],
+[
+"alt=\"Residencia en planta baja\"",
+"alt=\"Ground-floor residence\""
+],
+[
+"<h3 class=\"pcard__title\">Residencia en planta baja</h3>",
+"<h3 class=\"pcard__title\">Ground-floor residence</h3>"
+],
+[
+"Habitación principal, peinadora y escritorio, vestier y baño, resueltos en madera y piedra.",
+"Master bedroom, vanity and desk, walk-in closet and bathroom, in wood and stone."
+],
+[
+"aria-label=\"Ver galería de Suite y oficina\"",
+"aria-label=\"View Suite and office gallery\""
+],
+[
+"alt=\"Suite y oficina\"",
+"alt=\"Suite and office\""
+],
+[
+"<h3 class=\"pcard__title\">Suite y oficina</h3>",
+"<h3 class=\"pcard__title\">Suite and office</h3>"
+],
+[
+"Habitación principal, vestier, oficina, baños y panelería de pasillo, con cortes seccionados de cada espacio.",
+"Master bedroom, walk-in closet, office, bathrooms and hallway paneling, with sectional cutaways of each space."
+],
+[
+"aria-label=\"Galería del proyecto\"",
+"aria-label=\"Project gallery\""
+],
+[
+"aria-label=\"Cerrar galería\"",
+"aria-label=\"Close gallery\""
+],
+[
+"aria-label=\"Imagen anterior\"",
+"aria-label=\"Previous image\""
+],
+[
+"aria-label=\"Imagen siguiente\"",
+"aria-label=\"Next image\""
+],
+[
+"láminas</span>",
+"sheets</span>"
+],
+[
+"Anteproyecto · 2024 ·",
+"Schematic design · 2024 ·"
+],
+[
+"Proyección futura ·",
+"Future plan ·"
+],
+[
+"<span class=\"mono pcard__meta\">Interiorismo ·",
+"<span class=\"mono pcard__meta\">Interiors ·"
+],
+[
+"<span class=\"mono pcard__meta\">Anteproyecto ·",
+"<span class=\"mono pcard__meta\">Schematic design ·"
+],
+[
+"aria-label=\"Puerto de Guanta: proyección futura en tres fases\"",
+"aria-label=\"Puerto de Guanta: a future plan in three phases\""
+],
+[
+"alt=\"Toma aérea actual del Puerto de Guanta\"",
+"alt=\"Current aerial view of Puerto de Guanta\""
+],
+[
+"alt=\"Visualización de la fase 1 del Puerto de Guanta\"",
+"alt=\"Visualization of phase 1 of Puerto de Guanta\""
+],
+[
+"alt=\"Visualización de la fase 2 del Puerto de Guanta\"",
+"alt=\"Visualization of phase 2 of Puerto de Guanta\""
+],
+[
+"alt=\"Visualización del conjunto completo del Puerto de Guanta\"",
+"alt=\"Visualization of the complete Puerto de Guanta\""
+],
+[
+"alt=\"Visualización nocturna del Puerto de Guanta\"",
+"alt=\"Night visualization of Puerto de Guanta\""
+],
+[
+"<li>Actual</li><li>Lectura</li><li>Fase 1</li><li>Fase 2</li><li>Fase 3</li><li>Noche</li>",
+"<li>Today</li><li>Reading</li><li>Phase 1</li><li>Phase 2</li><li>Phase 3</li><li>Night</li>"
+],
+[
+"<span class=\"mono\">01 — Situación actual</span><p>El Puerto de Guanta, principal eje estratégico del oriente venezolano, en plena modernización de muelles y logística.</p>",
+"<span class=\"mono\">01 — Today</span><p>Puerto de Guanta, the main strategic hub of eastern Venezuela, in the middle of modernizing its piers and logistics.</p>"
+],
+[
+"<span class=\"mono\">02 — Lectura del sitio</span><p>La bahía, los muelles y los patios existentes: la base sobre la que crece el proyecto.</p>",
+"<span class=\"mono\">02 — Site reading</span><p>The bay, the existing piers and yards: the base the project grows from.</p>"
+],
+[
+"<span class=\"mono\">03 — Fase 1 · Contingencia</span><p>Consolidación del área de maniobras y almacenamiento: carga extra pesada, fraccionada, tubular, contenedores y puestos de atraque.</p>",
+"<span class=\"mono\">03 — Phase 1 · Contingency</span><p>Consolidating maneuvering and storage areas: extra-heavy, break-bulk and tubular cargo, containers and berths.</p>"
+],
+[
+"<span class=\"mono\">04 — Fase 2 · Capacidad</span><p>Terminales especializadas de descarga de granel y sistemas de transporte automatizado.</p>",
+"<span class=\"mono\">04 — Phase 2 · Capacity</span><p>Specialized bulk unloading terminals and automated transport systems.</p>"
+],
+[
+"<span class=\"mono\">05 — Fase 3 · Conjunto</span><p>Vía costera y muelle norte: el conjunto completo, con los flujos logísticos separados de las áreas administrativas.</p>",
+"<span class=\"mono\">05 — Phase 3 · Complete</span><p>Coastal road and north pier: the complete port, with logistics flows separated from administrative areas.</p>"
+],
+[
+"<span class=\"mono\">06 — De día a noche</span><p>Una proyección pensada para ser el principal nodo de intercambio comercial de la región.</p>",
+"<span class=\"mono\">06 — Day to night</span><p>A plan designed to become the main commercial exchange hub of the region.</p>"
 ]
 ]

@@ -152,10 +152,10 @@ figure { margin: 0; }
 }
 .hero__sketch {
   position: absolute; right: clamp(0px, 3vw, 60px); top: 50%; transform: translateY(-50%);
-  width: min(58vw, 118vh); aspect-ratio: 1130 / 900;
+  width: min(58vw, 118vh); aspect-ratio: 1770 / 1405;
 }
 .hero__sketch .draw { position: absolute; inset: 0; }
-.hero__accent { position: absolute; left: 49.6%; top: 51.8%; width: 50%; aspect-ratio: 1; transform: translate(-50%, -50%) rotate(-90deg); overflow: visible; pointer-events: none; }
+.hero__accent { position: absolute; left: 48.9%; top: 51.5%; width: 52%; aspect-ratio: 1; transform: translate(-50%, -50%) rotate(-90deg); overflow: visible; pointer-events: none; }
 .hero__accent circle { fill: none; stroke: var(--orange); stroke-width: .6; stroke-dasharray: 302; stroke-dashoffset: 302; }
 .hero__sketch figcaption { position: absolute; left: 0; bottom: -28px; color: var(--muted-ink); }
 .hero__copy { position: absolute; left: var(--pad); bottom: clamp(32px, 9vh, 96px); z-index: 3; max-width: min(560px, 44vw); display: flex; flex-direction: column; gap: 26px; }
@@ -581,3 +581,125 @@ figure { margin: 0; }
   .contact__row .contact__go { opacity: .8; }
 }
 
+
+/* ============================================================
+   CONOCE MÁS — película de Otter, galería de renders y fichas
+   ============================================================ */
+.lab-hero { padding-bottom: clamp(60px, 8vw, 110px); }
+
+/* Película */
+.film { position: relative; background: var(--black); }
+.film__stage { position: relative; height: 100vh; overflow: hidden; background: var(--black); }
+.film__aerial { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 45%; }
+.film__title { position: absolute; left: 50%; top: 50%; width: min(78vw, 900px); transform: translate(-50%, -50%); overflow: visible; z-index: 2; pointer-events: none; }
+.film__title text { font: 800 200px/1 var(--display); font-variation-settings: "wdth" 118; letter-spacing: .04em; fill: var(--white); fill-opacity: 0; stroke: var(--white); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.film__paper { position: absolute; inset: 0; background: var(--paper); clip-path: circle(0% at 50% 45%); z-index: 3; }
+.film__paper::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line-ink) 1px, transparent 1px), linear-gradient(90deg, var(--line-ink) 1px, transparent 1px); background-size: 56px 56px; opacity: .35; }
+.film__draw { position: absolute; inset: 11% 8% 18%; z-index: 4; pointer-events: none; }
+.film__draw svg { width: 100%; height: 100%; }
+.film__section { inset: 18% 6% 26%; }
+.film__plan path { stroke-width: .8; }
+.film__facade { position: absolute; left: 50%; top: 46%; width: max(92vw, 74vh); aspect-ratio: 1956 / 1100; transform: translate(-50%, -50%); z-index: 5; }
+.film__facade .draw { position: absolute; inset: 0; }
+.film__facade .draw svg { width: 100%; height: 100%; }
+.film__marker, .film__render { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.film__marker { clip-path: inset(0 100% 0 0); }
+.film__render { clip-path: inset(100% 0 0 0); }
+.film__scan { position: absolute; z-index: 2; background: var(--orange); box-shadow: 0 0 16px 3px rgba(240, 90, 37, .6); opacity: 0; }
+.film__scan--v { top: 0; bottom: 0; left: 0; width: 2px; }
+.film__scan--h { left: 0; right: 0; top: 100%; height: 2px; }
+.film__rail { position: absolute; right: var(--pad); top: 50%; transform: translateY(-50%); z-index: 7; display: flex; flex-direction: column; gap: 12px; text-align: right; }
+.film__rail li { color: rgba(244, 241, 236, .45); font-size: 10px; transition: color .4s; position: relative; padding-right: 18px; mix-blend-mode: difference; }
+.film__rail li::after { content: ""; position: absolute; right: 0; top: 50%; width: 8px; height: 1px; background: currentColor; transition: width .4s var(--ease), background .4s; }
+.film__rail li.is-on { color: var(--white); }
+.film__rail li.is-on::after { width: 14px; background: var(--orange); }
+.film__caps { position: absolute; left: var(--pad); bottom: clamp(22px, 5vh, 48px); z-index: 7; width: min(440px, calc(100% - 2 * var(--pad))); }
+.film__cap { position: absolute; left: 0; bottom: 0; width: 100%; padding: 18px 20px; background: rgba(10, 10, 10, .78); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--white); opacity: 0; visibility: hidden; }
+.film__cap .mono { color: var(--orange); }
+.film__cap p { margin-top: 8px; font-size: 16px; line-height: 1.45; }
+.film__progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255, 255, 255, .12); z-index: 7; }
+.film__progress i { position: absolute; inset: 0; background: var(--orange); transform: scaleX(0); transform-origin: left; }
+@media (max-width: 760px) {
+  .film__draw { inset: 14% 2% 30%; }
+  .film__section { inset: 24% 2% 40%; }
+  .film__facade { width: max(100vw, 120vw); top: 40%; }
+  .film__rail { display: none; }
+  .film__cap p { font-size: 15px; }
+}
+
+/* Galería horizontal */
+.reel { background: var(--black); }
+.reel__pin { height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: clamp(24px, 4vh, 44px); overflow: hidden; }
+.reel__head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+.reel__title { font-size: clamp(32px, 4vw, 64px); font-weight: 400; }
+.reel__track { display: flex; gap: clamp(12px, 2vw, 28px); padding: 0 var(--pad); width: max-content; }
+.reel__item { width: clamp(300px, 56vw, 980px); aspect-ratio: 16 / 9; overflow: hidden; flex: none; }
+.reel__item img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); }
+@media (max-width: 760px) { .reel__item { width: 84vw; } }
+
+/* Fichas */
+.folio { padding: clamp(90px, 11vw, 160px) 0; }
+.folio__head { display: flex; flex-direction: column; gap: 24px; margin-bottom: clamp(40px, 6vw, 80px); }
+.folio__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 36px); }
+.pcard { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line-ink); }
+.pcard__open { display: block; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; }
+.pcard__media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--paper-2); }
+.pcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), filter .8s; }
+.pcard__media::after { content: var(--see, "Ver ficha"); position: absolute; left: 16px; bottom: 16px; padding: 8px 14px; border-radius: 999px; background: var(--orange); color: var(--black); font: 600 12px/1 var(--text); opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .5s var(--ease); }
+.pcard__body { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 24px; flex: 1; }
+.pcard__cat { color: var(--orange); font-size: 10px; }
+.pcard__title { font-size: clamp(24px, 2vw, 30px); font-weight: 500; }
+.pcard__text { color: var(--muted-ink); font-size: 15px; }
+.pcard__meta { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line-ink); color: var(--muted-ink); font-size: 10px; }
+@media (hover: hover) and (pointer: fine) {
+  .pcard:hover .pcard__media img { transform: scale(1.05); }
+  .pcard:hover .pcard__media::after { opacity: 1; transform: none; }
+}
+@media (hover: none) { .pcard__media::after { opacity: 1; transform: none; } }
+@media (max-width: 1000px) { .folio__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .folio__grid { grid-template-columns: 1fr; } }
+
+/* Galería modal */
+.lb { position: fixed; inset: 0; z-index: 300; background: rgba(8, 8, 8, .96); color: var(--white); display: flex; flex-direction: column; }
+.lb[hidden] { display: none; }
+.lb__top { display: flex; align-items: center; gap: 18px; padding: 16px var(--pad); }
+.lb__title { color: var(--orange); margin-right: auto; }
+.lb__close { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: none; color: var(--white); font-size: 16px; cursor: pointer; }
+.lb__stage { position: relative; flex: 1; display: grid; place-items: center; padding: 0 64px; min-height: 0; }
+.lb__img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lb__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(10,10,10,.5); color: var(--white); font-size: 18px; cursor: pointer; }
+.lb__nav--prev { left: 10px; }
+.lb__nav--next { right: 10px; }
+.lb__thumbs { display: flex; gap: 8px; padding: 14px var(--pad) 20px; overflow-x: auto; scrollbar-width: none; }
+.lb__thumbs::-webkit-scrollbar { display: none; }
+.lb__thumbs button { flex: none; width: 92px; height: 56px; padding: 0; border: 2px solid transparent; background: none; cursor: pointer; opacity: .55; transition: opacity .3s, border-color .3s; }
+.lb__thumbs button.is-on { opacity: 1; border-color: var(--orange); }
+.lb__thumbs img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 640px) { .lb__stage { padding: 0 8px; } .lb__nav { top: auto; bottom: 8px; transform: none; } }
+.film__cap { transition: opacity .5s var(--ease), visibility .5s, transform .6s var(--ease); transform: translateY(10px); }
+.film__cap.is-on { opacity: 1; visibility: visible; transform: none; }
+html[lang="en"] .pcard__media { --see: "View sheet"; }
+.film__facade .draw path { stroke-width: .7; }
+@media (max-width: 760px) {
+  .film__caps { width: calc(100% - var(--pad) - 76px); }
+  .film__cap { padding: 14px 16px; }
+}
+
+/* Película de Guanta: azul plano + naranja Caraqueña */
+.gfilm { position: relative; background: #0b1d33; --blue: #0b1d33; --blue-ink: #a9cdf5; }
+.gfilm .film__stage { background: var(--blue); }
+.gfilm__actual { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 45% 70%; }
+.gfilm__title text { stroke: var(--white); }
+.gfilm__blue { position: absolute; inset: 0; z-index: 3; background: var(--blue); clip-path: circle(0% at 50% 55%); }
+.gfilm__blue::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(169,205,245,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(169,205,245,.09) 1px, transparent 1px); background-size: 48px 48px; }
+.gfilm__map { position: absolute; left: 50%; top: 50%; width: max(100vw, 161vh); aspect-ratio: 2200 / 1366; transform: translate(-50%, -50%); z-index: 4; }
+.gfilm__layer { position: absolute; inset: 0; }
+.gfilm__layer svg { width: 100%; height: 100%; }
+.gfilm__base path { fill: var(--blue-ink); stroke: var(--blue-ink); stroke-width: .6; }
+.gfilm__phase path { fill: var(--orange); stroke: var(--orange); stroke-width: .9; filter: drop-shadow(0 0 3px rgba(240, 90, 37, .55)); }
+.gfilm__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.gfilm .film__rail li { mix-blend-mode: normal; color: rgba(169, 205, 245, .55); }
+.gfilm .film__cap { background: rgba(11, 29, 51, .82); border-left: 2px solid var(--orange); }
+@media (max-width: 760px) {
+  .gfilm__map { width: 230vw; }
+}
