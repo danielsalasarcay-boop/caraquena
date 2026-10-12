@@ -249,19 +249,6 @@ function init() {
 }
 
 function desktopFx() {
-  // ---- Cursor ----
-  const cursor = document.querySelector(".cursor");
-  const dot = cursor.querySelector(".cursor__dot");
-  const ring = cursor.querySelector(".cursor__ring");
-  gsap.set([dot, ring], { xPercent: -50, yPercent: -50 });
-  const rx = gsap.quickTo(ring, "x", { duration: .45, ease: "power3" });
-  const ry = gsap.quickTo(ring, "y", { duration: .45, ease: "power3" });
-  addEventListener("mousemove", (e) => {
-    cursor.classList.add("is-on");
-    gsap.set(dot, { x: e.clientX, y: e.clientY });
-    rx(e.clientX); ry(e.clientY);
-  });
-
   // ---- Botones magnéticos ----
   document.querySelectorAll("[data-magnetic]").forEach((el) => {
     el.addEventListener("mousemove", (e) => {

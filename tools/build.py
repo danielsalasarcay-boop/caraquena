@@ -67,7 +67,7 @@ def footer(b):
 """
 
 def page(out, title, desc, b, current, main, with_loader):
-    loader = P["loader"] if with_loader else P["loader"][P["loader"].index("  <!-- CURSOR -->"):]
+    loader = P["loader"] if with_loader else ""
     html = head(title, desc, with_loader) + loader + "\n" + header(b, current) + "\n  <main>\n" + open(main).read() + "  </main>\n\n" + footer(b) + P["float"]
     open(out, "w").write(html)
     print(out, len(html))
