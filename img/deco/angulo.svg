@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200">
-<path d="M20 170 L240 170"/><path d="M20 170 L170 20"/>
-<path class="dash" d="M20 170 L235 60"/>
-<path d="M100.0 170.0 A80 80 0 0 0 76.6 113.4"/><path d="M73 118 l7 5 l-9 2"/>
-<path d="M140.0 170.0 A120 120 0 0 0 126.9 115.5"/>
-<text x="100" y="142" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="1">45°</text><text x="150" y="160" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="1" font-size="20">27°</text>
-</svg>

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 240">
-<path d="M40 20 L40 220"/><path d="M28 30 L52 30"/><path d="M28 210 L52 210"/>
-<path d="M33 37 L47 23"/><path d="M33 217 L47 203"/>
-<text x="2" y="128" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="1" transform="rotate(-90 22 124)">.90</text>
-<path d="M80 210 L210 210"/><path d="M80 210 L190 146"/>
-<path d="M150.0 210.0 A70 70 0 0 0 140.6 175.0"/>
-<text x="150" y="196" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="1">30°</text>
-<path class="dash" d="M80 210 L80 120"/><circle cx="80" cy="210" r="3"/>
-</svg>
