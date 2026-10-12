@@ -729,3 +729,27 @@ picture { display: contents; }
   .float__wave { display: none; }
   .dot { animation: none; }
 }
+
+/* Película USM: papel + naranja, el boceto es un video que avanza con el scroll */
+.ufilm { position: relative; }
+.ufilm .film__stage { background: var(--paper); }
+.ufilm__grid { position: absolute; inset: 0; background-image: linear-gradient(var(--line-ink) 1px, transparent 1px), linear-gradient(90deg, var(--line-ink) 1px, transparent 1px); background-size: 56px 56px; opacity: .4; }
+.ufilm__title text { stroke: var(--orange); fill: var(--orange); }
+.ufilm__actual { position: absolute; left: 50%; top: 50%; height: min(78vh, 150vw); aspect-ratio: 977 / 2120; transform: translate(-50%, -52%); z-index: 3; box-shadow: 0 30px 80px rgba(0,0,0,.18); }
+.ufilm__actual img { width: 100%; height: 100%; object-fit: cover; }
+.ufilm__video { position: absolute; left: 50%; top: 48%; height: min(80vh, 118vw); aspect-ratio: 640 / 796; transform: translate(-50%, -50%); z-index: 4; background: #fff; visibility: hidden; }
+.ufilm__video video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.ufilm__plans { position: absolute; left: 50%; top: 46%; width: min(92vw, 150vh); aspect-ratio: 4616 / 2755; transform: translate(-50%, -50%); z-index: 5; }
+.ufilm__plans svg { width: 100%; height: 100%; }
+.ufilm__plans .l path { fill: var(--ink); stroke: var(--ink); stroke-width: .8; }
+.ufilm__plans .d path { fill: var(--orange); stroke: var(--orange); stroke-width: .6; }
+.ufilm__renders { position: absolute; inset: 0; z-index: 6; }
+.ufilm__r { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; visibility: hidden; }
+.ufilm .film__cap { background: rgba(255, 255, 255, .92); color: var(--ink); border-left: 2px solid var(--orange); }
+.ufilm .film__rail li { mix-blend-mode: normal; color: rgba(18, 18, 18, .4); }
+.ufilm .film__rail li.is-on { color: var(--ink); }
+@media (max-width: 760px) {
+  .ufilm__plans { width: 150vw; left: 62%; }
+  .ufilm__actual { height: 62vh; }
+  .ufilm__video { height: 60vh; top: 40%; }
+}

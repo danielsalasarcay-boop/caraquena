@@ -602,5 +602,49 @@
 [
 "alt=\"Fabrizio Palmieri, Carlos Enrique Salas y Elías Ojalvo sentados en un auditorio\"",
 "alt=\"Fabrizio Palmieri, Carlos Enrique Salas and Elías Ojalvo seated in an auditorium\""
+],
+[
+"aria-label=\"Universidad Santa María: base para la escultura de la Virgen\"",
+"aria-label=\"Universidad Santa María: base for the statue of the Virgin\""
+],
+[
+"alt=\"Situación actual: el altar existente de la Virgen en la Universidad Santa María\"",
+"alt=\"Existing condition: the current altar of the Virgin at Universidad Santa María\""
+],
+[
+"aria-label=\"Boceto a mano de la base, dibujándose\"",
+"aria-label=\"Hand sketch of the base, being drawn\""
+],
+[
+"alt=\"Render frontal de la base trapezoidal de concreto con la placa Promoción XXIII y la escultura de la Virgen\"",
+"alt=\"Front render of the trapezoidal concrete base with the Promoción XXIII plaque and the statue of the Virgin\""
+],
+[
+"alt=\"Render lateral de la base de concreto con la escultura de la Virgen\"",
+"alt=\"Side render of the concrete base with the statue of the Virgin\""
+],
+[
+"<li>USM</li><li>Actual</li><li>Boceto</li><li>Planos</li><li>Render</li>",
+"<li>USM</li><li>Today</li><li>Sketch</li><li>Drawings</li><li>Render</li>"
+],
+[
+"<span class=\"mono\">01 — Universidad Santa María</span><p>Base para la escultura de la Virgen. Urb. Miranda, Caracas · 2025.</p>",
+"<span class=\"mono\">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · 2025.</p>"
+],
+[
+"<span class=\"mono\">02 — Situación actual</span><p>El altar existente, que el proyecto reemplaza por una pieza de concreto.</p>",
+"<span class=\"mono\">02 — Today</span><p>The existing altar, which the project replaces with a single concrete piece.</p>"
+],
+[
+"<span class=\"mono\">03 — Boceto</span><p>La base dibujada a mano: espacio para flores, escultura, base de concreto y placa metálica.</p>",
+"<span class=\"mono\">03 — Sketch</span><p>The base drawn by hand: space for flowers, the statue, a concrete base and a metal plaque.</p>"
+],
+[
+"<span class=\"mono\">04 — Planos</span><p>Planta y elevación a escala 1:20, perspectiva 1:15. Una pieza de 0,90 × 0,90 × 1,20 m.</p>",
+"<span class=\"mono\">04 — Drawings</span><p>Plan and elevation at 1:20, perspective at 1:15. A 0.90 × 0.90 × 1.20 m piece.</p>"
+],
+[
+"<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes.</p>",
+"<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names.</p>"
 ]
 ]

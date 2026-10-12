@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=c46ada3a">
+  <link rel="stylesheet" href="css/style.css?v=239152ab">
 </head>
 <body class="is-sub">
 
@@ -240,6 +240,34 @@
       </div>
     </section>
 
+    <!-- USM · BASE ESCULTURA VIRGEN: película en papel y naranja — foto actual, boceto a mano (video ligado al scroll), planos acotados y render -->
+    <section class="ufilm" id="usm" data-theme="light" aria-label="Universidad Santa María: base for the statue of the Virgin">
+      <div class="film__stage ufilm__stage">
+        <div class="ufilm__grid" aria-hidden="true"></div>
+        <svg class="film__title ufilm__title" viewBox="0 0 1000 220" aria-hidden="true"><text x="500" y="180" text-anchor="middle">USM</text></svg>
+        <figure class="ufilm__actual"><picture><source media="(max-width: 900px)" srcset="img/usm/actual-m.jpg"><img src="img/usm/actual.jpg" alt="Existing condition: the current altar of the Virgin at Universidad Santa María" decoding="async"></picture></figure>
+        <div class="ufilm__video"><video src="video/usm-boceto.mp4" muted playsinline preload="auto" poster="img/usm/boceto-final.jpg" aria-label="Hand sketch of the base, being drawn"></video></div>
+        <div class="ufilm__plans draw js-draw" data-src="img/trazos/usm-planos.svg" aria-hidden="true"></div>
+        <div class="ufilm__renders">
+          <picture><source media="(max-width: 900px)" srcset="img/usm/render-0-m.jpg"><img class="ufilm__r ufilm__r1" src="img/usm/render-0.jpg" alt="Front render of the trapezoidal concrete base with the Promoción XXIII plaque and the statue of the Virgin" decoding="async"></picture>
+          <picture><source media="(max-width: 900px)" srcset="img/usm/render-1-m.jpg"><img class="ufilm__r ufilm__r2" src="img/usm/render-1.jpg" alt="Side render of the concrete base with the statue of the Virgin" decoding="async"></picture>
+          <span class="film__scan film__scan--v ufilm__scan" aria-hidden="true"></span>
+        </div>
+
+        <ol class="film__rail mono" aria-hidden="true">
+          <li>USM</li><li>Today</li><li>Sketch</li><li>Drawings</li><li>Render</li>
+        </ol>
+        <div class="film__caps">
+          <div class="film__cap"><span class="mono">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · 2025.</p></div>
+          <div class="film__cap"><span class="mono">02 — Today</span><p>The existing altar, which the project replaces with a single concrete piece.</p></div>
+          <div class="film__cap"><span class="mono">03 — Sketch</span><p>The base drawn by hand: space for flowers, the statue, a concrete base and a metal plaque.</p></div>
+          <div class="film__cap"><span class="mono">04 — Drawings</span><p>Plan and elevation at 1:20, perspective at 1:15. A 0.90 × 0.90 × 1.20 m piece.</p></div>
+          <div class="film__cap"><span class="mono">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names.</p></div>
+        </div>
+        <div class="film__progress" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
     <!-- Galería (se abre desde cada ficha) -->
     <div class="lb" hidden role="dialog" aria-modal="true" aria-label="Project gallery">
       <div class="lb__top">
@@ -291,6 +319,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=c46ada3a"></script>
+  <script src="js/main.js?v=239152ab"></script>
 </body>
 </html>

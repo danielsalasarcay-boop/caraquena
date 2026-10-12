@@ -494,6 +494,63 @@ function init() {
   }
 
 
+  // ---- Conoce más: USM — título, foto actual, boceto a mano (video ligado al scroll), planos acotados y renders ----
+  const uf = document.querySelector(".ufilm");
+  if (uf) {
+    const q = (sel) => uf.querySelector(sel);
+    const caps = [...uf.querySelectorAll(".film__cap")];
+    const rail = [...uf.querySelectorAll(".film__rail li")];
+    const bounds = [1, 2.0, 4.0, 5.0, 99];
+    const setChapter = (t) => {
+      const i = bounds.findIndex((b) => t < b);
+      caps.forEach((c, k) => c.classList.toggle("is-on", k === i));
+      rail.forEach((li, k) => li.classList.toggle("is-on", k === i));
+    };
+    setChapter(0);
+    const video = q("video"), title = q(".ufilm__title text"), scan = q(".ufilm__scan");
+    // iOS solo permite mover un video después de haberlo "tocado" una vez: play + pause silencioso al acercarse
+    let videoReady = false;
+    const prime = () => { if (videoReady) return; videoReady = true; const pr = video.play(); pr && pr.then(() => video.pause()).catch(() => {}); };
+    ScrollTrigger.create({ trigger: uf, start: "top 300%", once: true, onEnter: prime });
+    const vt = { t: 0 }; let lastSeek = -1;
+    const seek = () => {
+      const d = video.duration || 14.8, t = Math.min(d - .05, vt.t * d);
+      if (Math.abs(t - lastSeek) > 1 / 30) { lastSeek = t; if (video.fastSeek && /iP(hone|ad)/.test(navigator.userAgent)) video.fastSeek(t); else video.currentTime = t; }
+    };
+    const tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        trigger: uf, start: "top top", end: "+=600%", scrub: .9, pin: q(".ufilm__stage"), anticipatePin: 1,
+        onUpdate: (st) => { setChapter(st.progress * 6); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
+      },
+    })
+      .to({}, { duration: 6 }, 0)
+      .fromTo(title, { strokeDasharray: 1600, strokeDashoffset: 1600, fillOpacity: 0 }, { strokeDashoffset: 0, duration: .6 }, 0)
+      .to(title, { fillOpacity: 1, duration: .2 }, .5)
+      .to(q(".ufilm__title"), { autoAlpha: 0, scale: .85, duration: .25 }, .85)
+      .fromTo(q(".ufilm__actual"), { autoAlpha: 0, yPercent: 8, rotate: -2 }, { autoAlpha: 1, yPercent: 0, rotate: 0, duration: .4, ease: "power2.out" }, 1.0)
+      .to(q(".ufilm__actual"), { autoAlpha: 0, scale: .9, xPercent: -30, duration: .35, ease: "power2.in" }, 1.8)
+      .fromTo(q(".ufilm__video"), { autoAlpha: 0, scale: .96 }, { autoAlpha: 1, scale: 1, duration: .3, ease: "power2.out" }, 1.95)
+      .to(vt, { t: 1, duration: 1.85, onUpdate: seek }, 2.05)
+      .to(q(".ufilm__video"), { autoAlpha: 0, scale: 1.04, duration: .25 }, 3.95)
+      .to(q(".ufilm__plans"), { autoAlpha: 0, duration: .25 }, 4.95)
+      .set(q(".ufilm__r1"), { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" }, 5.0)
+      .set(scan, { opacity: 1, left: "0%" }, 5.0)
+      .to(q(".ufilm__r1"), { clipPath: "inset(0 0% 0 0)", duration: .45, ease: "power1.inOut" }, 5.0)
+      .to(scan, { left: "100%", duration: .45, ease: "power1.inOut" }, 5.0)
+      .set(scan, { opacity: 0 }, 5.46)
+      .fromTo(q(".ufilm__r1"), { scale: 1.08 }, { scale: 1, duration: .7 }, 5.0)
+      .fromTo(q(".ufilm__r2"), { autoAlpha: 0 }, { autoAlpha: 1, duration: .3 }, 5.6);
+    loadDraw(q(".ufilm__plans")).then((paths) => {
+      const lines = paths.filter((p) => p.closest(".l")), dims = paths.filter((p) => p.closest(".d"));
+      gsap.set(paths, { fillOpacity: 0 });
+      tl.to(lines, { strokeDashoffset: 0, duration: .45, stagger: { amount: .15 } }, 4.05)
+        .to(lines, { fillOpacity: 1, duration: .1 }, 4.5)
+        .to(dims, { strokeDashoffset: 0, duration: .3, stagger: { amount: .3 } }, 4.35)
+        .to(dims, { fillOpacity: 1, duration: .12, stagger: { amount: .08 } }, 4.8);
+    });
+  }
+
   // ---- Nosotros ----
   if (document.querySelector(".page-hero__photo")) {
     gsap.from(".page-hero__photo img", { clipPath: "inset(10% 6% 10% 6%)", scale: 1.06, ease: "none", scrollTrigger: { trigger: ".page-hero__photo", start: "top bottom", end: "top 35%", scrub: true } });
@@ -531,12 +588,18 @@ function init() {
       gsap.set(paths, { fillOpacity: 0 });
       tl.to(paths, { strokeDashoffset: 0, duration: .8, ease: "power2.inOut", stagger: { amount: 1.5 } }, "city")
         .to(paths, { fillOpacity: 1, duration: .6, stagger: { amount: .4 } }, "-=.8")
-        .call(() => pin.classList.add("is-on"), null, "-=.4");
+;
       // la ciudad respira despacio dentro del círculo
       gsap.to(cityEl.querySelector("svg"), { scale: 1.12, duration: 9, ease: "sine.inOut", yoyo: true, repeat: -1 });
     });
     // el dibujo de Caracas se precarga; la secuencia arranca cuando está listo (en móvil puede tardar)
-    ScrollTrigger.create({ trigger: wrap, start: "top 85%", once: true, onEnter: () => cityReady.then(() => tl.play()) });
+    // la secuencia avanza con el scroll (hacia adelante y hacia atrás); el punto de Parque Central late al terminar
+    cityReady.then(() => {
+      ScrollTrigger.create({
+        trigger: wrap, start: "top 88%", end: "bottom 45%", scrub: .7, animation: tl,
+        onUpdate: (st) => pin.classList.toggle("is-on", st.progress > .97),
+      });
+    });
     gsap.from(".coverage__item", { y: 40, opacity: 0, duration: 1, stagger: .15, ease: "expo.out", scrollTrigger: { trigger: ".coverage__text", start: "top 75%" } });
   }
   if (document.querySelector(".closing__photo")) {

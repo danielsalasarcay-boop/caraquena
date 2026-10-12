@@ -86,7 +86,7 @@ def mobile_pictures(html):
         if not os.path.exists(src[:-4] + "-m.jpg"): return m.group(0)
         if 'decoding=' not in pre + post: post = post.rstrip("/").rstrip() + ' decoding="async"'
         return f'<picture><source media="(max-width: 900px)" srcset="{src[:-4]}-m.jpg"><img {pre}src="{src}"{post}></picture>'
-    return _re.sub(r'<img ([^>]*?)src="(img/(?:guanta|otter|portafolio/[a-z-]+|bocetos)/[^"]+?\.jpg)"([^>]*)>', rep, html)
+    return _re.sub(r'<img ([^>]*?)src="(img/(?:guanta|otter|usm|portafolio/[a-z-]+|bocetos)/[^"]+?\.jpg)"([^>]*)>', rep, html)
 
 def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc_en):
     loader = P["loader"] if with_loader else ""
