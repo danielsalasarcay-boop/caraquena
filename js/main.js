@@ -164,11 +164,11 @@ if (!window.gsap || reduced) {
 
 function init() {
   gsap.registerPlugin(ScrollTrigger);
+  // en el teléfono las películas fijas recorren menos: mismo contenido con la mitad de scroll
+  const PIN = matchMedia("(max-width: 900px)").matches ? .5 : 1;
   ScrollTrigger.config({ ignoreMobileResize: true });
-  // En pantallas táctiles el dedo mueve la página fuera del hilo de JS y los pines "saltan":
-  // normalizeScroll sincroniza el scroll táctil con las animaciones.
-  const isTouch = ScrollTrigger.isTouch === 1;
-  window.__touchNormalize = (on) => { if (isTouch) ScrollTrigger.normalizeScroll(on ? { allowNestedScroll: true, lockAxis: false, momentum: (self) => Math.min(3, self.velocityY / 1000) } : false); };
+  // scroll táctil nativo (con su impulso natural); los pines usan anticipatePin
+  window.__touchNormalize = () => {};
 
   // ---- Lenis smooth scroll ----
   const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
@@ -377,7 +377,7 @@ function init() {
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
-        trigger: film, start: "top top", end: "+=650%", scrub: .9, pin: q(".film__stage"), anticipatePin: 1,
+        trigger: film, start: "top top", end: () => "+=" + 650 * PIN + "%", scrub: .9, pin: q(".film__stage"), anticipatePin: 1,
         onUpdate: (st) => { setChapter(st.progress * 6); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
       },
     })
@@ -416,7 +416,7 @@ function init() {
     const dist = () => Math.max(0, track.scrollWidth - innerWidth);
     const tween = gsap.to(track, {
       x: () => -dist(), ease: "none",
-      scrollTrigger: { trigger: reel, start: "top top", end: () => "+=" + dist(), pin: reel.querySelector(".reel__pin"), scrub: .8, invalidateOnRefresh: true },
+      scrollTrigger: { trigger: reel, start: "top top", end: () => "+=" + dist() * (PIN < 1 ? .65 : 1), pin: reel.querySelector(".reel__pin"), scrub: .8, invalidateOnRefresh: true },
     });
     reel.querySelectorAll(".reel__item img").forEach((im) => gsap.fromTo(im, { xPercent: -6 }, { xPercent: 6, ease: "none", scrollTrigger: { trigger: im.parentElement, containerAnimation: tween, start: "left right", end: "right left", scrub: true } }));
   }
@@ -441,7 +441,7 @@ function init() {
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
-        trigger: gf, start: "top top", end: "+=800%", scrub: .9, pin: q(".gfilm__stage"), anticipatePin: 1,
+        trigger: gf, start: "top top", end: () => "+=" + 800 * PIN + "%", scrub: .9, pin: q(".gfilm__stage"), anticipatePin: 1,
         onUpdate: (st) => { setChapter(st.progress * 8); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
       },
     })
@@ -520,7 +520,7 @@ function init() {
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
-        trigger: uf, start: "top top", end: "+=600%", scrub: .9, pin: q(".ufilm__stage"), anticipatePin: 1,
+        trigger: uf, start: "top top", end: () => "+=" + 600 * PIN + "%", scrub: .9, pin: q(".ufilm__stage"), anticipatePin: 1,
         onUpdate: (st) => { setChapter(st.progress * 6); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
       },
     })
