@@ -416,7 +416,7 @@ function init() {
     const dist = () => Math.max(0, track.scrollWidth - innerWidth);
     const tween = gsap.to(track, {
       x: () => -dist(), ease: "none",
-      scrollTrigger: { trigger: reel, start: "top top", end: () => "+=" + dist() * (PIN < 1 ? .65 : 1), pin: reel.querySelector(".reel__pin"), scrub: .8, invalidateOnRefresh: true },
+      scrollTrigger: { trigger: reel, start: "top top", end: () => "+=" + dist() * (PIN < 1 ? 1.5 : 1.8), pin: reel.querySelector(".reel__pin"), scrub: 1.2, invalidateOnRefresh: true },
     });
     reel.querySelectorAll(".reel__item img").forEach((im) => gsap.fromTo(im, { xPercent: -6 }, { xPercent: 6, ease: "none", scrollTrigger: { trigger: im.parentElement, containerAnimation: tween, start: "left right", end: "right left", scrub: true } }));
   }
