@@ -17,6 +17,10 @@ document.querySelectorAll(".js-ig").forEach((a) => (a.href = SITE.instagram));
 document.querySelectorAll(".js-mail").forEach((a) => (a.href = `mailto:${SITE.email}`));
 document.querySelectorAll(".js-year").forEach((el) => (el.textContent = new Date().getFullYear()));
 
+// El teléfono recuerda dónde estabas y te deja a mitad de página: siempre abrir en la portada
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (location.hash.length < 2) window.scrollTo(0, 0);
+
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const header = document.querySelector(".header");
@@ -189,6 +193,7 @@ function init() {
       onComplete: () => {
         document.body.classList.remove("is-loading");
         loader.remove();
+        if (location.hash.length < 2) lenis.scrollTo(0, { immediate: true, force: true });
         lenis.start();
       },
     })
@@ -510,12 +515,16 @@ function init() {
       mSteps.forEach((st) => st.classList.toggle("is-active", prog.p > 0 && x >= st.offsetLeft - 2));
     };
     gsap.from(".method__head > *", { y: 20, opacity: 0, duration: .8, stagger: .1, ease: "expo.out", scrollTrigger: { trigger: method, start: "top 85%" } });
+    let run;
+    const play = () => {
+      run?.kill(); prog.p = 0; paint();
+      method.classList.add("is-drawing");
+      run = gsap.to(prog, { p: 1, duration: 5, ease: "power1.inOut", onUpdate: paint, onComplete: () => method.classList.remove("is-drawing") });
+    };
     ScrollTrigger.create({
-      trigger: list, start: "top 85%", once: true,
-      onEnter: () => {
-        method.classList.add("is-drawing");
-        gsap.to(prog, { p: 1, duration: 5, ease: "power1.inOut", onUpdate: paint, onComplete: () => method.classList.remove("is-drawing") });
-      },
+      trigger: list, start: "top 80%", end: "bottom top",
+      onEnter: play,
+      onLeaveBack: () => { run?.kill(); prog.p = 0; paint(); method.classList.remove("is-drawing"); },
     });
   }
 
@@ -527,6 +536,11 @@ function init() {
 
   if (finePointer) desktopFx();
   addEventListener("load", () => ScrollTrigger.refresh());
+  // imágenes perezosas cambian la altura de la página: recalcular (agrupado) cuando cargan
+  let refreshT;
+  document.querySelectorAll("img").forEach((im) => {
+    if (!im.complete) im.addEventListener("load", () => { clearTimeout(refreshT); refreshT = setTimeout(() => ScrollTrigger.refresh(), 250); }, { once: true });
+  });
 }
 
 function desktopFx() {
