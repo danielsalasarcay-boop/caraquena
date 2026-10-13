@@ -304,7 +304,11 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 /* ---------- MÉTODO (mini, negro con línea naranja) ---------- */
 .method { padding: clamp(56px, 6vw, 84px) 0; border-top: 1px solid var(--line); }
 .method__head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
-.method__title { font-size: clamp(28px, 3vw, 44px); font-weight: 400; }
+.method__title {
+  font-size: clamp(28px, 3vw, 44px); font-weight: 800; font-variation-settings: "wdth" 66;
+  text-transform: uppercase; letter-spacing: .02em; line-height: .95;
+  color: transparent; -webkit-text-stroke: 1px var(--orange); paint-order: stroke;
+}
 .method__track { position: relative; }
 .method__line { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); }
 .method__line i { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(240,90,37,.35), var(--orange)); transform: scaleX(0); transform-origin: left; }
