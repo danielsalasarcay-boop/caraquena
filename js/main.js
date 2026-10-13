@@ -169,6 +169,24 @@ function init() {
   ScrollTrigger.config({ ignoreMobileResize: true });
   // scroll táctil nativo (con su impulso natural); los pines usan anticipatePin
   window.__touchNormalize = () => {};
+  // En pantallas táctiles el pin de ScrollTrigger (position:fixed puesto desde JS) llega tarde en el
+  // scroll con impulso de iOS y el bloque queda flotando sobre otra sección. Allí se fija con
+  // position:sticky, que mueve el compositor y nunca se desfasa del scroll.
+  const TOUCH = matchMedia("(pointer: coarse)").matches;
+  const stick = (el, box, top, dist) => {
+    const size = () => {
+      el.style.position = "sticky"; el.style.top = top() + "px";
+      box.style.height = ""; box.style.height = box.offsetHeight + dist() + "px";
+    };
+    size();
+    ScrollTrigger.addEventListener("refreshInit", size);
+  };
+  // config de fijado: pin clásico en escritorio, sticky en táctil (misma distancia de recorrido)
+  const pinned = (el, box, dist, top = () => 0) => {
+    if (!TOUCH) return { pin: el, anticipatePin: 1 };
+    stick(el, box, top, dist);
+    return {};
+  };
 
   // ---- Lenis smooth scroll ----
   const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
@@ -332,9 +350,18 @@ function init() {
     });
     // 2) fijo en pantalla (se crea ya, en orden, para que los pines no se encimen):
     //    el boceto a marcador barre de izquierda a derecha, luego el render sube
+    let pinCfg = { trigger: canvas, start: "center 52%", end: "+=110%", pin: build, pinSpacing: true, anticipatePin: 1 };
+    if (TOUCH) {
+      const wrap = document.createElement("div");
+      build.before(wrap); wrap.appendChild(build);
+      wrap.style.marginBottom = getComputedStyle(build).marginBottom; build.style.marginBottom = "0px";
+      const top = () => innerHeight * .52 - canvas.offsetTop - canvas.offsetHeight / 2;
+      stick(build, wrap, top, () => innerHeight * 1.1);
+      pinCfg = { trigger: wrap, start: () => "top " + top() + "px", end: () => "+=" + innerHeight * 1.1 };
+    }
     gsap.timeline({
       scrollTrigger: {
-        trigger: canvas, start: "center 52%", end: "+=110%", scrub: .8, pin: build, pinSpacing: true, anticipatePin: 1,
+        ...pinCfg, scrub: .8,
         onUpdate: (s) => setStage(s.progress < .42 ? (s.progress < .05 ? 0 : 1) : 2),
         onLeaveBack: () => setStage(0),
       },
@@ -377,7 +404,7 @@ function init() {
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
-        trigger: film, start: "top top", end: () => "+=" + 650 * PIN + "%", scrub: .9, pin: q(".film__stage"), anticipatePin: 1,
+        trigger: film, start: "top top", end: () => "+=" + innerHeight * 6.5 * PIN, scrub: .9, ...pinned(q(".film__stage"), film, () => innerHeight * 6.5 * PIN),
         onUpdate: (st) => { setChapter(st.progress * 6); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
       },
     })
@@ -416,7 +443,7 @@ function init() {
     const dist = () => Math.max(0, track.scrollWidth - innerWidth);
     const tween = gsap.to(track, {
       x: () => -dist(), ease: "none",
-      scrollTrigger: { trigger: reel, start: "top top", end: () => "+=" + dist() * (PIN < 1 ? 1.5 : 1.8), pin: reel.querySelector(".reel__pin"), scrub: 1.2, invalidateOnRefresh: true },
+      scrollTrigger: { trigger: reel, start: "top top", end: () => "+=" + dist() * (PIN < 1 ? 1.5 : 1.8), ...pinned(reel.querySelector(".reel__pin"), reel, () => dist() * (PIN < 1 ? 1.5 : 1.8)), scrub: 1.2, invalidateOnRefresh: true },
     });
     reel.querySelectorAll(".reel__item img").forEach((im) => gsap.fromTo(im, { xPercent: -6 }, { xPercent: 6, ease: "none", scrollTrigger: { trigger: im.parentElement, containerAnimation: tween, start: "left right", end: "right left", scrub: true } }));
   }
@@ -441,7 +468,7 @@ function init() {
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
-        trigger: gf, start: "top top", end: () => "+=" + 800 * PIN + "%", scrub: .9, pin: q(".gfilm__stage"), anticipatePin: 1,
+        trigger: gf, start: "top top", end: () => "+=" + innerHeight * 8 * PIN, scrub: .9, ...pinned(q(".gfilm__stage"), gf, () => innerHeight * 8 * PIN),
         onUpdate: (st) => { setChapter(st.progress * 8); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
       },
     })
@@ -528,7 +555,7 @@ function init() {
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
-        trigger: uf, start: "top top", end: () => "+=" + 600 * PIN + "%", scrub: .9, pin: q(".ufilm__stage"), anticipatePin: 1,
+        trigger: uf, start: "top top", end: () => "+=" + innerHeight * 6 * PIN, scrub: .9, ...pinned(q(".ufilm__stage"), uf, () => innerHeight * 6 * PIN),
         onUpdate: (st) => { setChapter(st.progress * 6); gsap.set(q(".film__progress i"), { scaleX: st.progress }); },
       },
     })
