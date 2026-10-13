@@ -44,6 +44,7 @@ figure { margin: 0; }
 .tag { color: var(--orange); display: inline-flex; align-items: center; gap: 10px; }
 .tag::before { content: ""; width: 28px; height: 1px; background: currentColor; }
 .tag--dark { color: var(--black); }
+.tag--bare::before { display: none; }
 .title { font-size: clamp(48px, 8.4vw, 132px); font-weight: 400; }
 [data-theme="light"] { background: var(--paper); color: var(--ink); }
 
