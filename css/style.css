@@ -155,12 +155,12 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .hero__sketch {
   will-change: transform;
   position: absolute; right: clamp(0px, 3vw, 60px); top: 50%; transform: translateY(-50%);
-  width: min(58vw, 118vh); aspect-ratio: 1770 / 1405;
+  width: min(58vw, 100vh); aspect-ratio: 1770 / 1405;
 }
 .hero__sketch .draw { position: absolute; inset: 0; }
 .hero__accent { position: absolute; left: 48.9%; top: 51.5%; width: 52%; aspect-ratio: 1; transform: translate(-50%, -50%) rotate(-90deg); overflow: visible; pointer-events: none; }
 .hero__accent circle { fill: none; stroke: var(--orange); stroke-width: .6; stroke-dasharray: 302; stroke-dashoffset: 302; }
-.hero__sketch figcaption { position: absolute; left: 0; bottom: -28px; color: var(--muted-ink); }
+.hero__sketch figcaption { position: absolute; right: 90px; bottom: -28px; color: var(--muted-ink); text-align: right; white-space: nowrap; }
 .hero__copy { position: absolute; left: var(--pad); bottom: clamp(32px, 9vh, 96px); z-index: 3; max-width: min(560px, 44vw); display: flex; flex-direction: column; gap: 26px; }
 .eyebrow { display: flex; align-items: center; gap: 10px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 0 rgba(240,90,37,.6); animation: pulse 2s infinite; }
@@ -170,12 +170,19 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .hero__title .line > span { display: block; }
 .hero__title b { font-weight: 400; color: var(--orange); }
 .hero__lead { color: var(--muted-ink); font-size: 17px; max-width: 42ch; }
-.hero__scroll { position: absolute; right: var(--pad); bottom: clamp(32px, 9vh, 96px); display: flex; align-items: center; gap: 12px; color: var(--muted-ink); z-index: 3; }
+.hero__scroll { position: absolute; left: 50%; bottom: clamp(32px, 9vh, 96px); display: flex; align-items: center; gap: 12px; color: var(--muted-ink); z-index: 3; }
 .hero__scroll i { width: 1px; height: 46px; background: var(--line-ink); position: relative; overflow: hidden; }
 .hero__scroll i::after { content: ""; position: absolute; inset: 0; background: var(--orange); animation: drip 1.8s var(--ease) infinite; }
 @keyframes drip { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
 .hero__portal { position: absolute; inset: 0; background: var(--black); z-index: 4; clip-path: circle(0% at 70% 50%); pointer-events: none; }
 
+/* ventanas de escritorio bajas o angostas: texto más contenido y sin pie de boceto que choque */
+@media (min-width: 901px) and (max-height: 720px), (min-width: 901px) and (max-width: 1180px) {
+  .hero__sketch figcaption, .hero__scroll { display: none; }
+  .hero__title { font-size: clamp(52px, min(8.6vw, 15vh), 150px); }
+  .hero__copy { gap: 18px; max-width: min(520px, 42vw); }
+  .hero__lead { font-size: 16px; }
+}
 @media (max-width: 900px) {
   .hero { height: 280vh; }
   /* El boceto manda: ocupa más que el ancho de la pantalla, el texto va abajo sobre un degradado papel */
@@ -778,4 +785,22 @@ picture { display: contents; }
 @media (min-width: 901px) and (max-width: 1240px) {
   .contact__row { grid-template-columns: 40px 86px 1fr 18px; gap: 10px; }
   .contact__val { font-size: 17px; overflow-wrap: normal; white-space: nowrap; }
+}
+
+/* ---------- Botones grandes: Conoce más proyectos / Conoce al equipo (sin cambiar el alto de las secciones) ---------- */
+.btn--big { height: 64px; padding: 0 38px; font-size: 16px; box-shadow: 0 10px 30px -12px rgba(240, 90, 37, .6); }
+.work .container > .build:has(+ .work__more), .work .container > div:has(+ .work__more) > .build { margin-bottom: 0; }
+.work__more { display: flex; justify-content: center; margin-top: calc(clamp(90px, 12vw, 180px) - 64px); }
+.reach .btn--big::before { background: var(--white); }
+.reach .btn--big:hover { color: var(--black); }
+.reach .btn--big { height: 56px; margin-top: -6px; }
+@media (max-width: 900px) {
+  .work__more { margin-top: 28px; }
+  .work__more .btn { width: 100%; }
+  .work { padding-bottom: 38px; }
+  .reach .btn--big { width: 100%; margin-top: 4px; }
+  .reach { padding-bottom: calc(clamp(60px, 7vw, 100px) - 36px); }
+}
+@media (min-width: 901px) and (max-width: 1180px) {
+  .reach { padding: calc(clamp(60px, 7vw, 100px) - 11px) 0; }
 }
