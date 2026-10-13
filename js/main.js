@@ -448,6 +448,20 @@ function init() {
     reel.querySelectorAll(".reel__item img").forEach((im) => gsap.fromTo(im, { xPercent: -6 }, { xPercent: 6, ease: "none", scrollTrigger: { trigger: im.parentElement, containerAnimation: tween, start: "left right", end: "right left", scrub: true } }));
   }
   gsap.utils.toArray(".pcard").forEach((c, i) => gsap.from(c, { y: 50, opacity: 0, duration: 1, delay: (i % 3) * .1, ease: "expo.out", scrollTrigger: { trigger: c, start: "top 90%" } }));
+  // Equipo en teléfono: carrusel; el retrato centrado se enmarca en naranja y marca su punto
+  const team = document.querySelector(".team__grid");
+  if (team && matchMedia("(max-width: 760px)").matches) {
+    const people = [...team.querySelectorAll(".person")];
+    const dots = document.createElement("div");
+    dots.className = "team__dots"; dots.setAttribute("aria-hidden", "true");
+    dots.innerHTML = people.map(() => "<i></i>").join("");
+    team.after(dots);
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      e.target.classList.toggle("is-hot", e.isIntersecting);
+      if (e.isIntersecting) [...dots.children].forEach((d, k) => d.classList.toggle("is-on", k === people.indexOf(e.target)));
+    }), { root: team, threshold: .7 });
+    people.forEach((p) => io.observe(p));
+  }
   // en táctil no hay "pasar el mouse": el render sube cuando la ficha llega al centro de la pantalla
   if (!matchMedia("(hover: hover)").matches) {
     const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("is-hot", e.isIntersecting)), { rootMargin: "-38% 0px -38% 0px" });

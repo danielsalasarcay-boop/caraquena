@@ -827,3 +827,24 @@ picture { display: contents; }
 .person__photo--img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease); }
 .person__photo--img::before { z-index: 1; border-color: rgba(255, 255, 255, .55); }
 .person:hover .person__photo--img img { transform: scale(1.04); }
+
+/* ---------- Equipo en teléfono: carrusel deslizable, cada retrato casi a todo el ancho ---------- */
+.team__dots { display: none; }
+@media (max-width: 760px) {
+  .team__grid {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%; gap: 14px;
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin-left: calc(var(--pad) * -1); margin-right: calc(var(--pad) * -1);
+    padding: 0 var(--pad); scroll-padding: 0 var(--pad); scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .team__grid::-webkit-scrollbar { display: none; }
+  .person { scroll-snap-align: center; }
+  .person h3 { font-size: 24px; margin: 16px 0 6px; }
+  .person .mono { font-size: 11px; }
+  .person__photo::before { inset: 10px; }
+  .person.is-hot .person__photo::before { inset: 18px; border-color: var(--orange); }
+  .person.is-hot .person__photo--img img { transform: scale(1.04); }
+  .team__dots { display: flex; justify-content: center; gap: 8px; margin-top: 22px; }
+  .team__dots i { width: 22px; height: 2px; background: var(--line-ink); transition: background .4s, width .4s var(--ease); }
+  .team__dots i.is-on { width: 38px; background: var(--orange); }
+}
