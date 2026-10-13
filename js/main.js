@@ -448,6 +448,11 @@ function init() {
     reel.querySelectorAll(".reel__item img").forEach((im) => gsap.fromTo(im, { xPercent: -6 }, { xPercent: 6, ease: "none", scrollTrigger: { trigger: im.parentElement, containerAnimation: tween, start: "left right", end: "right left", scrub: true } }));
   }
   gsap.utils.toArray(".pcard").forEach((c, i) => gsap.from(c, { y: 50, opacity: 0, duration: 1, delay: (i % 3) * .1, ease: "expo.out", scrollTrigger: { trigger: c, start: "top 90%" } }));
+  // en táctil no hay "pasar el mouse": el render sube cuando la ficha llega al centro de la pantalla
+  if (!matchMedia("(hover: hover)").matches) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("is-hot", e.isIntersecting)), { rootMargin: "-38% 0px -38% 0px" });
+    document.querySelectorAll(".pcard").forEach((c) => io.observe(c));
+  }
 
   // ---- Conoce más: Puerto de Guanta — azul plano; el puerto crece fase por fase sobre el mismo plano ----
   const gf = document.querySelector(".gfilm");

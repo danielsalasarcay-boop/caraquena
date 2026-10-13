@@ -808,3 +808,16 @@ picture { display: contents; }
 @media (min-width: 901px) and (max-width: 1180px) {
   .reach { padding: calc(clamp(60px, 7vw, 100px) - 11px) 0; }
 }
+
+/* ---------- Portafolio: al pasar sobre la ficha, sube un render del proyecto ---------- */
+.pcard__media .pcard__hover { position: absolute; inset: 0; clip-path: inset(100% 0 0 0); transition: clip-path .9s var(--ease), transform 1.2s var(--ease); }
+.pcard__media::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; z-index: 2; background: var(--orange); box-shadow: 0 0 12px 1px rgba(240, 90, 37, .55); opacity: 0; transition: bottom .9s var(--ease), opacity .3s .6s; pointer-events: none; }
+.pcard__media::after { z-index: 3; }
+.pcard.is-hot .pcard__hover { clip-path: inset(0 0 0 0); }
+.pcard.is-hot .pcard__media::before { bottom: calc(100% - 2px); animation: pcard-scan .9s var(--ease) forwards; }
+@keyframes pcard-scan { 70% { opacity: 1; } to { opacity: 0; } }
+@media (hover: hover) {
+  .pcard:hover .pcard__hover { clip-path: inset(0 0 0 0); }
+  .pcard:hover .pcard__media::before { bottom: calc(100% - 2px); animation: pcard-scan .9s var(--ease) forwards; }
+}
+@media (prefers-reduced-motion: reduce) { .pcard__media .pcard__hover, .pcard__media::before { transition: none; animation: none; } }
