@@ -821,3 +821,8 @@ picture { display: contents; }
   .pcard:hover .pcard__media::before { bottom: calc(100% - 2px); animation: pcard-scan .9s var(--ease) forwards; }
 }
 @media (prefers-reduced-motion: reduce) { .pcard__media .pcard__hover, .pcard__media::before { transition: none; animation: none; } }
+
+/* ---------- Retratos del equipo ---------- */
+.person__photo--img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease); }
+.person__photo--img::before { z-index: 1; border-color: rgba(255, 255, 255, .55); }
+.person:hover .person__photo--img img { transform: scale(1.04); }
