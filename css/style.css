@@ -458,9 +458,9 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .footer__bottom { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--line); }
 @media (max-width: 640px) { .footer__bottom { padding-right: 70px; } }
 @media (max-width: 760px) {
-  .footer .footer__word { font-size: 8.7vw; font-variation-settings: "wdth" 80; }
-  .footer .footer__word svg { width: 11.4vw; height: 9.6vw; }
-  .footer .footer__tagline { font-size: 2.45vw; margin-top: .9vw; }
+  .footer .footer__word { font-size: 10.5vw; font-variation-settings: "wdth" 112; }  /* mismas proporciones que en computadora, a lo ancho */
+  .footer .footer__word svg { width: 13.7vw; height: 11.5vw; }
+  .footer .footer__tagline { font-size: 3vw; margin-top: .9vw; }
 }
 
 /* ---------- BOTONES FLOTANTES ---------- */
