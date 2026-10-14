@@ -105,7 +105,8 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .header__nav a { position: relative; padding: 10px 14px; font-size: 14px; font-weight: 500; white-space: nowrap; }
 @media (max-width: 1240px) { .header { gap: 18px; } .header__nav { gap: 0; } .header__nav a { padding: 10px 9px; font-size: 13px; } .header__word em { display: none; } }
 .header__nav a::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 6px; height: 1px; background: var(--orange); transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease); }
-@media (hover: hover) { .header__nav a:hover::after, .header__nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; } }
+.header__nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
+@media (hover: hover) { .header__nav a:hover::after { transform: scaleX(1); transform-origin: left; } }
 /* Selector de idioma: pequeño y discreto */
 .lang { display: flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: .12em; }
 .lang a { position: relative; padding: 6px 2px; opacity: .45; transition: opacity .3s; }
@@ -187,6 +188,8 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 }
 @media (max-width: 900px) {
   .hero { height: 280vh; }
+  /* el portal cierra antes y Estudio sube encima del final de la portada: sin pantalla negra vacía */
+  .hero + .statement { position: relative; z-index: 6; background: var(--black); margin-top: -80vh; }
   /* El boceto manda: ocupa más que el ancho de la pantalla, el texto va abajo sobre un degradado papel */
   /* medidas en vw/vh para iOS sin soporte de svh; luego la versión svh para navegadores nuevos */
   .hero__sketch {
@@ -250,12 +253,20 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 @media (max-width: 760px) {
   .process { padding: 56px 0; }
   .process__head { margin-bottom: 24px; }
-  .process__shots { gap: 10px; }
-  .shot__frame { aspect-ratio: 3 / 4; max-height: none; }
-  .shot__lines { inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); }
-  .shot figcaption { margin-top: 10px; }
-  .shot figcaption .mono { font-size: 10px; letter-spacing: .04em; }
-  .shot figcaption p { display: none; }
+  /* carrusel deslizable con fotos grandes, como el del equipo; sin efectos al bajar */
+  .process__shots {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%; gap: 14px;
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin-left: calc(var(--pad) * -1); margin-right: calc(var(--pad) * -1);
+    padding: 0 var(--pad); scroll-padding: 0 var(--pad); scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .process__shots::-webkit-scrollbar { display: none; }
+  .shot { scroll-snap-align: center; }
+  .shot__frame { aspect-ratio: 4 / 5; max-height: none; }
+  .shot__lines { display: none; }
+  .shot figcaption { margin-top: 14px; }
+  .shot figcaption .mono { font-size: 11px; }
+  .shot figcaption p { font-size: 15px; }
 }
 
 /* ---------- PROYECTOS ---------- */

@@ -222,7 +222,7 @@ function init() {
     ScrollTrigger.create({
       trigger: sec, start: "top 40px",
       // en la portada, el portal negro la cubre hacia el final del recorrido
-      end: isHero ? () => "+=" + ((sec.offsetHeight - innerHeight) * 0.85 + 40) : "bottom 40px",
+      end: isHero ? () => "+=" + ((sec.offsetHeight - innerHeight) * (matchMedia("(max-width: 900px)").matches ? 0.55 : 0.85) + 40) : "bottom 40px",
       onToggle: (s) => header.classList.toggle("is-light", s.isActive),
     });
   });
@@ -295,7 +295,8 @@ function init() {
       .to(".hero__copy, .hero__scroll, .hero__sketch figcaption", { opacity: 0, y: -40, duration: .25 }, 0)
       .to(sketch, { scale: 2.6, transformOrigin: "48.9% 51.5%", ease: "power2.in", duration: 1 }, 0)
       .to(".sheet", { opacity: 0, duration: .6 }, 0)
-      .fromTo(".hero__portal", { clipPath: () => `circle(0% at ${portalAt()})` }, { clipPath: () => `circle(150% at ${portalAt()})`, ease: "power2.in", duration: .55 }, .45);
+      // en el teléfono el portal termina antes (Estudio sube encima del último tramo de la portada)
+      .fromTo(".hero__portal", { clipPath: () => `circle(0% at ${portalAt()})` }, { clipPath: () => `circle(150% at ${portalAt()})`, ease: "power2.in", duration: PIN < 1 ? .35 : .55 }, PIN < 1 ? .25 : .45);
   }
 
   // ---- Texto del estudio: palabras se encienden con el scroll ----
@@ -319,7 +320,8 @@ function init() {
   });
 
   // ---- Proceso: líneas de construcción enmarcan cada foto, luego aparece la imagen ----
-  if (document.querySelector(".process__shots")) {
+  // en el teléfono Proceso es un carrusel quieto: sin animación al bajar
+  if (document.querySelector(".process__shots") && !matchMedia("(max-width: 760px)").matches) {
     const tl = gsap.timeline({ scrollTrigger: { trigger: ".process__shots", start: "top 80%" } });
     gsap.utils.toArray(".shot").forEach((shot, i) => {
       const hLines = shot.querySelectorAll(".shot__lines line:nth-of-type(odd)");
@@ -451,28 +453,33 @@ function init() {
   }
   gsap.utils.toArray(".pcard").forEach((c, i) => gsap.from(c, { y: 50, opacity: 0, duration: 1, delay: (i % 3) * .1, ease: "expo.out", scrollTrigger: { trigger: c, start: "top 90%" } }));
   // Equipo en teléfono: carrusel; el retrato centrado se enmarca en naranja y marca su punto
-  const team = document.querySelector(".team__grid");
-  if (team && matchMedia("(max-width: 760px)").matches) {
-    const people = [...team.querySelectorAll(".person")];
+  // Carruseles deslizables del teléfono (equipo y proceso): indicador de rayitas y
+  // solo la pieza más cercana al centro se marca (nunca dos a la vez)
+  const carousel = (grid, items) => {
     const dots = document.createElement("div");
     dots.className = "team__dots"; dots.setAttribute("aria-hidden", "true");
-    dots.innerHTML = people.map(() => "<i></i>").join("");
-    team.after(dots);
-    // solo el retrato más cercano al centro del carrusel se marca (nunca dos a la vez)
+    dots.innerHTML = items.map(() => "<i></i>").join("");
+    grid.after(dots);
     let cur = -1, raf = 0;
     const pick = () => {
       raf = 0;
-      const mid = team.getBoundingClientRect().left + team.clientWidth / 2;
+      const mid = grid.getBoundingClientRect().left + grid.clientWidth / 2;
       let best = 0, bd = Infinity;
-      people.forEach((p, k) => { const r = p.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = k; } });
+      items.forEach((p, k) => { const r = p.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = k; } });
       if (best === cur) return;
       cur = best;
-      people.forEach((p, k) => p.classList.toggle("is-hot", k === best));
+      items.forEach((p, k) => p.classList.toggle("is-hot", k === best));
       [...dots.children].forEach((d, k) => d.classList.toggle("is-on", k === best));
     };
-    team.addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(pick); }, { passive: true });
+    grid.addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(pick); }, { passive: true });
     addEventListener("resize", pick);
     pick();
+  };
+  if (matchMedia("(max-width: 760px)").matches) {
+    const team = document.querySelector(".team__grid");
+    if (team) carousel(team, [...team.querySelectorAll(".person")]);
+    const shots = document.querySelector(".process__shots");
+    if (shots) carousel(shots, [...shots.querySelectorAll(".shot")]);
   }
   // en táctil no hay "pasar el mouse": el render sube cuando la ficha llega al centro de la pantalla
   if (!matchMedia("(hover: hover)").matches) {
