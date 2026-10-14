@@ -241,6 +241,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .process__shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 36px); }
 .shot__frame { position: relative; aspect-ratio: 4 / 5; max-height: 52vh; }
 .shot__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+.shot__frame img.shot__drawing { object-fit: contain; filter: none; } /* render ya en grises sobre el papel: sin filtro para que el fondo sea el mismo */
 .shot__lines { position: absolute; inset: -10px; width: calc(100% + 20px); height: calc(100% + 20px); overflow: visible; z-index: 2; pointer-events: none; }
 .shot__lines line { fill: none; stroke: var(--ink); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .shot figcaption { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; }
@@ -510,7 +511,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 /* Fotos del proceso: pasan a color y las líneas se vuelven naranja */
 .shot__frame img { transition: filter .8s var(--ease), transform 1.2s var(--ease); }
 .shot__frame { overflow: visible; }
-.shot:hover .shot__frame img { filter: grayscale(0); }
+.shot:hover .shot__frame img:not(.shot__drawing) { filter: grayscale(0); }
 .shot__lines line { transition: stroke .5s; }
 .shot:hover .shot__lines line { stroke: var(--orange); opacity: 1 !important; }
 
