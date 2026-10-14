@@ -10,7 +10,6 @@ def head(title, desc, light=False):
     h = re.sub(r'(<meta name="description" content=")[^"]*', r"\g<1>" + desc, h)
     h = re.sub(r'(<meta property="og:title" content=")[^"]*', r"\g<1>" + title, h)
     h = re.sub(r'(<meta property="og:description" content=")[^"]*', r"\g<1>" + desc, h)
-    h = h.replace("proyecto-planta-naranja.jpg", "sketch-tortuga.jpg")
     if not light:
         h = h.replace('<body class="is-loading">', '<body class="is-sub">')
     return h
