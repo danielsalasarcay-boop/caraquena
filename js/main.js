@@ -244,6 +244,7 @@ function init() {
     addEventListener("touchmove", block, { passive: false });
     addEventListener("wheel", block, { passive: false });
     window.__unblock = () => { removeEventListener("touchmove", block); removeEventListener("wheel", block); };
+    if (heroDrawEl) loadDraw(heroDrawEl); // precarga el boceto mientras está la pantalla de carga
     const count = { v: 0 };
     const countEl = document.querySelector(".js-count");
     gsap.timeline({
@@ -257,13 +258,14 @@ function init() {
         window.__touchNormalize?.(true);
       },
     })
-      .from(".loader__logo .iso-ring", { rotate: -220, scale: .4, opacity: 0, svgOrigin: "410 375", duration: 1.3, ease: "expo.out" })
-      .from(".loader__logo .iso-bar", { xPercent: -140, opacity: 0, duration: .7, ease: "expo.out" }, "-=.6")
+      .from(".loader__ring", { rotate: -220, scale: .4, opacity: 0, force3D: true, duration: 1.3, ease: "expo.out" })
+      .from(".loader__bar", { x: -46, opacity: 0, force3D: true, duration: .7, ease: "expo.out" }, "-=.6")
       .to(count, { v: 100, duration: 1.4, ease: "power2.inOut", onUpdate: () => (countEl.textContent = String(Math.round(count.v)).padStart(3, "0")) }, 0)
-      .to(".loader__inner", { opacity: 0, scale: .9, duration: .4, ease: "power2.in" }, "+=.15")
-      .to(".loader__panel--top", { yPercent: -100, duration: 1, ease: "expo.inOut" }, "-=.1")
-      .to(".loader__panel--bottom", { yPercent: 100, duration: 1, ease: "expo.inOut" }, "<")
-      .call(playHeroDraw, null, "<+.3")
+      .to(".loader__inner", { opacity: 0, scale: .9, force3D: true, duration: .4, ease: "power2.in" }, "+=.15")
+      .to(".loader__panel--top", { yPercent: -100, force3D: true, duration: 1, ease: "expo.inOut" }, "-=.1")
+      .to(".loader__panel--bottom", { yPercent: 100, force3D: true, duration: 1, ease: "expo.inOut" }, "<")
+      // en el teléfono el boceto empieza cuando los paneles ya abrieron (dibujarlo mientras se abren da tirones)
+      .call(playHeroDraw, null, PIN < 1 ? "<+.85" : "<+.3")
       .from(".hero__title .line > span", { yPercent: 110, duration: 1.2, stagger: .12, ease: "expo.out" }, "<+.3")
       .from(".hero__copy .eyebrow, .hero__lead, .hero__scroll, .hero__sketch figcaption", { opacity: 0, y: 20, duration: .8, stagger: .08 }, "-=.9")
       .call(() => header.classList.remove("is-pre"), null, "-=.9");

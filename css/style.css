@@ -78,11 +78,14 @@ figure { margin: 0; }
 .loader { position: fixed; inset: 0; z-index: 200; touch-action: none; }
 html:has(body.is-loading) { overflow: hidden; }
 body.is-loading { touch-action: none; overscroll-behavior: none; }
-.loader__panel { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--black); }
+.loader__panel { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--black); will-change: transform; }
 .loader__panel--top { top: 0; }
 .loader__panel--bottom { bottom: 0; }
 .loader__inner { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 24px; }
-.loader__logo { width: 112px; height: 94px; color: var(--white); overflow: visible; }
+.loader__logo { position: relative; width: 112px; height: 94px; color: var(--white); }
+/* anillo y barra son capas separadas que se animan con transform de CSS (las mueve la GPU, fluido en iPhone) */
+.loader__logo svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; will-change: transform, opacity; }
+.loader__ring { transform-origin: 48.9% 41.6%; }
 .loader__count { font-size: 14px; color: var(--orange); }
 .loader__label { position: absolute; bottom: 32px; left: 0; right: 0; text-align: center; color: var(--muted); }
 
