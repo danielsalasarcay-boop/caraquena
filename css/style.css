@@ -431,11 +431,15 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
   display: flex; align-items: center; justify-content: center; gap: 2vw; margin: 60px 0 30px;
   font: 900 10vw/1 var(--display); font-variation-settings: "wdth" 105; letter-spacing: -.04em; white-space: nowrap;
 }
-.footer__word svg { width: 8.8vw; height: 7.4vw; flex: none; color: var(--white); }
+.footer__word svg { width: 13vw; height: 11vw; flex: none; color: var(--white); }
+.footer__lock { display: flex; flex-direction: column; }
+.footer__tagline { font: 300 2.85vw/1 "Jost", "Futura", sans-serif; letter-spacing: 0; margin-top: .9vw; }
 .footer__bottom { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--line); }
 @media (max-width: 640px) { .footer__bottom { padding-right: 70px; } }
 @media (max-width: 760px) {
   .footer .footer__word { font-size: 12vw; font-variation-settings: "wdth" 80; }
+  .footer .footer__word svg { width: 15.6vw; height: 13.2vw; }
+  .footer .footer__tagline { font-size: 3.3vw; margin-top: 1.2vw; }
 }
 
 /* ---------- BOTONES FLOTANTES ---------- */

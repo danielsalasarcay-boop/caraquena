@@ -60,7 +60,7 @@ def footer(b):
         <a href="{b}#estudio">Estudio</a><a href="{b}#proceso">Proceso</a><a href="{b}#proyectos">Proyectos</a><a href="nosotros.html">Nosotros</a><a href="conoce-mas.html">Conoce más</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
       </nav>
     </div>
-    <div class="footer__word" aria-hidden="true"><svg><use href="#isotipo"/></svg>CARAQUEÑA</div>
+    <div class="footer__word" aria-hidden="true"><svg><use href="#isotipo"/></svg><div class="footer__lock"><span>CARAQUEÑA</span><span class="footer__tagline">Architecture, Design &amp; Construction.</span></div></div>
     <div class="container footer__bottom mono">
       <span>© <span class="js-year"></span> Caraqueña Studio. Todos los derechos reservados.</span>
       <a href="#top" class="js-top">Volver arriba ↑</a>
