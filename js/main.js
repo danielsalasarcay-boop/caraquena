@@ -458,11 +458,21 @@ function init() {
     dots.className = "team__dots"; dots.setAttribute("aria-hidden", "true");
     dots.innerHTML = people.map(() => "<i></i>").join("");
     team.after(dots);
-    const io = new IntersectionObserver((es) => es.forEach((e) => {
-      e.target.classList.toggle("is-hot", e.isIntersecting);
-      if (e.isIntersecting) [...dots.children].forEach((d, k) => d.classList.toggle("is-on", k === people.indexOf(e.target)));
-    }), { root: team, threshold: .7 });
-    people.forEach((p) => io.observe(p));
+    // solo el retrato más cercano al centro del carrusel se marca (nunca dos a la vez)
+    let cur = -1, raf = 0;
+    const pick = () => {
+      raf = 0;
+      const mid = team.getBoundingClientRect().left + team.clientWidth / 2;
+      let best = 0, bd = Infinity;
+      people.forEach((p, k) => { const r = p.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = k; } });
+      if (best === cur) return;
+      cur = best;
+      people.forEach((p, k) => p.classList.toggle("is-hot", k === best));
+      [...dots.children].forEach((d, k) => d.classList.toggle("is-on", k === best));
+    };
+    team.addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(pick); }, { passive: true });
+    addEventListener("resize", pick);
+    pick();
   }
   // en táctil no hay "pasar el mouse": el render sube cuando la ficha llega al centro de la pantalla
   if (!matchMedia("(hover: hover)").matches) {

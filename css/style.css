@@ -539,11 +539,11 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 
 /* Equipo: el marco se cierra y las iniciales se encienden */
 .person__photo::before { transition: inset .6s var(--ease), border-color .4s; }
-.person:hover .person__photo::before { inset: 24px; border-color: var(--orange); }
+@media (hover: hover) { .person:hover .person__photo::before { inset: 24px; border-color: var(--orange); } }
 .person__initials { transition: color .5s, -webkit-text-stroke-color .5s, transform .8s var(--ease); }
-.person:hover .person__initials { color: var(--orange); -webkit-text-stroke-color: var(--orange); transform: scale(1.06); }
+@media (hover: hover) { .person:hover .person__initials { color: var(--orange); -webkit-text-stroke-color: var(--orange); transform: scale(1.06); } }
 .person h3 { transition: transform .6s var(--ease); }
-.person:hover h3 { transform: translateX(6px); }
+@media (hover: hover) { .person:hover h3 { transform: translateX(6px); } }
 
 /* Botones flotantes: pequeño rebote al tocar */
 .float__btn { transition: transform .25s ease; }
@@ -837,7 +837,7 @@ picture { display: contents; }
 /* ---------- Retratos del equipo ---------- */
 .person__photo--img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease); }
 .person__photo--img::before { z-index: 1; border-color: rgba(255, 255, 255, .55); }
-.person:hover .person__photo--img img { transform: scale(1.04); }
+@media (hover: hover) { .person:hover .person__photo--img img { transform: scale(1.04); } }
 
 /* ---------- Equipo en teléfono: carrusel deslizable, cada retrato casi a todo el ancho ---------- */
 .team__dots { display: none; }
