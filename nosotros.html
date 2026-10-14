@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Jost:wght@300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=a1702ab3">
+  <link rel="stylesheet" href="css/style.css?v=6a13f3bd">
 </head>
 <body class="is-sub">
 
@@ -65,10 +65,14 @@
   <main>
     <!-- NOSOTROS -->
     <section class="page-hero" id="top" data-theme="light">
-      <div class="container page-hero__inner">
+      <div class="container page-hero__inner page-hero__inner--mark">
         <p class="kicker" aria-hidden="true"><svg class="kicker__svg js-kicker" viewBox="0 0 1100 200"><text x="0" y="170">NOSOTROS</text></svg></p>
         <h1 class="page-hero__title js-split-lines">Tres arquitectos.<br>Un mismo trazo.</h1>
-        <p class="page-hero__lead">Caraqueña nace en Caracas y crece con cada proyecto: hotelería y desarrollos de gran escala, vivienda e interiorismo. Diseñamos juntos, en la pizarra y en la obra.</p>
+        <div class="page-hero__side">
+          <!-- Isotipo de partículas (solo computadora): llegan girando como el anillo, el cursor las dispersa -->
+          <div class="page-hero__mark js-iso-particles" aria-hidden="true"><canvas></canvas></div>
+          <p class="page-hero__lead">Caraqueña nace en Caracas y crece con cada proyecto: hotelería y desarrollos de gran escala, vivienda e interiorismo. Diseñamos juntos, en la pizarra y en la obra.</p>
+        </div>
       </div>
       <figure class="page-hero__photo container">
         <img src="img/equipo-auditorio.jpg" alt="Fabrizio Palmieri, Carlos Enrique Salas y Elías Ojalvo sentados en un auditorio">
@@ -198,6 +202,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=a1702ab3"></script>
+  <script src="js/main.js?v=6a13f3bd"></script>
 </body>
 </html>

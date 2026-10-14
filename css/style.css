@@ -368,6 +368,12 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .kicker__svg text { font: 800 200px/1 var(--display); font-variation-settings: "wdth" 112; letter-spacing: -.02em; fill: var(--orange); fill-opacity: 0; stroke: var(--orange); stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .page-hero__title { font-size: clamp(48px, 7.6vw, 124px); font-weight: 400; letter-spacing: -.045em; }
 .page-hero__lead { color: var(--muted-ink); font-size: 18px; padding-bottom: 10px; }
+.page-hero__inner--mark .kicker { grid-column: 1; }
+.page-hero__side { grid-column: 2; grid-row: 1 / 3; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; }
+.page-hero__mark { position: relative; flex: 1 1 0; min-height: 0; margin-bottom: clamp(20px, 3vw, 44px); }
+.page-hero__mark canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: pan-y; }
+@media (max-width: 900px) { .page-hero__side { grid-column: auto; grid-row: auto; } }
+@media (max-width: 900px), (hover: none), (pointer: coarse) { .page-hero__mark { display: none; } }
 .page-hero__photo { margin-top: clamp(48px, 6vw, 90px); }
 .page-hero__photo img { width: 100%; aspect-ratio: 3 / 2; max-height: 72vh; object-fit: cover; object-position: 50% 50%; filter: grayscale(1); }
 @media (max-width: 900px) {

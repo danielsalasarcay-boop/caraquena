@@ -147,6 +147,8 @@ const loadDraw = (el) => {
 };
 const drawEls = [...document.querySelectorAll(".js-draw")];
 
+isoParticles();
+
 // Sin GSAP (CDN caído) o con movimiento reducido: todo queda dibujado y estático.
 if (!window.gsap || reduced) {
   document.body.classList.remove("is-loading");
@@ -725,4 +727,115 @@ function desktopFx() {
     });
     el.addEventListener("mouseleave", () => gsap.to(el, { x: 0, y: 0, duration: .7, ease: "power3.out" }));
   });
+}
+
+// ---- Isotipo de partículas (portada de Nosotros, solo computadora) ----
+// Pariente del logo de partículas de D&A Lab, pero con el gesto de Caraqueña: los puntos llegan
+// girando sobre el anillo (como el compás que lo traza), la barra naranja entra deslizando desde la
+// izquierda y luego un brazo de luz naranja recorre el anillo. El cursor los dispersa y vuelven.
+// Se pausa fuera de pantalla; con "reducir movimiento" se dibuja quieto; se ajusta al hueco libre.
+function isoParticles() {
+  const wrap = document.querySelector(".js-iso-particles");
+  const sym = document.getElementById("isotipo");
+  if (!wrap || !sym || !finePointer || !matchMedia("(min-width: 901px)").matches) return;
+  const canvas = wrap.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const INK = "#121212", ORANGE = "#F15A24", GLOW = "#F15A24", DOT = 2.05;
+  const [vx, vy, vw, vh] = sym.getAttribute("viewBox").split(/\s+/).map(Number);
+  const CX = 410, CY = 375; // centro del anillo en el sistema del isotipo
+  const img = new Image();
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vx} ${vy} ${vw} ${vh}" width="${vw * 2}" height="${vh * 2}">${sym.innerHTML.replace(/currentColor/g, "#000")}</svg>`);
+
+  let W = 0, H = 0, P = [], raf = 0, t0 = 0, visible = true, mx = -9999, my = -9999, cx = 0, cy = 0, R = 1;
+  const ease = (x) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+
+  function build() {
+    const r = wrap.getBoundingClientRect();
+    W = Math.round(r.width); H = Math.round(Math.min(r.height, 420));
+    if (W < 40 || H < 110) { P = []; canvas.width = canvas.height = 0; return; } // sin hueco: no se dibuja
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = W * dpr; canvas.height = r.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // isotipo encajado en el hueco, centrado
+    const s = Math.min(W / vw, H / vh) * .92;
+    const mw = vw * s, mh = vh * s, ox = (W - mw) / 2, oy = (r.height - mh) / 2;
+    cx = ox + (CX - vx) * s; cy = oy + (CY - vy) * s; R = 225 * s;
+    const off = document.createElement("canvas");
+    off.width = Math.ceil(mw); off.height = Math.ceil(mh);
+    const o = off.getContext("2d");
+    o.drawImage(img, 0, 0, mw, mh);
+    const data = o.getImageData(0, 0, off.width, off.height).data;
+    const step = mh < 220 ? 2.8 : 3.1;
+    P = [];
+    for (let y = 0; y < off.height; y += step) for (let x = 0; x < off.width; x += step) {
+      const i = (Math.floor(y) * off.width + Math.floor(x)) * 4;
+      if (data[i + 3] < 140) continue;
+      const bar = data[i] > 150;
+      const tx = ox + x, ty = oy + y;
+      const ang = Math.atan2(ty - cy, tx - cx), rad = Math.hypot(tx - cx, ty - cy);
+      P.push({
+        tx, ty, ang, rad, bar, x: tx, y: ty, vx: 0, vy: 0,
+        // anillo: entran girando desde fuera; el retraso sigue el ángulo, como un compás que traza
+        a0: ang - 2.2 - Math.random() * .5, r0: rad * (1.25 + Math.random() * .3),
+        d: bar ? 1250 + (tx - cx) * 1.2 + Math.random() * 120 : ((ang + Math.PI * 1.5) % (Math.PI * 2)) / (Math.PI * 2) * 650 + Math.random() * 160,
+      });
+    }
+    if (reduced) drawStatic();
+  }
+
+  function drawStatic() {
+    ctx.clearRect(0, 0, W, H + 400);
+    for (const p of P) { ctx.fillStyle = p.bar ? ORANGE : INK; ctx.fillRect(p.tx - DOT / 2, p.ty - DOT / 2, DOT, DOT); }
+  }
+
+  function frame(now) {
+    raf = 0;
+    const t = now - t0;
+    ctx.clearRect(0, 0, W, H + 400);
+    const sweep = t > 2300 ? -Math.PI / 2 + ((t - 2300) / 3200) * Math.PI * 2 : null; // brazo de luz
+    const breath = t > 2000 ? (Math.sin((t - 2000) / 560) + 1) / 2 : 0;
+    for (const p of P) {
+      let tx = p.tx, ty = p.ty;
+      const k = (t - p.d) / 900;
+      if (k < 1) { // viajando
+        const e = ease(k);
+        if (p.bar) { tx = p.tx - (1 - e) * R * 1.6; }
+        else { const a = p.a0 + (p.ang - p.a0) * e, rr = p.r0 + (p.rad - p.r0) * e; tx = cx + Math.cos(a) * rr; ty = cy + Math.sin(a) * rr; }
+        if (k < 0) { p.x = tx; p.y = ty; continue; }
+      }
+      if (p.bar && t > 2000) tx += breath * 3;
+      const dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
+      if (d2 < 3200) { const dist = Math.sqrt(d2) || 1, f = ((3200 - d2) / 3200) * 4.5; p.vx += (dx / dist) * f; p.vy += (dy / dist) * f; }
+      p.vx = (p.vx + (tx - p.x) * .08) * .78; p.vy = (p.vy + (ty - p.y) * .08) * .78;
+      p.x += p.vx; p.y += p.vy;
+      let g = 0; // estela del brazo de luz: intensa en la punta, se apaga detrás
+      if (sweep !== null && !p.bar) { let da = (sweep - p.ang) % (Math.PI * 2); if (da < 0) da += Math.PI * 2; g = da < .9 ? Math.pow(1 - da / .9, 2) * .8 : 0; }
+      const a = k < 0 ? 0 : k < .25 ? k * 4 : 1, sz = DOT + g * .7;
+      ctx.globalAlpha = a; ctx.fillStyle = p.bar ? ORANGE : INK;
+      ctx.fillRect(p.x - sz / 2, p.y - sz / 2, sz, sz);
+      if (g > .02) { ctx.globalAlpha = a * g; ctx.fillStyle = GLOW; ctx.fillRect(p.x - sz / 2, p.y - sz / 2, sz, sz); }
+    }
+    ctx.globalAlpha = 1;
+    if (visible && !document.hidden) raf = requestAnimationFrame(frame);
+  }
+
+  const run = () => { if (!raf && !reduced && P.length && visible && !document.hidden) raf = requestAnimationFrame(frame); };
+  img.onload = () => {
+    build();
+    if (reduced) return;
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; run(); }).observe(wrap);
+    document.addEventListener("visibilitychange", run);
+    wrap.parentElement.addEventListener("pointermove", (e) => { const r = canvas.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; }, { passive: true });
+    wrap.parentElement.addEventListener("pointerleave", () => { mx = my = -9999; });
+    t0 = performance.now() + 350;
+    run();
+  };
+  let rw = 0, rh = 0;
+  new ResizeObserver(() => {
+    const r = wrap.getBoundingClientRect();
+    if (Math.round(r.width) === rw && Math.round(r.height) === rh) return;
+    rw = Math.round(r.width); rh = Math.round(r.height);
+    if (img.complete && img.naturalWidth) { build(); run(); }
+  }).observe(wrap);
 }
