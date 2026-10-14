@@ -778,11 +778,13 @@ function isoParticles() {
     };
     SPR = { ink: sprite(INK), bar: sprite(ORANGE), glow: sprite(GLOW) };
     P = [];
-    for (let y = 0; y < off.height; y += step) for (let x = 0; x < off.width; x += step) {
-      const i = (Math.floor(y) * off.width + Math.floor(x)) * 4;
-      if (data[i + 3] < 140) continue;
-      const bar = data[i] > 150;
-      const tx = ox + x, ty = oy + y;
+    const px = (x, y) => { // píxel del isotipo: 0 vacío, 1 anillo, 2 barra
+      const xi = Math.round(x - ox), yi = Math.round(y - oy);
+      if (xi < 0 || yi < 0 || xi >= off.width || yi >= off.height) return 0;
+      const i = (yi * off.width + xi) * 4;
+      return data[i + 3] < 140 ? 0 : data[i] > 150 ? 2 : 1;
+    };
+    const add = (tx, ty, bar) => {
       const ang = Math.atan2(ty - cy, tx - cx), rad = Math.hypot(tx - cx, ty - cy);
       P.push({
         tx, ty, ang, rad, bar, x: tx, y: ty, vx: 0, vy: 0,
@@ -790,6 +792,33 @@ function isoParticles() {
         a0: ang - 2.2 - Math.random() * .5, r0: rad * (1.25 + Math.random() * .3),
         d: bar ? 1250 + (tx - cx) * 1.2 + Math.random() * 120 : ((ang + Math.PI * 1.5) % (Math.PI * 2)) / (Math.PI * 2) * 650 + Math.random() * 160,
       });
+    };
+    // Anillo en círculos concéntricos (no en rejilla): el borde queda redondo como el isotipo y
+    // cada círculo reparte sus puntos de corte a corte, así los cortes a 45° quedan limpios.
+    const rIn = R * 126.1 / 225, rings = Math.max(3, Math.round((R - rIn) / step));
+    const dr = (R - rIn) / rings;
+    for (let k = 0; k < rings; k++) {
+      const rr = rIn + dr * (k + .5), N = 1440;
+      let a1 = null, a2 = null; // arco negro: desde el corte derecho, por abajo, hasta el izquierdo
+      for (let j = 0; j <= N; j++) { const a = -Math.PI / 2 + (j / N) * Math.PI * 2; if (px(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr) === 1) { if (a1 === null) a1 = a; a2 = a; } }
+      if (a1 === null) continue;
+      const n = Math.max(2, Math.round(((a2 - a1) * rr) / step));
+      for (let j = 0; j <= n; j++) { const a = a1 + ((a2 - a1) * j) / n; add(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr, false); }
+    }
+    // Barra naranja: rejilla alineada a su caja para que el borde recto quede recto
+    let bx0 = 1e9, by0 = 1e9, bx1 = -1, by1 = -1;
+    for (let y = 0; y < off.height; y += 1) for (let x = 0; x < off.width; x += 1) {
+      const i = (y * off.width + x) * 4; if (data[i + 3] >= 140 && data[i] > 150) { bx0 = Math.min(bx0, x); bx1 = Math.max(bx1, x); by0 = Math.min(by0, y); by1 = Math.max(by1, y); }
+    }
+    if (bx1 > 0) {
+      const rows = Math.max(2, Math.round((by1 - by0) / step)), sy = (by1 - by0) / rows;
+      for (let r = 0; r <= rows; r++) {
+        const y = oy + by0 + r * sy; let xs = null, xe = null;
+        for (let x = bx0; x <= bx1; x += .5) if (px(ox + x, y) === 2) { if (xs === null) xs = x; xe = x; }
+        if (xs === null) continue;
+        const n = Math.max(1, Math.round((xe - xs) / step));
+        for (let j = 0; j <= n; j++) add(ox + xe - ((xe - xs) * j) / n, y, true);
+      }
     }
     if (reduced) drawStatic();
   }
