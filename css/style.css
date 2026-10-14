@@ -162,6 +162,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .hero__accent { position: absolute; left: 48.9%; top: 51.5%; width: 52%; aspect-ratio: 1; transform: translate(-50%, -50%) rotate(-90deg); overflow: visible; pointer-events: none; }
 .hero__accent circle { fill: none; stroke: var(--orange); stroke-width: .6; stroke-dasharray: 302; stroke-dashoffset: 302; }
 .hero__sketch figcaption { position: absolute; right: 90px; bottom: -28px; color: var(--muted-ink); text-align: right; white-space: nowrap; }
+.hero__tagline { font: 300 18px/1 "Jost", "Futura", sans-serif; letter-spacing: 0; }
 .hero__copy { position: absolute; left: var(--pad); bottom: clamp(32px, 9vh, 96px); z-index: 3; max-width: min(560px, 44vw); display: flex; flex-direction: column; gap: 26px; }
 .eyebrow { display: flex; align-items: center; gap: 10px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 0 rgba(240,90,37,.6); animation: pulse 2s infinite; }
