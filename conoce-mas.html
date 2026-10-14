@@ -13,24 +13,21 @@
   <link rel="alternate" hreflang="es" href="https://caraquena.vercel.app/conoce-mas.html">
   <link rel="alternate" hreflang="en" href="https://caraquena.vercel.app/conoce-mas-en.html">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4397207d">
+  <link rel="stylesheet" href="css/style.css?v=8514d089">
 </head>
 <body class="is-sub">
 
-  <!-- Isotipo reutilizable (recreado en SVG a partir del logo; se reemplaza cuando llegue el archivo oficial) -->
+  <!-- Isotipo oficial (vectorizado del archivo de marca) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
-      <mask id="ring-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="900">
-        <rect x="0" y="0" width="900" height="900" fill="#fff"/>
-        <circle cx="410" cy="375" r="125" fill="#000"/>
-        <polygon points="322,287 500,287 720,67 102,67" fill="#000"/>
-      </mask>
-      <symbol id="isotipo" viewBox="170 140 490 470">
-        <circle class="iso-ring" cx="410" cy="375" r="225" fill="currentColor" mask="url(#ring-mask)"/>
-        <path class="iso-bar" d="M506 596 L542 560 H639 a6 6 0 0 1 6 6 V590 a6 6 0 0 1 -6 6 Z" fill="#F05A25"/>
+      <symbol id="isotipo" viewBox="182 212 466 392">
+        <path class="iso-ring" d="M247.24 219.65c-2.07 2.17-4.54 4.83-5.47 5.9-30.28 34.15-49.44 76.34-54.99 121.1-1.17 9.46-1.56 15.09-1.72 25.12-0.39 26.25 3.48 51.1 11.85 75.75 9.75 28.81 25.16 55.05 45.98 78.31 3.68 4.11 12.92 13.33 17.07 16.99 15.83 14.06 31.8 24.87 50.26 34.01 27.41 13.59 55.15 20.92 86.99 23.01 4.83 0.31 20.98 0.31 25.8-0.0 11.65-0.76 22.17-2.13 32.16-4.16 39.39-8.05 75.4-26.21 105.66-53.35 4.03-3.62 12.92-12.49 16.52-16.52 29.13-32.53 47.95-71.62 54.91-114.06 1.86-11.26 2.7-21.13 2.89-33.43 0.25-17.57-1.33-33.94-4.95-50.83-7.82-36.56-24.87-70.75-49.52-99.36-4.16-4.85-11.32-12.45-11.67-12.45-0.1-0.0-15.91 15.74-35.15 34.97l-34.99 34.99 1.66 1.72c8.89 9.3 15.93 19.08 21.5 29.87 7.51 14.54 11.87 29.34 13.57 46.04 0.43 4.2 0.61 15.01 0.31 19.55-2.11 32.18-16.09 61.95-39.37 83.84-23.69 22.27-54.21 34.42-86.44 34.42-37.34-0.0-72.47-16.44-96.61-45.23-14.82-17.65-24.49-39.02-28.01-61.81-1.04-6.84-1.25-10.05-1.25-18.94 0.0-8.97 0.14-11.14 1.15-18.26 1.62-11.2 5.1-23.09 9.87-33.64 5.77-12.84 14.07-25.02 24.42-35.83l1.66-1.72-34.99-34.99c-19.24-19.24-35.05-34.97-35.17-34.97-0.1-0.0-1.88 1.78-3.93 3.97z" fill="currentColor"/>
+        <path class="iso-bar" d="M564.43 561.8c-16.36 13.55-34.99 25.22-54.11 33.92l-3.21 1.45 66.54 0.06c47.01 0.02 66.82-0.02 67.54-0.18 1.37-0.27 2.76-1.23 3.48-2.4 0.59-0.96 0.59-0.96 0.65-15.79 0.04-14.15 0.02-14.88-0.31-15.68-0.53-1.15-1.41-2.09-2.52-2.66-0.94-0.49-0.94-0.49-38.37-0.53l-37.43-0.06-2.25 1.88z" fill="#F15A24"/>
       </symbol>
     </defs>
   </svg>
@@ -295,7 +292,7 @@
         <a href="index.html#estudio">Estudio</a><a href="index.html#proceso">Proceso</a><a href="index.html#proyectos">Proyectos</a><a href="nosotros.html">Nosotros</a><a href="conoce-mas.html">Conoce más</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
       </nav>
     </div>
-    <div class="footer__word" aria-hidden="true">CARAQUEÑA<svg><use href="#isotipo"/></svg></div>
+    <div class="footer__word" aria-hidden="true"><svg><use href="#isotipo"/></svg>CARAQUEÑA</div>
     <div class="container footer__bottom mono">
       <span>© <span class="js-year"></span> Caraqueña Studio. Todos los derechos reservados.</span>
       <a href="#top" class="js-top">Volver arriba ↑</a>
@@ -319,6 +316,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=4397207d"></script>
+  <script src="js/main.js?v=8514d089"></script>
 </body>
 </html>

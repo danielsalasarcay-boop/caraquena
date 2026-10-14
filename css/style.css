@@ -82,7 +82,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .loader__panel--top { top: 0; }
 .loader__panel--bottom { bottom: 0; }
 .loader__inner { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 24px; }
-.loader__logo { width: 120px; height: 116px; color: var(--white); }
+.loader__logo { width: 112px; height: 94px; color: var(--white); overflow: visible; }
 .loader__count { font-size: 14px; color: var(--orange); }
 .loader__label { position: absolute; bottom: 32px; left: 0; right: 0; text-align: center; color: var(--muted); }
 
@@ -97,7 +97,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .header.is-light.is-scrolled { background: rgba(241, 239, 234, .8); }
 .header.is-hidden, .header.is-pre { transform: translateY(-110%); }
 .header__brand { display: flex; align-items: center; gap: 12px; margin-right: auto; }
-.header__logo { width: 38px; height: 36px; color: currentColor; transition: transform .8s var(--ease); }
+.header__logo { width: 36px; height: 30px; color: currentColor; transition: transform .8s var(--ease); }
 .header__brand:hover .header__logo { transform: rotate(-360deg); }
 .header__word { font: 800 18px/1 var(--display); font-variation-settings: "wdth" 110; text-transform: uppercase; letter-spacing: -.01em; }
 .header__word em { font: 400 11px/1 var(--mono); font-style: normal; letter-spacing: .14em; color: var(--orange); margin-left: 6px; vertical-align: top; }
@@ -431,7 +431,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
   display: flex; align-items: center; justify-content: center; gap: 2vw; margin: 60px 0 30px;
   font: 900 10vw/1 var(--display); font-variation-settings: "wdth" 105; letter-spacing: -.04em; white-space: nowrap;
 }
-.footer__word svg { width: 7vw; height: 6.7vw; flex: none; color: var(--white); }
+.footer__word svg { width: 8.8vw; height: 7.4vw; flex: none; color: var(--white); }
 .footer__bottom { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--line); }
 @media (max-width: 640px) { .footer__bottom { padding-right: 70px; } }
 @media (max-width: 760px) {
@@ -554,7 +554,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
   .header { gap: 10px; }
   .header__word em { display: none; }
   .header__word { font-size: 16px; }
-  .header__logo { width: 32px; height: 30px; }
+  .header__logo { width: 31px; height: 26px; }
   .contact__val { font-size: 15px; }
 }
 
