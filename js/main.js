@@ -740,7 +740,8 @@ function isoParticles() {
   if (!wrap || !sym || !finePointer || !matchMedia("(min-width: 901px)").matches) return;
   const canvas = wrap.querySelector("canvas");
   const ctx = canvas.getContext("2d");
-  const INK = "#121212", ORANGE = "#F15A24", GLOW = "#F15A24", DOT = 2.05;
+  const INK = "#0a0a0a", ORANGE = "#F15A24", GLOW = "#F15A24";
+  let DOT = 2.5, SPR = {}; // moléculas: puntos redondos pre-dibujados (nítidos y rápidos)
   const [vx, vy, vw, vh] = sym.getAttribute("viewBox").split(/\s+/).map(Number);
   const CX = 410, CY = 375; // centro del anillo en el sistema del isotipo
   const img = new Image();
@@ -766,7 +767,16 @@ function isoParticles() {
     const o = off.getContext("2d");
     o.drawImage(img, 0, 0, mw, mh);
     const data = o.getImageData(0, 0, off.width, off.height).data;
-    const step = mh < 220 ? 2.8 : 3.1;
+    const step = mh < 220 ? 2.6 : 3;
+    // punto redondo que llena ~85% de la celda: el negro se lee sólido de lejos y como moléculas de cerca
+    DOT = step * .86;
+    const sprite = (c) => {
+      const n = Math.ceil((DOT + 1) * dpr), sp = document.createElement("canvas");
+      sp.width = sp.height = n;
+      const g = sp.getContext("2d"); g.fillStyle = c; g.beginPath(); g.arc(n / 2, n / 2, DOT * dpr / 2, 0, Math.PI * 2); g.fill();
+      return sp;
+    };
+    SPR = { ink: sprite(INK), bar: sprite(ORANGE), glow: sprite(GLOW) };
     P = [];
     for (let y = 0; y < off.height; y += step) for (let x = 0; x < off.width; x += step) {
       const i = (Math.floor(y) * off.width + Math.floor(x)) * 4;
@@ -784,9 +794,14 @@ function isoParticles() {
     if (reduced) drawStatic();
   }
 
+  function dot(sp, x, y, k) {
+    const w = sp.width / (canvas.width / Math.max(W, 1)) * k;
+    ctx.drawImage(sp, x - w / 2, y - w / 2, w, w);
+  }
+
   function drawStatic() {
     ctx.clearRect(0, 0, W, H + 400);
-    for (const p of P) { ctx.fillStyle = p.bar ? ORANGE : INK; ctx.fillRect(p.tx - DOT / 2, p.ty - DOT / 2, DOT, DOT); }
+    for (const p of P) dot(p.bar ? SPR.bar : SPR.ink, p.tx, p.ty, 1);
   }
 
   function frame(now) {
@@ -810,11 +825,10 @@ function isoParticles() {
       p.vx = (p.vx + (tx - p.x) * .08) * .78; p.vy = (p.vy + (ty - p.y) * .08) * .78;
       p.x += p.vx; p.y += p.vy;
       let g = 0; // estela del brazo de luz: intensa en la punta, se apaga detrás
-      if (sweep !== null && !p.bar) { let da = (sweep - p.ang) % (Math.PI * 2); if (da < 0) da += Math.PI * 2; g = da < .9 ? Math.pow(1 - da / .9, 2) * .8 : 0; }
-      const a = k < 0 ? 0 : k < .25 ? k * 4 : 1, sz = DOT + g * .7;
-      ctx.globalAlpha = a; ctx.fillStyle = p.bar ? ORANGE : INK;
-      ctx.fillRect(p.x - sz / 2, p.y - sz / 2, sz, sz);
-      if (g > .02) { ctx.globalAlpha = a * g; ctx.fillStyle = GLOW; ctx.fillRect(p.x - sz / 2, p.y - sz / 2, sz, sz); }
+      if (sweep !== null && !p.bar) { let da = (sweep - p.ang) % (Math.PI * 2); if (da < 0) da += Math.PI * 2; g = da < .9 ? Math.pow(1 - da / .9, 2) : da > Math.PI * 2 - .12 ? (da - Math.PI * 2 + .12) / .12 : 0; }
+      const a = k < 0 ? 0 : k < .25 ? k * 4 : 1;
+      ctx.globalAlpha = a; dot(p.bar ? SPR.bar : SPR.ink, p.x, p.y, 1);
+      if (g > .02) { ctx.globalAlpha = a * g; dot(SPR.glow, p.x, p.y, 1 + g * .25); }
     }
     ctx.globalAlpha = 1;
     if (visible && !document.hidden) raf = requestAnimationFrame(frame);
