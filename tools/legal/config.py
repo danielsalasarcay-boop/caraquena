@@ -6,7 +6,7 @@
 # PENDIENTE (lo da el dueño): razón social y RIF del estudio. Cuando estén, añadirlos en
 # "Quiénes somos" (Términos) y "Responsable" (Privacidad).
 
-VERSION = "2026-10-25.3"
+VERSION = "2026-10-25.4"
 WA = '<a href="https://wa.me/584142582223">+58 414 258 2223</a>'
 MAIL = '<a href="mailto:contacto@caraquena.com">contacto@caraquena.com</a>'
 IG = '<a href="https://www.instagram.com/caraquena.studio" rel="noopener">@caraquena.studio</a>'
@@ -84,10 +84,13 @@ T_ES = [
     ("13. Uso del sitio", [
         "No está permitido usar el sitio o nuestros canales de contacto con fines ilícitos o fraudulentos, enviar mensajes masivos no solicitados, intentar acceder sin autorización a sus sistemas ni copiar su contenido de forma automatizada.",
     ]),
-    ("14. Ley aplicable y reclamos", [
+    ("14. Acuerdo completo", [
+        "Estos términos, junto con la propuesta escrita de cada proyecto, forman todo lo acordado entre las partes. No valen promesas ni acuerdos de palabra que no consten por escrito (correo o WhatsApp).",
+    ]),
+    ("15. Ley aplicable y reclamos", [
         f"Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Si tienes un reclamo, escríbenos a {MAIL} y te responderemos en un plazo máximo de 15 días hábiles. Las diferencias se resolverán primero de forma amistosa y, si no es posible, ante los tribunales competentes de Caracas, sin perjuicio de los derechos que la ley reconoce a los consumidores.",
     ]),
-    ("15. Cambios", [
+    ("16. Cambios", [
         "Podemos actualizar estos términos. La versión vigente es la publicada en esta página con su fecha; los proyectos ya contratados se rigen por la versión que aceptaste.",
     ]),
 ]
@@ -141,10 +144,13 @@ T_EN = [
     ("13. Use of the site", [
         "You may not use the site or our contact channels for unlawful or fraudulent purposes, send unsolicited bulk messages, attempt unauthorized access to its systems or copy its content by automated means.",
     ]),
-    ("14. Governing law and complaints", [
+    ("14. Entire agreement", [
+        "These terms, together with the written proposal for each project, make up the entire agreement between the parties. Verbal promises or agreements that are not in writing (email or WhatsApp) are not valid.",
+    ]),
+    ("15. Governing law and complaints", [
         f"These terms are governed by the laws of the Bolivarian Republic of Venezuela. If you have a complaint, write to {MAIL} and we will reply within 15 business days. Disputes will first be settled amicably and, if that is not possible, before the competent courts of Caracas, without prejudice to the rights the law grants consumers.",
     ]),
-    ("15. Changes", [
+    ("16. Changes", [
         "We may update these terms. The current version is the one published on this page with its date; projects already contracted are governed by the version you accepted.",
     ]),
 ]
