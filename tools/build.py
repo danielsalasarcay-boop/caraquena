@@ -61,7 +61,7 @@ def footer(b):
     </div>
     <div class="footer__word" aria-hidden="true"><svg><use href="#isotipo"/></svg><div class="footer__lock"><span>CARAQUEÑA</span><span class="footer__tagline">Architecture, Design &amp; Construction.</span></div></div>
     <div class="container footer__bottom mono">
-      <span>© <span class="js-year"></span> Caraqueña Studio. Todos los derechos reservados.</span>
+      <span>© <span class="js-year"></span> Caraqueña Studio. Todos los derechos reservados.<span class="footer__legal"><span class="footer__legal-sep"> · </span><a href="terminos.html">Términos</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></span></span>
       <a href="#top" class="js-top">Volver arriba ↑</a>
     </div>
   </footer>

@@ -455,6 +455,14 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .footer__word svg { width: 9.4vw; height: 7.9vw; flex: none; color: var(--white); }
 .footer__lock { display: flex; flex-direction: column; }
 .footer__tagline { font: 300 2.05vw/1 "Jost", "Futura", sans-serif; letter-spacing: 0; margin-top: .65vw; }
+.footer__legal a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.footer__legal a:hover { color: var(--orange); }
+/* En pantallas angostas los enlaces legales van debajo de la última fila, dentro del margen inferior del footer: el footer mide lo mismo que antes */
+@media (max-width: 1023px) {
+  .footer__bottom { position: relative; }
+  .footer__legal { position: absolute; left: var(--pad); top: calc(100% + 4px); white-space: nowrap; line-height: 18px; }
+  .footer__legal-sep { display: none; }
+}
 .footer__bottom { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--line); }
 @media (max-width: 640px) { .footer__bottom { padding-right: 70px; } }
 @media (max-width: 760px) {
