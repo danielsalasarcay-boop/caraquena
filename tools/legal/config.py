@@ -6,7 +6,7 @@
 # PENDIENTE (lo da el dueño): razón social y RIF del estudio. Cuando estén, añadirlos en
 # "Quiénes somos" (Términos) y "Responsable" (Privacidad).
 
-VERSION = "2026-10-25.2"
+VERSION = "2026-10-25.3"
 WA = '<a href="https://wa.me/584142582223">+58 414 258 2223</a>'
 MAIL = '<a href="mailto:contacto@caraquena.com">contacto@caraquena.com</a>'
 IG = '<a href="https://www.instagram.com/caraquena.studio" rel="noopener">@caraquena.studio</a>'
@@ -48,7 +48,6 @@ T_ES = [
         "Los planos y documentos que deban presentarse ante las autoridades los firma un arquitecto o ingeniero inscrito en el colegio profesional correspondiente, que asume la responsabilidad profesional que la ley le atribuye.",
         "Antes de empezar te enviamos una propuesta escrita con el alcance, las fases, los entregables, los honorarios, la forma de pago y los plazos. El trabajo empieza cuando la aceptas por escrito.",
         "Los honorarios se expresan en dólares estadounidenses de forma referencial. El monto es el mismo cualquiera sea la moneda de pago: si pagas en bolívares, se calcula a la tasa oficial del Banco Central de Venezuela del día del pago.",
-        "Los impuestos que correspondan por ley se indican en la propuesta. Si el cliente está obligado a practicar retenciones de impuestos sobre los honorarios, las aplica conforme a la ley y nos entrega el comprobante.",
         "Los trabajos fuera del alcance de la propuesta, o los cambios pedidos después de aprobada una fase, se cotizan aparte.",
     ]]),
     ("4. Responsabilidades del cliente", [[
@@ -106,7 +105,6 @@ T_EN = [
         "Plans and documents that must be filed with the authorities are signed by an architect or engineer registered with the relevant professional association, who assumes the professional responsibility the law assigns.",
         "Before starting we send you a written proposal with the scope, phases, deliverables, fees, payment method and timeline. Work starts when you accept it in writing.",
         "Fees are expressed in US dollars for reference. The amount is the same whatever the currency of payment: if you pay in bolívares, it is calculated at the official Central Bank of Venezuela rate on the payment date.",
-        "Taxes due by law are stated in the proposal. If the client is required to withhold taxes on the fees, it does so as the law provides and gives us the withholding receipt.",
         "Work outside the scope of the proposal, or changes requested after a phase is approved, are quoted separately.",
     ]]),
     ("4. Client responsibilities", [[
