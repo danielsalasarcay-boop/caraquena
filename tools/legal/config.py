@@ -6,7 +6,7 @@
 # PENDIENTE (lo da el dueño): razón social y RIF del estudio. Cuando estén, añadirlos en
 # "Quiénes somos" (Términos) y "Responsable" (Privacidad).
 
-VERSION = "2026-10-25"
+VERSION = "2026-10-25.2"
 WA = '<a href="https://wa.me/584142582223">+58 414 258 2223</a>'
 MAIL = '<a href="mailto:contacto@caraquena.com">contacto@caraquena.com</a>'
 IG = '<a href="https://www.instagram.com/caraquena.studio" rel="noopener">@caraquena.studio</a>'
@@ -20,6 +20,8 @@ SITE = {
     "home": {"es": "index.html", "en": "index-en.html"},
     "files": {"terms": "terminos.html", "privacy": "privacidad.html", "cookies": "cookies.html"},
     "version": VERSION,
+    # Versión de cada documento (sube solo la del que cambió)
+    "versions": {"terms": VERSION, "privacy": "2026-10-25", "cookies": "2026-10-25"},
     "updated": {"es": "25 de octubre de 2026", "en": "October 25, 2026"},
     "head": '<link rel="icon" href="img/favicon.svg" type="image/svg+xml">\n'
             '<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">\n'
@@ -43,8 +45,10 @@ T_ES = [
     ]),
     ("3. Servicios y propuesta", [[
         "Ofrecemos diseño arquitectónico y de interiores, consultorías, desarrollo de proyectos y supervisión de obras, según se acuerde en cada propuesta.",
+        "Los planos y documentos que deban presentarse ante las autoridades los firma un arquitecto o ingeniero inscrito en el colegio profesional correspondiente, que asume la responsabilidad profesional que la ley le atribuye.",
         "Antes de empezar te enviamos una propuesta escrita con el alcance, las fases, los entregables, los honorarios, la forma de pago y los plazos. El trabajo empieza cuando la aceptas por escrito.",
-        "Los honorarios se expresan en dólares estadounidenses y pueden pagarse en bolívares a la tasa oficial del Banco Central de Venezuela del día del pago, conforme a la normativa vigente.",
+        "Los honorarios se expresan en dólares estadounidenses de forma referencial. El monto es el mismo cualquiera sea la moneda de pago: si pagas en bolívares, se calcula a la tasa oficial del Banco Central de Venezuela del día del pago.",
+        "Los impuestos que correspondan por ley se indican en la propuesta. Si el cliente está obligado a practicar retenciones de impuestos sobre los honorarios, las aplica conforme a la ley y nos entrega el comprobante.",
         "Los trabajos fuera del alcance de la propuesta, o los cambios pedidos después de aprobada una fase, se cotizan aparte.",
     ]]),
     ("4. Responsabilidades del cliente", [[
@@ -75,10 +79,16 @@ T_ES = [
     ("11. Contenido de este sitio", [
         "Los textos, imágenes, renders, bocetos, animaciones, logotipo y diseño de este sitio son de Caraqueña Studio. No pueden copiarse ni reutilizarse sin permiso escrito.",
     ]),
-    ("12. Ley aplicable y reclamos", [
+    ("12. Si nos visitas o contratas desde otro país", [
+        "Nuestros servicios se prestan en Venezuela y se rigen por la ley venezolana. Si usas el sitio o contratas desde otro país, eres responsable de cumplir las leyes de tu país.",
+    ]),
+    ("13. Uso del sitio", [
+        "No está permitido usar el sitio o nuestros canales de contacto con fines ilícitos o fraudulentos, enviar mensajes masivos no solicitados, intentar acceder sin autorización a sus sistemas ni copiar su contenido de forma automatizada.",
+    ]),
+    ("14. Ley aplicable y reclamos", [
         f"Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Si tienes un reclamo, escríbenos a {MAIL} y te responderemos en un plazo máximo de 15 días hábiles. Las diferencias se resolverán primero de forma amistosa y, si no es posible, ante los tribunales competentes de Caracas, sin perjuicio de los derechos que la ley reconoce a los consumidores.",
     ]),
-    ("13. Cambios", [
+    ("15. Cambios", [
         "Podemos actualizar estos términos. La versión vigente es la publicada en esta página con su fecha; los proyectos ya contratados se rigen por la versión que aceptaste.",
     ]),
 ]
@@ -93,8 +103,10 @@ T_EN = [
     ]),
     ("3. Services and proposal", [[
         "We offer architectural and interior design, consulting, project development and construction supervision, as agreed in each proposal.",
+        "Plans and documents that must be filed with the authorities are signed by an architect or engineer registered with the relevant professional association, who assumes the professional responsibility the law assigns.",
         "Before starting we send you a written proposal with the scope, phases, deliverables, fees, payment method and timeline. Work starts when you accept it in writing.",
-        "Fees are expressed in US dollars and may be paid in bolívares at the official Central Bank of Venezuela rate on the payment date, as required by law.",
+        "Fees are expressed in US dollars for reference. The amount is the same whatever the currency of payment: if you pay in bolívares, it is calculated at the official Central Bank of Venezuela rate on the payment date.",
+        "Taxes due by law are stated in the proposal. If the client is required to withhold taxes on the fees, it does so as the law provides and gives us the withholding receipt.",
         "Work outside the scope of the proposal, or changes requested after a phase is approved, are quoted separately.",
     ]]),
     ("4. Client responsibilities", [[
@@ -125,10 +137,16 @@ T_EN = [
     ("11. Content of this site", [
         "The texts, images, renders, sketches, animations, logo and design of this site belong to Caraqueña Studio. They may not be copied or reused without written permission.",
     ]),
-    ("12. Governing law and complaints", [
+    ("12. If you visit or hire us from another country", [
+        "Our services are provided in Venezuela and governed by Venezuelan law. If you use the site or hire us from another country, you are responsible for complying with the laws of your country.",
+    ]),
+    ("13. Use of the site", [
+        "You may not use the site or our contact channels for unlawful or fraudulent purposes, send unsolicited bulk messages, attempt unauthorized access to its systems or copy its content by automated means.",
+    ]),
+    ("14. Governing law and complaints", [
         f"These terms are governed by the laws of the Bolivarian Republic of Venezuela. If you have a complaint, write to {MAIL} and we will reply within 15 business days. Disputes will first be settled amicably and, if that is not possible, before the competent courts of Caracas, without prejudice to the rights the law grants consumers.",
     ]),
-    ("13. Changes", [
+    ("15. Changes", [
         "We may update these terms. The current version is the one published on this page with its date; projects already contracted are governed by the version you accepted.",
     ]),
 ]

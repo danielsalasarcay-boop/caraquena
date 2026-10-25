@@ -44,7 +44,7 @@ def page(site, docs, key, lang_pages):
         arts.append(f"""<article data-lang="{lg}"{"" if lg == langs[0] else " hidden"} lang="{lg}">
   <p class="lg-kicker">{site["kicker"][lg]}</p>
   <h1>{d["title"]}</h1>
-  <p class="lg-meta"><span>{L["updated"]}: {site["updated"][lg]}</span> · <span>{L["version"]} {site["version"]}</span></p>
+  <p class="lg-meta"><span>{L["updated"]}: {site["updated"][lg]}</span> · <span>{L["version"]} {site.get("versions", {}).get(key, site["version"])}</span></p>
   <div class="lg-intro">{"".join(block(b) for b in d.get("intro", []))}</div>
   {secs}
   <nav class="lg-docs" aria-label="Legal">{nav}</nav>
