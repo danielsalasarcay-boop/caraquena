@@ -4,6 +4,14 @@ import json, re
 
 P = json.load(open("tools/parts.json"))
 SITE = "https://caraquena.com"
+# Datos estructurados de la portada: nombre del sitio y ficha del estudio para Google
+LD_JSON = """  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [
+    {"@type": "WebSite", "@id": "https://caraquena.com/#website", "url": "https://caraquena.com/", "name": "Caraqueña Studio", "alternateName": ["Caraqueña", "caraquena.com"], "inLanguage": ["es", "en"], "publisher": {"@id": "https://caraquena.com/#studio"}},
+    {"@type": "ProfessionalService", "@id": "https://caraquena.com/#studio", "name": "Caraqueña Studio", "description": "Estudio de arquitectura en Caracas: hotelería y desarrollos de gran escala, vivienda e interiorismo.", "url": "https://caraquena.com/", "logo": "https://caraquena.com/img/favicon-192.png", "image": "https://caraquena.com/img/og-caraquena.jpg", "email": "contacto@caraquena.com", "telephone": "+58 414 258 2223", "address": {"@type": "PostalAddress", "addressLocality": "Caracas", "addressCountry": "VE"}, "areaServed": ["Caracas", "Worldwide"], "sameAs": ["https://www.instagram.com/caraquena.studio/"], "founder": [{"@type": "Person", "name": "Fabrizio Palmieri"}, {"@type": "Person", "name": "Carlos Enrique Salas"}, {"@type": "Person", "name": "Elías Ojalvo"}]}
+  ]}
+  </script>
+"""
 
 def head(title, desc, light=False):
     h = P["head"]
@@ -96,6 +104,8 @@ def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc
     es_url, en_url = f'{SITE}/{out.replace("index.html", "")}', f'{SITE}/{out_en}'
     alt = f'  <link rel="canonical" href="__CANON__">\n  <meta property="og:url" content="__CANON__">\n  <link rel="alternate" hreflang="es" href="{es_url}">\n  <link rel="alternate" hreflang="en" href="{en_url}">\n  <link rel="alternate" hreflang="x-default" href="{es_url}">\n'
     html = html.replace("  <link rel=\"icon\"", alt + "  <link rel=\"icon\"", 1)
+    if out == "index.html":
+        html = html.replace("</head>", LD_JSON + "</head>", 1)
     open(out, "w").write(html.replace("__LANG__", lang_switch(out, out_en, "es")).replace("__CANON__", es_url))
     print(out, len(html))
     # Versión en inglés: mismas piezas, textos traducidos
