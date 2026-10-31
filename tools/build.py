@@ -3,6 +3,7 @@
 import json, re
 
 P = json.load(open("tools/parts.json"))
+SITE = "https://caraquena.com"
 
 def head(title, desc, light=False):
     h = P["head"]
@@ -92,11 +93,10 @@ def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc
     html = head(title, desc, with_loader) + loader + "\n" + header(b, current) + "\n  <main>\n" + open(main).read() + "  </main>\n\n" + footer(b) + P["float"]
     html = html.replace('href="css/style.css"', f'href="css/style.css?v={ASSET_V}"').replace('src="js/main.js"', f'src="js/main.js?v={ASSET_V}"')
     html = mobile_pictures(html)
-    alt = f'  <link rel="alternate" hreflang="es" href="https://caraquena.vercel.app/{out.replace("index.html", "")}">\n  <link rel="alternate" hreflang="en" href="https://caraquena.vercel.app/{out_en}">\n'
+    es_url, en_url = f'{SITE}/{out.replace("index.html", "")}', f'{SITE}/{out_en}'
+    alt = f'  <link rel="canonical" href="__CANON__">\n  <meta property="og:url" content="__CANON__">\n  <link rel="alternate" hreflang="es" href="{es_url}">\n  <link rel="alternate" hreflang="en" href="{en_url}">\n  <link rel="alternate" hreflang="x-default" href="{es_url}">\n'
     html = html.replace("  <link rel=\"icon\"", alt + "  <link rel=\"icon\"", 1)
-    if out.startswith("conoce-mas"):
-        html = html.replace('<meta name="theme-color"', '<meta name="robots" content="noindex, nofollow">\n  <meta name="theme-color"', 1)
-    open(out, "w").write(html.replace("__LANG__", lang_switch(out, out_en, "es")))
+    open(out, "w").write(html.replace("__LANG__", lang_switch(out, out_en, "es")).replace("__CANON__", es_url))
     print(out, len(html))
     # Versión en inglés: mismas piezas, textos traducidos
     en = html.replace('<html lang="es">', '<html lang="en">').replace(f"<title>{title}</title>", f"<title>{title_en}</title>")
@@ -107,7 +107,7 @@ def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc
     # enlaces internos hacia las páginas en inglés
     en = en.replace('href="index.html', 'href="index-en.html').replace('href="nosotros.html', 'href="nosotros-en.html').replace('href="conoce-mas.html', 'href="conoce-mas-en.html')
     en = en.replace('<a href="#inicio" class="header__brand"', '<a href="#inicio" class="header__brand"')
-    open(out_en, "w").write(en.replace("__LANG__", lang_switch(out, out_en, "en")))
+    open(out_en, "w").write(en.replace("__LANG__", lang_switch(out, out_en, "en")).replace("__CANON__", en_url))
     print(out_en, len(en))
 
 page("index.html", "Caraqueña Studio — Arquitectura desde Caracas",

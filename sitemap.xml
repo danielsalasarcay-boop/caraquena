@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://caraquena.com/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://caraquena.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://caraquena.com/index-en.html"/>
+  </url>
+  <url>
+    <loc>https://caraquena.com/index-en.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://caraquena.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://caraquena.com/index-en.html"/>
+  </url>
+  <url>
+    <loc>https://caraquena.com/nosotros.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://caraquena.com/nosotros.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://caraquena.com/nosotros-en.html"/>
+  </url>
+  <url>
+    <loc>https://caraquena.com/nosotros-en.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://caraquena.com/nosotros.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://caraquena.com/nosotros-en.html"/>
+  </url>
+  <url>
+    <loc>https://caraquena.com/conoce-mas.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://caraquena.com/conoce-mas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://caraquena.com/conoce-mas-en.html"/>
+  </url>
+  <url>
+    <loc>https://caraquena.com/conoce-mas-en.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://caraquena.com/conoce-mas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://caraquena.com/conoce-mas-en.html"/>
+  </url>
+  <url>
+    <loc>https://caraquena.com/terminos.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://caraquena.com/privacidad.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://caraquena.com/cookies.html</loc>
+    <lastmod>2026-10-30</lastmod>
+  </url>
+</urlset>
