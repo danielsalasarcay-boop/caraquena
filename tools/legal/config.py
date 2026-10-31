@@ -25,6 +25,8 @@ SITE = {
     "updated": {"es": "25 de octubre de 2026", "en": "October 25, 2026"},
     "head": '<link rel="icon" href="img/favicon.svg" type="image/svg+xml">\n'
             '<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">\n'
+            '<link rel="icon" href="img/favicon-48.png" sizes="48x48" type="image/png">\n'
+            '<link rel="icon" href="img/favicon-192.png" sizes="192x192" type="image/png">\n'
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
             '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
             '<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">',
