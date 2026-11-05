@@ -382,6 +382,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .kicker__svg text { font: 800 200px/1 var(--display); font-variation-settings: "wdth" 112; letter-spacing: -.02em; fill: var(--orange); fill-opacity: 0; stroke: var(--orange); stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .page-hero__title { font-size: clamp(48px, 7.6vw, 124px); font-weight: 400; letter-spacing: -.045em; }
 .page-hero__lead { color: var(--muted-ink); font-size: 18px; padding-bottom: 10px; }
+.page-hero__lead--bold { font-weight: 600; }
 .page-hero__inner--mark .kicker { grid-column: 1; }
 /* Proyectos: la C del logo en el espacio libre a la derecha del título (solo PC) */
 .kicker--iso { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
