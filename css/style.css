@@ -449,7 +449,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .footer__nav { display: flex; gap: 22px; flex-wrap: wrap; }
 @media (hover: hover) { .footer__nav a:hover { color: var(--orange); } }
 .footer__word {
-  display: flex; align-items: center; justify-content: center; gap: 2vw; margin: 45px 0 45px;  /* mismo espacio arriba y abajo: centrado entre contactos y la línea, el footer mide igual */
+  display: flex; align-items: center; justify-content: center; gap: 2vw; margin: 32px 0 58px;  /* subido a pedido del cliente; la suma (90px) es la de siempre, así el footer mide igual */
   font: 900 7.2vw/1 var(--display); font-variation-settings: "wdth" 105; letter-spacing: -.04em; white-space: nowrap;
 }
 .footer__word svg { width: 9.4vw; height: 7.9vw; flex: none; color: var(--white); }
