@@ -480,38 +480,6 @@
 "Entry, bar, living room, kitchen, TV room and stair in one sequence of concrete, wood and plants."
 ],
 [
-"aria-label=\"Ver galería de Residencia en planta baja\"",
-"aria-label=\"View Ground-floor residence gallery\""
-],
-[
-"alt=\"Residencia en planta baja\"",
-"alt=\"Ground-floor residence\""
-],
-[
-"<h3 class=\"pcard__title\">Residencia en planta baja</h3>",
-"<h3 class=\"pcard__title\">Ground-floor residence</h3>"
-],
-[
-"Habitación principal, peinadora y escritorio, vestier y baño, resueltos en madera y piedra.",
-"Master bedroom, vanity and desk, walk-in closet and bathroom, in wood and stone."
-],
-[
-"aria-label=\"Ver galería de Suite y oficina\"",
-"aria-label=\"View Suite and office gallery\""
-],
-[
-"alt=\"Suite y oficina\"",
-"alt=\"Suite and office\""
-],
-[
-"<h3 class=\"pcard__title\">Suite y oficina</h3>",
-"<h3 class=\"pcard__title\">Suite and office</h3>"
-],
-[
-"Habitación principal, vestier, oficina, baños y panelería de pasillo, con cortes seccionados de cada espacio.",
-"Master bedroom, walk-in closet, office, bathrooms and hallway paneling, with sectional cutaways of each space."
-],
-[
 "aria-label=\"Galería del proyecto\"",
 "aria-label=\"Project gallery\""
 ],
@@ -670,5 +638,13 @@
 [
 "<a href=\"terminos.html\">Términos</a> · <a href=\"privacidad.html\">Privacidad</a> · <a href=\"cookies.html\">Cookies</a>",
 "<a href=\"terminos.html?lang=en\">Terms</a> · <a href=\"privacidad.html?lang=en\">Privacy</a> · <a href=\"cookies.html?lang=en\">Cookies</a>"
+],
+[
+"aria-label=\"Ver galería de Townhouse Alto Hatillo\"",
+"aria-label=\"View Townhouse Alto Hatillo gallery\""
+],
+[
+"Habitaciones principales, vestier, oficina, baños y panelería de pasillo, resueltos en madera y piedra, con cortes seccionados de cada espacio.",
+"Master bedrooms, walk-in closet, office, bathrooms and hallway paneling, resolved in wood and stone, with sectional cuts of every space."
 ]
 ]
