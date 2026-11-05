@@ -55,12 +55,17 @@ document.querySelectorAll(".js-split-lines").forEach((el) => {
 // ---- Conoce más: visor de fichas del portafolio ----
 const lbEl = document.querySelector(".lb");
 if (lbEl) {
-  const img = lbEl.querySelector(".lb__img"), thumbs = lbEl.querySelector(".lb__thumbs");
+  const img = lbEl.querySelector(".lb__img"), vid = lbEl.querySelector(".lb__video"), thumbs = lbEl.querySelector(".lb__thumbs");
   const titleEl = lbEl.querySelector(".lb__title"), countEl = lbEl.querySelector(".lb__count");
   let list = [], idx = 0, lastFocus = null;
   const show = (i) => {
     idx = (i + list.length) % list.length;
-    img.src = list[idx]; countEl.textContent = `${idx + 1} / ${list.length}`;
+    // la ficha puede cerrar con un video (data-video): se muestra en lugar de la imagen
+    const isVid = list[idx].endsWith(".mp4");
+    img.hidden = isVid; vid.hidden = !isVid; lbEl.classList.toggle("is-video", isVid);
+    if (isVid) { vid.poster = list[idx].replace(/\.mp4$/, "-poster.jpg"); vid.src = list[idx]; vid.muted = true; vid.play().catch(() => {}); }
+    else { vid.pause(); vid.removeAttribute("src"); vid.load(); img.src = list[idx]; }
+    countEl.textContent = `${idx + 1} / ${list.length}`;
     thumbs.querySelectorAll("button").forEach((b, k) => b.classList.toggle("is-on", k === idx));
     thumbs.children[idx]?.scrollIntoView({ inline: "center", block: "nearest" });
   };
@@ -68,9 +73,12 @@ if (lbEl) {
     const g = card.dataset.gallery, n = +card.dataset.count;
     const sfx = innerWidth <= 900 ? "-m" : "";
     list = Array.from({ length: n }, (_, k) => `img/portafolio/${g}/${String(k + 1).padStart(2, "0")}${sfx}.jpg`);
+    if (card.dataset.video) list.push(card.dataset.video);
     titleEl.textContent = card.querySelector(".pcard__title").textContent;
     img.alt = titleEl.textContent;
-    thumbs.innerHTML = list.map((src, k) => `<button type="button" aria-label="${k + 1}"><img src="${src.replace(/(-m)?\.jpg$/, "-m.jpg")}" alt="" loading="lazy" decoding="async"></button>`).join("");
+    thumbs.innerHTML = list.map((src, k) => src.endsWith(".mp4")
+      ? `<button type="button" class="is-video" aria-label="${k + 1}: video"><img src="${src.replace(/\.mp4$/, "-poster.jpg")}" alt="" loading="lazy" decoding="async"></button>`
+      : `<button type="button" aria-label="${k + 1}"><img src="${src.replace(/(-m)?\.jpg$/, "-m.jpg")}" alt="" loading="lazy" decoding="async"></button>`).join("");
     thumbs.querySelectorAll("button").forEach((b, k) => b.addEventListener("click", () => show(k)));
     lastFocus = document.activeElement;
     lbEl.hidden = false; document.documentElement.style.overflow = "hidden";
@@ -78,6 +86,7 @@ if (lbEl) {
     show(0); lbEl.querySelector(".lb__close").focus();
   };
   const close = () => {
+    vid.pause();
     lbEl.hidden = true; document.documentElement.style.overflow = "";
     window.lenisInstance?.start(); window.__touchNormalize?.(true); lastFocus?.focus();
   };

@@ -723,7 +723,12 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .lb__close { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: none; color: var(--white); font-size: 16px; cursor: pointer; }
 .lb__stage { position: relative; flex: 1; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); padding: 0 64px; min-height: 0; }
 /* la imagen llena el espacio y se ajusta adentro: láminas horizontales y fotos verticales caben completas */
-.lb__img { width: 100%; height: 100%; object-fit: contain; }
+.lb__img, .lb__video { width: 100%; height: 100%; object-fit: contain; }
+.lb__img[hidden], .lb__video[hidden] { display: none; }
+/* video al final de una ficha: sin caja negra; en teléfono deja sitio abajo a las flechas para no tapar los controles */
+@media (max-width: 640px) { .lb.is-video .lb__stage { padding-bottom: 68px; } }
+.lb__thumbs button.is-video { position: relative; }
+.lb__thumbs button.is-video::after { content: "▶"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 16px; background: rgba(0, 0, 0, .35); }
 .lb__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: rgba(10,10,10,.5); color: var(--white); font-size: 18px; cursor: pointer; }
 .lb__nav--prev { left: 10px; }
 .lb__nav--next { right: 10px; }
