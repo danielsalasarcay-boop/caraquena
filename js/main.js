@@ -282,7 +282,8 @@ function init() {
       kicker.setAttribute("viewBox", `${bb.x - 4} ${bb.y - 4} ${bb.width + 8} ${bb.height + 8}`);
       gsap.timeline({ delay: .2 })
         .fromTo(text, { strokeDasharray: 2400, strokeDashoffset: 2400 }, { strokeDashoffset: 0, duration: 2.4, ease: "power2.inOut" })
-        .to(text, { fillOpacity: 1, duration: .9, ease: "power1.out" }, "-=.7");
+        .to(text, { fillOpacity: 1, duration: .9, ease: "power1.out" }, "-=.7")
+        .from(".kicker__iso", { autoAlpha: 0, rotate: -360, scale: .6, duration: 1.3, ease: "expo.out" }, "-=.6");
     });
   }
 
