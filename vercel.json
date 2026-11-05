@@ -1,0 +1,234 @@
+{
+ "redirects": [
+  {
+   "source": "/img/portafolio/residencia-pb/01.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/01.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/02.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/02.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/03.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/03.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/04.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/04.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/05.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/05.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/06.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/06.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/07.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/07.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/08.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/08.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/09.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/09.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/10.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/10.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/01.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/11.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/02.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/12.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/03.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/13.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/04.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/14.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/05.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/15.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/06.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/16.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/07.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/17.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/08.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/18.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/09.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/19.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/10.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/20.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/11.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/21.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/hover.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/hover.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/hover.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/hover.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/01-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/01-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/02-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/02-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/03-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/03-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/04-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/04-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/05-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/05-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/06-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/06-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/07-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/07-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/08-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/08-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/09-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/09-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/10-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/10-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/01-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/11-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/02-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/12-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/03-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/13-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/04-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/14-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/05-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/15-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/06-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/16-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/07-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/17-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/08-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/18-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/09-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/19-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/10-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/20-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/11-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/21-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/residencia-pb/hover-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/hover-m.jpg",
+   "permanent": true
+  },
+  {
+   "source": "/img/portafolio/apartamento-suite/hover-m.jpg",
+   "destination": "/img/portafolio/townhouse-alto-hatillo/hover-m.jpg",
+   "permanent": true
+  }
+ ]
+}
