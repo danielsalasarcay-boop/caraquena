@@ -34,9 +34,8 @@ def header(b, current=""):
     <nav class="header__nav" aria-label="Principal">
       <a href="{b}#estudio">Estudio</a>
       <a href="{b}#proceso">Proceso</a>
-      <a href="{b}#proyectos">Proyectos</a>
+      <a href="conoce-mas.html"{cur('conoce')}>Proyectos</a>
       <a href="nosotros.html"{cur('nosotros')}>Nosotros</a>
-      <a href="conoce-mas.html"{cur('conoce')}>Conoce más</a>
     </nav>
     <div class="lang mono" aria-label="Idioma">__LANG__</div>
     <a href="{b}#contacto" class="btn btn--small header__cta"><span>Contacto</span></a>
@@ -47,10 +46,9 @@ def header(b, current=""):
     <nav class="menu__nav">
       <a href="{b}#estudio"><span class="mono">01</span>Estudio</a>
       <a href="{b}#proceso"><span class="mono">02</span>Proceso</a>
-      <a href="{b}#proyectos"><span class="mono">03</span>Proyectos</a>
+      <a href="conoce-mas.html"><span class="mono">03</span>Proyectos</a>
       <a href="nosotros.html"><span class="mono">04</span>Nosotros</a>
-      <a href="conoce-mas.html"><span class="mono">05</span>Conoce más</a>
-      <a href="{b}#contacto"><span class="mono">06</span>Contacto</a>
+      <a href="{b}#contacto"><span class="mono">05</span>Contacto</a>
     </nav>
     <div class="menu__foot mono"><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="js-mail" href="#">Correo</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a></div>
   </div>
@@ -65,7 +63,7 @@ def footer(b):
         <a class="footer__big js-wa" href="#" target="_blank" rel="noopener">+58 414 258 2223</a>
       </div>
       <nav class="footer__nav mono">
-        <a href="{b}#estudio">Estudio</a><a href="{b}#proceso">Proceso</a><a href="{b}#proyectos">Proyectos</a><a href="nosotros.html">Nosotros</a><a href="conoce-mas.html">Conoce más</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="{b}#estudio">Estudio</a><a href="{b}#proceso">Proceso</a><a href="conoce-mas.html">Proyectos</a><a href="nosotros.html">Nosotros</a><a class="js-ig" href="#" target="_blank" rel="noopener">Instagram</a>
       </nav>
     </div>
     <div class="footer__word" aria-hidden="true"><svg><use href="#isotipo"/></svg><div class="footer__lock"><span>CARAQUEÑA</span><span class="footer__tagline">Architecture, Design &amp; Construction.</span></div></div>
@@ -128,7 +126,7 @@ page("nosotros.html", "Nosotros — Caraqueña Studio",
      "Fabrizio Palmieri, Carlos Enrique Salas y Elías Ojalvo. Presencia y ejecución en Caracas; diseño, innovación y consultoría a nivel global.",
      "index.html", "nosotros", "tools/main-nosotros.html", False, "nosotros-en.html", "About — Caraqueña Studio",
      "Fabrizio Palmieri, Carlos Enrique Salas and Elías Ojalvo. On-site presence and execution in Caracas; design, innovation and consulting worldwide.")
-page("conoce-mas.html", "Conoce más — Caraqueña Studio",
+page("conoce-mas.html", "Proyectos — Caraqueña Studio",
      "Portafolio de Caraqueña Studio: Otter La Tortuga, Puerto de Guanta e interiorismo, del boceto al render.",
-     "index.html", "conoce", "tools/main-conoce-mas.html", False, "conoce-mas-en.html", "Learn more — Caraqueña Studio",
+     "index.html", "conoce", "tools/main-conoce-mas.html", False, "conoce-mas-en.html", "Projects — Caraqueña Studio",
      "Caraqueña Studio portfolio: Otter La Tortuga, Puerto de Guanta and interiors, from sketch to render.")
