@@ -632,8 +632,8 @@
 "alt=\"Before: the previous altar of the Virgin at Universidad Santa María\""
 ],
 [
-"<li>USM</li><li>Antes</li><li>Boceto</li><li>Planos</li><li>Render</li>",
-"<li>USM</li><li>Before</li><li>Sketch</li><li>Drawings</li><li>Render</li>"
+"<li>USM</li><li>Antes</li><li>Boceto</li><li>Planos</li><li>Render</li><li>Obra</li>",
+"<li>USM</li><li>Before</li><li>Sketch</li><li>Drawings</li><li>Render</li><li>Built</li>"
 ],
 [
 "<span class=\"mono\">02 — Antes</span><p>El altar anterior, que el proyecto reemplazó por una pieza de concreto.</p>",
@@ -644,8 +644,12 @@
 "<span class=\"mono\">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · Built, 2025.</p>"
 ],
 [
-"<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes. Hoy, construido.</p>",
-"<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names. Now built.</p>"
+"<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes.</p>",
+"<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names.</p>"
+],
+[
+"<span class=\"mono\">06 — Obra construida</span><p>La pieza terminada en el campus de la Universidad Santa María, con la escultura de Nuestra Señora del Rosario.</p>",
+"<span class=\"mono\">06 — Built work</span><p>The finished piece on the Universidad Santa María campus, with the statue of Our Lady of the Rosary.</p>"
 ],
 [
 "alt=\"Fabrizio Palmieri, arquitecto socio de Caraqueña\"",

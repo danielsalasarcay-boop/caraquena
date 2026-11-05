@@ -567,11 +567,12 @@ function init() {
     const q = (sel) => uf.querySelector(sel);
     const caps = [...uf.querySelectorAll(".film__cap")];
     const rail = [...uf.querySelectorAll(".film__rail li")];
-    const bounds = [1, 2.0, 4.0, 5.0, 99];
+    const bounds = [1, 2.0, 4.0, 5.0, 5.6, 99];
     const setChapter = (t) => {
       const i = bounds.findIndex((b) => t < b);
       caps.forEach((c, k) => c.classList.toggle("is-on", k === i));
       rail.forEach((li, k) => li.classList.toggle("is-on", k === i));
+      uf.classList.toggle("is-built", i === caps.length - 1);
     };
     setChapter(0);
     const title = q(".ufilm__title text"), scan = q(".ufilm__scan");

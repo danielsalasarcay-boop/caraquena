@@ -793,6 +793,10 @@ picture { display: contents; }
 .ufilm .film__cap { background: rgba(255, 255, 255, .92); color: var(--ink); border-left: 2px solid var(--orange); }
 .ufilm .film__rail li { mix-blend-mode: normal; color: rgba(18, 18, 18, .4); }
 .ufilm .film__rail li.is-on { color: var(--ink); }
+/* 06 — Obra construida: la foto real es oscura, el riel pasa a blanco */
+.ufilm .film__rail li { transition: color .3s; }
+.ufilm.is-built .film__rail li { color: rgba(255, 255, 255, .55); text-shadow: 0 1px 6px rgba(0, 0, 0, .35); }
+.ufilm.is-built .film__rail li.is-on { color: #fff; }
 @media (max-width: 760px) {
   .ufilm__plans { width: 150vw; left: 62%; }
   .ufilm__actual { height: 62vh; }
