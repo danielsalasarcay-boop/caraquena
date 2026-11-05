@@ -365,7 +365,7 @@ function init() {
       stick(build, wrap, top, () => innerHeight * 1.1);
       pinCfg = { trigger: wrap, start: () => "top " + top() + "px", end: () => "+=" + innerHeight * 1.1 };
     }
-    gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         ...pinCfg, scrub: .8,
         onUpdate: (s) => setStage(s.progress < .42 ? (s.progress < .05 ? 0 : 1) : 2),
@@ -383,6 +383,17 @@ function init() {
       .set(scanH, { opacity: 0 }, .92)
       .fromTo(canvas, { scale: .97 }, { scale: 1, ease: "none", duration: 1 }, 0)
       .to({}, { duration: .08 });
+    // 3) botones Trazo / Boceto / Render: llevan el scroll al punto de esa etapa y la animación corre sola
+    const stageAt = [0, .4, .97];
+    const goStage = (i) => {
+      const st = tl.scrollTrigger;
+      lenis.scrollTo(st.start + (st.end - st.start) * stageAt[i], { duration: 1.4 });
+    };
+    stages.forEach((li, i) => {
+      li.setAttribute("role", "button"); li.tabIndex = 0;
+      li.addEventListener("click", () => goStage(i));
+      li.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goStage(i); } });
+    });
     // 1) trazo: se dibuja mientras el proyecto sube hacia el centro (cuando el SVG termina de cargar)
     loadDraw(el).then((paths) => {
       gsap.timeline({ scrollTrigger: { trigger: canvas, start: "top 92%", end: "center 52%", scrub: .8 } })

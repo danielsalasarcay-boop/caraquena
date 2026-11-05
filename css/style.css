@@ -600,6 +600,9 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 .build__stages { display: flex; gap: 6px; margin-top: 18px; }
 .build__stages li { position: relative; padding: 7px 12px; border: 1px solid var(--line-ink); border-radius: 999px; color: var(--muted-ink); font-size: 10px; transition: color .4s, background .4s, border-color .4s; }
 .build__stages li.is-on { color: var(--white); background: var(--ink); border-color: var(--ink); }
+.build__stages li { cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) { .build__stages li:not(.is-on):hover { color: var(--ink); border-color: var(--ink); } }
+.build__stages li:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
 .build__stages li.is-done { color: var(--ink); border-color: var(--ink); }
 @media (max-width: 900px) {
   .build { margin-bottom: 70px; }
