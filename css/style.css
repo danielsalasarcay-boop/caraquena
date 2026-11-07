@@ -718,6 +718,11 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 /* Galería modal */
 .lb { position: fixed; inset: 0; z-index: 300; background: rgba(8, 8, 8, .96); color: var(--white); display: flex; flex-direction: column; }
 .lb[hidden] { display: none; }
+/* teléfono: el zoom lo hace el visor sobre la lámina, no el navegador sobre la página */
+.lb { touch-action: pan-x pan-y; overscroll-behavior: contain; }
+.lb__stage { touch-action: none; overflow: hidden; }
+.lb__img { will-change: transform; }
+.lb.is-zoomed .lb__nav { opacity: 0; pointer-events: none; }
 .lb__top { display: flex; align-items: center; gap: 18px; padding: 16px var(--pad); }
 .lb__title { color: var(--orange); margin-right: auto; }
 .lb__close { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); background: none; color: var(--white); font-size: 16px; cursor: pointer; }

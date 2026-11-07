@@ -59,6 +59,7 @@ if (lbEl) {
   const titleEl = lbEl.querySelector(".lb__title"), countEl = lbEl.querySelector(".lb__count");
   let list = [], idx = 0, lastFocus = null;
   const show = (i) => {
+    resetZoom(); // cada lámina empieza sin zoom
     idx = (i + list.length) % list.length;
     // la ficha puede cerrar con un video (data-video): se muestra en lugar de la imagen
     const isVid = list[idx].endsWith(".mp4");
@@ -86,7 +87,7 @@ if (lbEl) {
     show(0); lbEl.querySelector(".lb__close").focus();
   };
   const close = () => {
-    vid.pause();
+    resetZoom(); vid.pause();
     lbEl.hidden = true; document.documentElement.style.overflow = "";
     window.lenisInstance?.start(); window.__touchNormalize?.(true); lastFocus?.focus();
   };
@@ -100,15 +101,92 @@ if (lbEl) {
     if (e.key === "ArrowRight") show(idx + 1);
     if (e.key === "ArrowLeft") show(idx - 1);
   });
-  // deslizar en el teléfono
-  let x0 = null;
-  img.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), { passive: true });
-  img.addEventListener("touchend", (e) => {
-    if (x0 === null) return;
-    const dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
-    x0 = null;
+  // ---- Teléfono: zoom propio sobre la lámina (pellizcar, arrastrar, doble toque) ----
+  // El zoom nativo agrandaba toda la página bloqueada detrás del visor y lo dejaba pegado;
+  // aquí el navegador no hace zoom (touch-action en CSS) y la lámina se escala sola.
+  // Deslizar para cambiar de lámina solo funciona sin zoom.
+  const stage = lbEl.querySelector(".lb__stage");
+  const MAX = 5, pts = new Map();
+  let s = 1, tx = 0, ty = 0, g = null, lastTap = 0;
+  const box = () => {
+    // tamaño real de la imagen dentro del recuadro (object-fit: contain)
+    const W = img.clientWidth, H = img.clientHeight, r = (img.naturalWidth / img.naturalHeight) || W / H;
+    return W / H > r ? { W, H, w: H * r, h: H } : { W, H, w: W, h: W / r };
+  };
+  const clamp = () => {
+    const b = box(), mx = Math.max(0, (b.w * s - b.W) / 2), my = Math.max(0, (b.h * s - b.H) / 2);
+    tx = Math.min(mx, Math.max(-mx, tx)); ty = Math.min(my, Math.max(-my, ty));
+  };
+  const paint = (anim) => {
+    img.style.transition = anim ? "transform .3s cubic-bezier(.2,.7,.2,1)" : "none";
+    img.style.transform = s === 1 ? "" : `translate(${tx}px, ${ty}px) scale(${s})`;
+    lbEl.classList.toggle("is-zoomed", s > 1);
+  };
+  const hires = () => { if (s > 1.4 && /-m\.jpg$/.test(img.src)) img.src = img.src.replace(/-m\.jpg$/, ".jpg"); };
+  const resetZoom = () => { s = 1; tx = ty = 0; pts.clear(); g = null; paint(false); };
+  // acerca o aleja manteniendo fijo el punto (cx, cy) de la pantalla
+  const zoomAt = (ns, cx, cy, from = { s, tx, ty }) => {
+    // centro de la imagen sin transformar (el del recuadro)
+    const sr = stage.getBoundingClientRect();
+    const c = { x: sr.left + img.offsetLeft + img.clientWidth / 2, y: sr.top + img.offsetTop + img.clientHeight / 2 };
+    const qx = (cx - c.x - from.tx) / from.s, qy = (cy - c.y - from.ty) / from.s;
+    s = Math.min(MAX, Math.max(1, ns)); tx = cx - c.x - qx * s; ty = cy - c.y - qy * s;
+    if (s === 1) tx = ty = 0;
+    clamp();
+  };
+  stage.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "touch" || img.hidden || e.target.closest("button")) return;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    stage.setPointerCapture?.(e.pointerId);
+    const p = [...pts.values()];
+    if (p.length === 2) {
+      g = { type: "pinch", d: Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y) || 1, from: { s, tx, ty } };
+    } else if (p.length === 1) {
+      g = { type: "one", x0: e.clientX, y0: e.clientY, tx0: tx, ty0: ty, moved: false };
+    }
   });
+  stage.addEventListener("pointermove", (e) => {
+    if (!pts.has(e.pointerId) || !g) return;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const p = [...pts.values()];
+    if (g.type === "pinch" && p.length >= 2) {
+      const d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+      zoomAt(g.from.s * d / g.d, (p[0].x + p[1].x) / 2, (p[0].y + p[1].y) / 2, g.from);
+      paint(false);
+    } else if (g.type === "one") {
+      const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) g.moved = true;
+      if (s > 1) { tx = g.tx0 + dx; ty = g.ty0 + dy; clamp(); paint(false); }
+    }
+  });
+  const up = (e) => {
+    if (!pts.has(e.pointerId)) return;
+    pts.delete(e.pointerId);
+    if (g?.type === "pinch") {
+      hires();
+      if (s < 1.05) { s = 1; tx = ty = 0; paint(true); }
+      // si queda un dedo, sigue como arrastre desde donde está
+      const rest = [...pts.values()][0];
+      g = rest ? { type: "one", x0: rest.x, y0: rest.y, tx0: tx, ty0: ty, moved: true } : null;
+      return;
+    }
+    if (g?.type === "one" && !pts.size) {
+      const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+      if (s === 1 && g.moved && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(idx + (dx < 0 ? 1 : -1));
+      else if (!g.moved && e.type === "pointerup") {
+        // doble toque: acerca al punto tocado, o vuelve al tamaño normal
+        const now = Date.now();
+        if (now - lastTap < 300) { zoomAt(s > 1 ? 1 : 2.5, e.clientX, e.clientY); paint(true); hires(); lastTap = 0; }
+        else lastTap = now;
+      }
+      g = null;
+    }
+  };
+  stage.addEventListener("pointerup", up);
+  stage.addEventListener("pointercancel", up);
+  // iOS: impedir que el gesto de pellizco haga zoom a la página mientras el visor está abierto
+  ["gesturestart", "gesturechange"].forEach((t) => lbEl.addEventListener(t, (e) => e.preventDefault(), { passive: false }));
+  lbEl.addEventListener("touchmove", (e) => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
 }
 
 // ---- Imágenes: se descargan y decodifican con anticipación (antes de que entren a pantalla),
