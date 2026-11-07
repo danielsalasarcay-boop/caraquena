@@ -125,14 +125,14 @@ if (lbEl) {
   const hires = () => { if (s > 1.4 && /-m\.jpg$/.test(img.src)) img.src = img.src.replace(/-m\.jpg$/, ".jpg"); };
   const resetZoom = () => { s = 1; tx = ty = 0; pts.clear(); g = null; paint(false); };
   // acerca o aleja manteniendo fijo el punto (cx, cy) de la pantalla
-  const zoomAt = (ns, cx, cy, from = { s, tx, ty }) => {
+  const zoomAt = (ns, cx, cy, from = { s, tx, ty }, free = false) => {
     // centro de la imagen sin transformar (el del recuadro)
     const sr = stage.getBoundingClientRect();
     const c = { x: sr.left + img.offsetLeft + img.clientWidth / 2, y: sr.top + img.offsetTop + img.clientHeight / 2 };
     const qx = (cx - c.x - from.tx) / from.s, qy = (cy - c.y - from.ty) / from.s;
     s = Math.min(MAX, Math.max(1, ns)); tx = cx - c.x - qx * s; ty = cy - c.y - qy * s;
     if (s === 1) tx = ty = 0;
-    clamp();
+    if (!free) clamp(); // durante el pellizco la lámina sigue los dedos; al soltar se acomoda
   };
   stage.addEventListener("pointerdown", (e) => {
     if (e.pointerType !== "touch" || img.hidden || e.target.closest("button")) return;
@@ -151,7 +151,7 @@ if (lbEl) {
     const p = [...pts.values()];
     if (g.type === "pinch" && p.length >= 2) {
       const d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
-      zoomAt(g.from.s * d / g.d, (p[0].x + p[1].x) / 2, (p[0].y + p[1].y) / 2, g.from);
+      zoomAt(g.from.s * d / g.d, (p[0].x + p[1].x) / 2, (p[0].y + p[1].y) / 2, g.from, true);
       paint(false);
     } else if (g.type === "one") {
       const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
@@ -164,7 +164,8 @@ if (lbEl) {
     pts.delete(e.pointerId);
     if (g?.type === "pinch") {
       hires();
-      if (s < 1.05) { s = 1; tx = ty = 0; paint(true); }
+      if (s < 1.05) { s = 1; tx = ty = 0; } else clamp();
+      paint(true);
       // si queda un dedo, sigue como arrastre desde donde está
       const rest = [...pts.values()][0];
       g = rest ? { type: "one", x0: rest.x, y0: rest.y, tx0: tx, ty0: ty, moved: true } : null;
