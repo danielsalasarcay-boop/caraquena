@@ -721,7 +721,7 @@ body.is-loading { touch-action: none; overscroll-behavior: none; }
 /* teléfono: el zoom lo hace el visor sobre la lámina, no el navegador sobre la página */
 .lb { touch-action: pan-x pan-y; overscroll-behavior: contain; }
 .lb__stage { touch-action: none; overflow: hidden; }
-.lb__img { will-change: transform; }
+.lb__img { will-change: transform; transition: none; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
 .lb.is-zoomed .lb__nav { opacity: 0; pointer-events: none; }
 .lb__top { display: flex; align-items: center; gap: 18px; padding: 16px var(--pad); }
 .lb__title { color: var(--orange); margin-right: auto; }

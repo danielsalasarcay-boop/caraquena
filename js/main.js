@@ -101,93 +101,158 @@ if (lbEl) {
     if (e.key === "ArrowRight") show(idx + 1);
     if (e.key === "ArrowLeft") show(idx - 1);
   });
-  // ---- Teléfono: zoom propio sobre la lámina (pellizcar, arrastrar, doble toque) ----
-  // El zoom nativo agrandaba toda la página bloqueada detrás del visor y lo dejaba pegado;
-  // aquí el navegador no hace zoom (touch-action en CSS) y la lámina se escala sola.
-  // Deslizar para cambiar de lámina solo funciona sin zoom.
+  // ---- Teléfono: zoom de la lámina con el comportamiento de Fotos / Instagram ----
+  // El navegador no hace zoom dentro del visor (touch-action en CSS): la lámina se escala sola.
+  //  · pellizcar acerca justo bajo los dedos (y se puede mover mientras se pellizca)
+  //  · pasado el máximo o por debajo del tamaño normal cede con resistencia y vuelve al soltar
+  //  · con zoom, un dedo arrastra con borde elástico e inercia al soltar
+  //  · doble toque acerca en ese punto o vuelve al tamaño normal
+  //  · deslizar cambia de lámina solo sin zoom y si no hubo pellizco en ese gesto
+  //  · todo se anima cuadro a cuadro: tocar en medio de una animación la detiene donde está
   const stage = lbEl.querySelector(".lb__stage");
-  const MAX = 5, pts = new Map();
-  let s = 1, tx = 0, ty = 0, g = null, lastTap = 0;
+  const MAX = 5, DOUBLE = 2.5, pts = new Map();
+  let s = 1, tx = 0, ty = 0, g = null, raf = 0, tap = null, pinched = false, pinchMid = null, hiDone = "";
+  img.draggable = false;
+  const now = () => performance.now();
   const box = () => {
     // tamaño real de la imagen dentro del recuadro (object-fit: contain)
     const W = img.clientWidth, H = img.clientHeight, r = (img.naturalWidth / img.naturalHeight) || W / H;
     return W / H > r ? { W, H, w: H * r, h: H } : { W, H, w: W, h: W / r };
   };
-  const clamp = () => {
-    const b = box(), mx = Math.max(0, (b.w * s - b.W) / 2), my = Math.max(0, (b.h * s - b.H) / 2);
-    tx = Math.min(mx, Math.max(-mx, tx)); ty = Math.min(my, Math.max(-my, ty));
+  const lim = (sc) => { const b = box(); return { x: Math.max(0, (b.w * sc - b.W) / 2), y: Math.max(0, (b.h * sc - b.H) / 2), W: b.W, H: b.H }; };
+  const center = () => { const r = stage.getBoundingClientRect(); return { x: r.left + img.offsetLeft + img.clientWidth / 2, y: r.top + img.offsetTop + img.clientHeight / 2 }; };
+  const clampV = (v, m) => Math.min(m, Math.max(-m, v));
+  // borde elástico (misma curva que iOS): pasado el límite el movimiento cede cada vez más
+  const rubber = (v, m, D) => { const o = Math.abs(v) - m; return o <= 0 ? v : Math.sign(v) * (m + (1 - 1 / (o * .55 / D + 1)) * D); };
+  const softScale = (r) => r > MAX ? MAX * Math.pow(r / MAX, .25) : r < 1 ? Math.max(.6, Math.pow(r, .5)) : r;
+  const paint = () => {
+    const idle = Math.abs(s - 1) < 1e-4 && Math.abs(tx) < .01 && Math.abs(ty) < .01;
+    img.style.transform = idle ? "" : `translate3d(${tx}px, ${ty}px, 0) scale(${s})`;
+    lbEl.classList.toggle("is-zoomed", s > 1.01);
   };
-  const paint = (anim) => {
-    img.style.transition = anim ? "transform .3s cubic-bezier(.2,.7,.2,1)" : "none";
-    img.style.transform = s === 1 ? "" : `translate(${tx}px, ${ty}px) scale(${s})`;
-    lbEl.classList.toggle("is-zoomed", s > 1);
+  const stop = () => { cancelAnimationFrame(raf); raf = 0; };
+  const animate = (to, dur = 320) => {
+    stop();
+    const from = { s, tx, ty }, t0 = now();
+    const step = () => {
+      const k = Math.min(1, (now() - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      s = from.s + (to.s - from.s) * e; tx = from.tx + (to.tx - from.tx) * e; ty = from.ty + (to.ty - from.ty) * e;
+      paint();
+      raf = k < 1 ? requestAnimationFrame(step) : 0;
+    };
+    raf = requestAnimationFrame(step);
   };
-  const hires = () => { if (s > 1.4 && /-m\.jpg$/.test(img.src)) img.src = img.src.replace(/-m\.jpg$/, ".jpg"); };
-  const resetZoom = () => { s = 1; tx = ty = 0; pts.clear(); g = null; paint(false); };
-  // acerca o aleja manteniendo fijo el punto (cx, cy) de la pantalla
-  const zoomAt = (ns, cx, cy, from = { s, tx, ty }, free = false) => {
-    // centro de la imagen sin transformar (el del recuadro)
-    const sr = stage.getBoundingClientRect();
-    const c = { x: sr.left + img.offsetLeft + img.clientWidth / 2, y: sr.top + img.offsetTop + img.clientHeight / 2 };
-    const qx = (cx - c.x - from.tx) / from.s, qy = (cy - c.y - from.ty) / from.s;
-    s = Math.min(MAX, Math.max(1, ns)); tx = cx - c.x - qx * s; ty = cy - c.y - qy * s;
-    if (s === 1) tx = ty = 0;
-    if (!free) clamp(); // durante el pellizco la lámina sigue los dedos; al soltar se acomoda
+  // versión en alta: se descarga y decodifica aparte y se cambia sin parpadeo
+  const hires = () => {
+    const lo = img.src;
+    if (!/-m\.jpg$/.test(lo) || hiDone === lo) return;
+    hiDone = lo;
+    const hi = new Image(); hi.src = lo.replace(/-m\.jpg$/, ".jpg");
+    (hi.decode ? hi.decode() : Promise.resolve()).then(() => { if (img.src === lo) img.src = hi.src; }).catch(() => {});
+  };
+  // posición final válida para una escala, manteniendo fijo el punto (ax, ay) de la pantalla
+  const target = (ns, ax, ay) => {
+    const c = center(), qx = (ax - c.x - tx) / s, qy = (ay - c.y - ty) / s;
+    if (ns <= 1) return { s: 1, tx: 0, ty: 0 };
+    const l = lim(ns);
+    return { s: ns, tx: clampV(ax - c.x - qx * ns, l.x), ty: clampV(ay - c.y - qy * ns, l.y) };
+  };
+  const settle = (ax, ay) => {
+    const c = center(), t = target(Math.min(MAX, Math.max(1, s)), ax ?? c.x, ay ?? c.y);
+    if (t.s > 1.3) hires();
+    if (Math.abs(t.s - s) > 1e-3 || Math.abs(t.tx - tx) > .5 || Math.abs(t.ty - ty) > .5) animate(t); else { s = t.s; tx = t.tx; ty = t.ty; paint(); }
+  };
+  // inercia al soltar un arrastre con zoom; fuera del borde frena fuerte y luego vuelve
+  const glide = (vx, vy) => {
+    stop();
+    let t0 = now();
+    const step = () => {
+      const t = now(), dt = Math.min(32, t - t0); t0 = t;
+      const l = lim(s);
+      tx += vx * dt; ty += vy * dt;
+      const outX = Math.abs(tx) > l.x, outY = Math.abs(ty) > l.y;
+      vx *= Math.pow(outX ? .9 : .995, dt); vy *= Math.pow(outY ? .9 : .995, dt);
+      paint();
+      if (Math.hypot(vx, vy) > .02) raf = requestAnimationFrame(step); else { raf = 0; settle(); }
+    };
+    raf = requestAnimationFrame(step);
+  };
+  const resetZoom = () => { stop(); s = 1; tx = ty = 0; pts.clear(); g = null; pinched = false; tap = null; hiDone = ""; paint(); };
+  // (re)inicia el gesto desde el estado actual cada vez que entra o sale un dedo
+  const rebase = () => {
+    const p = [...pts.values()];
+    if (p.length >= 2) {
+      pinched = true;
+      g = { type: "pinch", d0: Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y) || 1, m0: { x: (p[0].x + p[1].x) / 2, y: (p[0].y + p[1].y) / 2 }, s0: s, tx0: tx, ty0: ty };
+      pinchMid = g.m0;
+    } else if (p.length === 1) {
+      g = { type: "pan", x0: p[0].x, y0: p[0].y, tx0: tx, ty0: ty, t0: now(), moved: false, afterPinch: pinched, trail: [{ t: now(), x: p[0].x, y: p[0].y }] };
+    } else g = null;
   };
   stage.addEventListener("pointerdown", (e) => {
     if (e.pointerType !== "touch" || img.hidden || e.target.closest("button")) return;
+    stop();
     pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
     stage.setPointerCapture?.(e.pointerId);
-    const p = [...pts.values()];
-    if (p.length === 2) {
-      g = { type: "pinch", d: Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y) || 1, from: { s, tx, ty } };
-    } else if (p.length === 1) {
-      g = { type: "one", x0: e.clientX, y0: e.clientY, tx0: tx, ty0: ty, moved: false };
-    }
+    rebase();
   });
   stage.addEventListener("pointermove", (e) => {
     if (!pts.has(e.pointerId) || !g) return;
     pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
     const p = [...pts.values()];
     if (g.type === "pinch" && p.length >= 2) {
-      const d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
-      zoomAt(g.from.s * d / g.d, (p[0].x + p[1].x) / 2, (p[0].y + p[1].y) / 2, g.from, true);
-      paint(false);
-    } else if (g.type === "one") {
+      const d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y), m = { x: (p[0].x + p[1].x) / 2, y: (p[0].y + p[1].y) / 2 };
+      const c = center(), ns = softScale(g.s0 * d / g.d0);
+      const qx = (g.m0.x - c.x - g.tx0) / g.s0, qy = (g.m0.y - c.y - g.ty0) / g.s0;
+      s = ns; tx = m.x - c.x - qx * ns; ty = m.y - c.y - qy * ns; pinchMid = m;
+      if (s > 1.5) hires();
+      paint();
+    } else if (g.type === "pan") {
       const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
-      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) g.moved = true;
-      if (s > 1) { tx = g.tx0 + dx; ty = g.ty0 + dy; clamp(); paint(false); }
+      if (Math.hypot(dx, dy) > 8) g.moved = true;
+      g.trail.push({ t: now(), x: e.clientX, y: e.clientY });
+      while (g.trail.length > 2 && now() - g.trail[0].t > 100) g.trail.shift();
+      if (s > 1.01) { const l = lim(s); tx = rubber(g.tx0 + dx, l.x, l.W); ty = rubber(g.ty0 + dy, l.y, l.H); paint(); }
     }
   });
   const up = (e) => {
     if (!pts.has(e.pointerId)) return;
     pts.delete(e.pointerId);
-    if (g?.type === "pinch") {
-      hires();
-      if (s < 1.05) { s = 1; tx = ty = 0; } else clamp();
-      paint(true);
-      // si queda un dedo, sigue como arrastre desde donde está
-      const rest = [...pts.values()][0];
-      g = rest ? { type: "one", x0: rest.x, y0: rest.y, tx0: tx, ty0: ty, moved: true } : null;
-      return;
+    const was = g;
+    if (pts.size) { rebase(); return; } // queda un dedo: sigue el arrastre sin saltos
+    g = null;
+    if (!was) return;
+    const hadPinch = pinched; pinched = false;
+    const cancel = e.type === "pointercancel";
+    // fin de un pellizco (aunque el último dedo se levante después): se acomoda donde quedó
+    if (was.type === "pinch" || (was.afterPinch && (!was.moved || s <= 1.01))) {
+      tap = null; settle(pinchMid?.x, pinchMid?.y); return;
     }
-    if (g?.type === "one" && !pts.size) {
-      const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
-      if (s === 1 && g.moved && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(idx + (dx < 0 ? 1 : -1));
-      else if (!g.moved && e.type === "pointerup") {
-        // doble toque: acerca al punto tocado, o vuelve al tamaño normal
-        const now = Date.now();
-        if (now - lastTap < 300) { zoomAt(s > 1 ? 1 : 2.5, e.clientX, e.clientY); paint(true); hires(); lastTap = 0; }
-        else lastTap = now;
-      }
-      g = null;
+    const dx = e.clientX - was.x0, dy = e.clientY - was.y0;
+    const first = was.trail[0], dt = Math.max(1, now() - first.t);
+    const vx = (e.clientX - first.x) / dt, vy = (e.clientY - first.y) / dt;
+    if (s > 1.01) {
+      if (was.moved) { tap = null; Math.hypot(vx, vy) > .05 && !cancel ? glide(vx, vy) : settle(); return; }
+    } else if (!hadPinch && was.moved && !cancel && Math.abs(dx) > Math.abs(dy) * 1.2 && (Math.abs(dx) > 50 || (Math.abs(dx) > 25 && Math.abs(vx) > .4))) {
+      tap = null; show(idx + (dx < 0 ? 1 : -1)); return;
     }
+    if (s > 1.01) settle(); // un toque mínimo con zoom: vuelve dentro del borde si se salió
+    // doble toque (mismo lugar, rápido): acerca ahí o vuelve al tamaño normal
+    if (!was.moved && !cancel && !hadPinch && now() - was.t0 < 300) {
+      const t = now();
+      if (tap && t - tap.t < 300 && Math.hypot(e.clientX - tap.x, e.clientY - tap.y) < 40) {
+        tap = null;
+        if (s > 1.01) animate({ s: 1, tx: 0, ty: 0 }); else { hires(); animate(target(DOUBLE, e.clientX, e.clientY)); }
+      } else tap = { t, x: e.clientX, y: e.clientY };
+    } else tap = null;
   };
   stage.addEventListener("pointerup", up);
   stage.addEventListener("pointercancel", up);
+  // si gira el teléfono o cambia el tamaño con zoom, la lámina se reacomoda dentro del borde
+  addEventListener("resize", () => { if (!lbEl.hidden && s > 1) { stop(); const l = lim(s); tx = clampV(tx, l.x); ty = clampV(ty, l.y); paint(); } });
   // iOS: impedir que el gesto de pellizco haga zoom a la página mientras el visor está abierto
   ["gesturestart", "gesturechange"].forEach((t) => lbEl.addEventListener(t, (e) => e.preventDefault(), { passive: false }));
-  lbEl.addEventListener("touchmove", (e) => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+  lbEl.addEventListener("touchmove", (e) => { if (e.touches.length > 1 || e.target.closest(".lb__stage")) e.preventDefault(); }, { passive: false });
 }
 
 // ---- Imágenes: se descargan y decodifican con anticipación (antes de que entren a pantalla),
