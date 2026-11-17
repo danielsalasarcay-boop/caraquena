@@ -91,7 +91,7 @@
     let Wn, Hn, s;
     if (v) { Hn = Math.max(760, H / W * 390); s = H / Hn; Wn = W / s; }
     else { Hn = 900; s = H / 900; Wn = W / s; if (Wn < 1150) { Wn = 1150; s = W / Wn; Hn = H / s; } }
-    const q = v ? .7 : 1;
+    const q = v ? .7 : 1, qQ = q;
     const G = Hn - (v ? 150 : 140);              // línea de terreno
     const FY = v ? 126 : 0;                      // al final la cámara sube el terreno para dejar sitio al titular (vertical)
     const PAN2 = Math.round(Wn * (v ? 1.5 : 1.16)); // segundo recorrido hacia la derecha (el primero se mide más abajo)
@@ -945,7 +945,7 @@
       const pp2 = E("g", {}, L.gente); mkFig(pp2, esX - Re - 30 * q, G, fh * .5, false); show(tlM, pp2, tE + .8, .4);
     }
     // tren del viaducto: sale de la estación y nos adelanta
-    const mkTrain = (layer, n, doors) => {
+    const mkTrain = (layer, n, doors, z = 1) => { const q = qQ * z;
       const dSpec = [], cw = 60 * q, ch = 14 * q, gap = 3.4 * q, w = n * (cw + gap) + 8 * q, e = sprite(layer, w + 18 * q, ch + 8 * q), body = pen(), glass = pen(), under = pen(), y0 = 2 * q, y1 = y0 + ch;
       for (let i = 0; i < n; i++) {
         const x0 = 4 * q + i * (cw + gap), last = i === n - 1, first = i === 0;
@@ -1089,19 +1089,19 @@
     // 6 · SUBSUELO — la cámara baja y el metro nos lleva a la derecha, hasta la estación de la torre 3
     // =====================================================================
     const c3 = PAN + PAN2 + AX, R3 = v ? 58 : 92, ry3 = R3 * .3, fh3 = v ? 26 : 30;
-    const longs = [], escs = [], tuY = G + DOWN - (v ? 96 : 200), tuH = v ? 40 : 58, UP = Math.max(60, NF3 * fh3 - (v ? 300 : 350)), mY0 = tuY + tuH - 5 * q - (20 * q);
+    const ZM = v ? 1 : 1.8, qM = q * ZM, longs = [], escs = [], tuY = G + DOWN - (v ? 96 : 200), tuH = (v ? 40 : 58) * ZM, UP = Math.max(60, NF3 * fh3 - (v ? 300 : 350)), mY0 = tuY + tuH - 25 * q * ZM;
     if (tlM) {
       tlM.to(cam, { y: DOWN, duration: tm.downD, ease: "sine.inOut" }, tm.down);
       tlM.fromTo(cam, { x: PAN }, { x: PAN + PAN2, duration: tm.underD, ease: "sine.inOut", immediateRender: false }, tm.under);
       tlM.fromTo(cam, { k: 1 }, { k: .93, duration: tm.underD * .3, ease: "sine.inOut", immediateRender: false }, tm.under + tm.underD * .2).fromTo(cam, { k: .93 }, { k: 1, duration: tm.underD * .3, ease: "sine.inOut", immediateRender: false }, tm.under + tm.underD * .56);
-      { const t0s = tm.under + tm.underD, kS = v ? 1.25 : 1.5;   // la cámara se acerca a la estación: se ve la gente, los torniquetes, las escaleras
+      { const t0s = tm.under + tm.underD, kS = v ? 1.25 : 1.3;   // la cámara se acerca a la estación: se ve la gente, los torniquetes, las escaleras
         tlM.set(cam, { ay: tuY - DOWN + 4 * q }, t0s - .3).fromTo(cam, { k: 1 }, { k: kS, duration: tm.hS * .42, ease: "sine.inOut", immediateRender: false }, t0s - .2).fromTo(cam, { k: kS }, { k: 1, duration: tm.hS * .3, ease: "sine.inOut", immediateRender: false }, t0s + tm.hS * .66).set(cam, { ay: G }, tm.rise); }
       tlM.fromTo(cam, { y: DOWN }, { y: 0, duration: tm.riseD, ease: "sine.inOut", immediateRender: false }, tm.rise);
       tlM.fromTo(cam, { y: 0 }, { y: -UP, duration: NF3 * d3 * .82, ease: "sine.inOut", immediateRender: false }, tm.f3 + NF3 * d3 * .2);
       tlM.fromTo(cam, { y: -UP }, { y: FY / KZ, duration: tm.zoomD, ease: "power2.inOut", immediateRender: false }, tm.zoom);
       tlM.fromTo(cam, { k: 1 }, { k: KZ, duration: tm.zoomD * .4, ease: "sine.inOut", immediateRender: false }, tm.zoom + tm.zoomD * .6);
     }
-    {
+    { const q0 = q; { const q = qM;   // el metro y su estación van a escala mayor (ZM); geotecnia y colector conservan la suya
       const g = L.sub, x0 = PAN - 60, x1 = WX2 + 60, n = 6, tA2 = [], tB2 = [];
       for (let i = 0; i <= n; i++) { tA2.push([x0 + (x1 - x0) * i / n, tuY + (R() - .5)]); tB2.push([x0 + (x1 - x0) * i / n, tuY + tuH + (R() - .5)]); }
       longs.push(S(g, pen().c(tA2).c(tB2), "av-r"));
@@ -1124,18 +1124,18 @@
       longs.push(S(g, trk, "av-t"), S(g, tray, "av-t av-dim"), S(g, r3, "av-t av-dim")); show(tlM, S(g, slp, "av-t av-dim"), tJ, .9, .5); show(tlM, S(g, trayJ, "av-t av-dim"), tJ, .9, .6);
       show(tlM, S(g, sig, "av-t"), tJ, .6); show(tlM, S(g, sigOn, "av-h", true), tJ + .3, .4);
       // geotecnia: límites de estrato y su trama convencional (relleno, arcilla, arena, roca)
-      const bnd = v ? [G + 70, G + 150, G + 225] : [G + 120, G + 215, G + 300], str = pen(), CH = 420 * q, chunks = new Map(), mk = (li, x) => { const kk = li + "|" + Math.floor((x - x0) / CH); if (!chunks.has(kk)) chunks.set(kk, [li, pen()]); return chunks.get(kk)[1]; }, marks = [0, 1, 2, 3], lims = [G + 16 * q].concat(bnd, [tuY - 12 * q]);
-      bnd.forEach((y, i) => { let pts = []; for (let x = x0; x <= x1; x += 90 * q) { const yy = y + Math.sin(x / 90 + i * 2) * 4 * q; if (skip(x, yy)) { if (pts.length > 1) str.c(pts); pts = []; continue; } pts.push([x, yy]); } if (pts.length > 1) str.c(pts); });
-      const mark = (li, x, y) => { const m = mk(li, x); if (li === 0) m.l(x, y, x + 7 * q, y, 0, 0); else if (li === 1) m.l(x, y, x + 6 * q, y, 0, 0).l(x + 2 * q, y + 2.4 * q, x + 8 * q, y + 2.4 * q, 0, 0); else if (li === 2) m.raw(circ(x, y, .8 * q), 6 * q).raw(circ(x + 5 * q, y + 2.2 * q, .8 * q), 6 * q); else m.l(x, y + 3 * q, x + 5 * q, y - 3 * q, 0, 0).l(x + 3 * q, y + 3 * q, x + 8 * q, y - 3 * q, 0, 0); };
-      for (let li = 0; li < 4; li++) for (let y = lims[li] + 12 * q, r = 0; y < lims[li + 1] - 6 * q; y += 22 * q, r++) for (let x = x0 + (r % 2 ? 35 : 0) * q + 10; x < x1; x += 70 * q) if (!skip(x, y)) mark(li, x, y);
-      for (let y = tuY + tuH + 16 * q, r = 0; y < tuY + tuH + (v ? 56 : 110) * q; y += 22 * q, r++) for (let x = x0 + (r % 2 ? 35 : 0) * q + 10; x < x1; x += 70 * q) mark(3, x, y);
+      const bnd = v ? [G + 70, G + 150, G + 225] : [G + 120, G + 215, G + 300], str = pen(), CH = 420 * q0, chunks = new Map(), mk = (li, x) => { const kk = li + "|" + Math.floor((x - x0) / CH); if (!chunks.has(kk)) chunks.set(kk, [li, pen()]); return chunks.get(kk)[1]; }, marks = [0, 1, 2, 3], lims = [G + 16 * q0].concat(bnd, [tuY - 12 * q0]);
+      bnd.forEach((y, i) => { let pts = []; for (let x = x0; x <= x1; x += 90 * q0) { const yy = y + Math.sin(x / 90 + i * 2) * 4 * q0; if (skip(x, yy)) { if (pts.length > 1) str.c(pts); pts = []; continue; } pts.push([x, yy]); } if (pts.length > 1) str.c(pts); });
+      const mark = (li, x, y) => { const m = mk(li, x); if (li === 0) m.l(x, y, x + 7 * q0, y, 0, 0); else if (li === 1) m.l(x, y, x + 6 * q0, y, 0, 0).l(x + 2 * q0, y + 2.4 * q0, x + 8 * q0, y + 2.4 * q0, 0, 0); else if (li === 2) m.raw(circ(x, y, .8 * q0), 6 * q0).raw(circ(x + 5 * q0, y + 2.2 * q0, .8 * q0), 6 * q0); else m.l(x, y + 3 * q0, x + 5 * q0, y - 3 * q0, 0, 0).l(x + 3 * q0, y + 3 * q0, x + 8 * q0, y - 3 * q0, 0, 0); };
+      for (let li = 0; li < 4; li++) for (let y = lims[li] + 12 * q0, r = 0; y < lims[li + 1] - 6 * q0; y += 22 * q0, r++) for (let x = x0 + (r % 2 ? 35 : 0) * q0 + 10; x < x1; x += 70 * q0) if (!skip(x, y)) mark(li, x, y);
+      for (let y = tuY + tuH + 16 * q0, r = 0; y < tuY + tuH + (v ? 56 : 110) * q0; y += 22 * q0, r++) for (let x = x0 + (r % 2 ? 35 : 0) * q0 + 10; x < x1; x += 70 * q0) mark(3, x, y);
       draw(tlM, S(g, str, "av-m av-t"), tm.down + .3, tm.downD + tm.underD * .7, "sine.inOut"); chunks.forEach((c) => show(tlM, S(g, c[1], "av-m av-t"), tm.down + .5 + c[0] * .25, .9, .62));
-      const hz = pen(); for (let x = PAN - 20; x < WX2 + 20; x += 40 * q) { if ((x > pxa - 12 * q && x < pxb + 12 * q) || Math.abs(x - c3) < R3 + 24 * q) continue; for (let i = 0; i < 3; i++) hz.l(x + i * 5 * q, G + 2 * q, x + i * 5 * q - 5 * q, G + 8 * q, 0, 0); }
+      const hz = pen(); for (let x = PAN - 20; x < WX2 + 20; x += 40 * q0) { if ((x > pxa - 12 * q0 && x < pxb + 12 * q0) || Math.abs(x - c3) < R3 + 24 * q0) continue; for (let i = 0; i < 3; i++) hz.l(x + i * 5 * q0, G + 2 * q0, x + i * 5 * q0 - 5 * q0, G + 8 * q0, 0, 0); }
       draw(tlM, S(g, hz, "av-m av-t"), tm.b0 + .3, .5);
       // servicios: colector bajo la calle con sus pozos de visita
-      const pipe = pen(), py = G + 24 * q;
-      [[x0, pxa - 12 * q], [pxb + 12 * q, xs - Hs * .5 - 40 * q], [sx1 + 70 * q, x1]].forEach((r) => { if (r[1] - r[0] < 60) return; pipe.l(r[0], py, r[1], py, 0, .3).l(r[0], py + 4.6 * q, r[1], py + 4.6 * q, 0, .3); for (let x = r[0] + 40 * q; x < r[1]; x += 110 * q) pipe.l(x, py - 1.4 * q, x, py + 6 * q, 0, 0).l(x + 3 * q, py - 1.4 * q, x + 3 * q, py + 6 * q, 0, 0);
-        for (let x = r[0] + 150 * q; x < r[1] - 40 * q; x += 420 * q) { pipe.l(x - 4 * q, G, x - 4 * q, py, 0, 0).l(x + 4 * q, G, x + 4 * q, py, 0, 0).l(x - 6 * q, G + 1.4 * q, x + 6 * q, G + 1.4 * q, 0, 0); for (let yy = G + 5 * q; yy < py - 2 * q; yy += 4 * q) pipe.l(x - 2 * q, yy, x + 2 * q, yy, 0, 0); } });
+      const pipe = pen(), py = G + 24 * q0;
+      [[x0, pxa - 12 * q0], [pxb + 12 * q0, xs - Hs * .5 - 40 * q0], [sx1 + 70 * q0, x1]].forEach((r) => { if (r[1] - r[0] < 60) return; pipe.l(r[0], py, r[1], py, 0, .3).l(r[0], py + 4.6 * q0, r[1], py + 4.6 * q0, 0, .3); for (let x = r[0] + 40 * q0; x < r[1]; x += 110 * q0) pipe.l(x, py - 1.4 * q0, x, py + 6 * q0, 0, 0).l(x + 3 * q0, py - 1.4 * q0, x + 3 * q0, py + 6 * q0, 0, 0);
+        for (let x = r[0] + 150 * q0; x < r[1] - 40 * q0; x += 420 * q0) { pipe.l(x - 4 * q0, G, x - 4 * q0, py, 0, 0).l(x + 4 * q0, G, x + 4 * q0, py, 0, 0).l(x - 6 * q0, G + 1.4 * q0, x + 6 * q0, G + 1.4 * q0, 0, 0); for (let yy = G + 5 * q0; yy < py - 2 * q0; yy += 4 * q0) pipe.l(x - 2 * q0, yy, x + 2 * q0, yy, 0, 0); } });
       draw(tlM, S(g, pipe, "av-t av-dim"), tm.down + .4, tm.downD + tm.underD * .8, "sine.inOut");
       // gálibo del túnel acotado
       { const dxx = sx0 - 130 * q, dg = E("g", {}, g); S(dg, pen().l(dxx, tuY, dxx, tuY + tuH, 2, .2).l(dxx - 3 * q, tuY + 3 * q, dxx + 3 * q, tuY - 3 * q, 0, 0).l(dxx - 3 * q, tuY + tuH + 3 * q, dxx + 3 * q, tuY + tuH - 3 * q, 0, 0), "av-o av-t", true); const tt = T(dg, dxx - 4 * q, tuY + tuH / 2, "5.20", "middle", "av-o av-lv"); tt.setAttribute("transform", `rotate(-90 ${f(dxx - 4 * q)} ${f(tuY + tuH / 2)})`); show(tlM, dg, tm.under + tm.underD * .5, .4); }
@@ -1235,8 +1235,8 @@
       // tótem del metro en la calle
       const tg = E("g", {}, L.terreno); S(tg, pen().l(sxT, G, sxT, G - 30 * q, 0, .2).l(sxT - 3 * q, G, sxT + 3 * q, G, 0, 0).o(sxT, G - 37 * q, 7 * q), "av-t"); T(tg, sxT, G - 37 * q + fs * .36, "M", "middle", "av-o av-lv");
       show(tlM, tg, tm.rise + tm.riseD * .6, .4);
-    }
-    const metro = mkTrain(lifeF, v ? 4 : 6, "av-h"), mY = mY0, mA = PAN - metro._w - 60, mB = PAN + Wn * (v ? .2 : .42), mC = c3 - metro._w / 2;
+    } }
+    const metro = mkTrain(lifeF, v ? 4 : 6, "av-h", ZM), mY = mY0, mA = PAN - metro._w - 60, mB = PAN + Wn * (v ? .2 : .42), mC = c3 - metro._w / 2;
     place(metro, mC, mY);
     if (tlM) {
       metro.style.opacity = 0; tlM.to(metro, { opacity: 1, duration: .2, ease: "none" }, tm.down + .5);
@@ -1528,8 +1528,8 @@
       e._w = w + 12 * q; e._h = h; return e;
     };
     // peatones: caminan por la acera (las piernas alternan en dos tiempos)
-    const mkWalker = (layer) => {
-      const hf = (v ? 15 : 20) * q, w = hf * .8, e = sprite(layer || lifeM, w, hf + 1), x = w / 2, hr = hf * .1;
+    const mkWalker = (layer, z = 1) => {
+      const hf = (v ? 15 : 20) * q * z, w = hf * .8, e = sprite(layer || lifeM, w, hf + 1), x = w / 2, hr = hf * .1;
       S(e, pen().raw(circ(x, hr + .5, hr), hr * 7).l(x, 2 * hr + .8, x, hf * .58, 0, 0).l(x, hf * .28, x - hf * .16, hf * .5, 0, 0).l(x, hf * .28, x + hf * .16, hf * .48, 0, 0), "av-t");
       const lg = E("g", { transform: `translate(${f(x)} ${f(hf * .58)})` }, e), li = E("g", {}, lg); S(li, pen().l(0, 0, -hf * .15, hf * .42, 0, 0).l(0, 0, hf * .12, hf * .42, 0, 0), "av-t"); e._legs = li; e._h = hf + 1; return e;
     };
@@ -1740,15 +1740,15 @@
     mkLift(c3, G + ry3, topY + ry3 + 12 * q, tm.clean3 + .2, 6.5, L.b2top);
     // ---------- estación: gente en las escaleras mecánicas; al llegar el metro abre puertas, bajan unos y suben otros ----------
     if (tlM) {
-      const t0s = tm.under + tm.underD, tOut = tm.rise + tm.riseD * .7, ph = (v ? 12 : 17) * q, inSub = [];
-      escs.forEach((es, i) => [0, .5].forEach((ph0) => { const e = sprite(lifeF, 8 * q, ph + 1); mkFig(e, 4 * q, ph + .5, ph, false); place(e, es[0] - 4 * q, es[1] - ph - 1); inSub.push(e);
-        const tw2 = gs.fromTo(e, { x: (es[0] - 4 * q) * s, y: (es[1] - ph - 1) * s }, { x: (es[2] - 4 * q) * s, y: (es[3] - ph - 1) * s, duration: 5, ease: "none", repeat: -1, paused: true }); tw2.progress(ph0 + i * .2); amb.push(tw2); }));
+      const t0s = tm.under + tm.underD, tOut = tm.rise + tm.riseD * .7, ph = (v ? 12 : 17) * qM, inSub = [];
+      escs.forEach((es, i) => [0, .5].forEach((ph0) => { const e = sprite(lifeF, 8 * qM, ph + 1); mkFig(e, 4 * qM, ph + .5, ph, false); place(e, es[0] - 4 * qM, es[1] - ph - 1); inSub.push(e);
+        const tw2 = gs.fromTo(e, { x: (es[0] - 4 * qM) * s, y: (es[1] - ph - 1) * s }, { x: (es[2] - 4 * qM) * s, y: (es[3] - ph - 1) * s, duration: 5, ease: "none", repeat: -1, paused: true }); tw2.progress(ph0 + i * .2); amb.push(tw2); }));
       const dl = metro._doors.map((d) => d[0]), dr = metro._doors.map((d) => d[1]);
-      tlM.fromTo(dl, { x: 0 }, { x: -3 * q, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + .2).fromTo(dr, { x: 0 }, { x: 3 * q, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + .2)
-        .fromTo(dl, { x: -3 * q }, { x: 0, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + tm.hS - .8).fromTo(dr, { x: 3 * q }, { x: 0, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + tm.hS - .8);
-      const pY = mY0 + 15.4 * q; metro._doors.forEach((d, i) => { if (i > 2) return; const dxw = mC + d[2], bo = mkWalker(lifeF), al = mkWalker(lifeF), sd = i % 2 ? 1 : -1; inSub.push(bo, al);
+      tlM.fromTo(dl, { x: 0 }, { x: -3 * qM, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + .2).fromTo(dr, { x: 0 }, { x: 3 * qM, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + .2)
+        .fromTo(dl, { x: -3 * qM }, { x: 0, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + tm.hS - .8).fromTo(dr, { x: 3 * qM }, { x: 0, duration: .4, ease: "power1.inOut", immediateRender: false }, t0s + tm.hS - .8);
+      const pY = mY0 + 15.4 * qM; metro._doors.forEach((d, i) => { if (i > 2) return; const dxw = mC + d[2], bo = mkWalker(lifeF, ZM), al = mkWalker(lifeF, ZM), sd = i % 2 ? 1 : -1; inSub.push(bo, al);
         gs.set([bo, al], { x: (dxw - bo._h * .4) * s, y: (pY - bo._h) * s });
-        tlM.fromTo(al, { x: (dxw - al._h * .4) * s, opacity: 0 }, { x: (dxw - al._h * .4 - sd * 70 * q) * s, opacity: 1, duration: 1.3, ease: "none", immediateRender: false }, t0s + .65 + i * .12).fromTo(bo, { x: (dxw - bo._h * .4 + sd * 62 * q) * s, opacity: 1 }, { x: (dxw - bo._h * .4) * s, opacity: 0, duration: 1.1, ease: "none", immediateRender: false }, t0s + 1.1 + i * .12);
+        tlM.fromTo(al, { x: (dxw - al._h * .4) * s, opacity: 0 }, { x: (dxw - al._h * .4 - sd * 70 * qM) * s, opacity: 1, duration: 1.3, ease: "none", immediateRender: false }, t0s + .65 + i * .12).fromTo(bo, { x: (dxw - bo._h * .4 + sd * 62 * qM) * s, opacity: 1 }, { x: (dxw - bo._h * .4) * s, opacity: 0, duration: 1.1, ease: "none", immediateRender: false }, t0s + 1.1 + i * .12);
         [bo, al].forEach((w2) => amb.push(gs.fromTo(w2._legs, { scaleX: 1 }, { scaleX: -1, duration: .3, ease: "steps(1)", repeat: -1, yoyo: true, svgOrigin: "0 0", paused: true }))); });
       inSub.forEach((e) => { const o = +e.style.opacity; e.style.opacity = 0; tlM.to(e, { opacity: 1, duration: .4, ease: "none" }, t0s - 1.6); tlM.to(e, { opacity: 0, duration: .4, ease: "none" }, tOut); });
     }
