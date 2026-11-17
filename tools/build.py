@@ -98,6 +98,9 @@ def page(out, title, desc, b, current, main, with_loader, out_en, title_en, desc
     loader = P["loader"] if with_loader else ""
     html = head(title, desc, with_loader) + loader + "\n" + header(b, current) + "\n  <main>\n" + open(main).read() + "  </main>\n\n" + footer(b) + P["float"]
     html = html.replace('href="css/style.css"', f'href="css/style.css?v={ASSET_V}"').replace('src="js/main.js"', f'src="js/main.js?v={ASSET_V}"')
+    if "data-avila" in html:  # "Caracas, en obra": estilos y guion propios, solo en las páginas que la llevan
+        AV = hashlib.md5(open("css/avila.css", "rb").read() + open("js/avila.js", "rb").read()).hexdigest()[:8]
+        html = html.replace("</head>", f'  <link rel="stylesheet" href="css/avila.css?v={AV}">\n</head>', 1).replace(f'src="js/main.js?v={ASSET_V}"></script>', f'src="js/main.js?v={ASSET_V}"></script>\n  <script src="js/avila.js?v={AV}"></script>', 1)
     html = mobile_pictures(html)
     es_url, en_url = f'{SITE}/{out.replace("index.html", "")}', f'{SITE}/{out_en}'
     alt = f'  <link rel="canonical" href="__CANON__">\n  <meta property="og:url" content="__CANON__">\n  <link rel="alternate" hreflang="es" href="{es_url}">\n  <link rel="alternate" hreflang="en" href="{en_url}">\n  <link rel="alternate" hreflang="x-default" href="{es_url}">\n'

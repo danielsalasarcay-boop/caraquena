@@ -1,0 +1,143 @@
+/* ============================================================
+   Caraqueña Studio — "Caracas, en obra"
+   Pieza aislada: solo clases .avila / .av-*. No toca nada del sitio.
+   ============================================================ */
+.avila {
+  --av-bg: #0a0a0a;
+  --av-cream: #f4f1ec;
+  --av-muted: #8f8b85;
+  --av-orange: #f05a25;
+  --av-hot: #ff741f;
+  --av-green: #a9dcb8;
+  --u: 1px; --pl: 20px; --gy: 60vh; --ft: 52; --sw: 1.25px; --fs: 10px;
+  position: relative; height: 100vh; background: var(--av-bg); color: var(--av-cream);
+}
+.avila__stage { position: relative; height: 100vh; overflow: hidden; background: var(--av-bg); perspective: 1400px; }
+/* mundo en 3D: cada capa vive a su profundidad y todo se inclina con el cursor */
+.avila__world { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+@supports (height: 100svh) {
+  .avila, .avila__stage { height: 100svh; }
+}
+/* computadora: el escenario se queda fijo (sticky, sin pin por JS) y la obra avanza con el scroll */
+.avila.is-scrub { height: 3000vh; }
+.avila.is-scrub .avila__stage { position: sticky; top: 0; height: 100vh; }
+
+.avila__life { transition: opacity .4s; }
+.avila__svg, .avila__life { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+/* el dibujo sobresale 26px por lado: margen para que el paralaje del cursor nunca enseñe el borde */
+.avila__svg { inset: auto; left: -26px; top: -26px; width: calc(100% + 52px); height: calc(100% + 52px); will-change: transform; }
+.avila__life { overflow: hidden; }
+.avila__life--cam { overflow: visible; will-change: transform; transform-origin: 0 0; }
+.avila__sp { position: absolute; left: 0; top: 0; overflow: visible; will-change: transform; }
+.avila__flock { position: absolute; left: 0; top: 0; will-change: transform; }
+.avila__sp--glow { filter: drop-shadow(0 0 4px rgba(240, 90, 37, .6)); }
+.avila__sp--lamp { filter: drop-shadow(0 0 3px rgba(255, 116, 31, .95)) drop-shadow(0 0 10px rgba(240, 90, 37, .75)); }
+
+/* ---- trazo ---- */
+.avila svg path { fill: none; stroke: var(--av-cream); stroke-width: var(--sw); stroke-linecap: round; stroke-linejoin: round; }
+.avila .av-g { stroke: var(--av-green); }
+.avila .av-o { stroke: var(--av-orange); }
+.avila .av-h { stroke: var(--av-hot); }
+.avila .av-m { stroke: var(--av-muted); }
+.avila .av-t { stroke-width: calc(var(--sw) * .7); }
+.avila svg path.av-flow { stroke-width: calc(var(--sw) * .8); stroke-dasharray: calc(var(--u-n, 1) * 4px) calc(var(--u-n, 1) * 9px); opacity: .9; }
+.avila svg path.av-axis { stroke-dasharray: 9 3 1.5 3; opacity: .5; }
+.avila svg text.av-lv { font-weight: 500; font-size: calc(var(--fs) * 1.08); letter-spacing: .06em; }
+.avila .av-r { stroke-width: calc(var(--sw) * 1.3); }
+.avila .av-b { stroke-width: calc(var(--sw) * 1.9); }
+.avila .av-glow { stroke-width: calc(var(--sw) * 4.6); opacity: .17; }
+.avila .av-dim { opacity: .5; }
+.avila .av-occ { fill: var(--av-bg); stroke: none; }
+.avila svg path.av-under { stroke: var(--av-bg); stroke-width: calc(var(--sw) * 8); }
+.avila svg text.av-word { font-family: var(--display, "Archivo", system-ui, sans-serif); font-weight: 800; font-stretch: 110%; letter-spacing: -.01em; stroke: none; }
+.avila svg text.av-wsub { letter-spacing: .3em; stroke: none; }
+.avila svg text {
+  font-family: var(--mono, "JetBrains Mono", ui-monospace, monospace); font-size: var(--fs); letter-spacing: .04em;
+  fill: var(--av-cream); stroke: var(--av-bg); stroke-width: calc(var(--sw) * 3.4); paint-order: stroke; stroke-linejoin: round;
+}
+.avila svg text.av-o { fill: var(--av-orange); stroke: var(--av-bg); }
+.avila svg text.av-m { fill: var(--av-muted); stroke: var(--av-bg); }
+
+/* ---- rótulo de lámina y avance ---- */
+.avila__hud {
+  position: absolute; z-index: 3; left: var(--pl); right: var(--pl); top: max(88px, calc(96 * var(--u)));
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; pointer-events: none;
+  font-family: var(--mono, "JetBrains Mono", ui-monospace, monospace); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+}
+.avila__tag { color: var(--av-orange); display: inline-flex; align-items: center; gap: 10px; }
+.avila__tag::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.avila__pct { color: var(--av-muted); white-space: nowrap; }
+.avila__pct b { font-weight: 400; color: var(--av-orange); }
+/* siluetas dentro de las ventanas: tapan el rayado de luz, como alguien a contraluz */
+.avila svg path.av-sil { fill: var(--av-bg); stroke: var(--av-cream); stroke-width: calc(var(--sw) * .7); }
+.avila__sp--win { overflow: hidden; }
+/* reloj del andén: agujas rellenas y un resplandor tenue, como una esfera iluminada */
+.avila svg path.av-hand { fill: var(--av-cream); stroke: none; }
+.avila svg path.av-hand.av-o { fill: var(--av-orange); }
+.avila__sp--board { filter: drop-shadow(0 0 4px rgba(240, 90, 37, .45)); }
+.avila svg text.av-led { font-weight: 500; letter-spacing: .02em; }
+.avila .avila__clock { filter: drop-shadow(0 0 3px rgba(244, 241, 236, .35)); }
+.avila__clip { position: absolute; overflow: hidden; }
+.avila__clip .avila__sp { will-change: transform; }
+.avila svg text.av-wbg { stroke: var(--av-bg); stroke-width: calc(var(--sw) * 3); paint-order: stroke; }
+/* camioncito de La Capital del Cielo: su azul de marca, para que resalte entre el naranja */
+.avila svg path.av-lcg { fill: #7db6ea; stroke: #7db6ea; stroke-width: .55px; vector-effect: non-scaling-stroke; }
+.avila__sp--lcdc { filter: drop-shadow(0 0 5px rgba(106, 170, 228, .55)); }
+.avila .avila__sp--lcdc path:not(.av-lcg):not(.av-h):not(.av-glow) { stroke: #cfe4f7; }
+/* transiciones: retícula de plano y barrido de plotter */
+.avila__grid {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0;
+  background-image: linear-gradient(rgba(244, 241, 236, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(244, 241, 236, .035) 1px, transparent 1px), linear-gradient(rgba(240, 90, 37, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 90, 37, .07) 1px, transparent 1px);
+  background-size: 32px 32px, 32px 32px, 160px 160px, 160px 160px;
+}
+.avila__scan { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; opacity: 0; background: var(--av-hot); box-shadow: 0 0 10px 1px rgba(240, 90, 37, .5); opacity: .7; will-change: transform; }
+.avila__scan--v { width: 1px; height: 100%; }
+.avila__scan--h { width: 100%; height: 1px; }
+/* primer plano: trazo más grueso y tenue, pasa rápido */
+.avila__sp--fore { opacity: .34; }
+.avila .avila__sp--fore path { stroke-width: calc(var(--sw) * 2.3); }
+/* cajetín de plano: lámina, escala y nivel en vivo */
+.avila__sheet {
+  position: absolute; z-index: 3; right: var(--pl); bottom: max(22px, calc(26 * var(--u))); display: flex; pointer-events: none;
+  font-family: var(--mono, "JetBrains Mono", ui-monospace, monospace); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--av-muted);
+  border: 1px solid rgba(244, 241, 236, .28); background: rgba(10, 10, 10, .88);
+}
+.avila__sheet span { padding: 7px 11px; min-width: 5.2em; text-align: center; white-space: nowrap; }
+.avila__sheet span + span { border-left: 1px solid rgba(244, 241, 236, .28); }
+.avila__sheet b { font-weight: 500; color: var(--av-orange); }
+.avila[data-comp="v"] .avila__sheet { bottom: calc(18px + env(safe-area-inset-bottom, 0px)); font-size: 10px; }
+/* señal de scroll: una plomada que baja */
+.avila__hint { position: absolute; z-index: 3; left: 50%; bottom: 26px; width: 1px; height: 46px; background: rgba(244, 241, 236, .22); pointer-events: none; overflow: hidden; }
+.avila__hint i { position: absolute; left: 0; top: 0; width: 1px; height: 16px; background: var(--av-orange); animation: avila-plomada 1.7s cubic-bezier(.7, 0, .2, 1) infinite; }
+@keyframes avila-plomada { from { transform: translateY(-16px); } to { transform: translateY(46px); } }
+@media (prefers-reduced-motion: reduce) { .avila__hint { display: none; } }
+
+
+/* ---- titular ---- */
+.avila__copy { position: absolute; z-index: 3; left: var(--pl); top: var(--gy); pointer-events: none; }
+.avila__title {
+  margin: 0; font-family: var(--display, "Archivo", system-ui, sans-serif); font-weight: 400; font-size: calc(var(--ft) * var(--u));
+  letter-spacing: -.045em; line-height: .9; white-space: nowrap; color: var(--av-cream);
+}
+.avila__title .l { display: block; }
+.avila__title .c { display: inline-block; will-change: transform, opacity; }
+.avila__title b { font-weight: 400; color: var(--av-orange); }
+.avila__sign {
+  margin: 0; font-family: var(--mono, "JetBrains Mono", ui-monospace, monospace); font-size: max(10px, calc(11 * var(--u)));
+  letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; color: var(--av-muted);
+}
+.avila__sign span { white-space: nowrap; }
+/* horizontal: el titular se para sobre la línea de terreno, como un edificio más; la firma va bajo tierra */
+.avila[data-comp="h"] .avila__title { position: absolute; left: 0; bottom: 100%; }
+.avila[data-comp="h"] .avila__sign { margin-top: calc(18 * var(--u)); white-space: nowrap; }
+/* vertical (teléfono): el edificio manda y el titular va debajo de la línea de terreno */
+.avila[data-comp="v"] .avila__copy { top: calc(var(--gy) + 64 * var(--u)); right: var(--pl); }
+.avila[data-comp="v"] .avila__sign { margin-top: calc(12 * var(--u)); }
+.avila[data-comp="v"] .avila__sign span { display: block; }
+.avila[data-comp="v"] .avila__hud { top: max(84px, calc(84 * var(--u))); font-size: 11px; }
+.avila[data-comp="v"] .avila__copy { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* solo computadora: en teléfonos y tabletas la sección no existe */
+@media (max-width: 900px), (hover: none), (pointer: coarse) { .avila { display: none !important; } }
+/* en el sitio: el cajetín se aparta de los botones flotantes (Instagram / WhatsApp) */
+.avila__sheet { right: max(var(--pl), 108px); }

@@ -1,698 +1,718 @@
 [
-[
-"aria-label=\"Caraqueña Studio, ir al inicio\"",
-"aria-label=\"Caraqueña Studio, go to home\""
-],
-[
-"aria-label=\"Principal\"",
-"aria-label=\"Main\""
-],
-[
-"aria-label=\"Idioma\"",
-"aria-label=\"Language\""
-],
-[
-">Estudio</a>",
-">Studio</a>"
-],
-[
-">Proceso</a>",
-">Process</a>"
-],
-[
-">Proyectos</a>",
-">Projects</a>"
-],
-[
-">Nosotros</a>",
-">About</a>"
-],
-[
-">Contacto</a>",
-">Contact</a>"
-],
-[
-"<span>Contacto</span>",
-"<span>Contact</span>"
-],
-[
-"aria-label=\"Abrir menú\"",
-"aria-label=\"Open menu\""
-],
-[
-">Correo</a>",
-">Email</a>"
-],
-[
-"<p class=\"mono\">Caracas, Venezuela</p>",
-"<p class=\"mono\">Caracas, Venezuela</p>"
-],
-[
-"Caraqueña Studio. Todos los derechos reservados.",
-"Caraqueña Studio. All rights reserved."
-],
-[
-"Volver arriba ↑",
-"Back to top ↑"
-],
-[
-"aria-label=\"Instagram de Caraqueña Studio (se abre en una pestaña nueva)\"",
-"aria-label=\"Caraqueña Studio on Instagram (opens in a new tab)\""
-],
-[
-"<span class=\"float__label\">Síguenos</span>",
-"<span class=\"float__label\">Follow us</span>"
-],
-[
-"aria-label=\"Escríbenos por WhatsApp (se abre en una pestaña nueva)\"",
-"aria-label=\"Message us on WhatsApp (opens in a new tab)\""
-],
-[
-"<span class=\"float__label\">Escríbenos</span>",
-"<span class=\"float__label\">Message us</span>"
-],
-[
-"aria-label=\"Boceto a mano del esquema de implantación en Isla La Tortuga: anillo central con acceso, villas, piscina, bar, playa y servicios\"",
-"aria-label=\"Hand sketch of the site plan on Isla La Tortuga: central ring with access, villas, pool, bar, beach and services\""
-],
-[
-"Estudio de arquitectura · Caracas",
-"Architecture studio · Caracas"
-],
-[
-"<span class=\"line\"><span>Del trazo</span></span>",
-"<span class=\"line\"><span>From sketch</span></span>"
-],
-[
-"<span class=\"line\"><span>a la <b>obra.</b></span></span>",
-"<span class=\"line\"><span>to <b>site.</b></span></span>"
-],
-[
-"Diseñamos a mano, desarrollamos con precisión y construimos en sitio. Hotelería, desarrollos y vivienda, desde Caracas para el mundo.",
-"We design by hand, develop with precision and build on site. Hospitality, developments and housing, from Caracas to the world."
-],
-[
-"<i></i>Bajar</div>",
-"<i></i>Scroll</div>"
-],
-[
-"01 — Estudio",
-"01 — Studio"
-],
-[
-"Diseñamos a gran escala sin perder el detalle. Hoteles, desarrollos y espacios que se recorren antes de existir: cada proyecto nace a mano y se resuelve con precisión técnica hasta la obra.",
-"We design at large scale without losing the detail. Hotels, developments and spaces you can walk through before they exist: every project starts by hand and is resolved with technical precision all the way to the site."
-],
-[
-"<h3>Gran escala</h3><p>Hoteles y desarrollos completos, del plan maestro a la última pieza.</p>",
-"<h3>Large scale</h3><p>Complete hotels and developments, from master plan to the last piece.</p>"
-],
-[
-"<h3>Precisión</h3><p>Planos técnicos y modelos 3D que anticipan cada decisión de obra.</p>",
-"<h3>Precision</h3><p>Technical drawings and 3D models that anticipate every construction decision.</p>"
-],
-[
-"<h3>Ejecución</h3><p>Desarrollo y supervisión en sitio, hasta la entrega.</p>",
-"<h3>Execution</h3><p>On-site development and supervision, through to handover.</p>"
-],
-[
-"02 — Proceso",
-"02 — Process"
-],
-[
-"alt=\"Los arquitectos discuten un corte dibujado en la pizarra\"",
-"alt=\"The architects discuss a section drawn on the whiteboard\""
-],
-[
-"<span class=\"mono\">01 — Boceto</span><p>Cortes, alturas y recorridos, discutidos en equipo.</p>",
-"<span class=\"mono\">01 — Sketch</span><p>Sections, heights and circulation, worked out as a team.</p>"
-],
-[
-"alt=\"Plano de un apartamento en una tableta frente al espacio en construcción\"",
-"alt=\"Apartment floor plan on a tablet in front of the space under construction\""
-],
-[
-"<span class=\"mono\">02 — Plano</span><p>Medimos y redibujamos sobre el espacio real.</p>",
-"<span class=\"mono\">02 — Plan</span><p>We measure and redraw on the real space.</p>"
-],
-[
-"03 — Trabajo",
-"03 — Work"
-],
-[
-"Se arma<br>en líneas.",
-"Built<br>in lines."
-],
-[
-"alt=\"Corte isométrico de un apartamento completo con sala, habitaciones y cocina\"",
-"alt=\"Isometric cutaway of a full apartment with living room, bedrooms and kitchen\""
-],
-[
-"<h3>Apartamento integral</h3>",
-"<h3>Full apartment</h3>"
-],
-[
-"<p>Interiorismo y visualización 3D de la vivienda completa.</p>",
-"<p>Interior design and 3D visualization of the whole home.</p>"
-],
-[
-"alt=\"Dos vistas isométricas de una suite con vestier y baño\"",
-"alt=\"Two isometric views of a suite with walk-in closet and bathroom\""
-],
-[
-"<h3>Suite principal</h3>",
-"<h3>Master suite</h3>"
-],
-[
-"<p>Dormitorio, vestier y baño resueltos en una sola pieza.</p>",
-"<p>Bedroom, walk-in closet and bathroom resolved as one piece.</p>"
-],
-[
-"alt=\"Vivienda en tres niveles con cocina abierta, comedor y terraza\"",
-"alt=\"Three-level home with open kitchen, dining room and terrace\""
-],
-[
-"<h3>Townhouse Alto Hatillo</h3>",
-"<h3>Townhouse Alto Hatillo</h3>"
-],
-[
-"<p>Arquitectura e interiorismo, desde tres ángulos distintos.</p>",
-"<p>Architecture and interiors, from three different angles.</p>"
-],
-[
-"04 — Cobertura",
-"04 — Reach"
-],
-[
-"<h3>En sitio.</h3>",
-"<h3>On site.</h3>"
-],
-[
-"<p>Presencia y ejecución: desarrollo y supervisión de obras.</p>",
-"<p>Presence and execution: construction development and supervision.</p>"
-],
-[
-"<h3>En remoto.</h3>",
-"<h3>Remote.</h3>"
-],
-[
-"<p>Diseño e innovación: consultorías y proyectos remotos.</p>",
-"<p>Design and innovation: consulting and remote projects.</p>"
-],
-[
-"<span>Conoce más proyectos</span>",
-"<span>See more projects</span>"
-],
-[
-"<span>Conoce al equipo</span>",
-"<span>Meet the team</span>"
-],
-[
-"05 — Método",
-"05 — Method"
-],
-[
-"<h2 class=\"method__title\">Etapas</h2>",
-"<h2 class=\"method__title\">Stages</h2>"
-],
-[
-"<h3>Escuchar</h3><p>El espacio, tus rutinas y lo que quieres lograr.</p>",
-"<h3>Listen</h3><p>The space, your routines and what you want to achieve.</p>"
-],
-[
-"<h3>Proponer</h3><p>Distribución, concepto y materiales.</p>",
-"<h3>Propose</h3><p>Layout, concept and materials.</p>"
-],
-[
-"<h3>Modelado BIM</h3><p>Modelo 3D: choques y cómputos antes de obra (Building Information Modeling).</p>",
-"<h3>BIM modeling</h3><p>3D model: clashes and quantities before construction (Building Information Modeling).</p>"
-],
-[
-"<h3>Construir</h3><p>Planos y acompañamiento en la ejecución.</p>",
-"<h3>Build</h3><p>Drawings and support throughout construction.</p>"
-],
-[
-"06 — Contacto",
-"06 — Contact"
-],
-[
-"Hablemos de tu proyecto.",
-"Let's talk about your project."
-],
-[
-"<span>Escríbenos por WhatsApp</span>",
-"<span>Message us on WhatsApp</span>"
-],
-[
-"Tres arquitectos.<br>Un mismo trazo.",
-"Three architects.<br>One line."
-],
-[
-"Caraqueña nace en Caracas y crece con cada proyecto: hotelería y desarrollos de gran escala, vivienda e interiorismo. Diseñamos juntos, en la pizarra y en la obra.",
-"Caraqueña was born in Caracas and grows with every project: large-scale hospitality and developments, housing and interiors. We design together, at the whiteboard and on site."
-],
-[
-"Retrato próximamente",
-"Portrait coming soon"
-],
-[
-"<p class=\"mono\">Arquitecto</p>",
-"<p class=\"mono\">Architect</p>"
-],
-[
-"<h3>Presencia y ejecución</h3>",
-"<h3>Presence and execution</h3>"
-],
-[
-"<li>Desarrollo de obras</li><li>Supervisión de obras</li><li>Presencia en sitio</li>",
-"<li>Construction development</li><li>Construction supervision</li><li>On-site presence</li>"
-],
-[
-"<h3>Diseño e innovación</h3>",
-"<h3>Design and innovation</h3>"
-],
-[
-"<li>Consultorías</li><li>Proyectos remotos</li><li>Diseño e innovación</li>",
-"<li>Consulting</li><li>Remote projects</li><li>Design and innovation</li>"
-],
-[
-"alt=\"Los arquitectos de Caraqueña dibujando un corte en la pizarra\"",
-"alt=\"Caraqueña architects drawing a section on the whiteboard\""
-],
-[
-"¿Tienes un<br>proyecto?",
-"Got a<br>project?"
-],
-[
-"Escríbenos y lo conversamos: en Caracas vamos a sitio; desde cualquier lugar, trabajamos en remoto.",
-"Write to us and let's talk: in Caracas we come to the site; anywhere else, we work remotely."
-],
-[
-"<span class=\"mono tag\">Equipo</span>",
-"<span class=\"mono tag\">Team</span>"
-],
-[
-"<span class=\"mono tag\">Cobertura</span>",
-"<span class=\"mono tag\">Reach</span>"
-],
-[
-"<text x=\"0\" y=\"170\">NOSOTROS</text>",
-"<text x=\"0\" y=\"170\">ABOUT US</text>"
-],
-[
-"<span class=\"mono\">Correo</span>",
-"<span class=\"mono\">Email</span>"
-],
-[
-"<span class=\"mono\">Estudio</span><span class=\"contact__val\">",
-"<span class=\"mono\">Studio</span><span class=\"contact__val\">"
-],
-[
-"aria-label=\"Boceto a tinta de Caracas con El Ávila y las torres de Parque Central\"",
-"aria-label=\"Ink sketch of Caracas with El Ávila mountain and the Parque Central towers\""
-],
-[
-"Cada espacio existe primero como dibujo: del trazo al boceto, del boceto al render. Baja y míralo construirse.",
-"Every space exists first as a drawing: from line to sketch, from sketch to render. Scroll and watch it come together."
-],
-[
-"<li class=\"is-on\">Trazo</li><li>Boceto</li><li>Render</li>",
-"<li class=\"is-on\">Line</li><li>Sketch</li><li>Render</li>"
-],
-[
-">Conoce más</a>",
-">Learn more</a>"
-],
-[
-"<text x=\"0\" y=\"170\">PROYECTOS</text>",
-"<text x=\"0\" y=\"170\">PROJECTS</text>"
-],
-[
-"Boceto, plano, render.",
-"Sketch, plan, render."
-],
-[
-"<span class=\"mono\">03 — Render</span><p>Cada espacio, visualizado antes de construirse.</p>",
-"<span class=\"mono\">03 — Render</span><p>Every space, visualized before it is built.</p>"
-],
-[
-"Del trazo al render.",
-"From line to render."
-],
-[
-"Hotelería, infraestructura e interiorismo, contados con sus propios dibujos: bocetos, plantas, cortes y renders de Caraqueña.",
-"Hospitality, infrastructure and interiors, told through their own drawings: Caraqueña sketches, plans, sections and renders."
-],
-[
-"aria-label=\"Otter La Tortuga: de la isla al render\"",
-"aria-label=\"Otter La Tortuga: from the island to the render\""
-],
-[
-"alt=\"Vista aérea de la Isla La Tortuga, en el Caribe venezolano\"",
-"alt=\"Aerial view of Isla La Tortuga in the Venezuelan Caribbean\""
-],
-[
-"alt=\"Render de la fachada de Otter La Tortuga: edificio circular de dos niveles con terrazas ajardinadas\"",
-"alt=\"Render of the Otter La Tortuga facade: a two-level circular building with planted terraces\""
-],
-[
-"<li>Ubicación</li><li>Concepto</li><li>Conjunto</li><li>Corte</li><li>Boceto</li><li>Render</li>",
-"<li>Location</li><li>Concept</li><li>Master plan</li><li>Section</li><li>Sketch</li><li>Render</li>"
-],
-[
-"<span class=\"mono\">01 — Ubicación</span><p>Zona noreste de la Isla La Tortuga, en el Caribe venezolano: playas de arena blanca y aguas turquesa.</p>",
-"<span class=\"mono\">01 — Location</span><p>The northeast of Isla La Tortuga, in the Venezuelan Caribbean: white-sand beaches and turquoise water.</p>"
-],
-[
-"<span class=\"mono\">02 — Concepto</span><p>Una geometría circular para que todas las habitaciones tengan vista de 360°, organizadas desde un trazado radial.</p>",
-"<span class=\"mono\">02 — Concept</span><p>A circular geometry so every room enjoys a 360° view, organized around a radial layout.</p>"
-],
-[
-"<span class=\"mono\">03 — Conjunto</span><p>Un edificio central reúne lobby, junior suites, restaurante, wellness y gimnasio. Alrededor, villas de concepto orgánico.</p>",
-"<span class=\"mono\">03 — Master plan</span><p>A central building holds the lobby, junior suites, restaurant, wellness and gym. Around it, villas with an organic concept.</p>"
-],
-[
-"<span class=\"mono\">04 — Corte</span><p>Dos niveles abiertos al horizonte, con materiales no corrosivos ni visualmente invasivos.</p>",
-"<span class=\"mono\">04 — Section</span><p>Two levels open to the horizon, built with non-corrosive, visually unobtrusive materials.</p>"
-],
-[
-"<span class=\"mono\">05 — Boceto</span><p>La fachada, primero a mano.</p>",
-"<span class=\"mono\">05 — Sketch</span><p>The facade, by hand first.</p>"
-],
-[
-"<span class=\"mono\">06 — Render</span><p>Otter La Tortuga. Anteproyecto, 2024.</p>",
-"<span class=\"mono\">06 — Render</span><p>Otter La Tortuga. Schematic design, 2024.</p>"
-],
-[
-"aria-label=\"Otter La Tortuga en renders\"",
-"aria-label=\"Otter La Tortuga in renders\""
-],
-[
-"El hotel, en renders.",
-"The hotel, in renders."
-],
-[
-"alt=\"Otter La Tortuga: piscina frente al edificio circular\"",
-"alt=\"Otter La Tortuga: pool in front of the circular building\""
-],
-[
-"alt=\"Otter La Tortuga: piscina infinita hacia el mar\"",
-"alt=\"Otter La Tortuga: infinity pool facing the sea\""
-],
-[
-"alt=\"Otter La Tortuga: restaurante con pérgola frente a la playa\"",
-"alt=\"Otter La Tortuga: restaurant with pergola facing the beach\""
-],
-[
-"alt=\"Otter La Tortuga: acceso con espejo de agua y palmeras\"",
-"alt=\"Otter La Tortuga: entrance with reflecting pool and palms\""
-],
-[
-"alt=\"Otter La Tortuga: pabellón con celosía de madera\"",
-"alt=\"Otter La Tortuga: pavilion with timber lattice\""
-],
-[
-"alt=\"Otter La Tortuga: acceso bajo el edificio con la marca Otter\"",
-"alt=\"Otter La Tortuga: entrance under the building with the Otter sign\""
-],
-[
-"alt=\"Otter La Tortuga: habitación\"",
-"alt=\"Otter La Tortuga: guest room\""
-],
-[
-"<span class=\"mono tag\">Portafolio</span>",
-"<span class=\"mono tag\">Portfolio</span>"
-],
-[
-"Fichas de proyecto.",
-"Project sheets."
-],
-[
-"aria-label=\"Ver galería de Otter La Tortuga\"",
-"aria-label=\"View Otter La Tortuga gallery\""
-],
-[
-"Hotelería · Isla La Tortuga",
-"Hospitality · Isla La Tortuga"
-],
-[
-"Hotel de geometría circular con vista de 360° desde cada habitación, villas, piscinas y pool lounge frente al mar.",
-"A circular hotel with a 360° view from every room, plus villas, pools and a pool lounge facing the sea."
-],
-[
-"aria-label=\"Ver galería de Puerto de Guanta\"",
-"aria-label=\"View Puerto de Guanta gallery\""
-],
-[
-"Infraestructura portuaria · Guanta",
-"Port infrastructure · Guanta"
-],
-[
-"Terminal especializada de carga general: proyección futura en tres fases de expansión.",
-"Specialized general cargo terminal: a future plan in three expansion phases."
-],
-[
-"aria-label=\"Ver galería de Proyecto Altamira\"",
-"aria-label=\"View Proyecto Altamira gallery\""
-],
-[
-"Interiorismo residencial · Altamira",
-"Residential interiors · Altamira"
-],
-[
-"Sala de estar, biblioteca, family room, oficina privada, cinco habitaciones y terraza.",
-"Living room, library, family room, private office, five bedrooms and terrace."
-],
-[
-"aria-label=\"Ver galería de PH Miranda\"",
-"aria-label=\"View PH Miranda gallery\""
-],
-[
-"Interiorismo · Anteproyecto",
-"Interiors · Schematic design"
-],
-[
-"Recibo, bar, sala, cocina, sala de TV, escalera, oficina, habitación principal, vestier y baños en un mismo recorrido de concreto, madera y vegetación, con cortes seccionados de cada espacio.",
-"Entry, bar, living room, kitchen, TV room, stair, office, master bedroom, walk-in closet and bathrooms in one sequence of concrete, wood and plants, with sectional cuts of every space."
-],
-[
-"aria-label=\"Galería del proyecto\"",
-"aria-label=\"Project gallery\""
-],
-[
-"aria-label=\"Cerrar galería\"",
-"aria-label=\"Close gallery\""
-],
-[
-"aria-label=\"Imagen anterior\"",
-"aria-label=\"Previous image\""
-],
-[
-"aria-label=\"Imagen siguiente\"",
-"aria-label=\"Next image\""
-],
-[
-"láminas</span>",
-"sheets</span>"
-],
-[
-"Anteproyecto · 2024 ·",
-"Schematic design · 2024 ·"
-],
-[
-"Proyección futura ·",
-"Future plan ·"
-],
-[
-"<span class=\"mono pcard__meta\">Interiorismo ·",
-"<span class=\"mono pcard__meta\">Interiors ·"
-],
-[
-"<span class=\"mono pcard__meta\">Anteproyecto ·",
-"<span class=\"mono pcard__meta\">Schematic design ·"
-],
-[
-"aria-label=\"Puerto de Guanta: proyección futura en tres fases\"",
-"aria-label=\"Puerto de Guanta: a future plan in three phases\""
-],
-[
-"alt=\"Toma aérea actual del Puerto de Guanta\"",
-"alt=\"Current aerial view of Puerto de Guanta\""
-],
-[
-"alt=\"Visualización de la fase 1 del Puerto de Guanta\"",
-"alt=\"Visualization of phase 1 of Puerto de Guanta\""
-],
-[
-"alt=\"Visualización de la fase 2 del Puerto de Guanta\"",
-"alt=\"Visualization of phase 2 of Puerto de Guanta\""
-],
-[
-"alt=\"Visualización del conjunto completo del Puerto de Guanta\"",
-"alt=\"Visualization of the complete Puerto de Guanta\""
-],
-[
-"alt=\"Visualización nocturna del Puerto de Guanta\"",
-"alt=\"Night visualization of Puerto de Guanta\""
-],
-[
-"<li>Actual</li><li>Lectura</li><li>Fase 1</li><li>Fase 2</li><li>Fase 3</li><li>Noche</li>",
-"<li>Today</li><li>Reading</li><li>Phase 1</li><li>Phase 2</li><li>Phase 3</li><li>Night</li>"
-],
-[
-"<span class=\"mono\">01 — Situación actual</span><p>El Puerto de Guanta, principal eje estratégico del oriente venezolano, en plena modernización de muelles y logística.</p>",
-"<span class=\"mono\">01 — Today</span><p>Puerto de Guanta, the main strategic hub of eastern Venezuela, in the middle of modernizing its piers and logistics.</p>"
-],
-[
-"<span class=\"mono\">02 — Lectura del sitio</span><p>La bahía, los muelles y los patios existentes: la base sobre la que crece el proyecto.</p>",
-"<span class=\"mono\">02 — Site reading</span><p>The bay, the existing piers and yards: the base the project grows from.</p>"
-],
-[
-"<span class=\"mono\">03 — Fase 1 · Contingencia</span><p>Consolidación del área de maniobras y almacenamiento: carga extra pesada, fraccionada, tubular, contenedores y puestos de atraque.</p>",
-"<span class=\"mono\">03 — Phase 1 · Contingency</span><p>Consolidating maneuvering and storage areas: extra-heavy, break-bulk and tubular cargo, containers and berths.</p>"
-],
-[
-"<span class=\"mono\">04 — Fase 2 · Capacidad</span><p>Terminales especializadas de descarga de granel y sistemas de transporte automatizado.</p>",
-"<span class=\"mono\">04 — Phase 2 · Capacity</span><p>Specialized bulk unloading terminals and automated transport systems.</p>"
-],
-[
-"<span class=\"mono\">05 — Fase 3 · Conjunto</span><p>Vía costera y muelle norte: el conjunto completo, con los flujos logísticos separados de las áreas administrativas.</p>",
-"<span class=\"mono\">05 — Phase 3 · Complete</span><p>Coastal road and north pier: the complete port, with logistics flows separated from administrative areas.</p>"
-],
-[
-"<span class=\"mono\">06 — De día a noche</span><p>Una proyección pensada para ser el principal nodo de intercambio comercial de la región.</p>",
-"<span class=\"mono\">06 — Day to night</span><p>A plan designed to become the main commercial exchange hub of the region.</p>"
-],
-[
-"alt=\"Fabrizio Palmieri, Carlos Enrique Salas y Elías Ojalvo sentados en un auditorio\"",
-"alt=\"Fabrizio Palmieri, Carlos Enrique Salas and Elías Ojalvo seated in an auditorium\""
-],
-[
-"aria-label=\"Universidad Santa María: base para la escultura de la Virgen\"",
-"aria-label=\"Universidad Santa María: base for the statue of the Virgin\""
-],
-[
-"aria-label=\"Boceto a mano de la base, dibujándose\"",
-"aria-label=\"Hand sketch of the base, being drawn\""
-],
-[
-"alt=\"Render frontal de la base trapezoidal de concreto con la placa Promoción XXIII y la escultura de la Virgen\"",
-"alt=\"Front render of the trapezoidal concrete base with the Promoción XXIII plaque and the statue of the Virgin\""
-],
-[
-"alt=\"La obra terminada: base de concreto con la placa Promoción XXIII y la escultura de la Virgen en la Universidad Santa María\"",
-"alt=\"The finished work: concrete base with the Promoción XXIII plaque and the statue of the Virgin at Universidad Santa María\""
-],
-[
-"<span class=\"mono\">03 — Boceto</span><p>La base dibujada a mano: espacio para flores, escultura, base de concreto y placa metálica.</p>",
-"<span class=\"mono\">03 — Sketch</span><p>The base drawn by hand: space for flowers, the statue, a concrete base and a metal plaque.</p>"
-],
-[
-"<span class=\"mono\">04 — Planos</span><p>Planta y elevación a escala 1:20, perspectiva 1:15. Una pieza de 0,90 × 0,90 × 1,20 m.</p>",
-"<span class=\"mono\">04 — Drawings</span><p>Plan and elevation at 1:20, perspective at 1:15. A 0.90 × 0.90 × 1.20 m piece.</p>"
-],
-[
-"alt=\"Antes: el altar anterior de la Virgen en la Universidad Santa María\"",
-"alt=\"Before: the previous altar of the Virgin at Universidad Santa María\""
-],
-[
-"<li>USM</li><li>Antes</li><li>Boceto</li><li>Planos</li><li>Render</li><li>Obra</li>",
-"<li>USM</li><li>Before</li><li>Sketch</li><li>Drawings</li><li>Render</li><li>Built</li>"
-],
-[
-"<span class=\"mono\">02 — Antes</span><p>El altar anterior, que el proyecto reemplazó por una pieza de concreto.</p>",
-"<span class=\"mono\">02 — Before</span><p>The previous altar, which the project replaced with a single concrete piece.</p>"
-],
-[
-"<span class=\"mono\">01 — Universidad Santa María</span><p>Base para la escultura de la Virgen. Urb. Miranda, Caracas · Proyecto construido, 2025.</p>",
-"<span class=\"mono\">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · Built, 2025.</p>"
-],
-[
-"<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes.</p>",
-"<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names.</p>"
-],
-[
-"<span class=\"mono\">06 — Obra construida</span><p>La pieza terminada en el campus de la Universidad Santa María, con la escultura de Santa Apolonia.</p>",
-"<span class=\"mono\">06 — Built work</span><p>The finished piece on the Universidad Santa María campus, with the statue of Saint Apollonia.</p>"
-],
-[
-"alt=\"Fabrizio Palmieri, arquitecto socio de Caraqueña\"",
-"alt=\"Fabrizio Palmieri, partner architect at Caraqueña\""
-],
-[
-"alt=\"Carlos Enrique Salas, arquitecto socio de Caraqueña\"",
-"alt=\"Carlos Enrique Salas, partner architect at Caraqueña\""
-],
-[
-"alt=\"Los tres arquitectos de Caraqueña trabajando sobre la mesa con bocetos y libros de arquitectura\"",
-"alt=\"The three Caraqueña architects working at the table with sketches and architecture books\""
-],
-[
-"alt=\"Elías Ojalvo, arquitecto socio de Caraqueña\"",
-"alt=\"Elías Ojalvo, partner architect at Caraqueña\""
-],
-[
-"<a href=\"terminos.html\">Términos</a> · <a href=\"privacidad.html\">Privacidad</a> · <a href=\"cookies.html\">Cookies</a>",
-"<a href=\"terminos.html?lang=en\">Terms</a> · <a href=\"privacidad.html?lang=en\">Privacy</a> · <a href=\"cookies.html?lang=en\">Cookies</a>"
-],
-[
-"aria-label=\"Ver galería de Townhouse Alto Hatillo\"",
-"aria-label=\"View Townhouse Alto Hatillo gallery\""
-],
-[
-"Sala, comedor, cocina, terrazas con parrillera, habitación principal, vestier y baño, resueltos en madera, ladrillo y piedra, con la planta de cada espacio.",
-"Living room, dining room, kitchen, terraces with grill, master bedroom, walk-in closet and bathroom, resolved in wood, brick and stone, with the floor plan of every space."
-],
-[
-"aria-label=\"Ver galería de Maquetería para Sistema Nacional de Orquestas\"",
-"aria-label=\"View Model-making for the National System of Orchestras gallery\""
-],
-[
-"alt=\"Maquetería para Sistema Nacional de Orquestas\"",
-"alt=\"Model-making for the National System of Orchestras\""
-],
-[
-"<h3 class=\"pcard__title\">Maquetería para Sistema Nacional de Orquestas</h3>",
-"<h3 class=\"pcard__title\">Model-making for the National System of Orchestras</h3>"
-],
-[
-"Levantamiento · Digitalización · Maquetería",
-"Survey · Digitization · Model-making"
-],
-[
-"Levantamiento del conjunto existente, digitalización en 3D y maqueta a escala de la Universidad Maestro Abreu del Sistema: fachada de parasoles, casa histórica y anfiteatro.",
-"Survey of the existing complex, 3D digitization and a scale model of El Sistema’s Universidad Maestro Abreu: louvered façade, historic house and amphitheater."
-],
-[
-"Maqueta · 14 fotos",
-"Model · 14 photos"
-],
-[
-"aria-label=\"Ver galería de Proyecto San Luis\"",
-"aria-label=\"View San Luis Project gallery\""
-],
-[
-"alt=\"Proyecto San Luis\"",
-"alt=\"San Luis Project\""
-],
-[
-"<h3 class=\"pcard__title\">Proyecto San Luis</h3>",
-"<h3 class=\"pcard__title\">San Luis Project</h3>"
-],
-[
-"Interiorismo · Obra ejecutada",
-"Interiors · Built work"
-],
-[
-"Remodelación de apartamento: dos baños, cocina y mueble para los tanques de agua, del plano al render y a la obra terminada.",
-"Apartment renovation: two bathrooms, kitchen and a cabinet for the water tanks, from plan to render to the finished work."
-],
-[
-"Proyecto · 20 láminas + video",
-"Project · 20 sheets + video"
-],
-[
-"alt=\"Render en corte seccionado de una escalera de concreto con pasamanos y luces de pared\"",
-"alt=\"Sectional render of a concrete staircase with handrail and wall lights\""
-]
+ [
+  "aria-label=\"Caraqueña Studio, ir al inicio\"",
+  "aria-label=\"Caraqueña Studio, go to home\""
+ ],
+ [
+  "aria-label=\"Principal\"",
+  "aria-label=\"Main\""
+ ],
+ [
+  "aria-label=\"Idioma\"",
+  "aria-label=\"Language\""
+ ],
+ [
+  ">Estudio</a>",
+  ">Studio</a>"
+ ],
+ [
+  ">Proceso</a>",
+  ">Process</a>"
+ ],
+ [
+  ">Proyectos</a>",
+  ">Projects</a>"
+ ],
+ [
+  ">Nosotros</a>",
+  ">About</a>"
+ ],
+ [
+  ">Contacto</a>",
+  ">Contact</a>"
+ ],
+ [
+  "<span>Contacto</span>",
+  "<span>Contact</span>"
+ ],
+ [
+  "aria-label=\"Abrir menú\"",
+  "aria-label=\"Open menu\""
+ ],
+ [
+  ">Correo</a>",
+  ">Email</a>"
+ ],
+ [
+  "<p class=\"mono\">Caracas, Venezuela</p>",
+  "<p class=\"mono\">Caracas, Venezuela</p>"
+ ],
+ [
+  "Caraqueña Studio. Todos los derechos reservados.",
+  "Caraqueña Studio. All rights reserved."
+ ],
+ [
+  "Volver arriba ↑",
+  "Back to top ↑"
+ ],
+ [
+  "aria-label=\"Instagram de Caraqueña Studio (se abre en una pestaña nueva)\"",
+  "aria-label=\"Caraqueña Studio on Instagram (opens in a new tab)\""
+ ],
+ [
+  "<span class=\"float__label\">Síguenos</span>",
+  "<span class=\"float__label\">Follow us</span>"
+ ],
+ [
+  "aria-label=\"Escríbenos por WhatsApp (se abre en una pestaña nueva)\"",
+  "aria-label=\"Message us on WhatsApp (opens in a new tab)\""
+ ],
+ [
+  "<span class=\"float__label\">Escríbenos</span>",
+  "<span class=\"float__label\">Message us</span>"
+ ],
+ [
+  "aria-label=\"Boceto a mano del esquema de implantación en Isla La Tortuga: anillo central con acceso, villas, piscina, bar, playa y servicios\"",
+  "aria-label=\"Hand sketch of the site plan on Isla La Tortuga: central ring with access, villas, pool, bar, beach and services\""
+ ],
+ [
+  "Estudio de arquitectura · Caracas",
+  "Architecture studio · Caracas"
+ ],
+ [
+  "<span class=\"line\"><span>Del trazo</span></span>",
+  "<span class=\"line\"><span>From sketch</span></span>"
+ ],
+ [
+  "<span class=\"line\"><span>a la <b>obra.</b></span></span>",
+  "<span class=\"line\"><span>to <b>site.</b></span></span>"
+ ],
+ [
+  "Diseñamos a mano, desarrollamos con precisión y construimos en sitio. Hotelería, desarrollos y vivienda, desde Caracas para el mundo.",
+  "We design by hand, develop with precision and build on site. Hospitality, developments and housing, from Caracas to the world."
+ ],
+ [
+  "<i></i>Bajar</div>",
+  "<i></i>Scroll</div>"
+ ],
+ [
+  "01 — Estudio",
+  "01 — Studio"
+ ],
+ [
+  "Diseñamos a gran escala sin perder el detalle. Hoteles, desarrollos y espacios que se recorren antes de existir: cada proyecto nace a mano y se resuelve con precisión técnica hasta la obra.",
+  "We design at large scale without losing the detail. Hotels, developments and spaces you can walk through before they exist: every project starts by hand and is resolved with technical precision all the way to the site."
+ ],
+ [
+  "<h3>Gran escala</h3><p>Hoteles y desarrollos completos, del plan maestro a la última pieza.</p>",
+  "<h3>Large scale</h3><p>Complete hotels and developments, from master plan to the last piece.</p>"
+ ],
+ [
+  "<h3>Precisión</h3><p>Planos técnicos y modelos 3D que anticipan cada decisión de obra.</p>",
+  "<h3>Precision</h3><p>Technical drawings and 3D models that anticipate every construction decision.</p>"
+ ],
+ [
+  "<h3>Ejecución</h3><p>Desarrollo y supervisión en sitio, hasta la entrega.</p>",
+  "<h3>Execution</h3><p>On-site development and supervision, through to handover.</p>"
+ ],
+ [
+  "02 — Proceso",
+  "02 — Process"
+ ],
+ [
+  "alt=\"Los arquitectos discuten un corte dibujado en la pizarra\"",
+  "alt=\"The architects discuss a section drawn on the whiteboard\""
+ ],
+ [
+  "<span class=\"mono\">01 — Boceto</span><p>Cortes, alturas y recorridos, discutidos en equipo.</p>",
+  "<span class=\"mono\">01 — Sketch</span><p>Sections, heights and circulation, worked out as a team.</p>"
+ ],
+ [
+  "alt=\"Plano de un apartamento en una tableta frente al espacio en construcción\"",
+  "alt=\"Apartment floor plan on a tablet in front of the space under construction\""
+ ],
+ [
+  "<span class=\"mono\">02 — Plano</span><p>Medimos y redibujamos sobre el espacio real.</p>",
+  "<span class=\"mono\">02 — Plan</span><p>We measure and redraw on the real space.</p>"
+ ],
+ [
+  "03 — Trabajo",
+  "03 — Work"
+ ],
+ [
+  "Se arma<br>en líneas.",
+  "Built<br>in lines."
+ ],
+ [
+  "alt=\"Corte isométrico de un apartamento completo con sala, habitaciones y cocina\"",
+  "alt=\"Isometric cutaway of a full apartment with living room, bedrooms and kitchen\""
+ ],
+ [
+  "<h3>Apartamento integral</h3>",
+  "<h3>Full apartment</h3>"
+ ],
+ [
+  "<p>Interiorismo y visualización 3D de la vivienda completa.</p>",
+  "<p>Interior design and 3D visualization of the whole home.</p>"
+ ],
+ [
+  "alt=\"Dos vistas isométricas de una suite con vestier y baño\"",
+  "alt=\"Two isometric views of a suite with walk-in closet and bathroom\""
+ ],
+ [
+  "<h3>Suite principal</h3>",
+  "<h3>Master suite</h3>"
+ ],
+ [
+  "<p>Dormitorio, vestier y baño resueltos en una sola pieza.</p>",
+  "<p>Bedroom, walk-in closet and bathroom resolved as one piece.</p>"
+ ],
+ [
+  "alt=\"Vivienda en tres niveles con cocina abierta, comedor y terraza\"",
+  "alt=\"Three-level home with open kitchen, dining room and terrace\""
+ ],
+ [
+  "<h3>Townhouse Alto Hatillo</h3>",
+  "<h3>Townhouse Alto Hatillo</h3>"
+ ],
+ [
+  "<p>Arquitectura e interiorismo, desde tres ángulos distintos.</p>",
+  "<p>Architecture and interiors, from three different angles.</p>"
+ ],
+ [
+  "04 — Cobertura",
+  "04 — Reach"
+ ],
+ [
+  "<h3>En sitio.</h3>",
+  "<h3>On site.</h3>"
+ ],
+ [
+  "<p>Presencia y ejecución: desarrollo y supervisión de obras.</p>",
+  "<p>Presence and execution: construction development and supervision.</p>"
+ ],
+ [
+  "<h3>En remoto.</h3>",
+  "<h3>Remote.</h3>"
+ ],
+ [
+  "<p>Diseño e innovación: consultorías y proyectos remotos.</p>",
+  "<p>Design and innovation: consulting and remote projects.</p>"
+ ],
+ [
+  "<span>Conoce más proyectos</span>",
+  "<span>See more projects</span>"
+ ],
+ [
+  "<span>Conoce al equipo</span>",
+  "<span>Meet the team</span>"
+ ],
+ [
+  "05 — Método",
+  "05 — Method"
+ ],
+ [
+  "<h2 class=\"method__title\">Etapas</h2>",
+  "<h2 class=\"method__title\">Stages</h2>"
+ ],
+ [
+  "<h3>Escuchar</h3><p>El espacio, tus rutinas y lo que quieres lograr.</p>",
+  "<h3>Listen</h3><p>The space, your routines and what you want to achieve.</p>"
+ ],
+ [
+  "<h3>Proponer</h3><p>Distribución, concepto y materiales.</p>",
+  "<h3>Propose</h3><p>Layout, concept and materials.</p>"
+ ],
+ [
+  "<h3>Modelado BIM</h3><p>Modelo 3D: choques y cómputos antes de obra (Building Information Modeling).</p>",
+  "<h3>BIM modeling</h3><p>3D model: clashes and quantities before construction (Building Information Modeling).</p>"
+ ],
+ [
+  "<h3>Construir</h3><p>Planos y acompañamiento en la ejecución.</p>",
+  "<h3>Build</h3><p>Drawings and support throughout construction.</p>"
+ ],
+ [
+  "06 — Contacto",
+  "06 — Contact"
+ ],
+ [
+  "Hablemos de tu proyecto.",
+  "Let's talk about your project."
+ ],
+ [
+  "<span>Escríbenos por WhatsApp</span>",
+  "<span>Message us on WhatsApp</span>"
+ ],
+ [
+  "Tres arquitectos.<br>Un mismo trazo.",
+  "Three architects.<br>One line."
+ ],
+ [
+  "Caraqueña nace en Caracas y crece con cada proyecto: hotelería y desarrollos de gran escala, vivienda e interiorismo. Diseñamos juntos, en la pizarra y en la obra.",
+  "Caraqueña was born in Caracas and grows with every project: large-scale hospitality and developments, housing and interiors. We design together, at the whiteboard and on site."
+ ],
+ [
+  "Retrato próximamente",
+  "Portrait coming soon"
+ ],
+ [
+  "<p class=\"mono\">Arquitecto</p>",
+  "<p class=\"mono\">Architect</p>"
+ ],
+ [
+  "<h3>Presencia y ejecución</h3>",
+  "<h3>Presence and execution</h3>"
+ ],
+ [
+  "<li>Desarrollo de obras</li><li>Supervisión de obras</li><li>Presencia en sitio</li>",
+  "<li>Construction development</li><li>Construction supervision</li><li>On-site presence</li>"
+ ],
+ [
+  "<h3>Diseño e innovación</h3>",
+  "<h3>Design and innovation</h3>"
+ ],
+ [
+  "<li>Consultorías</li><li>Proyectos remotos</li><li>Diseño e innovación</li>",
+  "<li>Consulting</li><li>Remote projects</li><li>Design and innovation</li>"
+ ],
+ [
+  "alt=\"Los arquitectos de Caraqueña dibujando un corte en la pizarra\"",
+  "alt=\"Caraqueña architects drawing a section on the whiteboard\""
+ ],
+ [
+  "¿Tienes un<br>proyecto?",
+  "Got a<br>project?"
+ ],
+ [
+  "Escríbenos y lo conversamos: en Caracas vamos a sitio; desde cualquier lugar, trabajamos en remoto.",
+  "Write to us and let's talk: in Caracas we come to the site; anywhere else, we work remotely."
+ ],
+ [
+  "<span class=\"mono tag\">Equipo</span>",
+  "<span class=\"mono tag\">Team</span>"
+ ],
+ [
+  "<span class=\"mono tag\">Cobertura</span>",
+  "<span class=\"mono tag\">Reach</span>"
+ ],
+ [
+  "<text x=\"0\" y=\"170\">NOSOTROS</text>",
+  "<text x=\"0\" y=\"170\">ABOUT US</text>"
+ ],
+ [
+  "<span class=\"mono\">Correo</span>",
+  "<span class=\"mono\">Email</span>"
+ ],
+ [
+  "<span class=\"mono\">Estudio</span><span class=\"contact__val\">",
+  "<span class=\"mono\">Studio</span><span class=\"contact__val\">"
+ ],
+ [
+  "aria-label=\"Boceto a tinta de Caracas con El Ávila y las torres de Parque Central\"",
+  "aria-label=\"Ink sketch of Caracas with El Ávila mountain and the Parque Central towers\""
+ ],
+ [
+  "Cada espacio existe primero como dibujo: del trazo al boceto, del boceto al render. Baja y míralo construirse.",
+  "Every space exists first as a drawing: from line to sketch, from sketch to render. Scroll and watch it come together."
+ ],
+ [
+  "<li class=\"is-on\">Trazo</li><li>Boceto</li><li>Render</li>",
+  "<li class=\"is-on\">Line</li><li>Sketch</li><li>Render</li>"
+ ],
+ [
+  ">Conoce más</a>",
+  ">Learn more</a>"
+ ],
+ [
+  "<text x=\"0\" y=\"170\">PROYECTOS</text>",
+  "<text x=\"0\" y=\"170\">PROJECTS</text>"
+ ],
+ [
+  "Boceto, plano, render.",
+  "Sketch, plan, render."
+ ],
+ [
+  "<span class=\"mono\">03 — Render</span><p>Cada espacio, visualizado antes de construirse.</p>",
+  "<span class=\"mono\">03 — Render</span><p>Every space, visualized before it is built.</p>"
+ ],
+ [
+  "Del trazo al render.",
+  "From line to render."
+ ],
+ [
+  "Hotelería, infraestructura e interiorismo, contados con sus propios dibujos: bocetos, plantas, cortes y renders de Caraqueña.",
+  "Hospitality, infrastructure and interiors, told through their own drawings: Caraqueña sketches, plans, sections and renders."
+ ],
+ [
+  "aria-label=\"Otter La Tortuga: de la isla al render\"",
+  "aria-label=\"Otter La Tortuga: from the island to the render\""
+ ],
+ [
+  "alt=\"Vista aérea de la Isla La Tortuga, en el Caribe venezolano\"",
+  "alt=\"Aerial view of Isla La Tortuga in the Venezuelan Caribbean\""
+ ],
+ [
+  "alt=\"Render de la fachada de Otter La Tortuga: edificio circular de dos niveles con terrazas ajardinadas\"",
+  "alt=\"Render of the Otter La Tortuga facade: a two-level circular building with planted terraces\""
+ ],
+ [
+  "<li>Ubicación</li><li>Concepto</li><li>Conjunto</li><li>Corte</li><li>Boceto</li><li>Render</li>",
+  "<li>Location</li><li>Concept</li><li>Master plan</li><li>Section</li><li>Sketch</li><li>Render</li>"
+ ],
+ [
+  "<span class=\"mono\">01 — Ubicación</span><p>Zona noreste de la Isla La Tortuga, en el Caribe venezolano: playas de arena blanca y aguas turquesa.</p>",
+  "<span class=\"mono\">01 — Location</span><p>The northeast of Isla La Tortuga, in the Venezuelan Caribbean: white-sand beaches and turquoise water.</p>"
+ ],
+ [
+  "<span class=\"mono\">02 — Concepto</span><p>Una geometría circular para que todas las habitaciones tengan vista de 360°, organizadas desde un trazado radial.</p>",
+  "<span class=\"mono\">02 — Concept</span><p>A circular geometry so every room enjoys a 360° view, organized around a radial layout.</p>"
+ ],
+ [
+  "<span class=\"mono\">03 — Conjunto</span><p>Un edificio central reúne lobby, junior suites, restaurante, wellness y gimnasio. Alrededor, villas de concepto orgánico.</p>",
+  "<span class=\"mono\">03 — Master plan</span><p>A central building holds the lobby, junior suites, restaurant, wellness and gym. Around it, villas with an organic concept.</p>"
+ ],
+ [
+  "<span class=\"mono\">04 — Corte</span><p>Dos niveles abiertos al horizonte, con materiales no corrosivos ni visualmente invasivos.</p>",
+  "<span class=\"mono\">04 — Section</span><p>Two levels open to the horizon, built with non-corrosive, visually unobtrusive materials.</p>"
+ ],
+ [
+  "<span class=\"mono\">05 — Boceto</span><p>La fachada, primero a mano.</p>",
+  "<span class=\"mono\">05 — Sketch</span><p>The facade, by hand first.</p>"
+ ],
+ [
+  "<span class=\"mono\">06 — Render</span><p>Otter La Tortuga. Anteproyecto, 2024.</p>",
+  "<span class=\"mono\">06 — Render</span><p>Otter La Tortuga. Schematic design, 2024.</p>"
+ ],
+ [
+  "aria-label=\"Otter La Tortuga en renders\"",
+  "aria-label=\"Otter La Tortuga in renders\""
+ ],
+ [
+  "El hotel, en renders.",
+  "The hotel, in renders."
+ ],
+ [
+  "alt=\"Otter La Tortuga: piscina frente al edificio circular\"",
+  "alt=\"Otter La Tortuga: pool in front of the circular building\""
+ ],
+ [
+  "alt=\"Otter La Tortuga: piscina infinita hacia el mar\"",
+  "alt=\"Otter La Tortuga: infinity pool facing the sea\""
+ ],
+ [
+  "alt=\"Otter La Tortuga: restaurante con pérgola frente a la playa\"",
+  "alt=\"Otter La Tortuga: restaurant with pergola facing the beach\""
+ ],
+ [
+  "alt=\"Otter La Tortuga: acceso con espejo de agua y palmeras\"",
+  "alt=\"Otter La Tortuga: entrance with reflecting pool and palms\""
+ ],
+ [
+  "alt=\"Otter La Tortuga: pabellón con celosía de madera\"",
+  "alt=\"Otter La Tortuga: pavilion with timber lattice\""
+ ],
+ [
+  "alt=\"Otter La Tortuga: acceso bajo el edificio con la marca Otter\"",
+  "alt=\"Otter La Tortuga: entrance under the building with the Otter sign\""
+ ],
+ [
+  "alt=\"Otter La Tortuga: habitación\"",
+  "alt=\"Otter La Tortuga: guest room\""
+ ],
+ [
+  "<span class=\"mono tag\">Portafolio</span>",
+  "<span class=\"mono tag\">Portfolio</span>"
+ ],
+ [
+  "Fichas de proyecto.",
+  "Project sheets."
+ ],
+ [
+  "aria-label=\"Ver galería de Otter La Tortuga\"",
+  "aria-label=\"View Otter La Tortuga gallery\""
+ ],
+ [
+  "Hotelería · Isla La Tortuga",
+  "Hospitality · Isla La Tortuga"
+ ],
+ [
+  "Hotel de geometría circular con vista de 360° desde cada habitación, villas, piscinas y pool lounge frente al mar.",
+  "A circular hotel with a 360° view from every room, plus villas, pools and a pool lounge facing the sea."
+ ],
+ [
+  "aria-label=\"Ver galería de Puerto de Guanta\"",
+  "aria-label=\"View Puerto de Guanta gallery\""
+ ],
+ [
+  "Infraestructura portuaria · Guanta",
+  "Port infrastructure · Guanta"
+ ],
+ [
+  "Terminal especializada de carga general: proyección futura en tres fases de expansión.",
+  "Specialized general cargo terminal: a future plan in three expansion phases."
+ ],
+ [
+  "aria-label=\"Ver galería de Proyecto Altamira\"",
+  "aria-label=\"View Proyecto Altamira gallery\""
+ ],
+ [
+  "Interiorismo residencial · Altamira",
+  "Residential interiors · Altamira"
+ ],
+ [
+  "Sala de estar, biblioteca, family room, oficina privada, cinco habitaciones y terraza.",
+  "Living room, library, family room, private office, five bedrooms and terrace."
+ ],
+ [
+  "aria-label=\"Ver galería de PH Miranda\"",
+  "aria-label=\"View PH Miranda gallery\""
+ ],
+ [
+  "Interiorismo · Anteproyecto",
+  "Interiors · Schematic design"
+ ],
+ [
+  "Recibo, bar, sala, cocina, sala de TV, escalera, oficina, habitación principal, vestier y baños en un mismo recorrido de concreto, madera y vegetación, con cortes seccionados de cada espacio.",
+  "Entry, bar, living room, kitchen, TV room, stair, office, master bedroom, walk-in closet and bathrooms in one sequence of concrete, wood and plants, with sectional cuts of every space."
+ ],
+ [
+  "aria-label=\"Galería del proyecto\"",
+  "aria-label=\"Project gallery\""
+ ],
+ [
+  "aria-label=\"Cerrar galería\"",
+  "aria-label=\"Close gallery\""
+ ],
+ [
+  "aria-label=\"Imagen anterior\"",
+  "aria-label=\"Previous image\""
+ ],
+ [
+  "aria-label=\"Imagen siguiente\"",
+  "aria-label=\"Next image\""
+ ],
+ [
+  "láminas</span>",
+  "sheets</span>"
+ ],
+ [
+  "Anteproyecto · 2024 ·",
+  "Schematic design · 2024 ·"
+ ],
+ [
+  "Proyección futura ·",
+  "Future plan ·"
+ ],
+ [
+  "<span class=\"mono pcard__meta\">Interiorismo ·",
+  "<span class=\"mono pcard__meta\">Interiors ·"
+ ],
+ [
+  "<span class=\"mono pcard__meta\">Anteproyecto ·",
+  "<span class=\"mono pcard__meta\">Schematic design ·"
+ ],
+ [
+  "aria-label=\"Puerto de Guanta: proyección futura en tres fases\"",
+  "aria-label=\"Puerto de Guanta: a future plan in three phases\""
+ ],
+ [
+  "alt=\"Toma aérea actual del Puerto de Guanta\"",
+  "alt=\"Current aerial view of Puerto de Guanta\""
+ ],
+ [
+  "alt=\"Visualización de la fase 1 del Puerto de Guanta\"",
+  "alt=\"Visualization of phase 1 of Puerto de Guanta\""
+ ],
+ [
+  "alt=\"Visualización de la fase 2 del Puerto de Guanta\"",
+  "alt=\"Visualization of phase 2 of Puerto de Guanta\""
+ ],
+ [
+  "alt=\"Visualización del conjunto completo del Puerto de Guanta\"",
+  "alt=\"Visualization of the complete Puerto de Guanta\""
+ ],
+ [
+  "alt=\"Visualización nocturna del Puerto de Guanta\"",
+  "alt=\"Night visualization of Puerto de Guanta\""
+ ],
+ [
+  "<li>Actual</li><li>Lectura</li><li>Fase 1</li><li>Fase 2</li><li>Fase 3</li><li>Noche</li>",
+  "<li>Today</li><li>Reading</li><li>Phase 1</li><li>Phase 2</li><li>Phase 3</li><li>Night</li>"
+ ],
+ [
+  "<span class=\"mono\">01 — Situación actual</span><p>El Puerto de Guanta, principal eje estratégico del oriente venezolano, en plena modernización de muelles y logística.</p>",
+  "<span class=\"mono\">01 — Today</span><p>Puerto de Guanta, the main strategic hub of eastern Venezuela, in the middle of modernizing its piers and logistics.</p>"
+ ],
+ [
+  "<span class=\"mono\">02 — Lectura del sitio</span><p>La bahía, los muelles y los patios existentes: la base sobre la que crece el proyecto.</p>",
+  "<span class=\"mono\">02 — Site reading</span><p>The bay, the existing piers and yards: the base the project grows from.</p>"
+ ],
+ [
+  "<span class=\"mono\">03 — Fase 1 · Contingencia</span><p>Consolidación del área de maniobras y almacenamiento: carga extra pesada, fraccionada, tubular, contenedores y puestos de atraque.</p>",
+  "<span class=\"mono\">03 — Phase 1 · Contingency</span><p>Consolidating maneuvering and storage areas: extra-heavy, break-bulk and tubular cargo, containers and berths.</p>"
+ ],
+ [
+  "<span class=\"mono\">04 — Fase 2 · Capacidad</span><p>Terminales especializadas de descarga de granel y sistemas de transporte automatizado.</p>",
+  "<span class=\"mono\">04 — Phase 2 · Capacity</span><p>Specialized bulk unloading terminals and automated transport systems.</p>"
+ ],
+ [
+  "<span class=\"mono\">05 — Fase 3 · Conjunto</span><p>Vía costera y muelle norte: el conjunto completo, con los flujos logísticos separados de las áreas administrativas.</p>",
+  "<span class=\"mono\">05 — Phase 3 · Complete</span><p>Coastal road and north pier: the complete port, with logistics flows separated from administrative areas.</p>"
+ ],
+ [
+  "<span class=\"mono\">06 — De día a noche</span><p>Una proyección pensada para ser el principal nodo de intercambio comercial de la región.</p>",
+  "<span class=\"mono\">06 — Day to night</span><p>A plan designed to become the main commercial exchange hub of the region.</p>"
+ ],
+ [
+  "alt=\"Fabrizio Palmieri, Carlos Enrique Salas y Elías Ojalvo sentados en un auditorio\"",
+  "alt=\"Fabrizio Palmieri, Carlos Enrique Salas and Elías Ojalvo seated in an auditorium\""
+ ],
+ [
+  "aria-label=\"Universidad Santa María: base para la escultura de la Virgen\"",
+  "aria-label=\"Universidad Santa María: base for the statue of the Virgin\""
+ ],
+ [
+  "aria-label=\"Boceto a mano de la base, dibujándose\"",
+  "aria-label=\"Hand sketch of the base, being drawn\""
+ ],
+ [
+  "alt=\"Render frontal de la base trapezoidal de concreto con la placa Promoción XXIII y la escultura de la Virgen\"",
+  "alt=\"Front render of the trapezoidal concrete base with the Promoción XXIII plaque and the statue of the Virgin\""
+ ],
+ [
+  "alt=\"La obra terminada: base de concreto con la placa Promoción XXIII y la escultura de la Virgen en la Universidad Santa María\"",
+  "alt=\"The finished work: concrete base with the Promoción XXIII plaque and the statue of the Virgin at Universidad Santa María\""
+ ],
+ [
+  "<span class=\"mono\">03 — Boceto</span><p>La base dibujada a mano: espacio para flores, escultura, base de concreto y placa metálica.</p>",
+  "<span class=\"mono\">03 — Sketch</span><p>The base drawn by hand: space for flowers, the statue, a concrete base and a metal plaque.</p>"
+ ],
+ [
+  "<span class=\"mono\">04 — Planos</span><p>Planta y elevación a escala 1:20, perspectiva 1:15. Una pieza de 0,90 × 0,90 × 1,20 m.</p>",
+  "<span class=\"mono\">04 — Drawings</span><p>Plan and elevation at 1:20, perspective at 1:15. A 0.90 × 0.90 × 1.20 m piece.</p>"
+ ],
+ [
+  "alt=\"Antes: el altar anterior de la Virgen en la Universidad Santa María\"",
+  "alt=\"Before: the previous altar of the Virgin at Universidad Santa María\""
+ ],
+ [
+  "<li>USM</li><li>Antes</li><li>Boceto</li><li>Planos</li><li>Render</li><li>Obra</li>",
+  "<li>USM</li><li>Before</li><li>Sketch</li><li>Drawings</li><li>Render</li><li>Built</li>"
+ ],
+ [
+  "<span class=\"mono\">02 — Antes</span><p>El altar anterior, que el proyecto reemplazó por una pieza de concreto.</p>",
+  "<span class=\"mono\">02 — Before</span><p>The previous altar, which the project replaced with a single concrete piece.</p>"
+ ],
+ [
+  "<span class=\"mono\">01 — Universidad Santa María</span><p>Base para la escultura de la Virgen. Urb. Miranda, Caracas · Proyecto construido, 2025.</p>",
+  "<span class=\"mono\">01 — Universidad Santa María</span><p>Base for the statue of the Virgin. Urb. Miranda, Caracas · Built, 2025.</p>"
+ ],
+ [
+  "<span class=\"mono\">05 — Render</span><p>Concreto armado de forma trapezoidal y una placa de aluminio grabada con «Promoción XXIII» y los nombres de los estudiantes.</p>",
+  "<span class=\"mono\">05 — Render</span><p>Trapezoidal reinforced concrete and an aluminum plaque engraved with “Promoción XXIII” and the students’ names.</p>"
+ ],
+ [
+  "<span class=\"mono\">06 — Obra construida</span><p>La pieza terminada en el campus de la Universidad Santa María, con la escultura de Santa Apolonia.</p>",
+  "<span class=\"mono\">06 — Built work</span><p>The finished piece on the Universidad Santa María campus, with the statue of Saint Apollonia.</p>"
+ ],
+ [
+  "alt=\"Fabrizio Palmieri, arquitecto socio de Caraqueña\"",
+  "alt=\"Fabrizio Palmieri, partner architect at Caraqueña\""
+ ],
+ [
+  "alt=\"Carlos Enrique Salas, arquitecto socio de Caraqueña\"",
+  "alt=\"Carlos Enrique Salas, partner architect at Caraqueña\""
+ ],
+ [
+  "alt=\"Los tres arquitectos de Caraqueña trabajando sobre la mesa con bocetos y libros de arquitectura\"",
+  "alt=\"The three Caraqueña architects working at the table with sketches and architecture books\""
+ ],
+ [
+  "alt=\"Elías Ojalvo, arquitecto socio de Caraqueña\"",
+  "alt=\"Elías Ojalvo, partner architect at Caraqueña\""
+ ],
+ [
+  "<a href=\"terminos.html\">Términos</a> · <a href=\"privacidad.html\">Privacidad</a> · <a href=\"cookies.html\">Cookies</a>",
+  "<a href=\"terminos.html?lang=en\">Terms</a> · <a href=\"privacidad.html?lang=en\">Privacy</a> · <a href=\"cookies.html?lang=en\">Cookies</a>"
+ ],
+ [
+  "aria-label=\"Ver galería de Townhouse Alto Hatillo\"",
+  "aria-label=\"View Townhouse Alto Hatillo gallery\""
+ ],
+ [
+  "Sala, comedor, cocina, terrazas con parrillera, habitación principal, vestier y baño, resueltos en madera, ladrillo y piedra, con la planta de cada espacio.",
+  "Living room, dining room, kitchen, terraces with grill, master bedroom, walk-in closet and bathroom, resolved in wood, brick and stone, with the floor plan of every space."
+ ],
+ [
+  "aria-label=\"Ver galería de Maquetería para Sistema Nacional de Orquestas\"",
+  "aria-label=\"View Model-making for the National System of Orchestras gallery\""
+ ],
+ [
+  "alt=\"Maquetería para Sistema Nacional de Orquestas\"",
+  "alt=\"Model-making for the National System of Orchestras\""
+ ],
+ [
+  "<h3 class=\"pcard__title\">Maquetería para Sistema Nacional de Orquestas</h3>",
+  "<h3 class=\"pcard__title\">Model-making for the National System of Orchestras</h3>"
+ ],
+ [
+  "Levantamiento · Digitalización · Maquetería",
+  "Survey · Digitization · Model-making"
+ ],
+ [
+  "Levantamiento del conjunto existente, digitalización en 3D y maqueta a escala de la Universidad Maestro Abreu del Sistema: fachada de parasoles, casa histórica y anfiteatro.",
+  "Survey of the existing complex, 3D digitization and a scale model of El Sistema’s Universidad Maestro Abreu: louvered façade, historic house and amphitheater."
+ ],
+ [
+  "Maqueta · 14 fotos",
+  "Model · 14 photos"
+ ],
+ [
+  "aria-label=\"Ver galería de Proyecto San Luis\"",
+  "aria-label=\"View San Luis Project gallery\""
+ ],
+ [
+  "alt=\"Proyecto San Luis\"",
+  "alt=\"San Luis Project\""
+ ],
+ [
+  "<h3 class=\"pcard__title\">Proyecto San Luis</h3>",
+  "<h3 class=\"pcard__title\">San Luis Project</h3>"
+ ],
+ [
+  "Interiorismo · Obra ejecutada",
+  "Interiors · Built work"
+ ],
+ [
+  "Remodelación de apartamento: dos baños, cocina y mueble para los tanques de agua, del plano al render y a la obra terminada.",
+  "Apartment renovation: two bathrooms, kitchen and a cabinet for the water tanks, from plan to render to the finished work."
+ ],
+ [
+  "Proyecto · 20 láminas + video",
+  "Project · 20 sheets + video"
+ ],
+ [
+  "alt=\"Render en corte seccionado de una escalera de concreto con pasamanos y luces de pared\"",
+  "alt=\"Sectional render of a concrete staircase with handrail and wall lights\""
+ ],
+ [
+  "data-title=\"Caracas, en obra\"",
+  "data-title=\"Caracas, under construction\""
+ ],
+ [
+  "data-desc=\"Croquis de línea sobre fondo negro: el perfil del Ávila con el Hotel Humboldt y La Silla; delante, una torre que se construye piso por piso con su grúa, ejes, cotas y niveles. La vista corre a la derecha junto a un tren y una valla de Caraqueña, se levanta una segunda torre con podio, voladizo y diagonales, y termina bajando al subsuelo, con sótanos y el túnel del metro.\"",
+  "data-desc=\"Line sketch on black: the profile of El Ávila with the Humboldt Hotel and La Silla; in front, a tower built floor by floor with its crane, grid axes, dimensions and levels. The view travels right alongside a train and a Caraqueña billboard, a second tower rises with a podium, a cantilever and diagonal bracing, and it ends going underground, with basements and the metro tunnel.\""
+ ],
+ [
+  "<span class=\"avila__tag\">Caracas, en obra</span><span class=\"avila__pct\">Avance <b>",
+  "<span class=\"avila__tag\">Caracas, under construction</span><span class=\"avila__pct\">Progress <b>"
+ ],
+ [
+  "<span class=\"l\">Del trazo</span><span class=\"l\">a la <b>obra.</b></span>",
+  "<span class=\"l\">From sketch</span><span class=\"l\">to <b>site.</b></span>"
+ ],
+ [
+  "<!-- CARACAS, EN OBRA (solo computadora) -->",
+  "<!-- CARACAS, UNDER CONSTRUCTION (desktop only) -->"
+ ]
 ]
