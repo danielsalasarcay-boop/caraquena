@@ -1389,7 +1389,7 @@
         tx(mid - 46 * q, 12.6 * q, "CCS", 7.4 * q, "av-lv"); tx(mid + 46 * q, 12.6 * q, "VIS", 7.4 * q, "av-lv");
         const clk = tx(mid, 12.6 * q, "89:12", 7.4 * q, "av-o av-lv");
         const dH = tx(mid - 24 * q, 35 * q, "3", 21 * q, "av-o av-lv av-led"), dA = tx(mid + 24 * q, 35 * q, "3", 21 * q, "av-o av-lv av-led"), dS = tx(mid, 33 * q, "–", 14 * q, "av-o av-lv");
-        const gol = tx(mid, 35 * q, "¡GOL!", 19 * q, "av-o av-lv av-led"); gol.style.opacity = 0;
+        const gol = tx(mid, 35 * q, "HIT", 19 * q, "av-o av-lv av-led"); gol.style.opacity = 0;
         const cp2 = E("clipPath", { id: cid2 }, e); E("path", { d: poly([[3 * q, 39.6 * q], [bw - 3 * q, 39.6 * q], [bw - 3 * q, bh - 3 * q], [3 * q, bh - 3 * q]]) }, cp2);
         const mq = E("g", {}, E("g", { "clip-path": `url(#${cid2})` }, e)), segW = 96 * q;
         for (let k = 0; k < 4; k++) { const t2 = E("text", { x: f(k * segW + 4 * q), y: f(46.4 * q), class: "av-o av-lv", style: `font-size:${f(5.4 * q)}px`, textLength: f(segW - 8 * q), lengthAdjust: "spacingAndGlyphs" }, mq); t2.textContent = "CARACAS 3 – 3 VISITANTE  ·"; }
@@ -1401,7 +1401,7 @@
           let lastA = null;
           boardUpd = (t) => { // el gol entra con calma: los números se desvanecen, el ¡GOL! crece, late dos veces y se retira dejando el 4–3
             const u = t - tGoal, after = u >= .45;
-            if (after !== lastA) { lastA = after; dH.textContent = after ? "4" : "3"; [...mq.children].forEach((t2) => (t2.textContent = u >= 0 ? "¡GOL! CARACAS 4 – 3 VISITANTE  ·" : "CARACAS 3 – 3 VISITANTE  ·")); }
+            if (after !== lastA) { lastA = after; dH.textContent = after ? "4" : "3"; [...mq.children].forEach((t2) => (t2.textContent = u >= 0 ? "HIT · CARACAS 4 – 3 VISITANTE  ·" : "CARACAS 3 – 3 VISITANTE  ·")); }
             let k = 0; if (u > 0 && u < 2.6) k = u < .45 ? sm(u / .45) : u < 1.9 ? .8 + .2 * Math.cos((u - .45) / 1.45 * Math.PI * 4) : 1 - sm((u - 1.9) / .7);
             gol.style.opacity = k.toFixed(3); gz(Math.min(1, k * 1.25)); const d = (1 - Math.min(1, k * 1.4)).toFixed(3); [dH, dA, dS].forEach((x) => (x.style.opacity = d)); };
           // el reloj del partido corre de verdad y la cinta se desplaza
@@ -1412,7 +1412,7 @@
           celeb.to([dH, dA, dS], { opacity: 0, duration: .5, ease: "sine.inOut" }, 0).to(gk, { k: 1, duration: .5, ease: "sine.out", onUpdate: () => { gol.style.opacity = gk.k; gz(gk.k); } }, 0)
             .to(gol, { opacity: .6, duration: .4, ease: "sine.inOut", repeat: 3, yoyo: true }, .6)
             .to(gol, { opacity: 0, duration: .7, ease: "sine.inOut" }, 2.3).to([dH, dA, dS], { opacity: 1, duration: .7, ease: "sine.inOut" }, 2.4); life.push(celeb);
-        } else { dH.textContent = "4"; [...mq.children].forEach((t2) => (t2.textContent = "¡GOL! CARACAS 4 – 3 VISITANTE  ·")); }
+        } else { dH.textContent = "4"; [...mq.children].forEach((t2) => (t2.textContent = "HIT · CARACAS 4 – 3 VISITANTE  ·")); }
       }
       // la franja de luz del borde de la cubierta y gente llegando al pórtico
       const rim = S(g, pen().raw(fA(yC + 1.7 * q, rC - 1 * q, eC), aL(rC, eC) / 2), "av-o av-t", true); show(tlM, rim, tN + .2, .6);
